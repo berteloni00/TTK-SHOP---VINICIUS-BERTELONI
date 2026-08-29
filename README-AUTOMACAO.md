@@ -7,7 +7,7 @@ Quando encontra mudancas, a automacao:
 1. baixa novamente todas as paginas e arquivos internos acessiveis;
 2. compara o resultado com a copia atual;
 3. cria ou atualiza o Pull Request `automation/site-sync`;
-4. envia o link do Pull Request pelo WhatsApp, quando as credenciais estiverem configuradas;
+4. envia o link do Pull Request pelo Telegram, quando o bot estiver configurado;
 5. aguarda aprovacao humana. Nada e publicado automaticamente na branch `main`.
 
 Depois que o Pull Request for revisado e incorporado com **Merge pull request**, o GitHub Pages publica a nova versao.
@@ -20,26 +20,23 @@ Em **Settings -> Actions -> General -> Workflow permissions**:
 - marque **Allow GitHub Actions to create and approve pull requests**;
 - clique em **Save**.
 
-## Segredos do WhatsApp
+## Segredos do Telegram
 
-A notificacao usa a API oficial do WhatsApp Business/Cloud API. Ela exige uma conta configurada na Meta, um numero remetente e um modelo de mensagem aprovado.
+A notificacao usa a API oficial de bots do Telegram.
 
-Crie um modelo em portugues chamado, por exemplo, `atualizacao_site_disponivel`, com uma variavel no corpo:
+1. No Telegram, abra uma conversa com `@BotFather`.
+2. Envie `/newbot` e siga as instrucoes para criar o bot.
+3. Copie o token fornecido pelo BotFather.
+4. Abra uma conversa com o bot criado e envie `/start`.
+5. Obtenha o `chat_id` dessa conversa usando o metodo `getUpdates` da Bot API.
 
-```text
-Foi encontrada uma atualizacao no site. Revise e aprove aqui: {{1}}
-```
+Em **Settings -> Secrets and variables -> Actions -> New repository secret**, cadastre:
 
-Depois, em **Settings -> Secrets and variables -> Actions -> New repository secret**, cadastre:
-
-- `WHATSAPP_ACCESS_TOKEN`: token permanente da Cloud API;
-- `WHATSAPP_PHONE_NUMBER_ID`: identificador do numero remetente;
-- `WHATSAPP_TO`: telefone que recebera o aviso, com DDI e DDD, somente numeros;
-- `WHATSAPP_TEMPLATE_NAME`: nome do modelo aprovado, como `atualizacao_site_disponivel`;
-- `WHATSAPP_API_VERSION`: versao da Graph API habilitada no aplicativo Meta.
+- `TELEGRAM_BOT_TOKEN`: token secreto fornecido pelo BotFather;
+- `TELEGRAM_CHAT_ID`: identificador numerico da conversa que recebera o aviso.
 
 Os valores ficam protegidos pelo GitHub e nunca devem ser colocados diretamente nos arquivos deste repositorio publico.
 
 ## Teste manual
 
-Abra **Actions -> Verificar atualizacoes do site original -> Run workflow**. Se nao houver mudanca, a execucao termina sem criar Pull Request. Se o WhatsApp ainda nao estiver configurado, a verificacao e o Pull Request continuam funcionando normalmente.
+Abra **Actions -> Verificar atualizacoes do site original -> Run workflow**. Se nao houver mudanca, a execucao termina sem criar Pull Request. Se o Telegram ainda nao estiver configurado, a verificacao e o Pull Request continuam funcionando normalmente.

@@ -68,47 +68,28 @@ jobs:
           echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
           echo "Pull Request: $pr_url"
 
-      - name: Avisar no WhatsApp
+      - name: Avisar no Telegram
         if: steps.pr.outputs.pr_url != ''
         shell: pwsh
         env:
           PR_URL: ${{ steps.pr.outputs.pr_url }}
-          WHATSAPP_ACCESS_TOKEN: ${{ secrets.WHATSAPP_ACCESS_TOKEN }}
-          WHATSAPP_PHONE_NUMBER_ID: ${{ secrets.WHATSAPP_PHONE_NUMBER_ID }}
-          WHATSAPP_TO: ${{ secrets.WHATSAPP_TO }}
-          WHATSAPP_TEMPLATE_NAME: ${{ secrets.WHATSAPP_TEMPLATE_NAME }}
-          WHATSAPP_API_VERSION: ${{ secrets.WHATSAPP_API_VERSION }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          $required = @(
-            $env:WHATSAPP_ACCESS_TOKEN,
-            $env:WHATSAPP_PHONE_NUMBER_ID,
-            $env:WHATSAPP_TO,
-            $env:WHATSAPP_TEMPLATE_NAME,
-            $env:WHATSAPP_API_VERSION
-          )
-          if ($required | Where-Object { [string]::IsNullOrWhiteSpace($_) }) {
-            Write-Warning 'WhatsApp ainda nao configurado. O Pull Request foi criado normalmente.'
+          if ([string]::IsNullOrWhiteSpace($env:TELEGRAM_BOT_TOKEN) -or
+              [string]::IsNullOrWhiteSpace($env:TELEGRAM_CHAT_ID)) {
+            Write-Warning 'Telegram ainda nao configurado. O Pull Request foi criado normalmente.'
             exit 0
           }
 
           $payload = @{
-            messaging_product = 'whatsapp'
-            to = $env:WHATSAPP_TO
-            type = 'template'
-            template = @{
-              name = $env:WHATSAPP_TEMPLATE_NAME
-              language = @{ code = 'pt_BR' }
-              components = @(
-                @{
-                  type = 'body'
-                  parameters = @(
-                    @{ type = 'text'; text = $env:PR_URL }
-                  )
-                }
-              )
-            }
-          } | ConvertTo-Json -Depth 10
+            chat_id = $env:TELEGRAM_CHAT_ID
+            text = "O site original foi atualizado. Revise e aprove o Pull Request antes de publicar:`n`n$env:PR_URL"
+            disable_web_page_preview = $true
+          } | ConvertTo-Json
 
-          $headers = @{ Authorization = "Bearer $env:WHATSAPP_ACCESS_TOKEN" }
-          $url = "https://graph.facebook.com/$env:WHATSAPP_API_VERSION/$env:WHATSAPP_PHONE_NUMBER_ID/messages"
-          Invoke-RestMethod -Method Post -Uri $url -Headers $headers -ContentType 'application/json' -Body $payload
+          $url = "https://api.telegram.org/bot$env:TELEGRAM_BOT_TOKEN/sendMessage"
+          $response = Invoke-RestMethod -Method Post -Uri $url -ContentType 'application/json' -Body $payload
+          if (-not $response.ok) {
+            throw 'O Telegram nao confirmou o envio da mensagem.'
+          }
