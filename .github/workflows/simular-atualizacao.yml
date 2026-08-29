@@ -45,6 +45,10 @@ jobs:
             '</body></html>' > "$test_file"
 
           git add "$test_file"
+          pwsh ./.github/scripts/gerar-resumo.ps1 \
+            -MarkdownPath "$RUNNER_TEMP/resumo-pr.md" \
+            -TelegramPath "$RUNNER_TEMP/resumo-telegram.txt" \
+            -Title "TESTE: atualizacao ficticia detectada"
           git commit -m "Teste: simula atualizacao do site original"
           git push --force-with-lease origin "HEAD:${branch}"
 
@@ -54,8 +58,9 @@ jobs:
               --base main \
               --head "$branch" \
               --title "TESTE: atualizacao ficticia para aprovacao" \
-              --body "Este Pull Request e um teste controlado do fluxo semanal. Ele adiciona apenas o arquivo temporario \`_TESTE-ATUALIZACAO.html\`. Revise e clique em **Merge pull request** para validar a aprovacao e a publicacao no GitHub Pages.")
+              --body-file "$RUNNER_TEMP/resumo-pr.md")
           fi
+          gh pr edit "$pr_url" --body-file "$RUNNER_TEMP/resumo-pr.md"
 
           echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
           echo "Pull Request de teste: $pr_url"
@@ -72,9 +77,18 @@ jobs:
             throw 'Cadastre TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID nos segredos do repositorio.'
           }
 
+          $summaryPath = Join-Path $env:RUNNER_TEMP 'resumo-telegram.txt'
+          $summary = if (Test-Path -LiteralPath $summaryPath) {
+            [IO.File]::ReadAllText($summaryPath)
+          } else {
+            'TESTE: uma atualizacao ficticia foi detectada.'
+          }
+          $message = "$summary`n$env:PR_URL"
+          if ($message.Length -gt 4000) { $message = $message.Substring(0, 3997) + '...' }
+
           $payload = @{
             chat_id = $env:TELEGRAM_CHAT_ID
-            text = "TESTE: uma atualizacao ficticia foi detectada. Revise e aprove o Pull Request:`n`n$env:PR_URL"
+            text = $message
             disable_web_page_preview = $true
           } | ConvertTo-Json
 

@@ -54,6 +54,10 @@ jobs:
           git fetch origin "refs/heads/${branch}:refs/remotes/origin/${branch}" || true
           git checkout -B "$branch"
           git add -A
+          pwsh ./.github/scripts/gerar-resumo.ps1 \
+            -MarkdownPath "$RUNNER_TEMP/resumo-pr.md" \
+            -TelegramPath "$RUNNER_TEMP/resumo-telegram.txt" \
+            -Title "Atualizacao semanal encontrada no site original"
           git commit -m "Atualiza copia do site original"
           git push --force-with-lease origin "HEAD:${branch}"
 
@@ -63,8 +67,9 @@ jobs:
               --base main \
               --head "$branch" \
               --title "Atualizacao semanal disponivel para aprovacao" \
-              --body "O site original mudou. Revise os arquivos alterados neste Pull Request. A copia publica so sera atualizada depois que voce clicar em **Merge pull request**.")
+              --body-file "$RUNNER_TEMP/resumo-pr.md")
           fi
+          gh pr edit "$pr_url" --body-file "$RUNNER_TEMP/resumo-pr.md"
           echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
           echo "Pull Request: $pr_url"
 
@@ -82,9 +87,18 @@ jobs:
             exit 0
           }
 
+          $summaryPath = Join-Path $env:RUNNER_TEMP 'resumo-telegram.txt'
+          $summary = if (Test-Path -LiteralPath $summaryPath) {
+            [IO.File]::ReadAllText($summaryPath)
+          } else {
+            'O site original foi atualizado.'
+          }
+          $message = "$summary`n$env:PR_URL"
+          if ($message.Length -gt 4000) { $message = $message.Substring(0, 3997) + '...' }
+
           $payload = @{
             chat_id = $env:TELEGRAM_CHAT_ID
-            text = "O site original foi atualizado. Revise e aprove o Pull Request antes de publicar:`n`n$env:PR_URL"
+            text = $message
             disable_web_page_preview = $true
           } | ConvertTo-Json
 
