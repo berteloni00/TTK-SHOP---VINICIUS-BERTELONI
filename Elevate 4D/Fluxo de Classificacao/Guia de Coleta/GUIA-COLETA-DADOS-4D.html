@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Coleta de Dados — Elevate 4D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Metodologia Elevate 4D · Coleta de Dados</div>
+    <h1>Guia de Coleta de Dados — Elevate 4D</h1>
+    <div class="meta"><b>Elevate Ecom (Metodologia Interna)</b> · Onde achar cada dado no TikTok e como exportar — para alimentar a classificação 4D · Atualizado: 2026-06-16</div>
+  </div>
+  <div class="content">
+<blockquote>
+<p>O que coletar, <strong>onde achar no TikTok</strong> e <strong>como exportar pelo notebook</strong> (navegador) para rodar a <a href="../SOP/FLUXO-CLASSIFICACAO-4D.html">classificação 4D</a> na <a href="../CALCULADORA-4D.xlsx">calculadora</a> ou no <a href="../Prompt/PROMPT-CLASSIFICACAO-4D.html">prompt</a>.</p>
+<p><strong>Fontes (tags usadas no diagnóstico):</strong> <code>[SC]</code> Seller Center / Ads Manager = dado oficial da conta (a verdade) · <code>[FM]</code> FastMoss = benchmark externo / concorrência (a régua) · <code>[INT]</code> controle interno / cliente (margem, cachê de live, audiência migrável). <strong>Seller Center é a verdade; FastMoss é a régua.</strong></p>
+</blockquote>
+<hr />
+<h2>1. PACOTE PADRÃO DE EXPORTS (o que baixar/printar por cliente)</h2>
+<blockquote>
+<p>✅ <strong>Lista validada no 1º caso real (Mossy).</strong> Baixe estes arquivos do Seller Center / Ads Manager e jogue na pasta <code>Dados Atuais/</code> do cliente. O nome já sai assim do TikTok — não precisa renomear.</p>
+<p>📥 <strong>Cola direto na página (sem baixar):</strong> a <a href="../ENTRADA-DADOS-4D.html">Entrada de Dados 4D</a> deixa você colar os exports no próprio hub e ver momento · CT% · decomposição · prioridade ao vivo. Pra a versão completa em planilha, use a <a href="../CALCULADORA-4D.xlsx">Calculadora 4D</a> com as <strong>abas de colagem</strong> (<code>SC Shop Analytics</code>, <code>SC Product list</code>, <code>SC Creator List</code>, <code>SC affiliate_orders</code>, <code>SC Sample</code>, <code>SC Ads</code>, <code>FM Produtos</code>, <code>FM Creators</code>). Cole o export cru, escolha a <strong>letra da coluna</strong> (1 clique) e o <strong>GMV, o investimento em Ads, a decomposição, o CT%, o momento e a dimensão prioritária calculam sozinhos</strong>. Só o custo de lives (cachê interno, sem export) você digita na aba <code>Entrada</code>.</p>
+</blockquote>
+<h3>Seller Center (<code>seller-br.tiktok.com</code>)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Export</th>
+<th>O que desbloqueia</th>
+<th>Dimensão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Shop Analytics — Key metrics</strong></td>
+<td>GMV, pedidos, ticket, conversão, visitantes, série diária</td>
+<td>Geral / momento</td>
+</tr>
+<tr>
+<td><strong>Product list</strong> (lista de produtos)</td>
+<td>catálogo + <strong>GMV por produto COM atribuição (criador / vídeo / live)</strong> → decomposição do GMV e concentração por SKU</td>
+<td>D1 + decomposição</td>
+</tr>
+<tr>
+<td><strong>Product Card Traffic Stats</strong></td>
+<td>tráfego, cliques, add-to-cart e conversão por dia</td>
+<td>D1 / D2</td>
+</tr>
+<tr>
+<td><strong>Transaction Analysis — Creator List</strong></td>
+<td><strong>Pareto de creators</strong> (GMV e pedidos por creator)</td>
+<td>D3</td>
+</tr>
+<tr>
+<td><strong>Transaction Analysis — Core Metrics</strong></td>
+<td>GMV atribuído ao criador (total), nº de vídeos e lives</td>
+<td>D3</td>
+</tr>
+<tr>
+<td><strong>Sample Analysis — Core Metrics</strong></td>
+<td>nº de amostras, COGS e custo de envio</td>
+<td>D3 / CT%</td>
+</tr>
+<tr>
+<td><strong>affiliate_orders</strong> (<code>.csv</code>)</td>
+<td><strong>comissão por pedido de afiliado</strong> → fecha o CT% real</td>
+<td>CT%</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Ads Manager (<code>ads.tiktok.com</code>)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Export / Print</th>
+<th>O que desbloqueia</th>
+<th>Dimensão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Print da visão geral do GMV Max</strong></td>
+<td>custo, pedidos, receita e <strong>ROI</strong></td>
+<td>D2</td>
+</tr>
+<tr>
+<td><strong>Creative data for product campaigns</strong> (export)</td>
+<td>criativos/vídeos das campanhas (quais creators)</td>
+<td>D2 / D3</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Benchmark externo — FastMoss (<code>fastmoss.com</code>) <code>[FM]</code></h3>
+<blockquote>
+<p>Cruzamento, não substituto. O Seller Center é a <strong>verdade da conta</strong>; o FastMoss é a <strong>régua</strong> (onde a marca está na categoria e o que copiar dos concorrentes). É a fonte primária da <strong>Seção 4 (Concorrência)</strong> e o plano B quando ainda <strong>não há acesso à conta</strong>. Puxar com o Edge logado dirigindo a UI (ver método interno).</p>
+</blockquote>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dado</th>
+<th>O que desbloqueia</th>
+<th>Dimensão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>GMV estimado + ranking da categoria</strong></td>
+<td>posição relativa da marca / estimativa quando não há [SC]</td>
+<td>Momento</td>
+</tr>
+<tr>
+<td><strong>Top produtos dos concorrentes</strong> (kit/ticket/preço)</td>
+<td>kit-âncora e preço de referência</td>
+<td>D1 / Concorrência</td>
+</tr>
+<tr>
+<td><strong>Top creators da categoria</strong> (bucket)</td>
+<td>lista de outreach de afiliados</td>
+<td>D3</td>
+</tr>
+<tr>
+<td><strong>Tendências/sazonalidade da categoria</strong></td>
+<td>calendário de mídia e lançamento</td>
+<td>D2 / D4</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Pendente (depende de acesso/cliente)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Fonte</th>
+<th>O que desbloqueia</th>
+<th>Dimensão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TikTok Studio → Analytics</strong> (perfil orgânico) <code>[INT]</code></td>
+<td>seguidores, views, frequência, lives orgânicas</td>
+<td><strong>D4 Social</strong></td>
+</tr>
+<tr>
+<td>Planilha de <strong>precificação/custos</strong> (interno) <code>[INT]</code></td>
+<td>COGS / margem real por SKU</td>
+<td>D1 (margem)</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>O que cada bloco fecha:</strong> Shop Analytics + Product List → <strong>momento + decomposição</strong>. affiliate_orders + Sample + Print de Ads → <strong>CT% real</strong>. Creator List → <strong>D3 (Pareto)</strong>. TikTok Studio → <strong>D4</strong> (é o que costuma ficar pendente — pode classificar sem ele e fechar depois).</p>
+</blockquote>
+<hr />
+<h2>2. MAPA — CADA DADO E ONDE PEGAR</h2>
+<h3>Contexto (define o momento)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dado</th>
+<th>Onde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Loja aprovada e vendendo? · tendência do GMV</td>
+<td>Seller Center → <strong>Visão geral / Dados</strong> (GMV por período)</td>
+</tr>
+<tr>
+<td>Tem hero claro?</td>
+<td>Seller Center → <strong>Dados → Produtos</strong> (top por GMV)</td>
+</tr>
+<tr>
+<td>Nº de dimensões ativas/maduras</td>
+<td>sua leitura (quais dimensões realmente puxam GMV)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Financeiro (define o CT%)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dado</th>
+<th>Onde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GMV total</td>
+<td>Seller Center → <strong>Dados / Análise</strong></td>
+</tr>
+<tr>
+<td>Investimento em Ads</td>
+<td><strong>Ads Manager</strong> → relatório de gasto (GMV Max)</td>
+</tr>
+<tr>
+<td>Comissões de afiliados</td>
+<td>Seller Center → <strong>Afiliados</strong> → relatório de comissões</td>
+</tr>
+<tr>
+<td>Nº de amostras + valor nominal</td>
+<td>Seller Center → <strong>Afiliados → Amostras</strong> + catálogo</td>
+</tr>
+<tr>
+<td>Custo de lives</td>
+<td>controle interno (cachê do host)</td>
+</tr>
+<tr>
+<td>Settlement (saldo, taxas, frete)</td>
+<td>Seller Center → <strong>Finanças → Extratos</strong> → exportar <code>.xlsx</code></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Decomposição do GMV por fonte</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Fonte</th>
+<th>Onde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Por SKU com atribuição (criador / vídeo / live)</td>
+<td><strong>Product list</strong> (export) — tem coluna "GMV atribuído ao criador / a vídeo / à LIVE" por produto</td>
+</tr>
+<tr>
+<td>Total atribuído ao criador + nº vídeos/lives</td>
+<td><strong>Transaction Analysis — Core Metrics</strong></td>
+</tr>
+<tr>
+<td>Por creator (Pareto)</td>
+<td><strong>Transaction Analysis — Creator List</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ <strong>O export "Todos os pedidos" NÃO traz a fonte do GMV.</strong> Quem dá a decomposição real é o <strong>Product list</strong> (atribuição por produto) + o <strong>Creator List</strong> (por creator) — não o CSV de pedidos. (Aprendido no caso Mossy: foi o Product list que revelou que ~70% do GMV era creator-driven e 64% concentrado num SKU.)</p>
+</blockquote>
+<h3>Por dimensão (scorecard)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Dados</th>
+<th>Onde</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D1 Produtos</strong></td>
+<td>nº SKUs, ticket, % curva A, margem, avaliação, kit?, ruptura?, SLAs</td>
+<td>Seller Center → <strong>Produtos / Avaliações / Dados</strong> + planilha de custos</td>
+</tr>
+<tr>
+<td><strong>D2 Ads</strong></td>
+<td>ROAS/ROI, % GMV via Ads, verba/dia, Spark Ads?</td>
+<td><strong>Ads Manager</strong> → GMV Max</td>
+</tr>
+<tr>
+<td><strong>D3 Afiliados</strong></td>
+<td>nº creators ativos, GMV/afiliado, Pareto, comissão, amostras, outreach, feedback, retenção</td>
+<td>Seller Center → <strong>Afiliados / Creators</strong></td>
+</tr>
+<tr>
+<td><strong>D4 Social</strong></td>
+<td>seguidores, views/vídeo, frequência, lives/semana, GMV orgânico, audiência migrável</td>
+<td><strong>TikTok Studio</strong> + Seller Center → <strong>LIVE</strong> (ver Seção 3)</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>3. COMO PEGAR O <strong>TIKTOK SOCIAL (D4)</strong> PELO NOTEBOOK</h2>
+<p>O D4 mistura <strong>perfil orgânico</strong> (TikTok Studio) + <strong>loja/lives</strong> (Seller Center). Tudo no navegador.</p>
+<h3>A) Perfil orgânico → TikTok Studio (web)</h3>
+<ol>
+<li>Logado na conta da marca, acesse <strong><code>tiktok.com/tiktokstudio</code></strong> (ou menu do perfil → <em>TikTok Studio</em>).</li>
+<li>Abra <strong>Analytics</strong> e escolha o período (7 / 28 / 60 dias):<br />
+   - <strong>Visão geral</strong> → views, seguidores, curtidas, comentários, compartilhamentos, tempo de exibição.<br />
+   - <strong>Conteúdo</strong> → desempenho vídeo a vídeo → calcula <strong>views médias/vídeo</strong> e <strong>frequência de post</strong>.<br />
+   - <strong>Seguidores</strong> → crescimento, horários ativos, origem.<br />
+   - <strong>LIVE</strong> → se a conta fez lives orgânicas (viewers, diamantes, duração).</li>
+<li>Exportar: alguns relatórios baixam direto ali. Para o dump completo da conta: <strong>Configurações → Privacidade → "Baixar seus dados"</strong> (gera um arquivo; demora algumas horas).</li>
+</ol>
+<h3>B) Loja e lives → Seller Center (<code>seller-br.tiktok.com</code>)</h3>
+<ol>
+<li><strong>Dados / Análise (Compass)</strong> → relatórios por <strong>vídeo</strong> e por <strong>LIVE</strong> com <strong>GMV atribuído à fonte</strong> → é daqui que sai a separação <em>orgânico × afiliado × ads × live</em>.</li>
+<li><strong>LIVE</strong> (menu de transmissões ou <strong>LIVE Center</strong> <code>livecenter.tiktok.com</code>) → por live: espectadores, GMV, duração, conversão → alimenta o <strong>GMV/live</strong> do D4.</li>
+</ol>
+<h3>C) Audiência migrável (pesa no D4)</h3>
+<ul>
+<li>Seguidores em <strong>Instagram / YouTube / lista de CRM</strong> que dá pra puxar pro TikTok (no caso Mossy, foi o trunfo do D4). Esse dado é do cliente, não do TikTok.</li>
+</ul>
+<blockquote>
+<p>⚠️ A UI do TikTok muda de nome com frequência ("Análise", "Compass", "Dados", "Insights"). Se não achar o nome exato, procure por <strong>Analytics / Dados / Desempenho</strong> dentro do TikTok Studio (perfil) e do Seller Center (loja).</p>
+</blockquote>
+<hr />
+<h2>4. CHECKLIST RÁPIDO (antes de rodar a classificação)</h2>
+<ul>
+<li>▢ GMV total do período</li>
+<li>▢ Gasto de Ads + comissões de afiliados + nº de amostras (× valor nominal) + custo de lives → <strong>fecha o CT%</strong></li>
+<li>▢ Loja vendendo? · hero? · GMV subindo/estável/caindo? · nº de dimensões ativas → <strong>fecha o momento</strong></li>
+<li>▢ Notas 0–5 por dimensão (com os dados de cada painel) → <strong>fecha o scorecard</strong></li>
+<li>▢ (ideal) Product list (decomposição) + affiliate_orders (comissão/CT%) + Sample Analysis (amostras)</li>
+</ul>
+<blockquote>
+<p><strong>Pacote mínimo que já fecha quase tudo (validado na Mossy):</strong> Shop Analytics + Product list + Creator List + affiliate_orders + Sample + Print de Ads. Só o <strong>D4 Social</strong> (TikTok Studio) costuma ficar pendente — classifique sem ele e feche depois.</p>
+<p>Faltou algo? Tudo bem — rode mesmo assim. O que faltar, a saída lista em "Dados ainda necessários".</p>
+</blockquote>
+<hr />
+<p><em>Elevate Ecom. — Sua marca acima nos marketplaces.</em></p>
+  </div>
+  <div class="footer">Elevate Ecom. — Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

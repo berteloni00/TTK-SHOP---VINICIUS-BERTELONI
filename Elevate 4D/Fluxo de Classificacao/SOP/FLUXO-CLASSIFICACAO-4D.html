@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fluxo de Classificação Elevate 4D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Metodologia Elevate 4D · Fluxo de Classificação</div>
+    <h1>Fluxo de Classificação Elevate 4D</h1>
+    <div class="meta"><b>Elevate Ecom (Metodologia Interna)</b> · SOP · de "dados do cliente" → classificação 4D (momento + dimensão prioritária) · Atualizado: 2026-06-11</div>
+  </div>
+  <div class="content">
+<blockquote>
+<p>Como sair de <strong>dados crus de um cliente</strong> e chegar na classificação 4D: <strong>em que momento ele está</strong> e <strong>qual dimensão fortalecer</strong>. Este SOP é a fonte da verdade — o <a href="../Prompt/PROMPT-CLASSIFICACAO-4D.html">Prompt</a> e a <a href="../CALCULADORA-4D.xlsx">Calculadora</a> implementam exatamente estas regras.</p>
+</blockquote>
+<hr />
+<h2>O FLUXO EM 4 PASSOS</h2>
+<pre><code>1. COLETAR        → preencher a Ficha de Entrada (Seção 1)
+2. CALCULAR CT%   → custo de tração + decomposição do GMV (Seção 2)
+3. CLASSIFICAR    → momento M0–M6 via árvore de decisão (Seção 3)
+4. PONTUAR        → scorecard 0–5 × baseline do momento → dimensão prioritária (Seção 4)
+        ↓
+   SAÍDA: análise 4D preenchida (Seção 5)
+</code></pre>
+<hr />
+<h2>1. FICHA DE ENTRADA (o que coletar)</h2>
+<blockquote>
+<p>Preencha o que tiver. Campos faltando viram "dados necessários" na saída — não travam a classificação.</p>
+<p>📎 <strong>Onde achar cada dado (passo a passo, incl. como extrair o TikTok Social pelo navegador):</strong> ver o <a href="../Guia%20de%20Coleta/GUIA-COLETA-DADOS-4D.html">Guia de Coleta de Dados</a>.</p>
+</blockquote>
+<h3>1.1 Identidade e contexto (decidem o MOMENTO)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+<th>Usado em</th>
+<th>Onde pegar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cliente / categoria / tempo de mercado</td>
+<td></td>
+<td>identidade</td>
+<td>intake / cliente</td>
+</tr>
+<tr>
+<td><strong>Loja TikTok aprovada e já vendendo?</strong> (Sim/Não)</td>
+<td></td>
+<td>momento</td>
+<td>Seller Center → Visão geral</td>
+</tr>
+<tr>
+<td><strong>Tem produto-tração (hero) claro?</strong> (Sim/Não)</td>
+<td></td>
+<td>momento</td>
+<td>Seller Center → Dados (top produtos)</td>
+</tr>
+<tr>
+<td><strong>Tendência do GMV</strong> (Crescendo / Estável / Caindo)</td>
+<td></td>
+<td>momento</td>
+<td>Seller Center → Dados (GMV por período)</td>
+</tr>
+<tr>
+<td><strong>Nº de dimensões ATIVAS</strong> (0–4)</td>
+<td></td>
+<td>momento</td>
+<td>sua leitura (quais dimensões puxam GMV)</td>
+</tr>
+<tr>
+<td><strong>Nº de dimensões MADURAS</strong> (0–4)</td>
+<td></td>
+<td>momento</td>
+<td>sua leitura (quais já são fortes)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.2 Financeiro (decide o CT%)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+<th>Onde pegar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GMV total no período</td>
+<td>R$</td>
+<td>Seller Center → Dados / Análise</td>
+</tr>
+<tr>
+<td>Investimento em Ads</td>
+<td>R$</td>
+<td>Ads Manager (GMV Max)</td>
+</tr>
+<tr>
+<td>Comissões de afiliados pagas</td>
+<td>R$</td>
+<td>Seller Center → Afiliados</td>
+</tr>
+<tr>
+<td>Custo de lives (host/apresentadora)</td>
+<td>R$</td>
+<td>controle interno</td>
+</tr>
+<tr>
+<td>Nº de amostras grátis enviadas</td>
+<td></td>
+<td>Seller Center → Afiliados → Amostras</td>
+</tr>
+<tr>
+<td>Valor nominal médio do produto</td>
+<td>R$</td>
+<td>catálogo / planilha de precificação</td>
+</tr>
+<tr>
+<td>Taxa de amostra (frete, padrão 6%)</td>
+<td>%</td>
+<td>fixo (~6%)</td>
+</tr>
+<tr>
+<td>Saldo de settlement (se houver)</td>
+<td>R$</td>
+<td>Seller Center → Finanças → Extratos (export .xlsx)</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.3 GMV por fonte (decomposição — se disponível)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Fonte</th>
+<th>R$</th>
+<th>%</th>
+<th>Onde pegar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orgânico / loja / recompra (D1)</td>
+<td></td>
+<td></td>
+<td>Seller Center → Dados → fontes de tráfego</td>
+</tr>
+<tr>
+<td>Ads / GMV Max (D2)</td>
+<td></td>
+<td></td>
+<td>Ads Manager + Seller Center (fontes)</td>
+</tr>
+<tr>
+<td>Afiliados / creators (D3)</td>
+<td></td>
+<td></td>
+<td>Seller Center → Afiliados</td>
+</tr>
+<tr>
+<td>Social orgânico + lives próprias (D4)</td>
+<td></td>
+<td></td>
+<td>TikTok Studio + Seller Center → LIVE</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Se o split não existir (export de pedidos não traz fonte), marque "a coletar — relatório de fontes do Seller Center + dashboard de afiliados".</p>
+</blockquote>
+<h3>1.4 Dados por dimensão (alimentam o scorecard)</h3>
+<p><strong>D1 Produtos:</strong> nº SKUs ativos · ticket médio · % GMV nos top SKUs (curva A) · margem de contribuição média · avaliação média (reviews) · lidera com kit? · algum campeão em ruptura? · SLAs (conclusão %, cancelamento %, devolução %, despacho %).</p>
+<p><strong>D2 Ads:</strong> tem conta/campanha ativa? · ROAS/ROI · % GMV via Ads · verba/dia · usa Spark Ads sobre conteúdo que converte?</p>
+<p><strong>D3 Afiliados:</strong> nº creators ativos/mês · GMV via afiliados (% do total) · Pareto identificado? · comissão competitiva vs nicho? · programa de amostras rodando? · outreach sistemático (convites/mês)? · dá feedback/orientação aos creators? · recompra/retenção de creators?</p>
+<p><strong>D4 Social:</strong> conta orgânica ativa (posts/semana)? · views médias/vídeo · seguidores · conteúdo shoppable? · lives/semana · GMV orgânico (% do total) · audiência migrável de outra rede (IG/YT)?</p>
+<hr />
+<h2>2. CÁLCULO DO CUSTO DE TRAÇÃO (CT%)</h2>
+<blockquote>
+<p><strong>Custo de Amostras = nº amostras × valor nominal médio × 6%</strong> (parte de <strong>frete</strong> da taxa do TikTok — percentual fixo, não negociável por logística. A comissão de plataforma muda em 15/07/2026, mas a amostra é só o frete de 6%).</p>
+<p><strong>CT% = (Ads + Comissões + Lives + Custo de Amostras) ÷ GMV total × 100</strong></p>
+</blockquote>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>CT%</th>
+<th>Zona</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟢 ≤ 20%</td>
+<td>Saudável</td>
+</tr>
+<tr>
+<td>🟡 20–35%</td>
+<td>Atenção</td>
+</tr>
+<tr>
+<td>🔴 &gt; 35%</td>
+<td>Crítico — a loja "compra" o próprio GMV</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ Cruze sempre com a tendência do GMV: <strong>CT% baixo + GMV caindo</strong> = problema em D1 (estoque/ruptura) ou perda de tração, não em mídia. <strong>CT% &gt; 100%</strong> = tração comprada acima da margem (caso Peach Up).</p>
+</blockquote>
+<hr />
+<h2>3. CLASSIFICAÇÃO DO MOMENTO (árvore de decisão)</h2>
+<pre><code>A loja já está aprovada e vendendo?
+├─ NÃO ───────────────────────────────► M0  Probatório
+└─ SIM →
+   Tem produto-tração (hero) claro?
+   ├─ NÃO ────────────────────────────► M1  Lançamento
+   └─ SIM →
+      Tendência do GMV?
+      ├─ CAINDO ───────────────────────► M5  Crise/Queda
+      ├─ ESTÁVEL →
+      │     Nº dimensões maduras ≥ 2?
+      │     ├─ SIM ─────────────────────► M6  Maturidade
+      │     └─ NÃO ─────────────────────► M4  Platô
+      └─ CRESCENDO →
+            Nº dimensões ativas ≤ 1?
+            ├─ SIM ─────────────────────► M2  Tração inicial
+            └─ NÃO ─────────────────────► M3  Escala
+</code></pre>
+<hr />
+<h2>4. SCORECARD E DIMENSÃO PRIORITÁRIA</h2>
+<h3>4.1 Pontue cada sub-critério 0–5 e tire a média por dimensão</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Sub-critérios (0–5 cada)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D1 Produtos</strong></td>
+<td>(1) sortimento/hero · (2) ticket/lidera com kit · (3) margem cobre o CT% · (4) listing + avaliações ≥4,7 · (5) estoque sem ruptura + SLAs</td>
+</tr>
+<tr>
+<td><strong>D2 Ads</strong></td>
+<td>(1) conta/estrutura ativa · (2) ROI/ROAS saudável (≥ mín. da margem; 10x ótimo) · (3) CT% de Ads sob controle · (4) verba concentrada em heroes + Spark Ads</td>
+</tr>
+<tr>
+<td><strong>D3 Afiliados</strong></td>
+<td>(1) massa de creators ativos · (2) outreach sistemático · (3) comissão competitiva + incentivos · (4) programa de amostras (escala) · (5) feedback/orientação aos creators · (6) Pareto + retenção</td>
+</tr>
+<tr>
+<td><strong>D4 Social</strong></td>
+<td>(1) conta orgânica ativa (frequência) · (2) alcance (views/seguidores) · (3) conteúdo shoppable · (4) cadência de lives · (5) GMV orgânico + migração de audiência</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Régua rápida 0–5: <strong>0</strong> inexistente · <strong>1</strong> iniciando · <strong>2</strong> existe mas fraco · <strong>3</strong> ok/funcional · <strong>4</strong> forte · <strong>5</strong> referência.</p>
+</blockquote>
+<h3>4.2 Compare com o baseline esperado do momento</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th style="text-align: center;">D1</th>
+<th style="text-align: center;">D2</th>
+<th style="text-align: center;">D3</th>
+<th style="text-align: center;">D4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M0</td>
+<td style="text-align: center;">3,0</td>
+<td style="text-align: center;">0,0</td>
+<td style="text-align: center;">0,5</td>
+<td style="text-align: center;">1,0</td>
+</tr>
+<tr>
+<td>M1</td>
+<td style="text-align: center;">3,5</td>
+<td style="text-align: center;">1,0</td>
+<td style="text-align: center;">2,0</td>
+<td style="text-align: center;">2,0</td>
+</tr>
+<tr>
+<td>M2</td>
+<td style="text-align: center;">4,0</td>
+<td style="text-align: center;">2,0</td>
+<td style="text-align: center;">3,0</td>
+<td style="text-align: center;">2,5</td>
+</tr>
+<tr>
+<td>M3</td>
+<td style="text-align: center;">4,0</td>
+<td style="text-align: center;">3,5</td>
+<td style="text-align: center;">4,0</td>
+<td style="text-align: center;">3,0</td>
+</tr>
+<tr>
+<td>M4</td>
+<td style="text-align: center;">4,0</td>
+<td style="text-align: center;">4,0</td>
+<td style="text-align: center;">4,0</td>
+<td style="text-align: center;">3,5</td>
+</tr>
+<tr>
+<td>M5</td>
+<td style="text-align: center;">4,0</td>
+<td style="text-align: center;">3,0</td>
+<td style="text-align: center;">3,5</td>
+<td style="text-align: center;">3,0</td>
+</tr>
+<tr>
+<td>M6</td>
+<td style="text-align: center;">5,0</td>
+<td style="text-align: center;">4,0</td>
+<td style="text-align: center;">4,5</td>
+<td style="text-align: center;">4,0</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.3 Eleja a dimensão prioritária</h3>
+<ul>
+<li><strong>Gap = baseline − nota real</strong> (por dimensão).</li>
+<li><strong>Prioritária = maior gap positivo.</strong></li>
+<li><strong>Empate → ordem D1 → D3 → D4 → D2</strong> (D1 é o chão; Ads é a última a ligar).</li>
+<li>Em <strong>M5</strong>, antes de tudo: identificar <strong>qual dimensão caiu</strong> (estoque rompeu? ROI caiu? creators evadiram? conta morreu?).</li>
+</ul>
+<blockquote>
+<p>Regra de ouro: dimensão fraca só é prioridade se o <strong>momento já a exigia forte</strong>. Nota baixa em D2/D3 num M0 é esperada — não é gap.</p>
+</blockquote>
+<hr />
+<h2>5. TEMPLATE DE SAÍDA (a análise 4D preenchida)</h2>
+<p>A classificação alimenta uma análise no padrão das aplicações (ver <a href="../../Aplicacoes%20(exemplos)/">exemplos</a>):</p>
+<pre><code>1. Leitura executiva — momento + dimensão prioritária (tese em 1 frase)
+2. Decomposição do GMV (§1.3) + CT% (§2)
+3. Diagnóstico do momento (qual M, por quê)
+4. Scorecard das 4 dimensões (radar + tabela de gaps)
+5. Diagnóstico dimensão a dimensão (D1–D4: estado, sinais)
+6. Dimensão prioritária — a tese
+7. Plano de ação por dimensão (matriz momento × dimensão fraca)
+8. Métrica-guia (CT%) e governança
+9. Dados ainda necessários
+10. Tese final
+</code></pre>
+<blockquote>
+<p>A matriz momento × dimensão fraca (ações recomendadas) e o playbook oficial TikTok de D3 estão na <a href="../../Metodologia/ELEVATE-4D-METODOLOGIA-DIAGNOSTICO.html">metodologia</a> (Seções 6 e Anexo A).</p>
+</blockquote>
+<hr />
+<h2>6. AS 3 FORMAS DE RODAR ESTE FLUXO</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Forma</th>
+<th>Quando usar</th>
+<th>Arquivo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Prompt (IA)</strong></td>
+<td>Você cola os dados e o Claude classifica + escreve a análise</td>
+<td><a href="../Prompt/PROMPT-CLASSIFICACAO-4D.html">PROMPT-CLASSIFICACAO-4D.md</a></td>
+</tr>
+<tr>
+<td><strong>Calculadora (Excel)</strong></td>
+<td>Preenche campos → momento, scores, CT% e prioridade automáticos</td>
+<td><a href="../CALCULADORA-4D.xlsx">CALCULADORA-4D.xlsx</a></td>
+</tr>
+<tr>
+<td><strong>Este SOP</strong></td>
+<td>Treinar o time, rodar à mão, auditar a lógica</td>
+<td>este documento</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Elevate Ecom. — Sua marca acima nos marketplaces.</em></p>
+  </div>
+  <div class="footer">Elevate Ecom. — Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

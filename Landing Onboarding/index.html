@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevate Ecom · TikTok Shop · Onboarding</title>
+<meta name="description" content="A Elevate Ecom acompanha sua marca em cada etapa do TikTok Shop, do setup ao crescimento acelerado, pelo método Elevate 4D.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--accent2:#3ddc84;--text:#E8EEF2;--muted:#98B0BC;
+    --card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--yellow:#FACC15;--line:rgba(126,200,227,0.14);
+    --tt-teal:#25F4EE;--tt-red:#FE2C55;}
+  .nowrap{white-space:nowrap;}
+  *{box-sizing:border-box;margin:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;min-height:100vh;line-height:1.55;overflow-x:hidden;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px;}
+  .accent{color:var(--accent);}
+  b,strong{color:#fff;font-weight:700;}
+  .eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+  h2.sec{font-weight:300;font-size:32px;line-height:1.1;letter-spacing:-.5px;margin-bottom:10px;}
+  h2.sec b{font-weight:800;}
+  .lead{color:var(--muted);font-size:15px;max-width:680px;margin-bottom:30px;}
+  section{padding:64px 0;border-top:1px solid var(--line);}
+  /* NAV */
+  nav{position:sticky;top:0;z-index:40;background:rgba(11,26,43,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .logo{font-weight:800;font-size:18px;color:#fff;text-decoration:none;letter-spacing:-.3px;}
+  .logo span{color:var(--accent);}
+  .menu{display:flex;gap:22px;}
+  .menu a{font-size:13px;color:var(--muted);text-decoration:none;transition:color .15s;}
+  .menu a:hover{color:var(--accent);}
+  .navtoggle{display:none;background:none;border:1px solid var(--line);color:var(--text);border-radius:8px;padding:6px 10px;font-size:18px;cursor:pointer;}
+  /* HERO */
+  .hero{padding:90px 0 70px;text-align:center;border-top:0;}
+  .hero h1{font-weight:300;font-size:52px;line-height:1.04;letter-spacing:-1.4px;max-width:900px;margin:0 auto;}
+  .hero h1 b{font-weight:800;color:#fff;background:linear-gradient(95deg,var(--tt-teal) 8%,#bfeef0 38%,var(--tt-red) 92%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .hero .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);border:1px solid rgba(37,244,238,.34);background:linear-gradient(120deg,rgba(37,244,238,.10),rgba(254,44,85,.08));border-radius:30px;padding:7px 16px 7px 14px;margin-bottom:24px;}
+  .hero .tag::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--tt-teal);box-shadow:5px 0 0 -1px var(--tt-red);margin-right:13px;vertical-align:1px;}
+  .hero p{color:var(--muted);font-size:17px;max-width:620px;margin:20px auto 0;}
+  .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:34px;}
+  .btn{display:inline-block;text-decoration:none;font-weight:700;font-size:14px;border-radius:10px;padding:13px 24px;transition:.15s;cursor:pointer;border:0;}
+  .btn-p{background:var(--tt-teal);color:#06141f;box-shadow:0 6px 20px rgba(254,44,85,.28);}
+  .btn-p:hover{filter:brightness(1.06);}
+  .btn-o{background:transparent;color:var(--accent);border:1px solid var(--accent);}
+  .btn-o:hover{background:rgba(126,200,227,.1);}
+  /* STATS */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .stat{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:22px 18px;text-align:center;}
+  .stat .v{font-size:30px;font-weight:800;color:#fff;}
+  .stat .l{font-size:12.5px;color:var(--muted);margin-top:4px;}
+  /* GENERIC CARD GRID */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .card{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:22px;}
+  .card h3{font-size:17px;color:#fff;margin-bottom:4px;}
+  .card .role{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.4px;text-transform:uppercase;margin-bottom:12px;}
+  .card ul{list-style:none;padding:0;}
+  .card li{font-size:13.5px;color:var(--muted);padding:5px 0 5px 18px;position:relative;}
+  .card li::before{content:"›";position:absolute;left:0;color:var(--accent);font-weight:800;}
+  .pill{display:inline-block;font-size:10.5px;font-weight:700;letter-spacing:.5px;border-radius:20px;padding:3px 10px;text-transform:uppercase;}
+  .pill-fox{background:rgba(126,200,227,.16);color:var(--accent);}
+  .pill-team{background:rgba(61,220,132,.16);color:var(--accent2);}
+  .note{font-size:12.5px;color:var(--muted);background:rgba(0,0,0,.18);border-left:3px solid var(--accent);padding:10px 14px;border-radius:8px;margin-top:18px;}
+  .small{font-size:12.5px;color:var(--muted);}
+  /* AVATAR */
+  .who{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+  .avatar{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:20px;color:#06141f;background:linear-gradient(135deg,var(--accent),#bfe6f3);flex:none;position:relative;overflow:hidden;}
+  .avatar > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
+  .avatar.duo{gap:0;}
+  .avatar.duo > img{position:relative;inset:auto;width:50%;height:100%;object-fit:cover;}
+  /* CHECKLIST */
+  .progress-wrap{margin-bottom:22px;}
+  .progress-top{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-bottom:6px;}
+  .progress{height:10px;border-radius:8px;background:rgba(255,255,255,.08);overflow:hidden;}
+  .progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .35s;}
+  .check{display:flex;gap:14px;align-items:flex-start;background:var(--card);border:1px solid var(--cardborder);border-radius:12px;padding:16px 18px;margin-bottom:12px;cursor:pointer;transition:.15s;}
+  .check:hover{border-color:var(--accent);}
+  .check.on{border-color:var(--accent2);background:rgba(61,220,132,.07);}
+  .box{width:26px;height:26px;border-radius:7px;border:2px solid var(--cardborder);flex:none;display:flex;align-items:center;justify-content:center;font-weight:800;color:#06141f;font-size:15px;margin-top:1px;}
+  .check.on .box{background:var(--accent2);border-color:var(--accent2);}
+  .check .ct{font-size:14.5px;}
+  .check .ct b{display:block;margin-bottom:3px;}
+  .check .ct span{color:var(--muted);font-size:13px;}
+  /* TIMELINE */
+  .tl{border-left:2px solid var(--cardborder);margin-left:8px;padding-left:24px;}
+  .tl .item{position:relative;padding:0 0 26px;}
+  .tl .item::before{content:"";position:absolute;left:-31px;top:3px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--navy2);}
+  .tl .when{font-size:12px;font-weight:700;color:var(--accent);letter-spacing:.5px;}
+  .tl .what{font-size:15px;color:#fff;font-weight:600;margin:2px 0 3px;}
+  .tl .desc{font-size:13.5px;color:var(--muted);}
+  /* DETAILS (reunioes / pilares) */
+  details{background:var(--card);border:1px solid var(--cardborder);border-radius:12px;margin-bottom:12px;overflow:hidden;}
+  details[open]{border-color:var(--accent);}
+  summary{list-style:none;cursor:pointer;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;}
+  summary::-webkit-details-marker{display:none;}
+  summary .st{font-size:15px;color:#fff;font-weight:600;}
+  summary .sk{font-size:12px;color:var(--muted);}
+  summary .chev{color:var(--accent);font-size:14px;transition:.2s;}
+  details[open] summary .chev{transform:rotate(180deg);}
+  details .body{padding:0 20px 18px;}
+  details .body ul{list-style:none;padding:0;}
+  details .body li{font-size:13.5px;color:var(--muted);padding:4px 0 4px 18px;position:relative;}
+  details .body li::before{content:"–";position:absolute;left:0;color:var(--accent);}
+  .week{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);font-weight:700;margin:22px 0 10px;}
+  .num{display:inline-block;font-weight:800;color:var(--accent);margin-right:8px;}
+  /* TRILHAS (abas de reuniões por supervisor) */
+  .rtabs{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
+  .rtab{font-size:13px;font-weight:700;color:var(--muted);background:var(--card);border:1px solid var(--cardborder);border-radius:10px;padding:9px 16px;cursor:pointer;transition:.15s;}
+  .rtab:hover{border-color:var(--accent);color:var(--text);}
+  .rtab.active{background:rgba(126,200,227,.16);color:var(--accent);border-color:var(--accent);}
+  .rtrack{display:none;}
+  .rtrack.active{display:block;}
+  /* KPIs */
+  .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .kpi{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:20px;text-align:center;}
+  .kpi .v{font-size:28px;font-weight:800;color:var(--accent2);}
+  .kpi .l{font-size:13px;color:var(--muted);margin-top:3px;}
+  /* PILLAR head meta */
+  .scopebar{display:flex;gap:26px;margin-bottom:26px;flex-wrap:wrap;}
+  .scopebar div{text-align:left;}
+  .scopebar .v{font-size:26px;font-weight:800;color:#fff;}
+  .scopebar .l{font-size:12px;color:var(--muted);}
+  /* CONTACT */
+  .contacts{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:30px;}
+  .contact{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:22px;text-decoration:none;display:block;transition:.15s;}
+  .contact:hover{border-color:var(--accent);}
+  .contact .k{font-size:12px;color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
+  .contact .vv{font-size:16px;color:#fff;font-weight:600;margin-top:6px;}
+  textarea,input.f{width:100%;background:rgba(0,0,0,.25);color:var(--text);border:1px solid var(--cardborder);border-radius:10px;padding:12px;font:14px/1.5 'Poppins',sans-serif;resize:vertical;}
+  textarea::placeholder,input.f::placeholder{color:#6f8794;}
+  .ctaband{text-align:center;background:linear-gradient(120deg,rgba(126,200,227,.12),rgba(61,220,132,.06));border:1px solid var(--cardborder);border-radius:18px;padding:46px 24px;}
+  .ctaband .big{font-weight:800;font-size:30px;color:#fff;letter-spacing:-.5px;}
+  .ctaband .s{color:var(--muted);font-size:16px;margin-top:8px;}
+  footer{padding:34px 0;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px;}
+  .totop{display:inline-block;margin-top:10px;color:var(--accent);text-decoration:none;font-size:13px;}
+  /* ===== refinos estéticos ===== */
+  .hero{position:relative;}
+  .hero::before{content:"";position:absolute;top:-40px;left:50%;transform:translateX(-50%);width:820px;max-width:124vw;height:540px;background:radial-gradient(closest-side at 36% 42%,rgba(37,244,238,.18),transparent 70%),radial-gradient(closest-side at 66% 56%,rgba(254,44,85,.16),transparent 70%);pointer-events:none;z-index:0;}
+  .hero .wrap{position:relative;z-index:1;}
+  .btn{box-shadow:0 6px 20px rgba(0,0,0,.18);}
+  .btn-p:hover{transform:translateY(-1px);}
+  .card,.check,.stat,.kpi,.contact,details{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease;}
+  .card:hover,.stat:hover,.kpi:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 12px 30px rgba(0,0,0,.22);}
+  details:hover{border-color:var(--accent);}
+  details[open]{box-shadow:0 10px 30px rgba(0,0,0,.18);}
+  .stat .v,.kpi .v{background:linear-gradient(180deg,#fff,#cfe6f0);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .kpi .v{background:linear-gradient(180deg,#bdf3d4,var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+  .avatar{box-shadow:0 6px 16px rgba(126,200,227,.25);}
+  .accentbar2{height:3px;width:64px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:3px;margin:6px 0 26px;}
+  /* reveal on scroll */
+  .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s cubic-bezier(.2,.7,.2,1);}
+  .rv.show{opacity:1;transform:none;}
+  @media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none;} .card:hover,.stat:hover,.kpi:hover,.btn-p:hover{transform:none;}}
+
+  @media (max-width:860px){
+    nav .wrap{height:56px;}
+    .menu{display:none;position:absolute;top:56px;left:0;right:0;flex-direction:column;gap:0;background:var(--navy1);border-bottom:1px solid var(--line);padding:6px 0;box-shadow:0 14px 30px rgba(0,0,0,.35);}
+    .menu.open{display:flex;}
+    .menu a{padding:13px 20px;border-top:1px solid var(--line);font-size:14px;}
+    .navtoggle{display:block;}
+    section{padding:44px 0;}
+    .hero{padding:60px 0 48px;}
+    .hero h1{font-size:30px;letter-spacing:-.6px;}
+    .hero p{font-size:15px;}
+    .hero .tag{font-size:10px;padding:6px 13px;}
+    .stats,.grid2,.grid3,.kpis,.contacts{grid-template-columns:1fr;}
+    h2.sec{font-size:24px;}
+    .lead{font-size:14px;}
+    .scopebar{gap:18px;}
+    .scopebar .v{font-size:22px;}
+    .ctaband{padding:34px 18px;}
+    .ctaband .big{font-size:23px;}
+    summary{padding:14px 16px;gap:8px;}
+    summary .st{font-size:14px;}
+    summary .sk{font-size:11px;}
+    details .body{padding:0 16px 16px;}
+    .tl{padding-left:20px;margin-left:6px;}
+    .tl .item::before{left:-27px;}
+    .check{padding:14px;}
+    .who .avatar{width:48px;height:48px;font-size:17px;}
+  }
+  @media (max-width:380px){
+    .hero h1{font-size:26px;}
+    .stat .v,.kpi .v,.scopebar .v{font-size:20px;}
+  }
+
+  /* ===== melhorias de navegação/UX ===== */
+  section[id]{scroll-margin-top:78px;}
+  #scrollbar{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,var(--tt-teal),var(--tt-red));box-shadow:0 0 10px rgba(37,244,238,.5);transition:width .08s linear;}
+  .menu a.active{color:var(--accent);font-weight:600;}
+  #toTop{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;border:1px solid var(--accent);background:rgba(11,26,43,.85);color:var(--accent);font-size:20px;cursor:pointer;z-index:55;opacity:0;transform:translateY(10px);pointer-events:none;transition:.25s;backdrop-filter:blur(6px);box-shadow:0 8px 24px rgba(0,0,0,.35);}
+  #toTop.show{opacity:1;transform:none;pointer-events:auto;}
+  #toTop:hover{background:var(--accent);color:#06141f;}
+  .cldone{display:none;border-left-color:var(--accent2)!important;color:var(--accent2)!important;font-weight:600;}
+  .xpand{display:flex;justify-content:flex-end;margin-bottom:8px;}
+  .xpand button{background:transparent;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:5px 11px;font:600 12px 'Poppins',sans-serif;cursor:pointer;transition:.15s;}
+  .xpand button:hover{border-color:var(--accent);color:var(--accent);}
+</style>
+</head>
+<body>
+<div id="scrollbar"></div>
+<button id="toTop" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="#top">Elevate <span>Ecom</span></a>
+    <button class="navtoggle" onclick="document.getElementById('menu').classList.toggle('open')">☰</button>
+    <div class="menu" id="menu">
+      <a href="#jornada">Jornada</a>
+      <a href="#criterios">Critérios</a>
+      <a href="#equipe">Equipe</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#reunioes">Reuniões</a>
+      <a href="#entregaveis">Dimensões</a>
+      <a href="#funil">Funil</a>
+      <a href="#stakeholders">Stakeholders</a>
+    </div>
+  </div>
+</nav>
+
+<a id="top"></a>
+<header class="hero">
+  <div class="wrap">
+    <div class="tag">TikTok Shop · Especialistas Elevate</div>
+    <h1>Sua marca decola no <b class="nowrap">TikTok Shop</b></h1>
+    <p>A Elevate Ecom orienta sua marca em cada etapa, do setup ao crescimento acelerado no maior canal de social commerce do Brasil.</p>
+    <div class="cta-row">
+      <a class="btn btn-p" href="#jornada">Conhecer a jornada</a>
+    </div>
+  </div>
+</header>
+
+<section style="border-top:0;padding-top:8px">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="v">GMV</div><div class="l">Crescimento orientado</div></div>
+      <div class="stat"><div class="v">4D</div><div class="l">Método Elevate</div></div>
+      <div class="stat"><div class="v">4</div><div class="l">Squads dedicados</div></div>
+      <div class="stat"><div class="v">10 dias</div><div class="l">Para ativar a operação</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- JORNADA -->
+<section id="jornada">
+  <div class="wrap">
+    <div class="eyebrow">Sua jornada</div>
+    <h2 class="sec">Como funciona o <b>processo</b></h2>
+    <p class="lead">É sempre <b>o mesmo time dedicado</b>, do início ao fim. O que muda é o <b>foco de cada etapa</b>. O time lê isso a partir do seu <b>Planejamento Estratégico + Plano de Ação</b> (o momento da sua operação no método Elevate 4D).</p>
+    <div class="card" style="border-color:var(--yellow);background:rgba(250,204,21,.06);margin-bottom:22px">
+      <h3 style="color:var(--yellow)">🔑 O que precisamos de você no início</h3>
+      <p class="small" style="margin:4px 0 10px">Para o time montar seu <b>Planejamento Estratégico + Plano de Ação</b>, esses 3 inputs precisam chegar logo:</p>
+      <ul>
+        <li><b><a class="accent" href="https://docs.google.com/forms/d/e/1FAIpQLScdBzmEt_UMUAXDvaPdW71PReHKVDOLz7spqDTWsTAmklj0RQ/viewform" target="_blank" rel="noopener">Formulário</a></b> preenchido</li>
+        <li><b><a class="accent" href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing" target="_blank" rel="noopener">Planilha de Precificação</a></b> preenchida (faça uma cópia da master)</li>
+        <li><b>Acessos liberados:</b> Seller Center · Ads Manager · TikTok Studio</li>
+      </ul>
+      <p class="small" style="margin-top:10px">São eles que alimentam o diagnóstico <b>Elevate 4D</b> (momento + CT%). Quanto antes chegam, antes o time lê seu momento e entrega o plano.</p>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <span class="pill pill-fox">Etapa · Ativação</span>
+        <h3 style="margin-top:12px">Ativação e Setup</h3>
+        <ul>
+          <li>Diagnóstico e acesso ao Seller Center</li>
+          <li>Configuração inicial da conta</li>
+          <li>Catálogo de produtos (mínimo 10 SKUs)</li>
+          <li>Programa de Afiliados ativado</li>
+          <li>Duração de referência: até 10 dias</li>
+        </ul>
+        <div class="note"><b>Quando destrava a próxima etapa:</b> acessos configurados · catálogo criado e aprovado · afiliados ativados · primeiros criadores aprovados · GMV MAX configurado.</div>
+      </div>
+      <div class="card">
+        <span class="pill pill-team">Etapa · Gestão & Escala</span>
+        <h3 style="margin-top:12px">Gestão e Performance</h3>
+        <ul>
+          <li>Gestão contínua da conta TikTok Shop</li>
+          <li>Otimização de GMV MAX e campanhas</li>
+          <li>Programa de criadores e afiliados</li>
+          <li>Relatórios mensais e estratégia</li>
+          <li>Acompanhamento permanente</li>
+        </ul>
+        <div class="note">Marcas com catálogos extensos ou complexos permanecem mais tempo na ativação para garantir uma estrutura sólida antes de focar em escala, sempre com o mesmo time.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRITERIOS -->
+<section id="criterios">
+  <div class="wrap">
+    <div class="eyebrow">Checklist</div>
+    <h2 class="sec">Critérios para avançar para a <b>fase de Gestão &amp; Escala</b></h2>
+    <p class="lead">Clique em cada passo conforme for concluído. Seu progresso fica salvo neste navegador.</p>
+    <div class="progress-wrap">
+      <div class="progress-top"><span>Progresso</span><span id="pctTxt">0%</span></div>
+      <div class="progress"><i id="pbar"></i></div>
+    </div>
+    <div id="checklist"></div>
+    <div id="clDone" class="note cldone">✅ Tudo pronto para avançar para a fase de Gestão &amp; Escala!</div>
+  </div>
+</section>
+
+<!-- EQUIPE -->
+<section id="equipe">
+  <div class="wrap">
+    <div class="eyebrow">Equipe</div>
+    <h2 class="sec">Nossa <b>Estrutura de Atendimento</b></h2>
+    <p class="lead">Um time multidisciplinar dedicado à sua operação no TikTok Shop. Nossos squads são <b>setorizados por especialidade</b>: cada marca é atendida pelos <b>quatro squads</b> ao mesmo tempo, cada um cuidando da sua frente (comunicação, ads, operação e creators).</p>
+
+    <div class="week">Liderança</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="who"><div class="avatar">T<img src="fotos-equipe/talisson.jpg" alt="Talisson" loading="lazy" onerror="this.remove()"></div><div><h3>Talisson</h3><div class="role">Head</div></div></div>
+        <ul><li>Direção e visão geral da operação</li><li>Estratégia e padrões da agência</li><li>Padronização de processos</li><li>Relacionamento executivo</li></ul>
+      </div>
+      <div class="card">
+        <div class="who"><div class="avatar">K<img src="fotos-equipe/klyver.jpg" alt="Klyver" loading="lazy" onerror="this.remove()"></div><div><h3>Klyver</h3><div class="role">Coordenador</div></div></div>
+        <ul><li>Coordenação dos squads</li><li>Acompanhamento de metas e entregas</li><li>Garantia de resultado por cliente</li><li>Suporte aos líderes de squad</li></ul>
+      </div>
+    </div>
+
+    <div class="week" style="margin-top:22px">🦊 Squad Fox · Comunicação &amp; Reuniões</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="who"><div class="avatar">L<img src="fotos-equipe/lorena.jpg" alt="Lorena" loading="lazy" onerror="this.remove()"></div><div><h3>Lorena</h3><div class="role">Comunicação &amp; Relacionamento</div></div></div>
+        <ul><li>Contato direto no dia a dia</li><li>Reuniões de acompanhamento e FUPs</li><li>Alinhamento de expectativas e prazos</li><li>Ponte entre cliente e time</li></ul>
+      </div>
+      <div class="card">
+        <div class="who"><div class="avatar">L<img src="fotos-equipe/lucas-munhoz.jpg" alt="Lucas Munhoz" loading="lazy" onerror="this.remove()"></div><div><h3>Lucas Munhoz</h3><div class="role">Comunicação &amp; Relacionamento</div></div></div>
+        <ul><li>Contato direto no dia a dia</li><li>Reuniões de acompanhamento e FUPs</li><li>Alinhamento de expectativas e prazos</li><li>Ponte entre cliente e time</li></ul>
+      </div>
+      <div class="card">
+        <div class="who"><div class="avatar">L<img src="fotos-equipe/luis-filippe.jpg" alt="Luis Filippe" loading="lazy" onerror="this.remove()"></div><div><h3>Luis Filippe</h3><div class="role">Comunicação &amp; Relacionamento</div></div></div>
+        <ul><li>Contato direto no dia a dia</li><li>Reuniões de acompanhamento e FUPs</li><li>Alinhamento de expectativas e prazos</li><li>Ponte entre cliente e time</li></ul>
+      </div>
+      <div class="card">
+        <div class="who"><div class="avatar">G<img src="fotos-equipe/guilherme.jpg" alt="Guilherme" loading="lazy" onerror="this.remove()"></div><div><h3>Guilherme</h3><div class="role">Comunicação &amp; Relacionamento</div></div></div>
+        <ul><li>Contato direto no dia a dia</li><li>Reuniões de acompanhamento e FUPs</li><li>Alinhamento de expectativas e prazos</li><li>Ponte entre cliente e time</li></ul>
+      </div>
+    </div>
+
+    <div class="week" style="margin-top:22px">🦈 Squad Sharks · Ads &amp; Funil de Conversão</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="who"><div class="avatar">D<img src="fotos-equipe/davi.jpg" alt="Davi" loading="lazy" onerror="this.remove()"></div><div><h3>Davi</h3><div class="role">Squad Leader · Ads &amp; Funil</div></div></div>
+        <ul><li>Estrutura de <b>Ads / Paid Media</b> ponta a ponta</li><li><b>Estratégias de funil de conversão</b></li><li><b>GMV Max</b> (Product e LIVE)</li><li>Campanhas de Awareness e escala de mídia</li></ul>
+      </div>
+      <div class="card">
+        <div class="who"><div class="avatar">S</div><div><h3>Sthefan</h3><div class="role">Ads &amp; Growth</div></div></div>
+        <ul><li>Planejamento e otimização de campanhas</li><li>ROI Target, orçamento e criativos</li><li>Estruturação de funil (topo a fundo)</li><li>Leitura de indicadores e escala</li></ul>
+      </div>
+    </div>
+
+    <div class="week" style="margin-top:22px">🐈 Squad Sphynx · Entregas Operacionais</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="who"><div class="avatar">V<img src="fotos-equipe/vinicius.jpg" alt="Vinícius" loading="lazy" onerror="this.remove()"></div><div><h3>Vinícius</h3><div class="role">Squad Leader · Operações</div></div></div>
+        <ul><li>Subida e cadastro de produtos</li><li>Otimização de listagens e <b>SEO</b></li><li>Qualidade e organização do catálogo</li><li>Rotina de entregas operacionais</li></ul>
+      </div>
+      <div class="card">
+        <div class="who"><div class="avatar">L<img src="fotos-equipe/leandro.jpg" alt="Leandro" loading="lazy" onerror="this.remove()"></div><div><h3>Leandro</h3><div class="role">Operações &amp; SEO</div></div></div>
+        <ul><li>Cadastro e edição de produtos</li><li>Otimização de títulos, imagens e descrições</li><li>SEO de catálogo e variações</li><li>Checklist de qualidade das listagens</li></ul>
+      </div>
+      <div class="card">
+        <div class="who"><div class="avatar">L<img src="fotos-equipe/lucas-mateus.jpg" alt="Lucas Mateus" loading="lazy" onerror="this.remove()"></div><div><h3>Lucas Mateus</h3><div class="role">Operações &amp; SEO</div></div></div>
+        <ul><li>Cadastro e edição de produtos</li><li>Otimização de títulos, imagens e descrições</li><li>SEO de catálogo e variações</li><li>Checklist de qualidade das listagens</li></ul>
+      </div>
+    </div>
+
+    <div class="week" style="margin-top:22px">🦅 Squad Falcon · Creators &amp; Campanhas</div>
+    <div class="grid2">
+      <div class="card">
+        <div class="who"><div class="avatar">A</div><div><h3>Ana</h3><div class="role">Squad Leader · Creators &amp; Campanhas</div></div></div>
+        <ul><li>Estrutura de entregas de creators</li><li>Reuniões de <b>execução de campanhas</b></li><li>Estruturação de grupos de creators da marca</li><li>Contato e relacionamento com criadores</li></ul>
+      </div>
+      <div class="card">
+        <div class="who"><div class="avatar">K</div><div><h3>Karoline</h3><div class="role">Creators &amp; Campanhas</div></div></div>
+        <ul><li>Recrutamento e aprovação de creators</li><li>Acompanhamento de campanhas</li><li>Gestão do programa de afiliados</li><li>Relacionamento com criadores</li></ul>
+      </div>
+      <div class="card">
+        <div class="who"><div class="avatar">L</div><div><h3>Leonardo</h3><div class="role">Creators &amp; Campanhas</div></div></div>
+        <ul><li>Recrutamento e aprovação de creators</li><li>Acompanhamento de campanhas</li><li>Gestão do programa de afiliados</li><li>Relacionamento com criadores</li></ul>
+      </div>
+    </div>
+    <div class="note">Cada marca é atendida pelos <b>quatro squads</b> ao mesmo tempo, cada um na sua especialidade (comunicação, ads, operação e creators), durante toda a jornada, da ativação à escala.</div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="wrap">
+    <div class="eyebrow">Implementação</div>
+    <h2 class="sec">Timeline de <b>Ativação</b></h2>
+    <p class="lead">Do kick-off à operação rodando em 10 dias.</p>
+    <div class="tl">
+      <div class="item"><div class="when">ANTES DE COMEÇAR</div><div class="what">Criação da conta pelo nosso link</div><div class="desc">Crie a loja pelo <a class="accent" href="https://seller-br.tiktok.com/account/register?channel=elevate" target="_blank" rel="noopener">link da Elevate</a> e sua conta entra na <b>nossa carteira assessorada junto ao TikTok Shop</b>. É uma vantagem especialmente para <b>fashion</b>, mas que também ajuda em outras categorias, principalmente quando há <b>liberação de categoria</b> e/ou <b>gerente de contas</b> envolvidos. <a class="accent" href="https://seller-br.tiktok.com/account/register?channel=elevate" target="_blank" rel="noopener"><b>Criar conta pelo link →</b></a></div></div>
+      <div class="item"><div class="when">DIA 1–2</div><div class="what">Entendimento do cenário atual</div><div class="desc">Análise do histórico da marca, acesso ao Seller Center, mapeamento de concorrentes.</div></div>
+      <div class="item"><div class="when">DIA 2–3</div><div class="what">Diagnóstico de performance e concorrência</div><div class="desc">Diagnóstico <b>Elevate 4D</b> (momento + CT% + dimensão prioritária). Análise de GPM, CVR e AOV. Benchmark via FastMoss/Kalodata.</div></div>
+      <div class="item"><div class="when">DIA 3–4</div><div class="what">Planejamento estratégico personalizado</div><div class="desc">Metas de GMV, SKUs prioritários, estrutura de afiliados e <a class="accent" href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing" target="_blank" rel="noopener">planilha de precificação</a> (3 tiers).</div></div>
+      <div class="item"><div class="when">DIA 4–7</div><div class="what">Ativação da operação</div><div class="desc">Catálogo (mínimo 10 produtos), programa de afiliados, primeiros criadores, amostras.</div></div>
+      <div class="item"><div class="when">DIA 7–10</div><div class="what">Campanhas GMV MAX e promoções</div><div class="desc">Setup GMV MAX com Product Cards, Central de Promoções.</div></div>
+      <div class="item"><div class="when">CONTÍNUO</div><div class="what">Otimizações semanais</div><div class="desc">Análise de afiliados, ajuste de comissões, otimização do GMV MAX.</div></div>
+      <div class="item"><div class="when">A CADA 15 DIAS</div><div class="what">Check-ins quinzenais</div><div class="desc">Relatório consolidado de GMV, afiliados e ads. FUPs estratégicos.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REUNIOES -->
+<section id="reunioes">
+  <div class="wrap">
+    <div class="eyebrow">Capacitação</div>
+    <h2 class="sec">Seu programa de <b>Reuniões e Capacitação</b></h2>
+    <p class="lead">9 reuniões estratégicas ao longo de ~5 semanas, 45–60 min cada. A <b>meta do time</b> é 2x por semana; o ritmo final se ajusta à <b>sua agenda</b>. Você aprende, executa e evolui com acompanhamento dedicado.</p>
+    <div class="stats" style="margin-bottom:30px">
+      <div class="stat"><div class="v">9</div><div class="l">Reuniões estruturadas</div></div>
+      <div class="stat"><div class="v">~5</div><div class="l">Semanas de programa</div></div>
+      <div class="stat"><div class="v">2x</div><div class="l">Por semana (meta · conforme sua agenda)</div></div>
+      <div class="stat"><div class="v">45–60</div><div class="l">Min por sessão</div></div>
+    </div>
+
+    <div class="xpand"><button type="button" data-xpand="#reunioesList">Expandir todas ▾</button></div>
+    <p class="small" style="margin:-6px 0 16px">O mesmo programa de 9 reuniões para todos os clientes, conduzido pelos squads dedicados. A R07 (Programa de Afiliados / Criadores) é conduzida pelo Squad Falcon (Creators), liderado pela Ana.</p>
+    <div id="reunioesList">
+    <div class="rtrack active">
+    <div class="week">Semana 1</div>
+    <details><summary><span class="st"><span class="num">R01</span>Onboarding + Diagnóstico</span><span class="chev">▾</span></summary><div class="body"><ul>
+      <li><b>Abertura:</b> anfitrião se apresenta e apresentação dos participantes dos <b>dois lados</b> (Elevate e marca)</li>
+      <li><b>Conhecer a marca:</b> como surgiu e por que foi criada (a história e o propósito)</li>
+      <li><b>Objetivos do ano:</b> meta financeira da empresa e o objetivo pessoal do fundador</li>
+      <li><b>Por que TikTok Shop:</b> a motivação e o que esperam do canal</li>
+      <li><b>Principal indicador de sucesso:</b> o KPI que define que "deu certo"</li>
+      <li>Diagnóstico Estratégico, Sistêmico, Operacional e de Conteúdo</li>
+      <li>Como funciona o programa (9 reuniões, regras) e criação de acessos (Monday, Drive, WhatsApp)</li>
+      <li>Apresentação dos KPIs e metas · alinhamento de expectativas</li></ul><div class="small" style="margin-top:10px"><a class="accent" href="../Elevate%204D/Playbook%20de%20Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html#r01" target="_blank" rel="noopener">📘 Ver conteúdo completo da reunião →</a></div></div></details>
+    <details><summary><span class="st"><span class="num">R02</span>Configuração Inicial</span><span class="chev">▾</span></summary><div class="body"><ul>
+      <li>Criação/verificação da conta no Seller Center</li><li>Vinculação da loja ao perfil TikTok</li><li>Configurações obrigatórias (nome, logo, políticas, endereço, banco)</li><li>Regras de segurança e indicadores de saúde da conta</li><li>Tour completo pelo Seller Center</li></ul><div class="small" style="margin-top:10px"><a class="accent" href="../Elevate%204D/Playbook%20de%20Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html#r02" target="_blank" rel="noopener">📘 Ver conteúdo completo da reunião →</a></div></div></details>
+
+    <div class="week">Semana 2</div>
+    <details><summary><span class="st"><span class="num">R03</span>Cadastro de Produtos</span><span class="chev">▾</span></summary><div class="body"><ul>
+      <li>Título do produto: fórmula e boas práticas</li><li>Imagens: especificações, ordem e quebra de objeção</li><li>Vídeo do produto (15–30s)</li><li>Cadastro prático ao vivo no Seller Center</li><li>Categoria, descrição, variações, SKU e logística</li><li>Importação em massa e checklist de qualidade</li></ul><div class="small" style="margin-top:10px"><a class="accent" href="../Elevate%204D/Playbook%20de%20Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html#r03" target="_blank" rel="noopener">📘 Ver conteúdo completo da reunião →</a></div></div></details>
+    <details><summary><span class="st"><span class="num">R04</span>Operação Diária</span><span class="chev">▾</span></summary><div class="body"><ul>
+      <li>Fluxo completo do pedido (status por status)</li><li>Processamento, etiquetas e despacho</li><li>Cancelamentos e devoluções</li><li>Configuração de transportadoras e frete grátis</li><li>Atendimento: mensagens, respostas automáticas</li><li>Gestão de avaliações (meta: responder em &lt;1h)</li></ul><div class="small" style="margin-top:10px"><a class="accent" href="../Elevate%204D/Playbook%20de%20Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html#r04" target="_blank" rel="noopener">📘 Ver conteúdo completo da reunião →</a></div></div></details>
+
+    <div class="week">Semana 3</div>
+    <details><summary><span class="st"><span class="num">R05</span>Personalização da Loja + Indicadores</span><span class="chev">▾</span></summary><div class="body"><ul>
+      <li>Shop Decoration: banner, seções, produtos em destaque</li><li>Perfil da loja: tags, descrição, otimização</li><li>Dashboard: métricas diárias (GMV, conversão, cancelamento)</li><li>Análise de produtos (CTR, impressões, receita)</li><li>7 erros críticos e como evitar</li><li>Rotina diária recomendada do seller</li></ul><div class="small" style="margin-top:10px"><a class="accent" href="../Elevate%204D/Playbook%20de%20Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html#r05" target="_blank" rel="noopener">📘 Ver conteúdo completo da reunião →</a></div></div></details>
+    <details><summary><span class="st"><span class="num">R06</span>Promoções e Campanhas</span><span class="chev">▾</span></summary><div class="body"><ul>
+      <li>6 tipos de promoção disponíveis</li><li>Prática: criar desconto por produto e cupom da loja</li><li>Campanhas oficiais do TikTok Shop</li><li>Flash Sale, Compre X Leve Y, urgência</li><li>Estratégia e calendário de promoções Elevate</li></ul><div class="small" style="margin-top:10px"><a class="accent" href="../Elevate%204D/Playbook%20de%20Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html#r06" target="_blank" rel="noopener">📘 Ver conteúdo completo da reunião →</a></div></div></details>
+
+    <div class="week">Semana 4</div>
+    <details><summary><span class="st"><span class="num">R07</span>Programa de Afiliados / Criadores</span><span class="chev">▾</span></summary><div class="body"><ul>
+      <li>O que é o programa de afiliados do TikTok Shop</li><li>Configuração de comissões (referência: 8–20%)</li><li>Marketplace de Criadores e Open Collaboration</li><li>Prática: convidar 2–3 creators ao vivo</li><li>Como identificar bons creators</li><li>Monitoramento de performance de afiliados</li></ul><div class="small" style="margin-top:10px"><a class="accent" href="../Elevate%204D/Playbook%20de%20Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html#r07" target="_blank" rel="noopener">📘 Ver conteúdo completo da reunião →</a></div></div></details>
+    <details><summary><span class="st"><span class="num">R08</span>Live Commerce</span><span class="chev">▾</span></summary><div class="body"><ul>
+      <li>Checklist técnico (câmera, iluminação, Wi-Fi)</li><li>Console de LIVE: 6 áreas do painel de controle</li><li>Ferramentas: oferta relâmpago, sorteio, cartaz</li><li>Roteiro prático para live de 30 minutos</li><li>LIVE Dashboard: métricas e fontes de tráfego</li><li>Promoções específicas para LIVE · análise pós-live</li><li><b>Linguagem e comportamento que derrubam a live</b>: o que não falar e o que não mostrar (compliance de live)</li></ul><div class="note">👥 <b>Treinamento em grupo (semanal):</b> a reunião de <b>como executar lives</b> é um treinamento recorrente que acontece toda semana. Novos clientes são encaixados nessa agenda, então <b>esta call pode ter mais de um cliente</b> — não é uma sessão individual. As demais reuniões seguem individuais com os seus squads.</div><div class="small" style="margin-top:10px"><a class="accent" href="../Elevate%204D/Playbook%20de%20Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html#r08" target="_blank" rel="noopener">📘 Ver conteúdo completo da reunião →</a></div></div></details>
+
+    <div class="week">Semana 5</div>
+    <details><summary><span class="st"><span class="num">R09</span>Paid Ads (GMV Max) + Fechamento</span><span class="chev">▾</span></summary><div class="body"><ul>
+      <li>O que é o GMV Max e como funciona</li><li>Product GMV Max vs LIVE GMV Max</li><li>Prática: criar campanha ao vivo</li><li>Configuração de ROI Target (1x a 15x)</li><li>Orçamento e investimento (R$ 50–500/dia)</li><li>Estratégia de criativos (20+ vídeos)</li><li>GMV Pay: pagar ads com receita da loja</li><li>Fechamento do programa e plano de ação contínuo</li></ul><div class="small" style="margin-top:10px"><a class="accent" href="../Elevate%204D/Playbook%20de%20Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html#r09" target="_blank" rel="noopener">📘 Ver conteúdo completo da reunião →</a></div></div></details>
+    </div><!-- /rtrack:yuri -->
+    </div>
+
+    <div class="card" style="margin-top:24px"><h3 style="font-size:14px">🤝 Como toda reunião começa</h3><ul>
+      <li><b>Anfitrião:</b> quem conduz a call se apresenta (o squad responsável pela pauta do dia)</li>
+      <li><b>Quem está na sala:</b> apresentação dos participantes dos <b>dois lados</b> — time Elevate e time da marca — com nome e papel de cada um</li>
+      <li><b>Pauta e objetivo:</b> o que será feito na reunião e o resultado esperado ao final</li>
+    </ul></div>
+
+    <div class="grid2" style="margin-top:16px">
+      <div class="card"><h3 style="font-size:14px">📌 Protocolo pós-reunião</h3><ul>
+        <li><b>ATA no Monday:</b> registro completo enviado no grupo do cliente</li>
+        <li><b>Direcionamento:</b> passagem de bastão para o responsável da próxima reunião</li>
+        <li><b>Arquivos no Drive:</b> todos os materiais salvos na pasta do cliente</li>
+        <li><b>Gravação:</b> link enviado pelo grupo de WhatsApp</li>
+      </ul></div>
+      <div class="card"><h3 style="font-size:14px">🎯 Metas Elevate · indicadores de saúde</h3>
+        <div class="kpis" style="grid-template-columns:repeat(2,1fr);gap:10px;margin-top:6px">
+          <div class="kpi" style="padding:12px"><div class="v" style="font-size:20px">&gt;95%</div><div class="l">Conclusão de pedidos</div></div>
+          <div class="kpi" style="padding:12px"><div class="v" style="font-size:20px">&lt;3%</div><div class="l">Cancelamento</div></div>
+          <div class="kpi" style="padding:12px"><div class="v" style="font-size:20px">&lt;1h</div><div class="l">Tempo de resposta</div></div>
+          <div class="kpi" style="padding:12px"><div class="v" style="font-size:20px">&gt;4.7</div><div class="l">Avaliação média</div></div>
+          <div class="kpi" style="padding:12px"><div class="v" style="font-size:20px">&lt;5%</div><div class="l">Devolução</div></div>
+          <div class="kpi" style="padding:12px"><div class="v" style="font-size:20px">&gt;98%</div><div class="l">Despacho no prazo</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTREGAVEIS -->
+<section id="entregaveis">
+  <div class="wrap">
+    <div class="eyebrow">Escopo · Método Elevate 4D</div>
+    <h2 class="sec">As <b>4 Dimensões</b> da sua operação</h2>
+    <p class="lead">O TikTok Shop não cresce por uma alavanca só. O método <b>Elevate 4D</b> diagnostica e acompanha sua marca em quatro dimensões, sobre uma base de setup, diagnóstico (momento + CT%) e acompanhamento estratégico. Cobertura 360° da sua operação.</p>
+    <div class="scopebar">
+      <div><div class="v">4</div><div class="l">Dimensões</div></div>
+      <div><div class="v">CT%</div><div class="l">Métrica-guia</div></div>
+      <div><div class="v">360°</div><div class="l">Cobertura</div></div>
+    </div>
+    <div class="xpand"><button type="button" data-xpand="#pillars">Expandir todas ▾</button></div>
+    <div id="pillars"></div>
+  </div>
+</section>
+
+<!-- FAIXA METODO -->
+<section>
+  <div class="wrap">
+    <div class="ctaband">
+      <div class="eyebrow" style="margin-bottom:8px">Time dedicado · Método Elevate 4D</div>
+      <div class="big">Do diagnóstico ao resultado.</div>
+      <p class="s" style="max-width:700px;margin:14px auto 0">Um time especializado acompanha sua operação no TikTok Shop em cada dimensão (do setup à escala), com método, metas claras e ritmo de reuniões.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FUNIL DE VENDAS -->
+<section id="funil">
+  <div class="wrap">
+    <div class="eyebrow">Estratégia · TikTok Shop</div>
+    <h2 class="sec">O <b>Funil de Vendas</b> no TikTok Shop</h2>
+    <p class="lead">Como o TikTok move as pessoas da descoberta à compra. O foco fica no <b>meio do funil (consideração)</b>: é ali que a decisão se forma e onde as marcas que dominam vencem.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:22px;margin-top:24px">
+      <figure style="margin:0"><img src="img-funil/p03.jpg" alt="Visão geral do funil de vendas" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Visão geral do funil: do topo (descoberta) ao fundo (conversão).</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p05.jpg" alt="Cronograma de campanha e verba" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Exemplo de cronograma de campanha e distribuição de verba (Promo 8.8): preparação, pico e pós-campanha.</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p15.jpg" alt="Branding e performance" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Branding constrói equity; performance gera conversão. As duas pontas do funil.</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p16.jpg" alt="Gap da consideração" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">O gap: a consideração (meio do funil) ainda é subvalorizada.</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p17.jpg" alt="Meio do funil vence" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Meio do funil: as marcas que dominam a consideração vencem.</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p18.jpg" alt="87% indecisos" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">87% das pessoas estão indecisas. É no meio do funil que a decisão se forma.</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p19.jpg" alt="TikTok influente na consideração" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Segundo a Kantar, o TikTok é a mídia mais influente na fase de consideração.</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p20.jpg" alt="Consideração beneficia todo o funil" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Otimizar para consideração beneficia todo o funil: 5x mais ver detalhes do produto, 7x mais adicionar ao carrinho, 6,4x mais iniciar pedido.</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p21.jpg" alt="Métricas isoladas" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Antes, a consideração era medida por métricas isoladas (views, cliques, tráfego), que não contam a história toda.</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p22.jpg" alt="Visão full funnel" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Agora, o TikTok dá uma visão completa do meio do funil (full funnel), não fragmentada.</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p23.jpg" alt="Metodologia de comportamentos" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Metodologia: decifrar o que move as pessoas entre a curiosidade e a decisão (mais de 12 comportamentos; vídeo, live e TikTok Shop).</figcaption></figure>
+      <figure style="margin:0"><img src="img-funil/p29.jpg" alt="Brand Consideration Ads" loading="lazy" style="width:100%;border-radius:12px;border:1px solid var(--cardborder)"><figcaption style="font-size:13px;color:var(--muted);margin-top:8px">Brand Consideration Ads: +18% de nova taxa de consideração e -23% de custo por consideração, capturando quem está mais perto de comprar.</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- STAKEHOLDERS -->
+<section id="stakeholders">
+  <div class="wrap">
+    <div class="eyebrow">Do seu lado</div>
+    <h2 class="sec">Peças-chave <b>do seu lado</b></h2>
+    <p class="lead">Para que o trabalho flua com agilidade, precisamos de três perfis-chave dentro da sua estrutura.</p>
+    <div class="grid3">
+      <div class="card"><h3>Tomador de Decisões</h3><p class="small" style="margin-top:8px">Responsável por aprovar estratégias, mudanças de preço e promoções. Participa dos check-ins quinzenais.</p></div>
+      <div class="card"><h3>Responsável de Produtos</h3><p class="small" style="margin-top:8px">Fornece fotos, descrições, especificações técnicas e estoque. Garante agilidade no envio de amostras para criadores.</p></div>
+      <div class="card"><h3>Responsável Financeiro</h3><p class="small" style="margin-top:8px">Garante agilidade nos investimentos em GMV MAX e promoções. Aprova o budget de ads e o cofinanciamento TikTok.</p></div>
+    </div>
+    <div class="note">Estes stakeholders garantem agilidade nas validações e eficiência total na operação TikTok Shop.</div>
+  </div>
+</section>
+
+<!-- FAIXA FINAL -->
+<section>
+  <div class="wrap">
+    <div class="ctaband">
+      <div class="eyebrow" style="margin-bottom:8px">Elevate Ecom.</div>
+      <div class="big">SUA MARCA ACIMA NOS MARKETPLACES</div>
+      <p class="s">Sua operação completa. Seus resultados, <b>elevados.</b></p>
+      <p class="s" style="max-width:640px;margin:12px auto 0">Bem-vindo à operação. Daqui pra frente é diagnóstico, plano e execução em ritmo. Qualquer dúvida, é só chamar no nosso grupo do WhatsApp.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 Elevate Ecom. Todos os direitos reservados.<br>
+    <a class="totop" href="#top">↑ Voltar ao topo</a>
+  </div>
+</footer>
+
+<script>
+// ===== Critérios (checklist com progresso, persistente) =====
+const STEPS=[
+ {t:'Acessos ao Seller Center solicitados',d:'Permissões de administrador e colaborador configuradas. Integração com o time Elevate concluída.'},
+ {t:'Catálogo inicial criado e otimizado',d:'Mínimo de 10 SKUs publicados com títulos, descrições, fotos e preço 30% acima do site.'},
+ {t:'Programa de Afiliados ativado',d:'Open Plan ou Target Plan configurado. Comissões e critérios de aprovação definidos.'},
+ {t:'Primeiros criadores aprovados e amostras enviadas',d:'Mínimo de 10 criadores aprovados. Amostras enviadas para perfis selecionados.'},
+ {t:'GMV MAX configurado e campanhas ativas',d:'Campanha GMV MAX criada com Product Cards ativos. Budget diário mínimo de R$ 10.'},
+];
+const CKEY='elevate_onboarding_checklist';
+let done=[]; try{done=JSON.parse(localStorage.getItem(CKEY)||'[]');}catch(e){done=[];}
+const clHost=document.getElementById('checklist');
+function renderChecklist(){
+  clHost.innerHTML=STEPS.map((s,i)=>`<div class="check ${done[i]?'on':''}" data-i="${i}">
+     <div class="box">${done[i]?'✓':''}</div>
+     <div class="ct"><b>${i+1}. ${s.t}</b><span>${s.d}</span></div></div>`).join('');
+  clHost.querySelectorAll('.check').forEach(el=>el.addEventListener('click',()=>{
+    const i=+el.dataset.i; done[i]=!done[i]; localStorage.setItem(CKEY,JSON.stringify(done)); renderChecklist();
+  }));
+  const n=STEPS.filter((_,i)=>done[i]).length, pct=Math.round(n/STEPS.length*100);
+  document.getElementById('pbar').style.width=pct+'%';
+  document.getElementById('pctTxt').textContent=pct+'%';
+  const dn=document.getElementById('clDone'); if(dn) dn.style.display = pct===100 ? 'block':'none';
+}
+renderChecklist();
+
+// ===== As 4 Dimensões do método 4D (+ base/método) =====
+const SHEET='https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing';
+const DIMENS=[
+ {n:'D1',t:'Produtos',c:'#7EC8E3',s:'O chão: catálogo, preço, margem, kits, estoque',items:[
+   'Cadastro otimizado de produtos (título, descrição, variações, SKU)','Boas práticas de fotos e vídeos de catálogo','SEO de listings (títulos, keywords, categorias)',`Política de preços e <a class="accent" href="${SHEET}" target="_blank" rel="noopener">precificação em 3 tiers</a> (Campanha · Venda · Live)`,'Calibragem da margem para a nova taxa do TikTok (15/07/2026)','Otimização contínua do catálogo e testes A/B','Gestão de estoque e sincronização (ERP)','Avaliações (reviews) e redução de devoluções/reembolso','Análise de concorrência e posicionamento de preço','Novos SKUs e kits-âncora baseados em tendências','Promoções de oferta: cupons, bundles, flash sales e datas comerciais']},
+ {n:'D2',t:'Ads',c:'#FACC15',s:'Acelerador: GMV MAX e Spark Ads',items:[
+   'Configuração e otimização de campanhas GMV MAX (Product + LIVE)','Alocação e distribuição de budget','Segmentação de público (interesses, comportamento)','Análise de ROAS, CPA e custo por conversão','Testes de criativos e formatos (20+ vídeos)','Ativação de bônus de advertising','Estratégias de bid e otimização de lances','GMV Pay: pagar ads com a receita da loja','Relatório semanal de performance de ads com insights acionáveis']},
+ {n:'D3',t:'Afiliados',c:'#3ddc84',s:'Motor distribuído: creators por comissão',items:[
+   'Prospecção de creators via FastMoss (GMV > 100k)','Curadoria por fit de lifestyle e alinhamento com a marca','Outreach e gestão de relacionamento com creators','Estrutura de comissões e planos (Open / Target, ref. 8–20%)','Envio de amostras e kits de produto','Briefings criativos e diretrizes de conteúdo','Acompanhamento de performance por creator (GMV, conversão, Pareto)','Coordenação de promoções com creators afiliados','Relatório mensal de performance do programa']},
+ {n:'D4',t:'Social',c:'#c9a0ff',s:'Marca + recorrência: orgânico e lives próprias',items:[
+   'Calendário editorial mensal','Conteúdo alinhado ao funil de vendas','LIVE Commerce: roteiro, frequência, ferramentas e análise pós-live','Otimização de perfil e bio para conversão','Tendências e hashtags relevantes do nicho','Product seeding em conteúdos orgânicos','Hooks e formatos de alta performance','Acompanhamento de engajamento vs conversão']},
+];
+const BASE_METODO=[
+ {t:'Setup & Acessos',items:['Abertura e configuração da conta TikTok Shop','Setup do Seller Center (dados fiscais, frete, políticas)','Integração com ERP / plataforma logística','Templates de resposta para SAC + checklist de lançamento']},
+ {t:'Diagnóstico Elevate 4D',items:['Identificação do momento (M0→M6)','CT%: Custo de Tração (a métrica-guia)','Scorecard por dimensão e dimensão prioritária','Benchmarking competitivo (FastMoss/Kalodata)']},
+ {t:'Analytics & Relatórios',items:['KPIs principais (GMV, conversão, ticket médio)','Relatório semanal operacional + mensal executivo','Análise de funil (visita › carrinho › compra)','Recomendações data-driven com priorização']},
+ {t:'Acompanhamento Estratégico',items:['QBR mensal de review estratégico','OKRs e metas trimestrais do canal','Roadmap de evolução com milestones','Ritmo de reuniões + suporte via WhatsApp']},
+];
+document.getElementById('pillars').innerHTML=
+ DIMENS.map(p=>`<details style="border-left:3px solid ${p.c}">
+  <summary><span class="st"><span class="num" style="color:${p.c}">${p.n}</span>${p.t}</span><span class="sk">${p.s} <span class="chev" style="color:${p.c}">▾</span></span></summary>
+  <div class="body"><ul>${p.items.map(i=>`<li>${i}</li>`).join('')}</ul></div></details>`).join('')
+ + `<div class="week" style="margin-top:26px">A base que sustenta as 4 dimensões</div>`
+ + `<div class="grid2">`+BASE_METODO.map(b=>`<div class="card"><h3 style="font-size:15px">${b.t}</h3><ul>${b.items.map(i=>`<li>${i}</li>`).join('')}</ul></div>`).join('')+`</div>`;
+
+// fecha menu mobile ao clicar num link
+document.querySelectorAll('.menu a').forEach(a=>a.addEventListener('click',()=>document.getElementById('menu').classList.remove('open')));
+
+// ===== barra de progresso de scroll + botão voltar ao topo =====
+const sb=document.getElementById('scrollbar'), toTop=document.getElementById('toTop'), de=document.documentElement;
+function onScroll(){
+  const max=de.scrollHeight-de.clientHeight, y=de.scrollTop||document.body.scrollTop;
+  if(sb)sb.style.width=(max>0?(y/max*100):0)+'%';
+  if(toTop)toTop.classList.toggle('show', y>600);
+}
+window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+if(toTop)toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// ===== nav: destaca a seção ativa (scroll-spy) =====
+(function(){
+  const links=[...document.querySelectorAll('.menu a')];
+  const map={}; links.forEach(a=>{const h=a.getAttribute('href');if(h&&h.startsWith('#')){const s=document.querySelector(h);if(s)map[h]=a;}});
+  const secs=Object.keys(map).map(h=>document.querySelector(h));
+  if(!('IntersectionObserver' in window)||!secs.length)return;
+  const spy=new IntersectionObserver((ents)=>{ents.forEach(e=>{if(e.isIntersecting){
+    links.forEach(a=>a.classList.remove('active')); const a=map['#'+e.target.id]; if(a)a.classList.add('active');
+  }});},{rootMargin:'-45% 0px -50% 0px',threshold:0});
+  secs.forEach(s=>spy.observe(s));
+})();
+
+// ===== expandir/recolher todas (reuniões e dimensões) =====
+document.querySelectorAll('[data-xpand]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const host=document.querySelector(btn.dataset.xpand); if(!host)return;
+    const ds=[...host.querySelectorAll('details')];
+    const open=ds.some(d=>!d.open);
+    ds.forEach(d=>d.open=open);
+    btn.textContent= open?'Recolher todas ▴':'Expandir todas ▾';
+  });
+});
+
+// ===== reveal on scroll (suave, com fallback) =====
+(function(){
+  const sel='.card,details,.stat,.kpi,.tl .item,.check,.ctaband,.scopebar';
+  if(!('IntersectionObserver' in window)){document.querySelectorAll(sel).forEach(e=>e.classList.add('show'));return;}
+  const io=new IntersectionObserver((ents)=>{ents.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}});},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+  function scan(){document.querySelectorAll(sel).forEach(el=>{if(!el.classList.contains('rv')){el.classList.add('rv');io.observe(el);}});}
+  scan();
+  // re-scan p/ os blocos renderizados via JS (checklist, dimensões)
+  setTimeout(scan,60);
+})();
+</script>
+</body>
+</html>

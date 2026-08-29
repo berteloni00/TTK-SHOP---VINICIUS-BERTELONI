@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Como preencher a Planilha de Precificação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Elevate Ecom · Guia da Planilha de Precificação</div>
+    <h1>Como preencher a Planilha de Precificação</h1>
+    <div class="meta"><b>Documento para enviar ao cliente</b> · Passo a passo de cada campo — o modelo de 3 tiers (Campanha, Venda, Live), o que preencher e como ler a margem · Atualizado: 2026-06-15</div>
+  </div>
+  <div class="content">
+<blockquote>
+<p>Esta planilha mostra, para <strong>cada produto</strong>, a <strong>margem de contribuição em 3 cenários de preço</strong>: <strong>Campanha</strong> (mais baixo), <strong>Venda</strong> (normal) e <strong>Live</strong> (mais alto). Assim você define seus preços já enxergando o que sobra em cada um.</p>
+<p>ℹ️ Em toda a planilha falamos em <strong>margem de contribuição</strong> (o que sobra após os custos variáveis: produto, taxas, comissão, mídia), <strong>não em lucro líquido</strong> — o lucro líquido depende de custos fixos e overhead que variam por empresa.</p>
+<p>Você preenche só as <strong>células amarelas</strong>. As <strong>azuis calculam sozinhas</strong>.</p>
+<p>⚠️ <strong>Antes de preencher, faça a sua cópia.</strong> A planilha no link é a <strong>master</strong> (sempre atualizada) e é só leitura. Em <strong>Arquivo → Fazer uma cópia</strong>, salve no seu Drive e preencha <strong>na sua cópia</strong> — assim você não altera a master e sempre pode pegar a versão nova quando ela mudar.</p>
+</blockquote>
+<hr />
+<h2>OS 3 TIERS DE PREÇO</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Tier</th>
+<th>O que é</th>
+<th>Costuma ser</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Preço Campanha</strong></td>
+<td>preço promocional / para seeding com afiliados</td>
+<td><strong>o mais baixo</strong> — margem mais apertada</td>
+</tr>
+<tr>
+<td><strong>Preço de Venda</strong></td>
+<td>preço normal de catálogo</td>
+<td>intermediário</td>
+</tr>
+<tr>
+<td><strong>Preço de Live</strong></td>
+<td>preço praticado nas lives</td>
+<td><strong>o mais alto</strong> — ancora a oferta</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>🟡 <strong>amarelo = você preenche</strong> · 🔵 <strong>azul = a planilha calcula</strong></p>
+</blockquote>
+<hr />
+<h2>🚨 NOVA TAXA DO TIKTOK (a partir de 15/07/2026)</h2>
+<p>O TikTok Shop muda a taxa de <strong>comissão</strong> e a <strong>taxa fixa por item</strong>, e agora elas dependem da <strong>faixa do preço final (após desconto)</strong>:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Faixa do preço (após desconto)</th>
+<th>Comissão</th>
+<th>Taxa fixa/item</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Antes</strong> (até 14/07)</td>
+<td>6%</td>
+<td>R$ 4,00</td>
+</tr>
+<tr>
+<td><strong>Depois · &lt; R$ 50</strong></td>
+<td><strong>10%</strong></td>
+<td>R$ 4,00</td>
+</tr>
+<tr>
+<td><strong>Depois · ≥ R$ 50</strong></td>
+<td>6%</td>
+<td><strong>R$ 6,00</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ <strong>O pulo do gato:</strong> a faixa é pelo <strong>preço final após cupom/desconto</strong>. Um produto de R$ 55 com cupom de R$ 10 vira R$ 45 → cai na comissão de <strong>10%</strong>. Por isso a planilha calcula a faixa <strong>por tier</strong> (Campanha, Venda e Live podem cair em faixas diferentes). E o <strong>frete de 6%</strong> continua valendo <strong>sempre</strong>, por cima.</p>
+<p>A planilha tem um <strong>interruptor Antes/Depois</strong> no bloco roxo — vire para "Depois" para já precificar na regra nova.</p>
+</blockquote>
+<hr />
+<h2>EXEMPLO PRONTO (como a planilha fica preenchida)</h2>
+<p>Com os parâmetros padrão (frete 6% · afiliados 13% · Ads 10% · Live 10% + apresentadoras 5%) e a regra <strong>"Depois" (15/07)</strong>, dois produtos ficam assim — as colunas de <strong>margem de contribuição</strong> são calculadas pela planilha:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Produto</th>
+<th>Custo</th>
+<th>Imposto</th>
+<th>Campanha → margem</th>
+<th>Venda → margem</th>
+<th>Live → margem</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Produto A</td>
+<td>R$ 23,00</td>
+<td>12%</td>
+<td><strong>R$ 66,00</strong> → R$ 5,98 (9,1%)</td>
+<td><strong>R$ 71,00</strong> → R$ 8,63 (12,2%)</td>
+<td><strong>R$ 80,00</strong> → R$ 19,80 (24,8%)</td>
+</tr>
+<tr>
+<td>Produto B</td>
+<td>R$ 13,90</td>
+<td>17%</td>
+<td><strong>R$ 54,90</strong> → R$ 6,45 (11,8%)</td>
+<td><strong>R$ 59,90</strong> → R$ 8,85 (14,8%)</td>
+<td><strong>R$ 80,00</strong> → R$ 24,90 (31,1%)</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>Você digita só <strong>custo, imposto e os 3 preços</strong> (em negrito) — comissão, taxa fixa e margem saem sozinhas pela faixa de cada preço. A <strong>margem da Live é a maior</strong>: a live da própria loja <strong>não paga afiliados</strong>. O <strong>Status</strong> olha a margem de Campanha (o tier mais apertado).</p>
+</blockquote>
+<hr />
+<h2>PARTE 1 — PARÂMETROS GLOBAIS (topo da planilha)</h2>
+<p>Valem para <strong>todos os produtos</strong>. Já vêm preenchidos com o padrão da operação.</p>
+<blockquote>
+<p>⚙️ <strong>Esses valores são ajustáveis conforme cada cliente</strong> (comissão de afiliado combinada, imposto da empresa, verba de mídia). <strong>Não mudam por categoria/nicho</strong> — no TikTok Shop a comissão da plataforma é a mesma. Trate os números como <strong>ponto de partida</strong> e altere o que não bater com a realidade do cliente. Tudo recalcula sozinho.</p>
+</blockquote>
+<p><strong>Bloco cinza (parâmetros gerais):</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Padrão</th>
+<th>O que é</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Frete TikTok (sempre)</strong></td>
+<td>6%</td>
+<td>Parte de frete da taxa do TikTok — vale <strong>sempre</strong>, por cima da comissão</td>
+</tr>
+<tr>
+<td><strong>Custo Afiliados</strong></td>
+<td>13%</td>
+<td>Comissão paga ao creator/afiliado por venda</td>
+</tr>
+<tr>
+<td><strong>TACOS Ads</strong></td>
+<td>10%</td>
+<td>% do preço gasto em anúncios (entra em Campanha e Venda)</td>
+</tr>
+<tr>
+<td><strong>TACOS Live</strong></td>
+<td>10%</td>
+<td>% de mídia da live. <strong>Substitui</strong> o TACOS Ads no tier Live (não soma). Costuma ser menor</td>
+</tr>
+<tr>
+<td><strong>Custo Apresentadoras</strong></td>
+<td>5%</td>
+<td>Host/apresentadora da live. <strong>Opcional:</strong> se a live é da própria equipe/dono <strong>sem host pago, deixe 0</strong>. Só conta quando o interruptor está em <em>Própria</em></td>
+</tr>
+<tr>
+<td><strong>Imposto (padrão)</strong></td>
+<td>12%</td>
+<td>Alíquota de imposto. É um padrão — cada produto pode ter o seu (coluna <em>Imposto</em>, laranja)</td>
+</tr>
+<tr>
+<td><strong>Margem mínima alvo</strong></td>
+<td>10%</td>
+<td>Piso de margem para o semáforo de Status</td>
+</tr>
+<tr>
+<td><strong>⮂ Tipo de Live</strong> <em>(interruptor)</em></td>
+<td>Própria</td>
+<td><strong>Própria</strong> = live da loja (soma apresentadoras, <strong>sem</strong> afiliados) · <strong>Afiliado</strong> = live do creator (soma afiliados, <strong>sem</strong> apresentadoras)</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Bloco roxo (taxa do TikTok — muda 15/07/2026):</strong></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Parâmetro</th>
+<th>Padrão</th>
+<th>O que é</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>⮂ Período da taxa</strong></td>
+<td>Depois</td>
+<td>Interruptor <strong>Antes</strong> (6% + R$4) / <strong>Depois</strong> (regra nova por faixa)</td>
+</tr>
+<tr>
+<td><strong>Limiar da faixa</strong></td>
+<td>R$ 50</td>
+<td>O preço que separa as faixas</td>
+</tr>
+<tr>
+<td><strong>Comissão / Taxa fixa por faixa</strong></td>
+<td>(tabela)</td>
+<td>Antes 6%+R$4 · Depois &lt;R$50 = 10%+R$4 · Depois ≥R$50 = 6%+R$6</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>PARTE 2 — O QUE PREENCHER POR PRODUTO (uma linha cada)</h2>
+<h3>Código  🟡</h3>
+<p>Código/SKU do produto. <em>(opcional, só pra organizar)</em></p>
+<h3>Descrição  🟡</h3>
+<p>Nome do produto ou kit.</p>
+<h3>Custo Final  🟡</h3>
+<p><strong>Quanto o produto custa para você</strong>, por unidade (R$). É o custo de aquisição/produção — <strong>não</strong> o preço de venda.</p>
+<h3>Imposto  🟡 <em>(coluna destacada em laranja)</em></h3>
+<p>A <strong>alíquota de imposto</strong> daquele produto (%). Já vem com o <strong>padrão global</strong>, mas é <strong>destacada em laranja</strong> para lembrar que você pode <strong>sobrescrever por produto</strong> quando a alíquota for diferente.</p>
+<h3>Preço Campanha · Preço de Venda · Preço de Live  🟡</h3>
+<p>Os <strong>três preços</strong> que você quer testar para esse produto. Pode preencher os três ou só os que usar.</p>
+<blockquote>
+<p>A <strong>comissão e a taxa fixa não são mais digitadas</strong> — a planilha as descobre pela <strong>faixa de cada preço</strong> (e pelo interruptor Antes/Depois). Ex.: um tier a R$ 45 cai em 10% + R$4; a R$ 71 cai em 6% + R$6.</p>
+</blockquote>
+<hr />
+<h2>PARTE 3 — O QUE A PLANILHA CALCULA (não preencha)  🔵</h2>
+<p>Para <strong>cada tier</strong> ela mostra duas colunas:</p>
+<ul>
+<li><strong>Margem %</strong> — quanto sobra, em porcentagem do preço.</li>
+<li><strong>Margem R$</strong> — quanto sobra, em reais, por unidade vendida.</li>
+</ul>
+<p><strong>Como ela calcula</strong> (comissão e taxa fixa saem da <strong>faixa de cada preço</strong> + interruptor Antes/Depois):<br />
+- <strong>Campanha e Venda:</strong> preço − (frete 6% + comissão da faixa + afiliados + Ads + imposto) − custo − <strong>taxa fixa da faixa</strong>.<br />
+- <strong>Live:</strong> depende do <strong>interruptor Tipo de Live</strong>. O <strong>TACOS Live substitui o de Ads</strong> (não soma).<br />
+  - <strong>Própria:</strong> preço − (frete + comissão da faixa + TACOS Live + <strong>apresentadoras</strong> + imposto) − custo − taxa fixa. <strong>Sem afiliados</strong> → margem costuma ser a maior.<br />
+  - <strong>Afiliado:</strong> preço − (frete + comissão da faixa + TACOS Live + <strong>afiliados</strong> + imposto) − custo − taxa fixa. <strong>Sem apresentadoras</strong>.</p>
+<h3>Status  🔵</h3>
+<p>Um semáforo baseado na <strong>margem de Campanha</strong> (o tier mais apertado — se ele fecha, os outros fecham):<br />
+- 🟢 <strong>ok</strong> — margem de Campanha ≥ a margem mínima<br />
+- 🟡 <strong>abaixo do alvo</strong> — lucra, mas abaixo do piso<br />
+- 🔴 <strong>prejuízo</strong> — a margem de Campanha é negativa: <strong>suba o preço ou reduza custo</strong></p>
+<hr />
+<h2>PARTE 4 — "QUANTO UMA AMOSTRA PRECISA VENDER" (parte de baixo)</h2>
+<p>Enviar amostra grátis para creators <strong>não é de graça</strong>. Na amostra você paga os ~<strong>6% de frete</strong> do TikTok sobre o valor cheio do produto, por amostra (o frete vale sempre).</p>
+<ol>
+<li><strong>Valor nominal</strong> 🟡 — preço cheio do produto.</li>
+<li><strong>Taxa de amostra</strong> 🟡 — já vem 6% (a parte de frete).</li>
+<li><strong>Custo de 1 amostra</strong> 🔵 — quanto custa cada amostra.</li>
+<li><strong>Margem por venda</strong> 🟡 — use a <strong>Margem de Campanha</strong> (cenário mais apertado).</li>
+<li><strong>Vendas necessárias por amostra</strong> 🔵 — quantas vendas cada amostra precisa gerar pra se pagar.</li>
+</ol>
+<blockquote>
+<p>💡 Se a margem por venda for <strong>negativa</strong>, <strong>nenhuma</strong> quantidade de vendas paga a amostra — sinal de que o <strong>preço está errado</strong>. Arrume o preço primeiro, depois escale amostras.</p>
+</blockquote>
+<hr />
+<h2>PARTE 5 — ABAS DE PREVISIBILIDADE (planejamento)</h2>
+<p>Além da precificação, a planilha tem mais 4 abas que dão <strong>previsibilidade</strong> ao cliente. Elas <strong>puxam os produtos e preços da aba Precificação</strong> automaticamente.</p>
+<h3>📈 Análise por Cenário</h3>
+<p>Mostra a <strong>margem de contribuição por venda de cada produto</strong> em 3 momentos da conta: <strong>Início (M1-2) → Ajustado (M3-4) → Maduro (M5+)</strong>. O que muda é o <strong>ROAS</strong> (a mídia fica mais eficiente conforme a conta amadurece — ex.: 4x → 6x → 9x, editável). Para cada cenário ela calcula <strong>Margem (antes de Ads), CAC (= preço ÷ ROAS) e Margem/Venda</strong>.</p>
+<h3>📊 Projeção de Vendas</h3>
+<p>Você preenche o <strong>volume de vendas/mês</strong> por cenário (células amarelas) e ela devolve <strong>Receita</strong> e <strong>Margem de Contribuição</strong> por produto e o <strong>total/mês</strong>, mais o <strong>crescimento</strong> Maduro vs Início. É a meta de faturamento por fase.</p>
+<h3>💰 Payback</h3>
+<p>Preenche <strong>investimento inicial</strong> e <strong>custo de agência/mês</strong>; ela monta a <strong>evolução mês a mês (12 meses)</strong> com <strong>margem de contribuição acumulada</strong>, saldo vs investimento e <strong>Status</strong> (🟢 Recuperado / Em recuperação). Responde "em quantos meses o investimento se paga" — sempre por <strong>margem de contribuição</strong> (não considera custos fixos/overhead do cliente).</p>
+<h3>🎯 CT% (Custo de Tração)</h3>
+<p>Calcula o <strong>CT%</strong> ("TACOS do TikTok") a partir dos seus números de um período: <strong>GMV + Ads + comissões de afiliados + custo de lives + amostras</strong>. Mostra o <strong>custo de tração total</strong>, o <strong>CT%</strong> e a <strong>zona</strong> (🟢 ≤20% · 🟡 20–35% · 🔴 &gt;35%). É a mesma métrica-guia do diagnóstico 4D — útil pra saber se a escala está saudável ou se a loja está "comprando" o próprio GMV.</p>
+<h3>📋 Níveis Probatório (referência)</h3>
+<p>Tabela dos níveis do TikTok Shop (Iniciante → Padrão → Premium → Profissional): pedidos/dia, anúncios, <strong>GMV-teto estimado</strong> e os critérios de graduação. Serve de referência do que destrava cada nível.</p>
+<blockquote>
+<p>⚙️ As 3 primeiras abas são <strong>conectadas</strong>: ajustou preço/custo na Precificação ou o ROAS na Análise → Projeção e Payback recalculam sozinhos.</p>
+</blockquote>
+<hr />
+<h2>RESUMO EM 3 PASSOS</h2>
+<ol>
+<li><strong>Confira os parâmetros</strong> no topo (já vêm prontos).</li>
+<li><strong>Preencha cada produto:</strong> custo, imposto, tx fixa e os <strong>3 preços</strong>.</li>
+<li><strong>Leia as margens</strong> de cada tier e o <strong>Status</strong> 🟢🟡🔴. Ajuste os preços até ficar saudável nos cenários que você vai usar.</li>
+</ol>
+<blockquote>
+<p>Qualquer dúvida em um campo, manda um print pro seu contato na Elevate. A gente preenche junto. 🙌</p>
+</blockquote>
+<hr />
+<p><em>Elevate Ecom. — Sua marca acima nos marketplaces.</em></p>
+  </div>
+  <div class="footer">Elevate Ecom. — Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

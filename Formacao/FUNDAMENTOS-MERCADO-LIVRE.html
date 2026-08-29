@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Fundamentos do Mercado Livre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--yellow:#FACC15;--ml:#FFE600;}
+  *{box-sizing:border-box;margin:0;}
+  body{font-family:'Poppins',sans-serif;color:var(--text);
+    background:radial-gradient(60% 55% at 88% 6%, rgba(255,230,0,0.10), transparent 60%),
+      radial-gradient(62% 55% at 6% 96%, rgba(126,200,227,0.14), transparent 60%),
+      linear-gradient(140deg,#07131F 0%,#0B1A2B 46%,#0F2B3A 100%);
+    background-attachment:fixed;min-height:100vh;padding:40px 20px 60px;line-height:1.6;}
+  .wrap{max-width:820px;margin:0 auto;}
+  .eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  h1{font-weight:300;font-size:40px;line-height:1.05;letter-spacing:-1px;}
+  h1 b{font-weight:800;color:#fff;}
+  .sub{color:var(--muted);font-size:14px;margin-top:12px;max-width:640px;}
+  .draft{display:inline-block;margin:16px 0;font-size:12px;font-weight:700;color:var(--yellow);border:1px solid rgba(250,204,21,0.4);background:rgba(250,204,21,0.08);border-radius:8px;padding:8px 14px;}
+  .accentbar{height:3px;width:120px;background:linear-gradient(90deg,var(--ml) 0%,var(--accent) 100%);border-radius:3px;margin:22px 0 26px;}
+  .toc{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:16px 22px;margin:0 0 8px;}
+  .toc b{color:#fff;font-size:12px;letter-spacing:1px;text-transform:uppercase;}
+  .toc ol{margin:8px 0 0 18px;font-size:13.5px;color:var(--muted);}
+  .toc a{color:var(--accent);text-decoration:none;}
+  h2{font-size:20px;color:#fff;margin:34px 0 6px;padding-top:10px;}
+  h2 .n{color:var(--ml);font-weight:800;margin-right:8px;}
+  h3{font-size:15.5px;color:var(--accent);margin:22px 0 4px;font-weight:700;}
+  p{margin:10px 0;font-size:14.5px;}
+  ul{margin:8px 0 8px 20px;font-size:14px;}
+  li{margin:5px 0;}
+  b{color:#fff;}
+  .box{background:var(--card);border:1px solid var(--cardborder);border-radius:12px;padding:14px 18px;margin:14px 0;font-size:13.5px;}
+  .box.key{border-color:rgba(255,230,0,0.3);background:linear-gradient(135deg,rgba(15,43,58,0.62),rgba(255,230,0,0.05));}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;}
+  th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--cardborder);vertical-align:top;}
+  th{color:var(--accent);font-weight:700;font-size:11px;text-transform:uppercase;}
+  .foot{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Formação · Mercado Livre · para recém-chegados</div>
+  <h1>Fundamentos do <b>Mercado Livre</b></h1>
+  <div class="sub">Introdução ao canal para quem está começando: como o Mercado Livre funciona, as alavancas que decidem a venda e o vocabulário que você vai ouvir todo dia. Depois disto, leia a <b style="color:var(--text)">Visão Geral · Mercado Livre</b> (o método 4D).</div>
+  <div><span class="draft">📝 RASCUNHO v0.1 — casca a validar/preencher. Estrutura pronta; revisar números e prints antes de publicar.</span></div>
+  <div class="accentbar"></div>
+
+  <div class="toc">
+    <b>O que você vai ver</b>
+    <ol>
+      <li><a href="#o-que-e">O que é o Mercado Livre (e por que importa)</a></li>
+      <li><a href="#reputacao">Reputação — a moeda do canal</a></li>
+      <li><a href="#envios">Mercado Envios &amp; Full</a></li>
+      <li><a href="#catalogo">Catálogo, ficha, SEO &amp; anúncio de catálogo (a "Buy Box" do ML)</a></li>
+      <li><a href="#ads">Mercado Ads</a></li>
+      <li><a href="#tarifas">Tarifas e margem</a></li>
+      <li><a href="#glossario">Glossário rápido</a></li>
+    </ol>
+  </div>
+
+  <h2 id="o-que-e"><span class="n">1</span>O que é o Mercado Livre</h2>
+  <div class="box key">🏢 <b>Vai criar conta nova?</b> Se o cliente ainda não tem conta e quer entrar como <b>empresa (CNPJ / B2B)</b>, cadastre por esta página específica: <a href="https://www.mercadolivre.com.br/hub/registration/landing/b2b" target="_blank" rel="noopener" style="color:var(--accent)">mercadolivre.com.br/hub/registration/landing/b2b</a>. Se cadastrar por outro caminho, o ML pode criar a conta como <b>pessoa física (CPF)</b> em vez de CNPJ — e trocar depois é dor de cabeça.</div>
+  <p>Líder absoluto de e-commerce no Brasil, com tráfego de <b>alta intenção de compra</b> (a pessoa já está procurando o produto) e uma base que confia na plataforma. Quem tem <b>reputação verde</b>, <b>entrega rápida</b> e <b>relevância na busca</b> vende em escala.</p>
+  <div class="box key">💡 Mentalidade: no ML a venda não vem de conteúdo/descoberta (como no TikTok). Vem de <b>aparecer bem na busca e no catálogo, com preço e entrega que ganham a confiança</b>. É uma operação de <b>eficiência</b>, não de viralização.</div>
+
+  <h2 id="reputacao"><span class="n">2</span>Reputação — a moeda do canal</h2>
+  <ul>
+    <li><b>Termômetro</b>: mede a saúde da conta (cor verde = saudável). Cai com atrasos, cancelamentos e reclamações.</li>
+    <li><b>MercadoLíder</b> (Líder / Gold / Platinum): selo que destrava visibilidade e conversão.</li>
+    <li>Reputação verde + entrega rápida = mais exposição e mais chance de ganhar a Buy Box.</li>
+  </ul>
+
+  <div class="box key">📍 <b>Onde ver:</b> painel de <b>Reputação</b> do vendedor → <a href="https://www.mercadolivre.com.br/reputacao" target="_blank" rel="noopener" style="color:var(--accent)">mercadolivre.com.br/reputacao</a>. O ML acompanha os <b>últimos 60 dias</b> e mostra sua cor + as variáveis que a afetam.</div>
+
+  <figure style="margin:16px 0;">
+    <img src="./prints/reputacao-ml.png" alt="Painel de Reputação do Mercado Livre: cor verde, vendas dos últimos 60 dias e as variáveis Reclamações, Mediações, Canceladas por você e Envios incorretos" style="width:100%;border-radius:12px;border:1px solid var(--cardborder);display:block;">
+    <figcaption style="color:var(--muted);font-size:12px;margin-top:8px;">Painel de Reputação (exemplo): cor verde, 60 dias, e as 4 variáveis com seus limites permitidos e as metas mais duras de MercadoLíder.</figcaption>
+  </figure>
+
+  <p>As <b>variáveis que definem a cor</b> (e os tetos mais duros para virar MercadoLíder):</p>
+  <table>
+    <tr><th>Variável</th><th>Limite permitido</th><th>Meta MercadoLíder</th></tr>
+    <tr><td>Reclamações</td><td>&lt; 2%</td><td>≤ 1%</td></tr>
+    <tr><td>Mediações</td><td>&lt; 0,5%</td><td>não ultrapassar o limite</td></tr>
+    <tr><td>Canceladas por você</td><td>&lt; 1,5%</td><td>≤ 0,5%</td></tr>
+    <tr><td>Envios incorretos</td><td>&lt; 10%</td><td>≤ 6%</td></tr>
+  </table>
+
+  <h2 id="envios"><span class="n">3</span>Mercado Envios &amp; Full</h2>
+  <p><b>Mercado Envios</b> é a logística da plataforma. <b>Mercado Envios Full</b> é o <b>fulfillment</b> do ML: o vendedor manda o estoque pro centro de distribuição do ML, e o ML armazena, embala e envia. Ganha <b>prazo curto</b>, ajuda a <b>ganhar a Buy Box</b> e escala nacional. Tem <b>tarifa de fulfillment e armazenagem</b> (entra na precificação).</p>
+
+  <div class="box key">🗂️ O Full tem <b>duas macro-áreas</b> de operação: <b>(1) Gestão de envios</b> (mandar produto pro centro — o <i>inbound</i>) e <b>(2) Gestão do estoque no Full</b> (o que já está armazenado). Quem opera ML no dia a dia vive nessas duas telas.</div>
+
+  <h3>3.1 · Gestão de envios (inbound)</h3>
+  <p>É <b>literalmente o envio</b> do seu produto pro centro logístico do ML — o que chamamos de <b>inbound</b>. Você cria um envio ("Enviar produtos"), <b>declara as unidades</b>, reserva <b>data</b> e <b>centro logístico</b>, e acompanha o <b>custo aplicado</b> e o <b>status</b> do processamento.</p>
+  <div class="box">📍 <b>Onde ver:</b> <a href="https://myaccount.mercadolivre.com.br/shipping/inbounds" target="_blank" rel="noopener" style="color:var(--accent)">myaccount.mercadolivre.com.br/shipping/inbounds</a></div>
+  <figure style="margin:16px 0;">
+    <img src="./prints/full-inbound-ml.png" alt="Tela Gestão de envios Full: lista de envios inbound com número, Declaradas/Aptas para o Full, data reservada, custo aplicado e status do processamento" style="width:100%;border-radius:12px;border:1px solid var(--cardborder);display:block;">
+    <figcaption style="color:var(--muted);font-size:12px;margin-top:8px;">Gestão de envios Full: cada linha é um envio ao centro logístico, com <b>Declaradas / Aptas para o Full</b>, data reservada, custo e status.</figcaption>
+  </figure>
+  <p>Fique de olho no status: <b>"Un. com diferenças"</b> e o selo <b class="flag r" style="color:#ff8095">COM INCONFORMIDADE</b> significam que o ML recebeu quantidade/itens diferentes do declarado — precisa conferir os detalhes e corrigir (afeta custo e disponibilidade de estoque).</p>
+
+  <h3>3.2 · Gestão do estoque no Full</h3>
+  <p>É a outra tela: onde você acompanha o estoque <b>já armazenado</b> no Full — <b>quantidade de vendas, cobertura, saldo</b> e a saúde do estoque. Fica no hub do vendedor, na aba <b>Gestão de estoque Full</b> (ao lado de Gestão de anúncios, Central de promoções e Gestão de preços). Traz o <b>uso dos espaços atribuídos</b> (Pequenos/médios × Grandes/extragrandes) e, por produto, <b>Vendas 30d, estoque médio, a caminho, aptas/não aptas para venda, tempo até esgotar</b> e uma <b>ação sugerida</b>.</p>
+  <figure style="margin:16px 0;">
+    <img src="./prints/full-estoque-ml.png" alt="Tela Gestão de estoque Full: status do estoque, uso dos espaços atribuidos e tabela por produto com vendas, estoque, tempo até esgotar e ação sugerida" style="width:100%;border-radius:12px;border:1px solid var(--cardborder);display:block;">
+    <figcaption style="color:var(--muted);font-size:12px;margin-top:8px;">Gestão de estoque Full → aba Controle de estoque: saúde do estoque, uso dos espaços e ação sugerida por produto.</figcaption>
+  </figure>
+  <p>Essa área tem <b>3 sub-abas</b>:</p>
+  <table>
+    <tr><th>Sub-aba</th><th>Pra que serve</th></tr>
+    <tr><td><b>Controle de estoque</b></td><td>A visão do dia a dia: vendas dos últimos 30 dias, estoque médio, <b>tempo até esgotar</b>, unidades aptas/não aptas e o <b>uso dos espaços</b> (pequenos/médios × grandes). Aponta <b>baixo desempenho</b> e <b>estoque excedente</b>.</td></tr>
+    <tr><td><b>Planejamento de envios</b></td><td>Mostra parte da <b>performance</b> e <b>sugere quantos produtos enviar</b> com base no volume de vendas — evita ruptura (esgotar) e excesso (estoque parado).</td></tr>
+    <tr><td><b>Custos por estoque antigo</b></td><td>Auto-explicativo: o <b>custo de armazenagem cresce</b> quanto mais tempo o produto fica parado no Full. Incentiva <b>girar ou retirar</b> o estoque antigo.</td></tr>
+  </table>
+  <figure style="margin:16px 0;">
+    <img src="./prints/full-planejamento-ml.png" alt="Sub-aba Planejamento de envios: performance e sugestao de quantas unidades enviar por produto com base no volume de vendas" style="width:100%;border-radius:12px;border:1px solid var(--cardborder);display:block;">
+    <figcaption style="color:var(--muted);font-size:12px;margin-top:8px;">Planejamento de envios: sugere quanto repor por produto com base no volume de vendas.</figcaption>
+  </figure>
+  <figure style="margin:16px 0;">
+    <img src="./prints/full-custos-antigo-ml.png" alt="Sub-aba Custos por estoque antigo: custo de armazenagem que cresce conforme o produto envelhece no Full" style="width:100%;border-radius:12px;border:1px solid var(--cardborder);display:block;">
+    <figcaption style="color:var(--muted);font-size:12px;margin-top:8px;">Custos por estoque antigo: quanto mais tempo parado, mais caro — empurra o giro.</figcaption>
+  </figure>
+  <div class="box">💡 Leitura de gestor: <b>Controle</b> diz como está agora, <b>Planejamento</b> diz quanto repor, <b>Custos por estoque antigo</b> pune o que não gira. O alvo é <b>cobertura saudável</b> — nem romper (perde Buy Box e venda), nem encalhar (paga armazenagem à toa).</div>
+
+  <h2 id="catalogo"><span class="n">4</span>Catálogo, ficha, SEO &amp; anúncio de catálogo</h2>
+  <p>É o <b>chão</b> da operação. Título, <b>ficha técnica</b> (atributos), fotos, variações e preço. Ficha completa e título certo = mais relevância na busca (<b>SEO do ML</b>) e mais chance de ganhar o destaque da venda.</p>
+  <div class="box key">🔁 <b>"Buy Box" é o termo da Amazon.</b> No Mercado Livre o equivalente é o <b>anúncio de catálogo</b>: quando vários vendedores oferecem o <b>mesmo produto</b>, o ML junta todos numa única publicação e escolhe <b>um ganhador</b> pra ficar em destaque (o botão de comprar). Ganha quem combina melhor <b>preço + reputação + tipo de anúncio + envio (Full)</b>. É onde a venda é decidida.</div>
+  <h3>Tipos de anúncio</h3>
+  <table>
+    <tr><th>Tipo de anúncio</th><th>Resumo</th></tr>
+    <tr><td><b>Clássico</b></td><td>Tarifa de venda menor, sem parcelamento sem juros longo. Bom pra ticket menor/giro.</td></tr>
+    <tr><td><b>Premium</b></td><td>Tarifa maior, com mais parcelas sem juros e mais exposição. Bom pra ticket alto.</td></tr>
+  </table>
+
+  <h2 id="ads"><span class="n">5</span>Mercado Ads</h2>
+  <p>A plataforma de anúncios do ML. O principal é o <b>Product Ads</b> (anúncio de produto na busca/vitrine). Métricas que você vai ouvir:</p>
+  <ul>
+    <li><b>ACOS</b> = gasto de mídia ÷ vendas geradas pela mídia (eficiência por campanha).</li>
+    <li><b>TACOS</b> = gasto total com Mercado Ads ÷ <b>faturamento total</b> — quanto de cada R$ 1 vendido está sendo comprado com mídia. É a métrica-guia do método 4D no ML.</li>
+  </ul>
+
+  <h2 id="tarifas"><span class="n">6</span>Tarifas e margem</h2>
+  <p>Antes de subir o produto, calcula-se a margem de contribuição com:</p>
+  <ul>
+    <li><b>Tarifa de venda</b>: comissão que <b>varia por categoria</b> e por tipo de anúncio (Clássico/Premium).</li>
+    <li><b>Custo fixo por item</b> (para itens de menor valor).</li>
+    <li><b>Tarifas do Full</b>: fulfillment + armazenagem.</li>
+  </ul>
+  <div class="box">Precificar sempre por <b>margem de contribuição</b> — entrar com o preço certo desde o dia 1, sem susto no caixa.</div>
+
+  <h2 id="glossario"><span class="n">7</span>Glossário rápido</h2>
+  <table>
+    <tr><th>Termo</th><th>É</th></tr>
+    <tr><td><b>Anúncio de catálogo</b></td><td>publicação única do mesmo produto com vários vendedores; o ML destaca um ganhador (equivale à "Buy Box" da Amazon)</td></tr>
+    <tr><td><b>Full</b></td><td>Mercado Envios Full — fulfillment do ML</td></tr>
+    <tr><td><b>Termômetro</b></td><td>indicador de saúde/reputação da conta</td></tr>
+    <tr><td><b>MercadoLíder</b></td><td>selo de reputação (Líder/Gold/Platinum)</td></tr>
+    <tr><td><b>ACOS / TACOS</b></td><td>eficiência de mídia por campanha / sobre o faturamento total</td></tr>
+    <tr><td><b>Clássico / Premium</b></td><td>os dois tipos de anúncio (tarifa e parcelamento diferentes)</td></tr>
+  </table>
+
+  <div class="foot">Elevate Ecom. — Sua marca acima nos marketplaces. · Formação Mercado Livre (rascunho interno).</div>
+</div>
+</body>
+</html>

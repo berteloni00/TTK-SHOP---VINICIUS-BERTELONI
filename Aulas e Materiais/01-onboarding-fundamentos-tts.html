@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 1 · Onboarding & Fundamentos TTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Elevate Ecom · Programa TikTok Shop</div>
+    <h1>Aula 1 · Onboarding & Fundamentos TTS</h1>
+    <div class="meta"><b>Módulo TikTok Shop · Fundação & Oferta</b> · Semana 1, quarta · Setup da loja, algoritmo de descoberta, o custo real da plataforma e KPIs do canal. · Atualizado: 2026-08-12</div>
+  </div>
+  <div class="content">
+<blockquote>
+<p><strong>Entregável:</strong> Checklist de abertura de loja + painel de KPIs  ·  <a href="https://app.fireflies.ai/view/01KZW1NHFCQSQ9YPB6Q6D2Y9Y4">▶ Gravação da aula</a></p>
+</blockquote>
+<h2>Apostila</h2>
+<h3>Como o programa funciona</h3>
+<p>São 16 aulas de 1 hora, duas por semana, sempre às quartas e quintas às 19h, 100% on-line e com gravação publicada ao final de cada encontro. O programa vai até 14 de outubro.</p>
+<p>Ele é dividido em dois módulos fechados e sequenciais: primeiro TikTok Shop, das aulas 01 a 08, depois Mercado Livre, das aulas 09 a 16.</p>
+<p>O par da semana funciona como uma coisa só: na quarta a gente constrói o conceito e começa o entregável, na quinta fecha e testa. Por isso a tarefa entre quarta e quinta é curta, e a tarefa da quinta para a quarta seguinte é a maior.</p>
+<p>Cada aula gera um entregável. Ele é construído ao vivo sobre contas reais e sai da aula como um <strong>modelo preenchido, pronto para você repetir no cliente que quiser</strong>. Você não precisa ter uma conta própria para acompanhar nem para produzir o entregável.</p>
+<h3>As contas que você vai ver</h3>
+<p>O programa usa dois tipos de conta, e o motivo é prático:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Conta</th>
+<th>Para que serve</th>
+<th>Aparece em</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Conta inicial, já aprovada</strong></td>
+<td>Mostrar o setup completo sem esperar liberação da plataforma: cadastro de produto, envio, devolução, showcase, afiliados</td>
+<td>Aulas 01 e 02</td>
+</tr>
+<tr>
+<td><strong>Contas em operação, acima de R$ 1 milhão de faturamento</strong></td>
+<td>Ver diagnóstico, curva de produtos, campanhas, creators e leitura de dados em escala real</td>
+<td>Aulas de análise, conforme o tema</td>
+</tr>
+</tbody>
+</table></div>
+<p>A escolha depende do que está sendo ensinado. Setup se aprende numa conta que já passou por tudo. Leitura de resultado só faz sentido em operação com volume, senão o número não diz nada.</p>
+<p>E toda aula termina com o mesmo ritual: ATA publicada na página da aula aqui no site, gravação e arquivos anexados no mesmo lugar, e auditoria das tarefas da semana anterior na aula seguinte.</p>
+<p>A ordem não é aleatória. O TikTok Shop vem primeiro porque é onde a curva de aprendizado é mais rápida e onde o resultado aparece em semanas, não em meses. O Mercado Livre entra depois, com a operação já rodando.</p>
+<h3>O baseline do dia zero</h3>
+<p>Regra que vale para todo projeto que você tocar: antes de mexer em qualquer coisa, congele o retrato da conta do cliente. Sem isso, no fim do trabalho não existe prova de resultado, só impressão, e a conversa de renovação vira opinião contra opinião.</p>
+<p>O que registrar no dia 1: GMV, pedidos, ticket médio, número de creators vinculados e taxa de cancelamento, sempre com a data da coleta anotada. Se a loja ainda não vende no canal, o baseline é zero, e isso também precisa estar escrito, porque é a partir dele que você mostra o que construiu.</p>
+<h3>O que muda do Mercado Livre para o TikTok Shop</h3>
+<p>A diferença não é de plataforma, é de jornada de compra.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Mercado Livre</th>
+<th>TikTok Shop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jornada</td>
+<td>Intenção, o comprador busca</td>
+<td>Descoberta, o conteúdo interrompe</td>
+</tr>
+<tr>
+<td>Gatilho da venda</td>
+<td>Palavra-chave</td>
+<td>Vídeo, live ou creator</td>
+</tr>
+<tr>
+<td>Unidade de trabalho</td>
+<td>Anúncio</td>
+<td>Conteúdo e oferta</td>
+</tr>
+<tr>
+<td>Quem vende</td>
+<td>Sua página</td>
+<td>Você, seus creators e seus afiliados</td>
+</tr>
+<tr>
+<td>Custo da plataforma</td>
+<td>Comissão variável por categoria</td>
+<td>Comissão + frete + taxa fixa por item</td>
+</tr>
+</tbody>
+</table></div>
+<p>Quem tenta operar TikTok Shop com lógica de marketplace publica catálogo, espera busca e conclui que não funciona. O canal responde a volume de conteúdo, não a otimização de ficha.</p>
+<h3>O que o cliente precisa ter antes de abrir a loja</h3>
+<p>Esta é a primeira lista que você vai mandar para qualquer marca que quiser vender no canal. Metade das reprovações de cadastro está aqui:</p>
+<ul>
+<li>CNPJ ativo e cartão CNPJ</li>
+<li>Dados bancários <strong>no mesmo CNPJ</strong> da loja: conta em nome diferente reprova</li>
+<li>Documento de identidade do responsável legal</li>
+<li>Definição da categoria de produto que será vendida</li>
+<li>Se a categoria for regulada (cosmético, suplemento, saúde, eletrônico), a documentação específica dela</li>
+<li>Perfil do TikTok da marca já criado</li>
+</ul>
+<p>Guarde essa lista. Ela vira o primeiro e-mail de onboarding do seu cliente. Para a parte bancária, que é a que mais reprova, mande o guia pronto: <strong><a href="conta-bancaria.html">Como cadastrar a conta bancária no TikTok Shop</a></strong>.</p>
+<h3>Setup da loja, passo a passo</h3>
+<p>Vamos percorrer o cadastro na tela, campo a campo, para você ver cada armadilha antes de fazer isso valendo com um cliente.</p>
+<p>Os itens 1 a 3 são o cadastro em si, e é onde a conta nova para e espera a plataforma. Os itens 4 a 7 só existem com a conta já aprovada, e é por isso que eles são demonstrados na conta inicial: assim você vê a tela real hoje, e não daqui a duas semanas.</p>
+<ol>
+<li><strong>Cadastro do seller</strong>, com CNPJ e dados bancários batendo com a razão social</li>
+<li><strong>Verificação de identidade e documentos</strong>, que costuma ser o gargalo de prazo</li>
+<li><strong>Categoria de produto e checagem de restrição</strong>: algumas exigem documentação adicional</li>
+<li>Cadastro de produtos com foto, variação, estoque e preço</li>
+<li>Configuração de envio, prazos e política de devolução</li>
+<li>Vinculação do perfil do TikTok à loja e ativação do showcase (a vitrine dentro do perfil)</li>
+<li>Habilitação do programa de afiliados</li>
+</ol>
+<blockquote>
+<p><strong>O prazo não é seu, nem do cliente.</strong> A aprovação de conta e de categoria fica com a plataforma e costuma levar de alguns dias a duas semanas, dependendo da documentação. Por isso, em qualquer projeto, o cadastro é a primeira coisa a disparar, não a última.</p>
+</blockquote>
+<h3>O que fazer enquanto a conta é analisada</h3>
+<p>A pergunta que o cliente vai te fazer é "e agora, esperamos?". A resposta é não, e essa é uma das primeiras entregas de valor que você dá a ele:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Frente</th>
+<th>Avança sem loja aprovada</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Precificação</td>
+<td>Tabela de preço e desenho dos kits, em planilha</td>
+</tr>
+<tr>
+<td>Conteúdo</td>
+<td>Roteiros gravados e prontos para publicar</td>
+</tr>
+<tr>
+<td>Creators</td>
+<td>Lista mapeada e mensagem de convite pronta</td>
+</tr>
+<tr>
+<td>Live</td>
+<td>Roteiro e calendário definidos</td>
+</tr>
+</tbody>
+</table></div>
+<p>Quando a aprovação sai, é só publicar o que já está pronto. Quem espera a aprovação para começar a pensar perde três semanas. É exatamente esse o desenho das Aulas 02 a 05.</p>
+<h3>O custo da plataforma, que não é uma taxa só</h3>
+<p>O erro mais comum é falar em "a taxa do TikTok Shop" como se fosse um número único. São três coisas somadas, e desde <strong>14/07/2026</strong> duas delas mudaram:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Componente</th>
+<th>Até R$ 49,99</th>
+<th>De R$ 50,00 em diante</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Comissão</td>
+<td>10%</td>
+<td>6%</td>
+</tr>
+<tr>
+<td>Frete TikTok Shop</td>
+<td>6%</td>
+<td>6%</td>
+</tr>
+<tr>
+<td>Taxa fixa por item</td>
+<td>R$ 4,00</td>
+<td>R$ 6,00</td>
+</tr>
+<tr>
+<td><strong>Custo total</strong></td>
+<td><strong>16% + R$ 4,00</strong></td>
+<td><strong>12% + R$ 6,00</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Até 14/07/2026 a regra era mais simples: 6% de comissão mais R$ 4,00 por item, para qualquer preço. Somado ao frete, dava os 12% que muita gente ainda repete por aí. Hoje isso só vale de R$ 50,00 para cima.</p>
+<p>Essa régua já está montada na <strong><a href="https://docs.google.com/spreadsheets/d/1JIlgCECXUkSO0acJshFoDSq5ZOS8m_I2xf9ORkKqLPg/edit?usp=sharing">planilha de precificação</a></strong>, que é o material da Aula 02 e a que você manda para o cliente preencher. Vale abrir agora para ver onde cada número entra.</p>
+<h3>Não existe degrau em R$ 50, e isso é de propósito</h3>
+<p>A primeira reação de quem vê duas faixas é procurar o salto, e imaginar que vale subir o preço para cruzar o limiar. Faça a conta:</p>
+<ul>
+<li>Um produto de R$ 50,00 pela faixa de baixo: 16% de R$ 50,00 são R$ 8,00, mais R$ 4,00 de taxa fixa, dá <strong>R$ 12,00</strong></li>
+<li>O mesmo produto pela faixa de cima: 12% de R$ 50,00 são R$ 6,00, mais R$ 6,00 de taxa fixa, dá <strong>R$ 12,00</strong></li>
+</ul>
+<p>Chega no mesmo valor pelos dois caminhos. A plataforma escolheu o corte exatamente no ponto em que as duas contas se encontram, então nada salta em R$ 50,00. Subir de R$ 47,00 para R$ 50,00 só para "mudar de faixa" não traz ganho nenhum além do que qualquer aumento de preço já traria.</p>
+<h3>O que realmente pesa é a taxa fixa em ticket baixo</h3>
+<p>O custo de plataforma em percentual do preço, na régua atual:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Preço de venda</th>
+<th>Custo total</th>
+<th>% do preço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R$ 20,00</td>
+<td>R$ 7,20</td>
+<td>36%</td>
+</tr>
+<tr>
+<td>R$ 30,00</td>
+<td>R$ 8,80</td>
+<td>29%</td>
+</tr>
+<tr>
+<td>R$ 40,00</td>
+<td>R$ 10,40</td>
+<td>26%</td>
+</tr>
+<tr>
+<td>R$ 50,00</td>
+<td>R$ 12,00</td>
+<td>24%</td>
+</tr>
+<tr>
+<td>R$ 80,00</td>
+<td>R$ 15,60</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>R$ 150,00</td>
+<td>R$ 24,00</td>
+<td>16%</td>
+</tr>
+<tr>
+<td>R$ 300,00</td>
+<td>R$ 42,00</td>
+<td>14%</td>
+</tr>
+</tbody>
+</table></div>
+<p>A curva é essa: quanto menor o ticket, maior a mordida, porque a taxa fixa não diminui junto com o preço. Um produto de R$ 20 entrega 36% do preço para a plataforma antes de contar produto, embalagem e creator. Vender item avulso barato nesse canal quase nunca fecha.</p>
+<p>É por isso que kit, aqui, não é só alavanca de ticket médio: é defesa de margem. Ele sobe o valor sobre o qual a taxa fixa é diluída.</p>
+<blockquote>
+<p><strong>Um ponto a confirmar no Seller Center:</strong> se a taxa fixa é cobrada por unidade vendida ou por linha do pedido. Se for por linha, o kit dilui de verdade. Se for por unidade, o ganho do kit vem do percentual, não da taxa fixa. Cheque isso antes de montar a tabela de preço.</p>
+</blockquote>
+<p>Isso importa porque, além do custo de plataforma, o canal tem custos que o marketplace tradicional não tem:</p>
+<ul>
+<li>Comissão do creator ou afiliado, definida por você</li>
+<li>Custo de amostras enviadas para creators</li>
+<li>Cupons e campanhas da plataforma</li>
+<li>Mídia paga, quando houver</li>
+</ul>
+<p>Uma operação que só considerou a comissão descobre a margem real tarde demais. A Aula 02 recalcula isso inteiro.</p>
+<h3>O funil aqui tem três andares, não dois</h3>
+<p>A leitura mais comum do mercado divide tudo em dois blocos: branding constrói marca, performance gera conversão. Falta o andar do meio, e é justamente onde a decisão acontece.</p>
+<p><img alt="Branding constrói equity, performance gera conversão" src="slides/tts-15.png" /></p>
+<p><img alt="O gap: a consideração segue sendo subvalorizada" src="slides/tts-16.png" /></p>
+<p>Segundo a McKinsey, <strong>87% das pessoas chegam indecisas</strong> à jornada de compra, sem uma marca definida. Elas não estão só descobrindo, e também não estão prontas para comprar: estão considerando. Esse é o andar que quase ninguém trabalha de propósito.</p>
+<p>E é o andar em que este canal é forte. Pesquisa da Kantar sobre jornada cross-media coloca o <strong>TikTok como a plataforma de mídia mais influente durante a fase de consideração</strong>, acima de todas as outras.</p>
+<p><img alt="Mid funnel: as marcas que dominam, vencem" src="slides/tts-17.png" /></p>
+<p><img alt="87% das pessoas estão indecisas, fonte McKinsey 2023" src="slides/tts-18.png" /></p>
+<p><img alt="Kantar: TikTok é a plataforma mais influente na fase de consideração" src="slides/tts-19.png" /></p>
+<h3>Trabalhar consideração puxa o funil inteiro</h3>
+<p>Os dados de marketing science da TikTok mostram que otimizar para audiências de consideração, em vez de só para alcance, melhora todos os andares:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Efeito</th>
+<th>Comparado a trabalhar só awareness</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ad recall</td>
+<td>2x</td>
+</tr>
+<tr>
+<td>Lift em consideração</td>
+<td>3x</td>
+</tr>
+<tr>
+<td>Lift em advocacy de marca</td>
+<td>2x</td>
+</tr>
+<tr>
+<td>Ver detalhes do produto</td>
+<td>5x mais provável</td>
+</tr>
+<tr>
+<td>Adicionar ao carrinho</td>
+<td>7x mais provável</td>
+</tr>
+<tr>
+<td>Iniciar o pedido</td>
+<td>6,4x mais provável</td>
+</tr>
+</tbody>
+</table></div>
+<p>A leitura prática para quem vende: conteúdo que gera consideração não é "conteúdo bonito que não vende". Ele é o que faz o clique do fundo de funil acontecer depois, e mais barato.</p>
+<p><img alt="Ao otimizar para audiências de consideração, todo o funil se beneficia" src="slides/tts-20.png" /></p>
+<h3>Por que suas métricas atuais não enxergam isso</h3>
+<p>Consideração vinha sendo medida por métricas soltas: cliques, engajamento, tráfego, visualizações, visitas ao perfil, taxa de conclusão do vídeo. Cada uma conta um pedaço, nenhuma conta a história.</p>
+<p>O modelo do TikTok junta sinais de comportamento real dentro da plataforma, e não só o clique:</p>
+<ul>
+<li>like, comentário, compartilhamento e follow</li>
+<li>busca dentro do app</li>
+<li>tempo de visualização e visualização completa</li>
+<li>ver detalhes do produto e adicionar ao carrinho</li>
+<li>entrada em live e presente enviado</li>
+</ul>
+<p>Esses sinais atravessam conteúdo orgânico, conteúdo de creator, conteúdo da marca e mídia paga, em vídeo, live e loja. É por isso que, neste canal, medir só o clique subestima o que o conteúdo está fazendo.</p>
+<p><img alt="Views, cliques e tráfego não contam toda a história" src="slides/tts-21.png" /></p>
+<p><img alt="Do dado fragmentado para a visão de full funnel" src="slides/tts-22.png" /></p>
+<p><img alt="Metodologia: mais de 12 comportamentos dinâmicos e sinais on-site" src="slides/tts-23.png" /></p>
+<h3>Brand Consideration Ads</h3>
+<p>É o formato que compra especificamente essa audiência: encontra quem tem alta intenção e ajusta o lance para mover a pessoa de "não explorado" ou "awareness" para consideração.</p>
+<p>Nos testes da plataforma, comparado ao formato de Brand Auction focado em visualização de vídeo, ele entregou <strong>18% mais taxa de nova consideração e custo por consideração 23% menor</strong>. Volta com detalhe na Aula 03, quando montarmos a estrutura de campanha.</p>
+<p><img alt="Brand Consideration Ads: +18% de nova consideração e -23% de custo por consideração" src="slides/tts-29.png" /></p>
+<h3>O calendário de campanhas da plataforma</h3>
+<p>O canal tem datas próprias, e elas puxam tráfego para quem está inscrito. Em 2026 o calendário de campanhas do TikTok Shop Brasil é este:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Mês</th>
+<th>Campanha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Janeiro</td>
+<td>Ofertas de Volta às Aulas</td>
+</tr>
+<tr>
+<td>Fevereiro</td>
+<td>2.2 Promo do Mês</td>
+</tr>
+<tr>
+<td>Março</td>
+<td><strong>3.15 Mega Campanha</strong></td>
+</tr>
+<tr>
+<td>Abril</td>
+<td>4.4 Promo do Mês</td>
+</tr>
+<tr>
+<td>Maio</td>
+<td>5.5 Promo do Mês</td>
+</tr>
+<tr>
+<td>Junho</td>
+<td><strong>6.6 Mega Campanha</strong></td>
+</tr>
+<tr>
+<td>Julho</td>
+<td>7.7 Promo do Mês</td>
+</tr>
+<tr>
+<td>Agosto</td>
+<td>8.8 Promo do Mês</td>
+</tr>
+<tr>
+<td>Setembro</td>
+<td><strong>9.9 Mega Campanha</strong></td>
+</tr>
+<tr>
+<td>Outubro</td>
+<td>10.10 Promo do Mês</td>
+</tr>
+<tr>
+<td>Novembro</td>
+<td><strong>11.11 e Black Friday</strong></td>
+</tr>
+<tr>
+<td>Dezembro</td>
+<td>12.12 Promo do Mês</td>
+</tr>
+</tbody>
+</table></div>
+<p>Além dessas, existem campanhas de marca que a loja pode pleitear: Super Brand Day, Grand Opening (para loja nova) e New Arrival Day (para lançamento). Os nomes e formatos podem mudar, confirme sempre no Seller Center.</p>
+<p><img alt="Calendário de campanhas do TikTok Shop Brasil 2026" src="slides/tts-03.png" /></p>
+<h3>Como se organiza uma campanha grande</h3>
+<p>O erro é acordar no dia da data. Uma campanha de plataforma tem quatro fases, e a verba acompanha:</p>
+<ol>
+<li><strong>Preparação</strong>, semanas antes: estoque, inscrição na campanha, briefing de creators, conteúdo gravado</li>
+<li><strong>Campanha</strong>, cerca de 7 dias: verba de mídia por volta de 1,6x a do dia normal</li>
+<li><strong>Pico</strong>, as 48 horas da virada da data: a maior concentração, algo como 1,7x</li>
+<li><strong>Dias de categoria</strong>, cerca de 4 dias depois: mantém 1,6x, aproveitando o tráfego residual</li>
+<li><strong>Revisão pós-campanha</strong>: o que vendeu, a que custo, o que repetir</li>
+</ol>
+<p>O padrão que interessa é o formato, não os números exatos: sobe antes, concentra no pico, sustenta no rabo da campanha e revisa depois. Voltamos a isso na Aula 07, montando o calendário de 90 dias.</p>
+<p><img alt="Cronograma de campanha e distribuição de verba em quatro fases" src="slides/tts-05.png" /></p>
+<h3>O limite diário de pedidos, que quase ninguém conhece</h3>
+<p>Loja nova entra num período de avaliação e opera com <strong>limite diário de pedidos</strong>. Ou seja: por melhor que o conteúdo funcione, existe um teto de vendas por dia até a conta provar que dá conta de entregar.</p>
+<p>O acompanhamento fica em <strong>Desempenho da loja</strong>, dentro do Seller Center, e a subida de faixa depende de critérios como:</p>
+<ul>
+<li>tempo de loja aberta</li>
+<li>anúncios sem penalização</li>
+<li>volume de pedidos entregues</li>
+<li>número de compradores únicos</li>
+</ul>
+<p>Há também uma avaliação a responder, com perguntas sobre responsabilidades do vendedor, prazos e regras de anúncio. Passar nela conta a favor.</p>
+<p>Duas consequências práticas. Primeira: <strong>não adianta escalar mídia antes de subir o limite</strong>, o pedido simplesmente não entra. Segunda: essa é uma daquelas informações que o cliente não sabe que existe, e chegar com ela na primeira reunião posiciona a agência como quem conhece o canal por dentro.</p>
+<h3>KPIs do canal</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>O que mede</th>
+<th>Onde olha</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GMV</td>
+<td>Faturamento bruto do canal</td>
+<td>Painel do seller</td>
+</tr>
+<tr>
+<td>Pedidos e ticket</td>
+<td>Tamanho e valor médio</td>
+<td>Painel do seller</td>
+</tr>
+<tr>
+<td>GMV por creator</td>
+<td>Concentração de vendas</td>
+<td>Aba de afiliados</td>
+</tr>
+<tr>
+<td>Nº de creators ativos</td>
+<td>Tamanho da rede vendendo</td>
+<td>Aba de afiliados</td>
+</tr>
+<tr>
+<td>Taxa de aceite de amostra</td>
+<td>Eficiência do recrutamento</td>
+<td>Controle próprio</td>
+</tr>
+<tr>
+<td>GMV de live</td>
+<td>Peso do live commerce</td>
+<td>Painel de lives</td>
+</tr>
+<tr>
+<td>Cancelamento e devolução</td>
+<td>Saúde da operação</td>
+<td>Painel de pedidos</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Erros comuns</h3>
+<ul>
+<li>Deixar o showcase desativado, o que quebra a ponte entre conteúdo e produto</li>
+<li>Cadastrar produto sem variação, obrigando a criar produtos separados e diluir avaliações</li>
+<li>Ignorar a política de devolução e absorver custo depois</li>
+<li>Começar a recrutar creator antes de a loja estar aprovada para vender</li>
+</ul>
+<h3>O que levar pra semana</h3>
+<p>Loja configurada de ponta a ponta, com showcase ativo, programa de afiliados habilitado e painel de KPIs do canal aberto.</p>
+<h2>Roteiro</h2>
+<h3>Antes da aula</h3>
+<ul>
+<li>Confirmar que a 1ª parcela foi paga e que a agenda fixa de dia e horário está definida</li>
+<li>Deixar a conta inicial aberta e logada, para percorrer setup e showcase sem depender de aprovação</li>
+<li>Se for usar conta de cliente em algum bloco, confirmar a autorização e esconder dado sensível antes de compartilhar a tela</li>
+<li>Pedir os acessos com 3 dias úteis de antecedência e testar se entram</li>
+<li>Levantar quais categorias os alunos mais atendem e qual documentação cada uma exige</li>
+</ul>
+<h3>Os 60 minutos</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Tempo</th>
+<th>Bloco</th>
+<th>O que fazer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00 a 05</td>
+<td>Abertura</td>
+<td>Apresentar o desenho do programa, os 2 módulos, o ritual de fechamento e as regras de agenda</td>
+</tr>
+<tr>
+<td>05 a 12</td>
+<td>Ecossistema</td>
+<td>Intenção contra descoberta, com exemplo do próprio catálogo</td>
+</tr>
+<tr>
+<td>12 a 22</td>
+<td>Funil e consideração</td>
+<td>Os 87% de indecisos, a força do canal no meio do funil e o que muda quando se otimiza para consideração</td>
+</tr>
+<tr>
+<td>22 a 40</td>
+<td>Setup na tela</td>
+<td>Percorrer o cadastro em uma conta real, campo a campo, mostrando onde reprova e por quê</td>
+</tr>
+<tr>
+<td>40 a 44</td>
+<td>Pós-aprovação</td>
+<td>Mostrar os passos 4 a 7 e o que a agência adianta enquanto a conta é analisada</td>
+</tr>
+<tr>
+<td>44 a 53</td>
+<td>Custo da plataforma</td>
+<td>Comissão, frete e taxa fixa, a curva do percentual efetivo por ticket e os custos que vêm junto</td>
+</tr>
+<tr>
+<td>53 a 58</td>
+<td>Calendário e KPIs</td>
+<td>Mostrar as datas de 2026, o desenho de uma campanha em 4 fases e montar o painel do canal</td>
+</tr>
+<tr>
+<td>58 a 60</td>
+<td>Fechamento</td>
+<td>Definir o que precisa ser aprovado antes da Aula 02</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Aula cheia.</strong> Se o setup travar em pendência de documento, corte o bloco do calendário e jogue para a Aula 07, que é onde ele é aprofundado. Setup e custo da plataforma são os dois blocos que não podem sair.</p>
+</blockquote>
+<h3>O que mostrar na tela</h3>
+<p>Seller Center do TikTok Shop, aba de verificação, cadastro de produto, showcase no perfil e painel de afiliados.</p>
+<h3>Perguntas de checagem</h3>
+<ul>
+<li>Sua categoria exige algum documento adicional para vender aqui?</li>
+<li>Seu perfil do TikTok já está vinculado à loja?</li>
+<li>Quantos dos seus produtos vendem abaixo de R$ 50, e você sabe quanto sobra deles depois de comissão, frete, taxa fixa e creator?</li>
+</ul>
+<h3>Fechamento</h3>
+<p>ATA na página da aula, checklist de setup e painel de KPIs anexados no site, gravação publicada, pendências de aprovação registradas com prazo.</p>
+<h2>Template</h2>
+<h3>Checklist de abertura de loja</h3>
+<p>Este é o documento que você entrega ao cliente no dia 1 de qualquer projeto de TikTok Shop. Preencha as duas primeiras colunas agora, com a categoria que você mais atende.</p>
+<p>Antes do cadastro, responsabilidade do cliente:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Quem providencia</th>
+<th>Prazo típico</th>
+<th>Reprova se</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CNPJ ativo e cartão CNPJ</td>
+<td>cliente</td>
+<td>imediato</td>
+<td>inativo ou irregular</td>
+</tr>
+<tr>
+<td>Dados bancários</td>
+<td>cliente</td>
+<td>imediato</td>
+<td>titularidade diferente do CNPJ</td>
+</tr>
+<tr>
+<td>Documento do responsável legal</td>
+<td>cliente</td>
+<td>imediato</td>
+<td>ilegível ou vencido</td>
+</tr>
+<tr>
+<td>Documentação da categoria</td>
+<td>cliente</td>
+<td>varia</td>
+<td>categoria regulada sem registro</td>
+</tr>
+<tr>
+<td>Perfil do TikTok da marca</td>
+<td>cliente ou agência</td>
+<td>1 dia</td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Cadastro e análise:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Responsável</th>
+<th>Depende de</th>
+<th>Prazo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cadastro do seller enviado</td>
+<td>agência</td>
+<td>documentos acima</td>
+<td>1 dia</td>
+</tr>
+<tr>
+<td>Verificação de identidade</td>
+<td>plataforma</td>
+<td>análise</td>
+<td>dias a 2 semanas</td>
+</tr>
+<tr>
+<td>Categoria liberada</td>
+<td>plataforma</td>
+<td>análise</td>
+<td>dias a 2 semanas</td>
+</tr>
+</tbody>
+</table></div>
+<p>Depois da aprovação:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Etapa</th>
+<th>Responsável</th>
+<th>Entra na aula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Produtos e variações cadastrados</td>
+<td>agência</td>
+<td>02</td>
+</tr>
+<tr>
+<td>Envio, prazos e devolução</td>
+<td>agência</td>
+<td>02</td>
+</tr>
+<tr>
+<td>Perfil vinculado e showcase ativo</td>
+<td>agência</td>
+<td>02</td>
+</tr>
+<tr>
+<td>Programa de afiliados habilitado</td>
+<td>agência</td>
+<td>04</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Materiais desta aula</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Material</th>
+<th>Para que serve</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://docs.google.com/spreadsheets/d/1JIlgCECXUkSO0acJshFoDSq5ZOS8m_I2xf9ORkKqLPg/edit?usp=sharing">Planilha de precificação</a></td>
+<td>calcular margem com a régua de comissão, frete e taxa fixa</td>
+</tr>
+<tr>
+<td><a href="conta-bancaria.html">Guia de conta bancária</a></td>
+<td>enviar ao cliente junto com a lista de documentos</td>
+</tr>
+<tr>
+<td><a href="acesso-colaborador.html">Guia de acesso de colaborador</a></td>
+<td>pedir acesso à loja sem compartilhar senha</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Painel de KPIs do canal</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>KPI</th>
+<th>Valor inicial</th>
+<th>Meta 90 dias</th>
+<th>Frequência de leitura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GMV</td>
+<td></td>
+<td></td>
+<td>semanal</td>
+</tr>
+<tr>
+<td>Pedidos</td>
+<td></td>
+<td></td>
+<td>semanal</td>
+</tr>
+<tr>
+<td>Ticket médio</td>
+<td></td>
+<td></td>
+<td>semanal</td>
+</tr>
+<tr>
+<td>Creators ativos</td>
+<td></td>
+<td></td>
+<td>semanal</td>
+</tr>
+<tr>
+<td>GMV do top creator</td>
+<td></td>
+<td></td>
+<td>semanal</td>
+</tr>
+<tr>
+<td>GMV de live</td>
+<td></td>
+<td></td>
+<td>semanal</td>
+</tr>
+<tr>
+<td>Cancelamento %</td>
+<td></td>
+<td></td>
+<td>semanal</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Critério de aceite</h3>
+<p>O entregável está pronto quando o checklist de abertura está preenchido com prazos e responsáveis, pronto para ser enviado a um cliente sem nenhuma edição, e o painel de KPIs está montado com as metas que você usaria em um projeto real.</p>
+<p>Não faz parte deste entregável ter uma loja aberta ou aprovada. O que se leva daqui é o método.</p>
+<h2>Registro</h2>
+<h3>ATA · 12/08/2026</h3>
+<p>Talisson abriu apresentando a operação que dirige, com equipe de 76 pessoas atendendo cerca de 160 clientes, cada um com gestor dedicado, como contexto do que será ensinado. A estratégia se concentra na multicanalidade, utilizando plataformas como Mercado Livre, TikTok e Shopee. Talisson, líder da operação, destaca a importância do TikTok Shop e compartilha seu histórico, enfatizando a necessidade de uma abordagem estruturada para treinamento e conteúdo, além do gerenciamento eficaz de comissões e custos operacionais. O TikTok Shop exige CNPJ para abertura de contas e possui regras rigorosas sobre pedidos e conteúdos, com uma estrutura de comissões que varia conforme o preço dos produtos. Talisson também menciona a importância do engajamento através de lives e conteúdos de creators, além de uma gestão cuidadosa das campanhas de marketing.</p>
+<h4>O que foi coberto</h4>
+<ul>
+<li>👥 Contexto: a operação conduzida pelo Talisson tem 76 pessoas e cerca de 160 clientes em 3 marketplaces, com foco forte no TikTok Shop. É a base prática de onde sai o conteúdo da mentoria.</li>
+<li>🛒 TikTok Shop: Exige CNPJ, limite de 50 pedidos/dia para contas novas, aprovação demora até 48h e pagamentos podem atrasar até 30 dias.</li>
+<li>💰 Precificação e Comissões: Taxa total é 16% para produtos abaixo de R$50 e 12% para acima; afiliados podem receber até 20% de comissão.</li>
+<li>🎥 Conteúdo e Lives: Estratégia combina vídeos da marca, creators e lives; subsídios chegam a 25% em descontos para impulsionar vendas.</li>
+<li>📈 Marketing Pago: ROI no TikTok inclui vendas orgânicas influenciadas por ads; app via API ajuda separar vendas orgânicas e pagas.</li>
+<li>📅 Calendário de Campanhas: Datas-chave com descontos de até 25%, exigem cadastro; ajudam a evitar queda de faturamento pós-evento.</li>
+</ul>
+<h4>O que ficou combinado</h4>
+<p><strong>Talisson Leite Kayhara</strong></p>
+<ul>
+<li>Disponibilizar material de apoio, planilhas e gravações no Vercel para acesso do time (01:10)</li>
+<li>~~Enviar lista dos principais creators por nicho~~. Correção: não foi um compromisso, foi a demonstração do tipo de informação que se extrai do FastMoss (top do nicho, top dos nichos paralelos e top geral). O método está na Aula 04 (01:22:30)</li>
+<li>Compartilhar contatos de gerentes de conta relevantes para apoio com parceiros e clientes (08:20)</li>
+<li>Fornecer planilha detalhada de precificação TikTok para que o time possa customizar para cada cliente (01:16:40)</li>
+<li>Elaborar mentoria específico para execução e estratégias de live no TikTok (01:56:00)</li>
+<li>Preparar material explicativo sobre lógica de atribuição e análise de investimento em ads no TikTok (01:35:00)</li>
+</ul>
+<p><strong>Caue Oliveira</strong></p>
+<ul>
+<li>Validar políticas e limites de faturamento com base no CPF em marketplaces (21:25)</li>
+<li>Suportar o time na negociação com gerentes para subida de teto de pedido para clientes que atingem limites (45:40)</li>
+</ul>
+<p><strong>Junior Weber</strong></p>
+<ul>
+<li>Solicitar acesso à planilha de controle de métricas TikTok para consultas e análises futuras (46:30)</li>
+<li>Investigar e consolidar informações sobre uso e performance de afiliados e campanhas do TikTok para clientes (52:15)</li>
+</ul>
+  </div>
+  <div class="footer">Elevate Ecom. · Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

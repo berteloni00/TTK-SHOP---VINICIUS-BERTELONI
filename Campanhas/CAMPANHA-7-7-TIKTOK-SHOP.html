@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Campanha 7.7 · TikTok Shop · Guia para vendedores · Elevate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;
+    --card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--yellow:#FACC15;
+    --tealbright:#25F4EE;--red:#FE2C55;--green:#22C55E;--magenta:#E11D48;}
+  *{box-sizing:border-box;margin:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif;color:var(--text);
+    background:
+      radial-gradient(60% 55% at 88% 6%, rgba(45,212,191,0.22), transparent 60%),
+      radial-gradient(62% 55% at 6% 96%, rgba(225,29,72,0.20), transparent 60%),
+      radial-gradient(50% 45% at 70% 80%, rgba(126,200,227,0.07), transparent 70%),
+      linear-gradient(140deg,#07131F 0%,#0B1A2B 46%,#0F2B3A 100%);
+    background-attachment:fixed;min-height:100vh;line-height:1.6;overflow-x:hidden;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .wrap{max-width:880px;margin:0 auto;padding:46px 24px 70px;}
+  p,li,td,th{overflow-wrap:break-word;word-break:break-word;}
+
+  .back{display:inline-block;color:var(--muted);font-size:12px;text-decoration:none;margin-bottom:22px;border:1px solid var(--cardborder);border-radius:999px;padding:5px 13px;transition:.15s;}
+  .back:hover{color:var(--accent);border-color:var(--accent);}
+  .eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+  h1{font-weight:300;font-size:40px;line-height:1.08;letter-spacing:-0.8px;color:#fff;}
+  h1 b{font-weight:800;}
+  .sub{color:var(--muted);font-size:14.5px;margin-top:14px;max-width:640px;}
+  .badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px;}
+  .pillb{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--text);border:1px solid var(--cardborder);background:rgba(15,43,58,0.5);border-radius:999px;padding:6px 13px;}
+  .pillb.hot{color:#fff;border-color:rgba(254,44,85,0.5);background:rgba(254,44,85,0.12);}
+  .pillb .dot{width:9px;height:9px;border-radius:50%;background:var(--tealbright);box-shadow:6px 0 0 -1px var(--red);}
+  .conf{display:inline-block;margin-top:14px;font-size:11px;font-weight:700;color:var(--yellow);border:1px solid rgba(250,204,21,0.4);background:rgba(250,204,21,0.08);border-radius:8px;padding:6px 12px;}
+  .accentbar{height:3px;width:120px;background:linear-gradient(90deg,#2DD4BF 0%,#7EC8E3 40%,#E11D48 100%);border-radius:3px;margin:24px 0 8px;box-shadow:0 0 18px rgba(126,200,227,0.35);}
+
+  .lnav{position:sticky;top:0;z-index:40;display:flex;flex-wrap:nowrap;gap:8px;margin:18px -24px 8px;padding:11px 24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    background:rgba(9,19,31,0.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--cardborder);}
+  .lnav::-webkit-scrollbar{display:none;}
+  .lnav a{flex:0 0 auto;font-size:11.5px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--cardborder);border-radius:999px;padding:6px 13px;transition:.15s;background:rgba(15,43,58,0.4);white-space:nowrap;}
+  .lnav a:hover{color:var(--accent);border-color:var(--accent);}
+  .lnav a.active{color:#fff;border-color:var(--accent);background:linear-gradient(135deg,rgba(126,200,227,0.22),rgba(37,212,191,0.14));box-shadow:0 0 14px rgba(126,200,227,0.18);}
+
+  section{margin-top:46px;scroll-margin-top:72px;}
+  h2{font-weight:800;font-size:25px;color:#fff;letter-spacing:-0.4px;line-height:1.15;padding-top:18px;border-top:1px solid var(--cardborder);}
+  h3{font-weight:700;font-size:16.5px;color:var(--accent);margin:26px 0 10px;}
+  p{margin:13px 0;font-size:15px;}
+  p.lead{font-size:15.5px;color:var(--muted);}
+  strong{color:#fff;font-weight:700;}
+  .hot{color:var(--red);font-weight:700;}
+
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:22px 0;}
+  .stat{background:var(--card);border:1px solid var(--cardborder);border-radius:16px;padding:20px;}
+  .stat .big{font-weight:800;font-size:30px;line-height:1;color:#fff;letter-spacing:-1px;}
+  .stat .lab{font-size:12.5px;color:var(--muted);margin-top:10px;}
+  .stat .lab b{color:var(--accent);}
+
+  /* duas modalidades */
+  .mods{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0;}
+  .mod{border-radius:16px;padding:20px;border:1px solid var(--cardborder);background:var(--card);}
+  .mod.fs{border-top:4px solid var(--red);}
+  .mod.gp{border-top:4px solid var(--tealbright);}
+  .mod .mh{font-weight:800;color:#fff;font-size:16px;}
+  .mod .mtag{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+  .mod.fs .mtag{color:var(--red);}.mod.gp .mtag{color:var(--tealbright);}
+  .mod ul{list-style:none;padding:0;margin:12px 0 0;}
+  .mod li{font-size:13px;color:var(--text);padding:7px 0 7px 22px;position:relative;border-bottom:1px solid rgba(126,200,227,0.08);}
+  .mod li:last-child{border-bottom:none;}
+  .mod li:before{content:"›";position:absolute;left:6px;top:6px;color:var(--accent);font-weight:800;}
+  .mod li b{color:#fff;}
+  @media (max-width:660px){.mods{grid-template-columns:1fr;}}
+
+  /* tabela */
+  .tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:20px 0;border:1px solid var(--cardborder);border-radius:14px;}
+  table{border-collapse:collapse;width:100%;min-width:520px;font-size:13px;}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;color:var(--text);}
+  thead th{font-weight:700;font-size:12.5px;color:#fff;}
+  thead th.fs{background:rgba(254,44,85,0.16);}
+  thead th.gp{background:rgba(37,244,238,0.14);}
+  tbody th{color:var(--accent);font-weight:700;white-space:nowrap;background:rgba(126,200,227,0.04);}
+  tbody tr:last-child td,tbody tr:last-child th{border-bottom:none;}
+  td .yes{color:var(--green);font-weight:700;}td .no{color:var(--red);font-weight:700;}
+  @media (max-width:660px){table{min-width:480px;}}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;}
+  .cards.two{grid-template-columns:repeat(2,1fr);}
+  .ic{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:18px;}
+  .ic .h{font-weight:700;color:#fff;font-size:14.5px;}
+  .ic .h .n{display:inline-flex;vertical-align:-6px;margin-right:8px;width:24px;height:24px;border-radius:7px;background:rgba(126,200,227,0.14);color:var(--accent);font-size:13px;font-weight:800;align-items:center;justify-content:center;}
+  .ic p{font-size:13px;color:var(--muted);margin:9px 0 0;}
+  @media (max-width:660px){.cards,.cards.two{grid-template-columns:1fr;}}
+
+  .callout{background:linear-gradient(135deg,rgba(15,43,58,0.62),rgba(45,212,191,0.06));border:1px solid rgba(45,212,191,0.28);border-left:3px solid #2DD4BF;border-radius:0 12px 12px 0;padding:14px 18px;margin:20px 0;font-size:13.5px;color:var(--text);}
+  .callout b{color:#fff;}
+  .callout.warn{border-left-color:var(--yellow);border-color:rgba(250,204,21,0.3);background:linear-gradient(135deg,rgba(15,43,58,0.62),rgba(250,204,21,0.06));}
+  .callout.hot{border-left-color:var(--red);border-color:rgba(254,44,85,0.3);background:linear-gradient(135deg,rgba(15,43,58,0.62),rgba(254,44,85,0.07));}
+
+  /* destaque "por que importa" */
+  .why{display:flex;gap:14px;align-items:flex-start;background:linear-gradient(135deg,rgba(250,204,21,0.12),rgba(15,43,58,0.6));border:1px solid rgba(250,204,21,0.34);border-radius:14px;padding:16px 18px;margin:18px 0;box-shadow:0 4px 22px rgba(250,204,21,0.06);}
+  .why .ix{flex:0 0 auto;font-size:22px;line-height:1.2;}
+  .why .wt{font-weight:800;color:var(--yellow);font-size:11px;letter-spacing:1.2px;text-transform:uppercase;}
+  .why p{margin:5px 0 0;font-size:13.5px;color:var(--text);line-height:1.6;}
+  .why p b{color:#fff;}
+  .why.money{background:linear-gradient(135deg,rgba(34,197,94,0.16),rgba(15,43,58,0.6));border-color:rgba(34,197,94,0.42);box-shadow:0 4px 22px rgba(34,197,94,0.08);}
+  .why.money .wt{color:var(--green);}
+
+  /* banner de campanha (destaque grande) */
+  .camp{border-radius:18px;padding:20px 22px;margin:42px 0 8px;border:1px solid var(--cardborder);background:var(--card);}
+  .camp .cn{font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;}
+  .camp .ct{font-size:23px;font-weight:800;color:#fff;letter-spacing:-0.4px;margin-top:5px;line-height:1.15;}
+  .camp .cd{font-size:14px;color:var(--text);margin-top:9px;}
+  .camp .cd b{color:#fff;}
+  .camp .cb{margin-top:13px;display:flex;flex-wrap:wrap;gap:8px;}
+  .camp .cb span{font-size:11.5px;font-weight:600;color:#fff;background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.16);border-radius:999px;padding:5px 11px;}
+  .camp .cb span.dl{background:rgba(254,44,85,0.18);border-color:rgba(254,44,85,0.5);}
+  .camp.c-red{background:linear-gradient(135deg,rgba(254,44,85,0.16),rgba(15,43,58,0.5));border-color:rgba(254,44,85,0.42);}
+  .camp.c-red .cn{color:var(--red);}
+  .camp.c-purple{background:linear-gradient(135deg,rgba(168,85,247,0.18),rgba(15,43,58,0.5));border-color:rgba(168,85,247,0.42);}
+  .camp.c-purple .cn{color:#C084FC;}
+  .camp.c-teal{background:linear-gradient(135deg,rgba(37,244,238,0.15),rgba(15,43,58,0.5));border-color:rgba(37,244,238,0.42);}
+  .camp.c-teal .cn{color:var(--tealbright);}
+  .camp.c-blue{background:linear-gradient(135deg,rgba(126,200,227,0.18),rgba(15,43,58,0.5));border-color:rgba(126,200,227,0.45);}
+  .camp.c-blue .cn{color:var(--accent);}
+
+  /* mapa das campanhas */
+  .campmap{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:18px 0;}
+  .campmap a{text-decoration:none;border-radius:14px;padding:15px 16px;border:1px solid var(--cardborder);background:var(--card);transition:.15s;display:block;}
+  .campmap a:hover{transform:translateY(-1px);border-color:var(--accent);box-shadow:0 6px 22px rgba(37,212,191,0.08);}
+  .campmap .mn{font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+  .campmap .mt{font-weight:700;color:#fff;font-size:14.5px;margin-top:4px;}
+  .campmap .md{font-size:12px;color:var(--muted);margin-top:4px;}
+  .campmap a.main{grid-column:1 / -1;background:linear-gradient(135deg,rgba(34,197,94,0.15),rgba(15,43,58,0.55));border-color:rgba(34,197,94,0.42);}
+  .campmap a.main .mn{color:var(--green);}
+  .campmap a.main .pill{display:inline-block;margin-left:8px;font-size:9.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;color:#0B1A2B;background:var(--green);padding:2px 7px;border-radius:20px;vertical-align:1px;}
+  @media (max-width:660px){.campmap{grid-template-columns:1fr;}}
+
+  /* níveis */
+  .tier{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:stretch;margin:12px 0;}
+  .tier .tn{display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;color:#fff;border-radius:12px;padding:0 16px;min-width:80px;}
+  .tier.t1 .tn{background:linear-gradient(135deg,#7A1020,#E11D48);}
+  .tier.t2 .tn{background:linear-gradient(135deg,#0E3A52,#1C9BD8);}
+  .tier.t3 .tn{background:linear-gradient(135deg,#0E4A3A,#15B886);}
+  .tier .tb{background:var(--card);border:1px solid var(--cardborder);border-radius:12px;padding:14px 16px;}
+  .tier .tb .a{font-weight:700;color:#fff;font-size:14px;}
+  .tier .tb .b{font-size:12.5px;color:var(--muted);margin-top:4px;}
+  .tier .tb .c{font-size:12.5px;color:var(--accent);margin-top:6px;}
+
+  /* calendário de fases */
+  .phaseline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0;}
+  .ph{border-radius:14px;padding:16px 14px;border:1px solid var(--cardborder);background:var(--card);position:relative;}
+  .ph .pk{font-size:10.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--muted);}
+  .ph .pn{font-weight:800;color:#fff;font-size:15px;margin-top:4px;}
+  .ph .pd{font-size:12px;color:var(--muted);margin-top:6px;}
+  .ph .mult{display:inline-block;margin-top:10px;font-weight:800;font-size:14px;color:#fff;background:linear-gradient(135deg,rgba(254,44,85,0.22),rgba(225,29,72,0.12));border:1px solid rgba(254,44,85,0.4);border-radius:8px;padding:3px 10px;}
+  .ph.prep{border-top:4px solid var(--muted);}
+  .ph.promo{border-top:4px solid var(--red);}
+  .ph.cat{border-top:4px solid var(--tealbright);}
+  .ph.pos{border-top:4px solid var(--accent);}
+  .ph .star{position:absolute;top:10px;right:12px;font-size:14px;}
+  .ph.prep .pk{color:var(--muted);}
+  .ph.promo .pk{color:var(--red);}
+  .ph.cat .pk{color:var(--tealbright);}
+  .ph.pos .pk{color:var(--accent);}
+  .ph.prep .mult,.ph.pos .mult{background:rgba(126,200,227,0.10);border-color:var(--cardborder);}
+  .ph.cat .mult{background:linear-gradient(135deg,rgba(37,244,238,0.18),rgba(37,244,238,0.06));border-color:rgba(37,244,238,0.45);}
+  @media (max-width:660px){.phaseline{grid-template-columns:1fr 1fr;}}
+
+  /* gráfico de verba */
+  .budget{background:linear-gradient(160deg,#0a0a12,#0d1422);border:1px solid var(--cardborder);border-radius:18px;padding:18px 16px 10px;margin:22px 0;}
+  .budget .bt{font-size:11px;font-weight:700;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin:0 4px 8px;}
+  .budget svg{width:100%;height:auto;display:block;}
+  .budget svg text{font-family:'Poppins',sans-serif;}
+  .budget .leg{display:flex;flex-wrap:wrap;gap:14px;margin:10px 6px 2px;font-size:11.5px;color:var(--muted);}
+  .budget .leg b{color:#fff;}
+
+  /* faq */
+  .faq{margin:14px 0;}
+  .faq .q{font-weight:700;color:#fff;font-size:13.5px;margin-top:14px;display:flex;gap:8px;}
+  .faq .q::before{content:"?";flex:0 0 auto;width:20px;height:20px;border-radius:6px;background:rgba(254,44,85,0.16);color:var(--red);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .faq .a{font-size:13px;color:var(--muted);margin:4px 0 0 28px;}
+
+  /* fórmula ROI */
+  .roibox{background:rgba(11,26,43,0.6);border:1px solid var(--cardborder);border-radius:14px;padding:18px 20px;margin:18px 0;}
+  .roibox code{font-family:ui-monospace,Menlo,Consolas,monospace;background:rgba(126,200,227,0.12);color:#fff;padding:3px 8px;border-radius:6px;font-size:13px;}
+  .roibox .ex{font-size:13.5px;margin:10px 0;}
+
+  /* barra de progresso de leitura */
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,#2DD4BF,#7EC8E3 45%,#E11D48);box-shadow:0 0 10px rgba(126,200,227,0.5);transition:width .08s linear;}
+
+  /* botão voltar ao topo */
+  #totop{position:fixed;right:20px;bottom:22px;z-index:55;width:46px;height:46px;border-radius:50%;border:1px solid var(--cardborder);
+    background:rgba(11,26,43,0.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--accent);font-size:19px;line-height:1;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:.22s;box-shadow:0 6px 22px rgba(0,0,0,0.35);}
+  #totop.show{opacity:1;visibility:visible;transform:translateY(0);}
+  #totop:hover{color:#fff;border-color:var(--accent);box-shadow:0 6px 26px rgba(126,200,227,0.25);}
+  @media (max-width:660px){#totop{right:14px;bottom:16px;width:42px;height:42px;}}
+  @media print{#progress,#totop{display:none;}}
+
+  .foot{margin-top:54px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+  @media (max-width:660px){
+    .wrap{padding:32px 16px 50px;}
+    h1{font-size:28px;}h2{font-size:21px;}
+    .stats{grid-template-columns:1fr;}
+    body{background-attachment:scroll;}
+    .lnav{margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px;}
+  }
+  @media print{body{background-attachment:scroll;}.lnav,.back{display:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../index.html">← Voltar ao Hub</a>
+  <div class="eyebrow">Elevate Ecom · Datas comerciais · TikTok Shop</div>
+  <h1>Campanha <b>7.7</b> · Liquidação<br>Guia para <b>vendedores</b></h1>
+  <div class="sub">O que você precisa saber para inscrever seus produtos na mega-campanha 7.7 do TikTok Shop, escolher a modalidade certa e usar o GMV Max para maximizar o GMV no período.</div>
+  <div class="badges">
+    <span class="pillb"><span class="dot"></span>TikTok Shop</span>
+    <span class="pillb">🗓️ Promo 7.7: 2–8 jul · pico 6–7</span>
+    <span class="pillb">🏷️ Dias de Categoria: 9–12 jul</span>
+    <span class="pillb hot">🔥 Liquidação 7.7</span>
+    <span class="pillb">📝 Inscrições: a partir de 15 de junho</span>
+  </div>
+  <div class="accentbar"></div>
+
+  <nav class="lnav">
+    <a href="#oque">O que é</a>
+    <a href="#campanhas">As 4 campanhas</a>
+    <a href="#calendario">Calendário &amp; verba</a>
+    <a href="#modalidades">1 · Cadastro 1-clique</a>
+    <a href="#resumo">Resumo FS×GP</a>
+    <a href="#afiliados">2 · Afiliados</a>
+    <a href="#liveranking">3 · Ranking de Live</a>
+    <a href="#videocurto">4 · Vídeos Curtos</a>
+    <a href="#elegibilidade">Elegibilidade</a>
+    <a href="#porque-ads">Por que rodar Ads</a>
+    <a href="#estrutura">Estrutura</a>
+    <a href="#roi">Meta de ROI</a>
+    <a href="#pagamento">Pagamento</a>
+  </nav>
+
+  <!-- O QUE É -->
+  <section id="oque">
+    <h2>O que é a Campanha 7.7</h2>
+    <p class="lead">A <strong>7.7 (Liquidação)</strong> é uma das mega-campanhas de data do TikTok Shop. Acontece de <strong>2 a 12 de julho</strong> e oferece destaque no app, subsídios e benefícios exclusivos para os produtos inscritos, desde que sigam as regras de preço e de anúncios.</p>
+    <p>Há <strong>duas modalidades</strong> de participação, que <strong>podem ser combinadas</strong>. Os links de inscrição (ambas) ficam disponíveis em <strong>Marketing › Campanhas</strong> a partir de <strong>15 de junho</strong>.</p>
+    <p class="lead">É a <strong>primeira campanha do TikTok Shop do segundo semestre</strong>: o maior festival de compras do meio do ano no Brasil.</p>
+    <div class="cards two">
+      <div class="ic"><div class="h">🛍️ Para o consumidor</div><p><b style="color:var(--red);">Até 50% OFF</b> em diversas categorias (Beleza, Moda, Eletroeletrônicos/3C, Casa e Decoração, entre outras).</p></div>
+      <div class="ic"><div class="h">🏪 Para o vendedor</div><p><b>Subsídios de e-commerce</b> + <b>direcionamento massivo de tráfego</b> para os produtos inscritos.</p></div>
+    </div>
+  </section>
+
+  <!-- AS 4 CAMPANHAS -->
+  <section id="campanhas">
+    <h2>As 4 campanhas dentro da 7.7</h2>
+    <p class="lead">A 7.7 <strong>não é uma campanha só</strong>: são <strong>4 frentes</strong> que podem rodar juntas. Quanto mais você combina, maior o efeito no GMV. Cada uma tem seu próprio registro e prazo:</p>
+    <div class="campmap">
+      <a href="#modalidades" class="main"><div class="mn">Campanha 1 <span class="pill">★ carrega o faturamento</span></div><div class="mt">⚡ Cadastro com um clique</div><div class="md">2 subcampanhas: Oferta Relâmpago + Participação Geral. <b style="color:#fff;">Desconto financiado pelo TikTok Shop</b> + destaque no app. É o motor do GMV da 7.7.</div></a>
+      <a href="#afiliados"><div class="mn">Campanha 2 · registro até 28/06</div><div class="mt">🤝 Campanha de Afiliados</div><div class="md">Amostras + comissão especial para mobilizar criadores.</div></a>
+      <a href="#liveranking"><div class="mn">Campanha 3 · registro até 30/06</div><div class="mt">🔴 Ranking de Live (Nível A)</div><div class="md">Competição de lives com premiação por colocação.</div></a>
+      <a href="#videocurto"><div class="mn">Campanha 4</div><div class="mt">🎬 Ranking de Vídeos Curtos</div><div class="md">Competição de vídeos curtos com premiação por desempenho.</div></a>
+    </div>
+  </section>
+
+  <!-- CALENDÁRIO & VERBA -->
+  <section id="calendario">
+    <h2>Calendário &amp; distribuição de verba</h2>
+    <p class="lead">A janela completa (2–12 jul) tem <strong>4 fases</strong>. A sugestão oficial é <strong>escalar a verba de mídia</strong> acompanhando os picos: é aqui que mora a estratégia de GMV <strong>durante</strong> a campanha.</p>
+
+    <div class="budget">
+      <div class="bt">Sugestão de distribuição de verba de mídia (× base)</div>
+      <svg viewBox="0 0 1000 320" role="img" aria-label="Curva de verba de mídia ao longo das fases: base 1x na preparação, 1,6x na Promo 7.7 com pico 1,7x nos dias 6 e 7 de julho, 1,6x nos Dias de Categoria e reavaliação no pós-campanha.">
+        <defs>
+          <linearGradient id="bgfill" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FE2C55" stop-opacity="0.5"/>
+            <stop offset="1" stop-color="#FE2C55" stop-opacity="0.02"/>
+          </linearGradient>
+          <linearGradient id="bgline" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#25F4EE"/>
+            <stop offset="0.55" stop-color="#7EC8E3"/>
+            <stop offset="1" stop-color="#FE2C55"/>
+          </linearGradient>
+        </defs>
+        <!-- baseline -->
+        <line x1="40" y1="270" x2="980" y2="270" stroke="rgba(126,200,227,0.18)" stroke-width="1"/>
+        <!-- dividers -->
+        <g stroke="rgba(255,255,255,0.16)" stroke-width="1.2" stroke-dasharray="4 6">
+          <line x1="215" y1="78" x2="215" y2="270"/>
+          <line x1="562" y1="78" x2="562" y2="270"/>
+          <line x1="822" y1="78" x2="822" y2="270"/>
+        </g>
+        <!-- area -->
+        <path d="M40,212 C110,210 160,206 215,202 C270,200 295,150 360,142 C398,137 415,150 445,150 C485,122 505,100 545,96 C585,93 605,120 665,126 C725,128 765,129 822,134 C882,168 940,196 980,206 L980,270 L40,270 Z" fill="url(#bgfill)"/>
+        <!-- line -->
+        <path d="M40,212 C110,210 160,206 215,202 C270,200 295,150 360,142 C398,137 415,150 445,150 C485,122 505,100 545,96 C585,93 605,120 665,126 C725,128 765,129 822,134 C882,168 940,196 980,206" fill="none" stroke="url(#bgline)" stroke-width="3.5" stroke-linecap="round"/>
+        <!-- markers -->
+        <circle cx="120" cy="205" r="5" fill="#7EC8E3"/>
+        <circle cx="545" cy="96" r="6.5" fill="#FE2C55" stroke="#fff" stroke-width="2"/>
+        <circle cx="700" cy="127" r="5" fill="#25F4EE"/>
+        <circle cx="940" cy="196" r="5" fill="#7EC8E3"/>
+        <!-- peak star -->
+        <text x="545" y="58" text-anchor="middle" font-size="22">⭐</text>
+        <text x="545" y="40" text-anchor="middle" font-size="15" font-weight="700" fill="#FE2C55">Pico · 6–7 jul</text>
+        <!-- multiplier labels -->
+        <text x="120" y="190" text-anchor="middle" font-size="19" font-weight="800" fill="#E8EEF2">1×</text>
+        <text x="372" y="128" text-anchor="middle" font-size="19" font-weight="800" fill="#E8EEF2">1,6×</text>
+        <text x="545" y="128" text-anchor="middle" font-size="22" font-weight="800" fill="#fff">1,7×</text>
+        <text x="700" y="113" text-anchor="middle" font-size="19" font-weight="800" fill="#E8EEF2">1,6×</text>
+        <!-- phase labels -->
+        <g font-size="15" font-weight="700" text-anchor="middle">
+          <text x="127" y="298" fill="#98B0BC">Preparação</text>
+          <text x="388" y="298" fill="#FE2C55">Promo 7.7</text>
+          <text x="692" y="298" fill="#25F4EE">Dias de Categoria</text>
+          <text x="901" y="298" fill="#7EC8E3">Pós</text>
+        </g>
+      </svg>
+      <div class="leg">
+        <span>📅 <b>Preparação</b> até 01/07</span>
+        <span>🔥 <b>Promo 7.7</b> 02–08/07</span>
+        <span>🏷️ <b>Categorias</b> 09–12/07</span>
+        <span>📊 <b>Pós</b> 13/07+</span>
+      </div>
+    </div>
+
+    <div class="phaseline">
+      <div class="ph prep"><div class="pk">Fase 1 · Preparação</div><div class="pn">Preparação</div><div class="pd">Verba de mídia atual, até <b>01/07</b>. Aquecer conta e criativos.</div><div class="mult">Base 1×</div></div>
+      <div class="ph promo"><div class="star">⭐</div><div class="pk">Fase 2 · Promo 7.7</div><div class="pn">Promo 7.7</div><div class="pd"><b>02–08/07</b> (7 dias). Pico <b>6–7/07</b>.</div><div class="mult">Verba 1,6× · pico 1,7×</div></div>
+      <div class="ph cat"><div class="pk">Fase 3 · Categorias</div><div class="pn">Dias de Categoria</div><div class="pd"><b>09–12/07</b> (4 dias).</div><div class="mult">Verba 1,6×</div></div>
+      <div class="ph pos"><div class="pk">Fase 4 · Pós</div><div class="pn">Revisão pós-campanha</div><div class="pd">Ler resultados, manter os SKUs vencedores, cortar o que não rendeu.</div><div class="mult">Reavaliar</div></div>
+    </div>
+
+    <h3>Dias de Categoria (9–12 jul): quando cada vertical entra</h3>
+    <div class="cards two">
+      <div class="ic"><div class="h">👗 Moda &amp; Consumíveis</div><p><b>9 jul – 11 jul</b>.</p></div>
+      <div class="ic"><div class="h">📱 Eletrônicos &amp; Casa/Decoração</div><p><b>10 jul – 12 jul</b>.</p></div>
+    </div>
+
+    <div class="callout hot">📈 <b>Estratégia de verba durante a campanha:</b> suba o orçamento do GMV Max para <b>~1,6×</b> o normal durante a Promo 7.7, chegando a <b>~1,7×</b> nos dias de pico (<b>6–7/07</b>), e mantenha <b>~1,6×</b> nos Dias de Categoria. Mantenha a <b>meta de ROI</b>: você escala volume, não afrouxa a eficiência.</div>
+    <div class="callout">📍 <b>No Elevate 4D:</b> isso é gestão ativa de <b>D2 Ads</b> no calendário. O segredo não é só "entrar na 7.7", é <b>concentrar verba nos picos certos</b> (6–7/07) e nos dias da categoria do cliente, sem perder a meta de ROI.</div>
+  </section>
+
+  <!-- MODALIDADES -->
+  <section id="modalidades">
+    <div class="camp c-red">
+      <div class="cn">Campanha 1 de 4 · dentro da 7.7</div>
+      <div class="ct">⚡ Cadastro com um clique</div>
+      <div class="cd"><b>2 subcampanhas</b> num cadastro só: <b>Oferta Relâmpago (FS)</b> + <b>Participação Geral (GP)</b>.</div>
+      <div class="cb"><span>🗓️ 02–12/07</span><span>📝 Marketing › Campanhas</span><span>💰 Desconto + Ads</span></div>
+    </div>
+    <div class="why money"><div class="ix">💰</div><div><div class="wt">A campanha que carrega o faturamento</div><p>De todas as 4 frentes da 7.7, o <b>Cadastro com um clique é a que move o grosso da receita</b>. Por quê? O <b>desconto é financiado pelo TikTok Shop</b> (cupons da plataforma, <b>não saem da sua margem</b>) e o produto entra com <b>desconto cheio + destaque no app</b> bem no <b>maior pico de tráfego do meio do ano</b>. É aqui que o volume acontece. As outras campanhas (Afiliados, Ranking de Live, Vídeos Curtos) <b>amplificam</b> essa base. Mas o motor do GMV da 7.7 é esta. <b>Ficar de fora dela é abrir mão da maior parte da venda do festival.</b></p></div></div>
+    <div class="mods">
+      <div class="mod fs">
+        <div class="mtag">⚡ Oferta Relâmpago (FS)</div>
+        <div class="mh">Subsídio da plataforma de até 25%</div>
+        <ul>
+          <li><b>Desconto:</b> <b>15%–25%</b> via <b>cupons financiados pelo TikTok Shop</b> nos produtos registrados, não sai da sua margem.</li>
+          <li><b>Quem:</b> participação por <b>convite</b> (vendedores selecionados).</li>
+          <li><b>Preço:</b> no mínimo <b>5% abaixo</b> do menor preço dos últimos 30 dias, e <b>igual ou menor</b> do que em outras plataformas.</li>
+          <li><b>Destaque no app:</b> <b>posicionamento em destaque</b>, banner, contagem regressiva e selo de campanha.</li>
+          <li><b>Subsídio extra</b> de até <b>3%</b> no produto + <b>bônus de comissão</b> de até <b>5%</b>.</li>
+        </ul>
+      </div>
+      <div class="mod gp">
+        <div class="mtag">🌐 Participação Geral (GP)</div>
+        <div class="mh">Potencialize seu uplift com anúncios</div>
+        <ul>
+          <li><b>Desconto:</b> <b>10%–20%</b> via <b>cupons financiados pelo TikTok Shop</b> nos produtos registrados.</li>
+          <li><b>Quem:</b> aberta a <b>todos os vendedores</b>.</li>
+          <li><b>Preço:</b> igual ou menor que o menor preço dos últimos 30 dias.</li>
+          <li><b>Requisito:</b> ter <b>Anúncios de GMV Max ativos</b> (pelo menos 1 campanha).</li>
+          <li><b>Sem campanha de Ads (GMV Max) ativa?</b> O sistema cria uma <b>automaticamente</b>, com meta de <b>ROI 33</b>.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout hot">🔥 <b>Cadastre-se nas DUAS subcampanhas de uma só vez</b> (botão "Cadastrar-se em todas") é o que maximiza desconto financiado + alcance no pico.</div>
+  </section>
+
+  <!-- RESUMO -->
+  <section id="resumo">
+    <h2>Resumo rápido: FS × GP</h2>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th></th><th class="fs">⚡ Oferta Relâmpago (FS)</th><th class="gp">🌐 Participação Geral (GP)</th></tr>
+        </thead>
+        <tbody>
+          <tr><th>Quem pode participar</th><td>Apenas vendedores convidados</td><td>Todos os vendedores</td></tr>
+          <tr><th>Requisito de preço</th><td>5% off vs. menor preço dos últimos 30 dias (L30d)</td><td>L30d mínimo (sem % extra)</td></tr>
+          <tr><th>Ads obrigatório</th><td><span class="no">Não</span></td><td><span class="yes">Sim</span> · GMV Max (ROI 33)</td></tr>
+          <tr><th>Desconto ao cliente</th><td><b>15%–25%</b> OFF</td><td><b>10%–20%</b> OFF</td></tr>
+          <tr><th>Quem paga o desconto</th><td colspan="2"><span class="yes">TikTok Shop</span>: cupons financiados pela plataforma (não sai da sua margem)</td></tr>
+          <tr><th>Benefício máximo</th><td>Subsídio até 25% + destaque + bônus comissão 5%</td><td>Uplift com Ads + cupom da plataforma</td></tr>
+          <tr><th>Link de inscrição</th><td>Marketing › Campanhas</td><td>Marketing › Campanhas</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="hint" style="font-size:12px;color:var(--muted);font-style:italic;">L30d = menor preço praticado nos últimos 30 dias.</p>
+  </section>
+
+  <!-- AFILIADOS -->
+  <section id="afiliados">
+    <div class="camp c-purple">
+      <div class="cn">Campanha 2 de 4 · dentro da 7.7</div>
+      <div class="ct">🤝 Campanha de Afiliados · 7.7 Liquidação</div>
+      <div class="cd">Foco em <b>criadores</b>: amostras + comissão especial para impulsionar o conteúdo de afiliado no pico.</div>
+      <div class="cb"><span>🗓️ 02–12/07</span><span class="dl">⏰ Registro encerra 28/06</span><span>👥 Por convite</span></div>
+    </div>
+    <p class="lead">É focada em <strong>criadores</strong>: você libera amostras e uma comissão especial para impulsionar o conteúdo de afiliado no período. É <strong>por convite</strong> ("Convidadas") e tem registro próprio.</p>
+    <div class="why"><div class="ix">⭐</div><div><div class="wt">Por que importa</div><p>É como você <b>ativa um exército de criadores sem produzir todo o conteúdo</b>. Amostras + a comissão de campanha (<b>+1%</b>) dão um motivo concreto pro criador <b>priorizar o seu produto justo no pico</b> de tráfego. E tem efeito composto: esse conteúdo de afiliado autorizado vira <b>combustível do GMV Max (D2)</b>: mais criativo testando, mais alcance, melhor performance da campanha de Ads.</p></div></div>
+
+    <div class="callout warn">⏰ <b>Atenção aos prazos:</b> a campanha roda de <b>02/07 a 12/07</b>, mas o <b>registro de produtos encerra em 28/06</b>. Inscreva os produtos em <b>Marketing › Campanhas › Cadastrar produtos</b> antes disso.</div>
+
+    <h3>Os 2 requisitos para inscrever produtos</h3>
+    <div class="cards two">
+      <div class="ic"><div class="h">🎁 Requisito de amostra</div><p>Configurar <b>amostras grátis E reembolsáveis</b>:<br>• <b>Grátis:</b> defina a quantidade como <b>20</b>.<br>• <b>Reembolsável:</b> critério de reembolso ao gerar <b>3 pedidos</b>: se o criador gerar 3 pedidos via vídeo curto/live/vitrine, recebe <b>reembolso completo automático</b>.</p></div>
+      <div class="ic"><div class="h">💸 Requisito de comissão</div><p>A comissão da campanha deve ser <b>1% maior</b> que a maior comissão de <b>colaboração aberta</b> dos produtos registrados nos últimos 30 dias.</p></div>
+    </div>
+    <div class="callout">ℹ️ As <b>amostras grátis precisam da sua aprovação</b>: aprove dentro do prazo para o criador receber e ter tempo de produzir. A comissão da campanha vale só para <b>conteúdo recém-publicado</b> ou <b>produtos recém-adicionados</b> no período; conteúdo/produto antigo segue a comissão original.</div>
+
+    <h3>Benefícios para o vendedor (produtos registrados com sucesso)</h3>
+    <div class="cards two">
+      <div class="ic"><div class="h">🐤 Early Bird <span style="font-weight:600;color:var(--muted);font-size:12px;">(antes de 23/06)</span></div><p>• Exposição em <b>destaque na Central de criadores</b>.<br>• <b>Vouchers de amostra patrocinados</b> para criadores convidados.</p></div>
+      <div class="ic"><div class="h">🏅 Benefícios oficiais <span style="font-weight:600;color:var(--muted);font-size:12px;">(todos os inscritos)</span></div><p>• <b>Bônus de comissão extra</b> da plataforma para criadores selecionados.<br>• Recomendação via <b>Tabela de classificação de criadores</b> / grupos de tarefas: criadores mais motivados (recebem incentivos do TikTok Shop).</p></div>
+    </div>
+
+    <h3>Critérios &amp; como participar</h3>
+    <div class="cards two">
+      <div class="ic"><div class="h">✅ Critérios</div><p><b>Produto:</b> qualidade (critérios de registro do TikTok) + ser <b>produto designado</b> (só designados podem entrar).<br><b>Loja:</b> o TikTok Shop avalia a elegibilidade da loja antes do registro.</p></div>
+      <div class="ic"><div class="h">📝 Como participar (3 passos)</div><p><b>1.</b> Selecionar produtos (online ou modelo de Excel).<br><b>2.</b> Preencher registro (preço da campanha, estoque reservado, comissão).<br><b>3.</b> Revisar e enviar para aprovação.</p></div>
+    </div>
+
+    <h3>Perguntas frequentes</h3>
+    <div class="faq">
+      <div class="q">Quais são os preços promocionais da campanha?</div>
+      <div class="a">Variam e são especificados na página de detalhes da campanha. Pode ser necessário reduzir o preço do produto ao registrar.</div>
+      <div class="q">Posso me retirar depois de registrado?</div>
+      <div class="a">Sim. Em Central do vendedor › Marketing › Campanhas › Gerenciar campanhas. <b>Em análise:</b> "Excluir" cancela o registro. <b>Aprovado:</b> "Retirar" abre uma solicitação de retirada para análise.</div>
+      <div class="q">Posso participar de mais de uma campanha?</div>
+      <div class="a">Sim, de quantas quiser. O <b>menor preço de campanha</b> enviado sempre terá prioridade.</div>
+      <div class="q">Posso configurar outras promoções junto?</div>
+      <div class="a">Sim. Oferta Relâmpago ou cupons do vendedor podem rodar junto. O preço da <b>Oferta Relâmpago da LIVE tem precedência</b> sobre o preço da campanha.</div>
+    </div>
+
+    <div class="callout">📍 <b>No Elevate 4D:</b> é a alavanca de <b>D3 Afiliados</b> dentro da 7.7: amostras + comissão de campanha mobilizam criadores no período de pico. Combinada com o GMV Max (D2), o conteúdo de afiliado autorizado vira combustível de anúncio.</div>
+  </section>
+
+  <!-- RANKING DE LIVE -->
+  <section id="liveranking">
+    <div class="camp c-teal">
+      <div class="cn">Campanha 3 de 4 · dentro da 7.7</div>
+      <div class="ct">🔴 Ranking de Live · 7.7 Liquidação (Nível A)</div>
+      <div class="cd">Competição de <b>criadores de live</b> com premiação por colocação (até R$ 688 + cupons + pôster).</div>
+      <div class="cb"><span>🗓️ Competição 02–12/07</span><span class="dl">⏰ Inscrições até 30/06</span><span>👥 Níveis S/A por convite</span></div>
+    </div>
+    <p class="lead">Há 3 níveis (<strong>S / A / B</strong>): <strong>S e A são por convite</strong>. Cada criador participa de <strong>apenas um</strong> Live Ranking; se entrar em vários, vale só o <strong>maior prêmio</strong>.</p>
+    <div class="why"><div class="ix">⭐</div><div><div class="wt">Por que importa</div><p>Transforma a live num <b>evento competitivo com prêmio real</b> (até <b>R$ 688</b> + cupons + pôster oficial). Pra quem já faz live, é <b>GMV incremental</b> no pico, e subir no ranking gera <b>mais alcance orgânico</b>, num efeito bola de neve. O custo de entrada é disciplina: live diária, longa e com produto. Quem monta a grade certa colhe faturamento <b>e</b> visibilidade de graça.</p></div></div>
+
+    <div class="callout warn">⏰ <b>Prazos:</b> inscrições de <b>18/06 a 30/06</b> (registro encerra 30/06) · competição de <b>02/07 a 12/07</b>. Aberta só para <b>criadores do TikTok Shop</b> e <b>contas oficiais de seller / marketing</b>.</div>
+
+    <h3>Como participar (requisitos da live)</h3>
+    <div class="cards">
+      <div class="ic"><div class="h">🔴 Tempo no ar</div><p>Entrar ao vivo durante a campanha por no mínimo <b>120 minutos por dia</b>.</p></div>
+      <div class="ic"><div class="h">🛒 Produtos no carrinho</div><p>Adicionar no mínimo <b>15 produtos</b> ao carrinho da live.</p></div>
+      <div class="ic"><div class="h">🎤 Presença na câmera</div><p>Aparecer na câmera e <b>apresentar os produtos pessoalmente</b>.</p></div>
+    </div>
+
+    <h3>Como sobe no ranking: o Hot Score</h3>
+    <p>A classificação é baseada no <strong>Hot Score</strong>. Para aumentá-lo:</p>
+    <div class="cards">
+      <div class="ic"><div class="h">📈 Mais GMV de lives</div><p>Aumente o faturamento gerado nas suas transmissões.</p></div>
+      <div class="ic"><div class="h">⏱️ Lives diárias e longas</div><p>Faça lives todo dia, com maior duração.</p></div>
+      <div class="ic"><div class="h">💬 Engajamento</div><p>Interaja ativamente com o público pra aumentar a interação.</p></div>
+    </div>
+
+    <h3>Recompensas</h3>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Colocação (Hot Score acumulado)</th><th>Cupom de promote</th></tr></thead>
+        <tbody>
+          <tr><th>🥇 1º lugar</th><td>R$ 688</td></tr>
+          <tr><th>🥈 2º – 4º lugar</th><td>R$ 388</td></tr>
+          <tr><th>🥉 5º – 10º lugar</th><td>R$ 188</td></tr>
+          <tr><th>11º – 50º lugar</th><td>R$ 88</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="cards two">
+      <div class="ic"><div class="h">🎟️ Cupons de Live (todos)</div><p>Cupons de Live (R$ 100–R$ 15) para todos os participantes: <b>1.500 por dia</b>, por ordem de chegada, até esgotar.</p></div>
+      <div class="ic"><div class="h">📰 Exposição em pôster</div><p>Os <b>10 principais</b> criadores de cada nível ganham exposição em pôster oficial.</p></div>
+    </div>
+    <div class="callout">ℹ️ Recompensas emitidas em até <b>7 dias corridos</b> após cada fase. Cupons de promote válidos por <b>60 dias</b>. Se a mesma conta entrar em várias competições de live ranking, vale só a <b>recompensa de nível mais alto</b>.</div>
+
+    <h3>Critérios &amp; como registrar</h3>
+    <div class="cards two">
+      <div class="ic"><div class="h">✅ Critérios</div><p><b>Loja:</b> status ativo · loja designada · contas TikTok (oficial + marketing) vinculadas.<br><b>Conta TikTok:</b> até <b>1 sessão por conta</b> · atender critérios de live · ter <b>permissão de comércio eletrônico</b>.</p></div>
+      <div class="ic"><div class="h">📝 Como registrar</div><p><b>1.</b> Registrar sessões em <b>Seller Center › Promoções › Campanhas › Campanhas LIVE</b>.<br><b>2.</b> Acompanhar na guia <b>Sessões registradas</b>.</p></div>
+    </div>
+
+    <div class="callout hot">🚫 <b>Condutas proibidas (anticompetitivas):</b> pedidos fraudulentos / inflação de GMV, manipulação coordenada ou tráfego falso, abuso/burla das mecânicas. Violação → desclassificação, perda de recompensa, remoção de conteúdo e até suspensão.</div>
+    <div class="callout">📍 <b>No Elevate 4D:</b> é incentivo direto à <b>D4 Social / Live</b>: premia cadência e GMV de live. Cliente que já opera live entra com vantagem; vale planejar a grade de transmissões da 7.7 mirando o Hot Score (120 min/dia, 15+ produtos, todo dia).</div>
+  </section>
+
+  <!-- RANKING DE VÍDEOS CURTOS -->
+  <section id="videocurto">
+    <div class="camp c-blue">
+      <div class="cn">Campanha 4 de 4 · dentro da 7.7</div>
+      <div class="ct">🎬 Ranking de Vídeos Curtos · 7.7 Liquidação</div>
+      <div class="cd">Competição de <b>vídeos curtos</b> (shoppable) com premiação por desempenho, a versão "VOD" do Ranking de Live.</div>
+      <div class="cb"><span>🗓️ Campanha 02–12/07</span><span>🎥 Vídeos compráveis</span></div>
+    </div>
+    <p class="lead">A quarta frente premia o <strong>conteúdo gravado</strong> (vídeos curtos compráveis), assim como o Ranking de Live premia as transmissões. Foca em criadores que geram vendas pelos vídeos no feed "Para você".</p>
+    <div class="why"><div class="ix">⭐</div><div><div class="wt">Por que importa</div><p>Nem todo criador faz live, mas <b>todo criador posta vídeo</b>. Essa campanha captura o esforço de quem escala por <b>conteúdo gravado</b>, que tem <b>vida longa</b> no feed (continua vendendo depois de postado) e ainda alimenta o <b>GMV Max (D2)</b> como criativo de anúncio. Junto com a de Afiliados, fecha o ciclo de mobilização de criadores na 7.7.</p></div></div>
+    <div class="callout warn">📝 <b>Detalhes oficiais em construção.</b> Faltam os números desta campanha (requisitos, critério de ranking, premiação e prazo de registro). Assim que você me enviar a página da Central do vendedor dela, eu completo esta seção igual às outras.</div>
+  </section>
+
+  <!-- ELEGIBILIDADE -->
+  <section id="elegibilidade">
+    <h2>Regras de elegibilidade 7.7</h2>
+    <p class="lead">Registre seus produtos para <strong>desbloquear os benefícios exclusivos</strong> (recursos e subsídios da 7.7). A regra central:</p>
+    <div class="callout warn">⚠️ <b>Apenas lojas com campanhas de GMV Max ativas são elegíveis</b> aos benefícios da 7.7.</div>
+    <div class="cards two">
+      <div class="ic"><div class="h"><span>✅ Produto que <b>JÁ tem</b> campanha GMV Max ativa</span></div><p>É <b>qualificado</b> automaticamente para os recursos e subsídios da campanha 7.7.</p></div>
+      <div class="ic"><div class="h"><span>⚙️ Produto que <b>NÃO tem</b> campanha de Ads (GMV Max) ativa</span></div><p>Ao fazer a adesão à 7.7, o sistema <b>cria automaticamente</b> uma campanha GMV Max para o seu produto, já com <b>meta de ROI 33</b> (padrão). Você não fica de fora.</p></div>
+    </div>
+  </section>
+
+  <!-- POR QUE ADS -->
+  <section id="porque-ads">
+    <h2>Por que rodar Ads na campanha</h2>
+    <p class="lead">Rodar anúncios durante a campanha amplia o conteúdo e maximiza o GMV. O benchmark (base Brasil) mostra o salto:</p>
+    <div class="stats">
+      <div class="stat"><div class="big">2,2×</div><div class="lab">Lojas <b>sem anúncios</b> pré-campanha viram um <b>multiplicador de GMV 2,2× maior</b> ao rodar Ads na campanha.</div></div>
+      <div class="stat"><div class="big">3×+</div><div class="lab">Multiplicador de GMV para lojas <b>com Ads</b> durante a campanha.</div></div>
+      <div class="stat"><div class="big">1,5×+</div><div class="lab">Multiplicador de GMV para lojas <b>sem Ads</b>: o teto de quem não anuncia.</div></div>
+    </div>
+    <h3>GMV Max: a solução publicitária que te ajuda a alcançar:</h3>
+    <div class="cards">
+      <div class="ic"><div class="h">🎨 Mais criativos pra testar e escalar</div><p>Todo o ecossistema (orgânico, afiliado e pago) trabalha junto para escalar as campanhas enquanto maximiza o ROI.</p></div>
+      <div class="ic"><div class="h">⏱️ Menos trabalho, mais tempo</div><p>Escolha produtos ou faça uma live: ROI, orçamento e automação cuidam do resto, com IA otimizando as operações de campanha.</p></div>
+      <div class="ic"><div class="h">📈 ROI melhorado do canal</div><p>Otimiza a entrega orgânica com tráfego pago para gerar um GMV incremental que você não alcançaria de outra forma.</p></div>
+    </div>
+  </section>
+
+  <!-- ESTRUTURA -->
+  <section id="estrutura">
+    <h2>Como estruturar a campanha (por níveis)</h2>
+    <p class="lead">Em <strong>Products › + Add product</strong>, organize os SKUs por nível conforme o papel de cada produto:</p>
+    <div class="tier t1"><div class="tn">Nível 1</div><div class="tb"><div class="a">Produto hero: muitos pedidos, poucos SKUs</div><div class="b">Um único SKU, uma única campanha.</div><div class="c">Meta de ROI específica + orçamento diário + monitoramento diário.</div></div></div>
+    <div class="tier t2"><div class="tn">Nível 2</div><div class="tb"><div class="a">Produto novo: precisa de testes de criativo e exposição</div><div class="b">Produto com a mesma meta de ROI agrupado em uma campanha.</div></div></div>
+    <div class="tier t3"><div class="tn">Nível 3</div><div class="tb"><div class="a">Outro produto: quantidade alta, mas poucas vendas</div><div class="b">Agrupamento por categoria e meta de ROI em uma campanha.</div></div></div>
+    <div class="callout">💡 <b>Se um SKU tem boa performance, transfira-o para uma campanha individual</b> (sobe de nível) para dar orçamento e meta próprios.</div>
+  </section>
+
+  <!-- ROI -->
+  <section id="roi">
+    <h2>Como definir minha meta de ROI</h2>
+
+    <h3>Cenário 1: você sabe a margem e quanto quer gastar em Ads</h3>
+    <div class="roibox">
+      <p style="margin-top:0;">Fórmula: <code>Alvo de ROI = 100 ÷ (% do GMV que você quer gastar)</code></p>
+      <div class="ex">• Quero gastar <b>5%</b> do GMV em Ads → <code>100 / 5 = 20</code></div>
+      <div class="ex">• Quero gastar <b>10%</b> do GMV em Ads → <code>100 / 10 = 10</code></div>
+      <p style="margin-bottom:0;font-size:12.5px;color:var(--muted);">Quanto <b>maior</b> o ROI alvo, <b>menor</b> o % do GMV gasto em anúncio (custo de Ads % ≈ 1 ÷ ROI). Ex.: ROI 33 ≈ 3% de custo.</p>
+    </div>
+
+    <h3>Cenário 2: primeira vez anunciando, sem ideia do alvo</h3>
+    <p>Use o <strong>benchmark da categoria</strong> como referência (faixa-alvo de ROI):</p>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Categoria</th><th>Brasil (faixa de ROI)</th><th>México (faixa de ROI)</th></tr></thead>
+        <tbody>
+          <tr><th>Electronics</th><td>8,5 – 9,0</td><td>5,0 – 5,5</td></tr>
+          <tr><th>FMCG – Beauty</th><td>3,5 – 4,0</td><td>3,0 – 3,5</td></tr>
+          <tr><th>FMCG – Non Beauty</th><td>6,0 – 6,5</td><td>2,5 – 3,0</td></tr>
+          <tr><th>Fashion</th><td>9,5 – 10</td><td>4,5 – 5,0</td></tr>
+          <tr><th>Food &amp; Drinks</th><td>5,0 – 5,5</td><td>3,5 – 4,0</td></tr>
+          <tr><th>Lifestyle</th><td>8,0 – 8,5</td><td>5,5 – 6,0</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--muted);font-style:italic;">Benchmark de referência (faixa de datas da base: 28/04–29/05). Use como ponto de partida e ajuste pela sua margem real.</p>
+  </section>
+
+  <!-- PAGAMENTO -->
+  <section id="pagamento">
+    <h2>Pagamento é fácil e o orçamento está seguro</h2>
+    <p class="lead">O GMV Max é a solução automatizada da Shop: você <strong>só define meta de ROI e orçamento</strong>, e ele otimiza tráfego pago + orgânico, impulsiona todos os criativos da conta e conteúdos de afiliado autorizados, e gera <strong>mais GMV</strong>.</p>
+    <div class="callout">ℹ️ Se você se registrar na 7.7 mas <b>não criar manualmente</b> uma campanha no GMV Max, <b>o sistema cria uma automaticamente</b> para você.</div>
+
+    <div class="cards two">
+      <div class="ic"><div class="h">💳 Sem método de pagamento → CPS</div><p><b>Custo por pedido:</b> o custo do anúncio só é deduzido <b>quando o pedido acontece</b>. Reembolso/cancelamento → o custo é devolvido à conta de faturamento. O custo é pago a partir do <b>GMV dos pedidos</b>, automaticamente.</p></div>
+      <div class="ic"><div class="h">🏦 Com método de pagamento</div><p>Cria uma campanha GMV Max normal.</p></div>
+    </div>
+
+    <div class="stats" style="grid-template-columns:1fr;">
+      <div class="stat"><div class="big">ROI 33 <span style="font-size:14px;color:var(--muted);font-weight:600;">por padrão</span></div><div class="lab">Se você aderir à 7.7 <b>sem campanha de Ads (GMV Max) ativa</b>, a campanha criada automaticamente já vem com <b>meta de ROI 33</b> (padrão BR). Ajuste depois conforme sua margem e o benchmark da categoria.</div></div>
+    </div>
+
+    <div class="callout hot">🚀 <b>Não hesite em inscrever seus produtos na campanha TikTok 7.7!</b> Para práticas recomendadas e guias de configuração, fale com o seu Gerente de Anúncios / time Elevate.</div>
+  </section>
+
+  <div class="foot">Elevate Ecom. · Sua marca acima nos marketplaces. · Guia interno da Campanha 7.7 (TikTok Shop), destilado do material oficial da campanha. Datas e regras sujeitas a alteração pela plataforma.</div>
+</div>
+
+<div id="progress"></div>
+<button id="totop" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  var top=document.getElementById('totop');
+  var nav=document.querySelector('.lnav');
+  var links=[].slice.call(document.querySelectorAll('.lnav a'));
+  var map={};
+  links.forEach(function(a){ map[a.getAttribute('href').slice(1)]=a; });
+
+  // barra de progresso + botão voltar ao topo
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var pct=max>0?(h.scrollTop/max)*100:0;
+    bar.style.width=pct+'%';
+    if(h.scrollTop>520){ top.classList.add('show'); } else { top.classList.remove('show'); }
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  top.addEventListener('click',function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  // destaque da seção atual + auto-scroll do chip na nav
+  var current=null;
+  function setActive(id){
+    if(id===current||!map[id]) return;
+    current=id;
+    links.forEach(function(a){ a.classList.remove('active'); });
+    var a=map[id]; a.classList.add('active');
+    // mantém o chip ativo visível dentro da nav horizontal
+    var l=a.offsetLeft, r=l+a.offsetWidth;
+    if(l<nav.scrollLeft+24) nav.scrollTo({left:l-24,behavior:'smooth'});
+    else if(r>nav.scrollLeft+nav.clientWidth-24) nav.scrollTo({left:r-nav.clientWidth+24,behavior:'smooth'});
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting) setActive(e.target.id); });
+  },{rootMargin:'-80px 0px -65% 0px',threshold:0});
+  document.querySelectorAll('section[id]').forEach(function(s){ io.observe(s); });
+})();
+</script>
+</body>
+</html>

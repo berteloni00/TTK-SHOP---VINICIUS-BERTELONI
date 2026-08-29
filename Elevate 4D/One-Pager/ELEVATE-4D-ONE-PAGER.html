@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevate 4D — Diagnóstico TikTok Shop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy1:#0B1A2B; --navy2:#0F2B3A; --navy3:#1A4A5A;
+    --accent:#7EC8E3; --text:#E8EEF2; --muted:#98B0BC;
+    --card:rgba(15,43,58,0.55); --cardborder:rgba(126,200,227,0.18);
+    --green:#22C55E; --yellow:#FACC15; --red:#EF4444; --magenta:#EC4899;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    font-family:'Poppins',sans-serif; color:var(--text);
+    background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));
+    background-attachment:fixed; padding:38px 30px; line-height:1.45;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .page{max-width:880px; margin:0 auto;}
+  .eyebrow{font-weight:600; font-size:11px; letter-spacing:2.5px; text-transform:uppercase; color:var(--accent); margin-bottom:10px;}
+  h1{font-weight:300; font-size:46px; line-height:1.05; letter-spacing:-1px;}
+  h1 b{font-weight:800; display:block; color:#fff;}
+  .sub{color:var(--muted); font-size:14px; margin-top:12px; max-width:620px;}
+  .accentbar{height:3px; width:74px; background:var(--accent); border-radius:3px; margin:18px 0 28px;}
+
+  .grid2{display:grid; grid-template-columns:1.05fr 1fr; gap:24px; align-items:stretch;}
+  .card{background:var(--card); border:1px solid var(--cardborder); border-radius:16px; padding:22px 24px; backdrop-filter:blur(6px);}
+  .card h3{font-size:11px; letter-spacing:1.6px; text-transform:uppercase; color:var(--accent); font-weight:700; margin-bottom:14px;}
+
+  /* radar */
+  .radarwrap{display:flex; align-items:center; justify-content:center;}
+  svg{width:100%; height:auto;}
+  .axislabel{font-family:'Poppins'; font-weight:700; font-size:13px; fill:#fff;}
+  .axissub{font-family:'Poppins'; font-weight:400; font-size:10px; fill:var(--muted);}
+
+  /* 3 perguntas */
+  .q{display:flex; gap:13px; margin-bottom:15px;}
+  .q:last-child{margin-bottom:0;}
+  .qn{flex:0 0 30px; height:30px; border-radius:50%; background:rgba(126,200,227,0.14); border:1px solid var(--cardborder); color:var(--accent); font-weight:800; font-size:14px; display:flex; align-items:center; justify-content:center;}
+  .qt{font-size:13px;} .qt b{color:#fff; font-weight:700;} .qt span{color:var(--muted); font-size:12px;}
+
+  /* dimension cards */
+  .dims{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:24px;}
+  .dim{background:var(--card); border:1px solid var(--cardborder); border-radius:14px; padding:16px 15px; position:relative; overflow:hidden;}
+  .dim::before{content:''; position:absolute; top:0; left:0; right:0; height:3px;}
+  .dim.d1::before{background:var(--accent);} .dim.d2::before{background:var(--magenta);}
+  .dim.d3::before{background:var(--green);} .dim.d4::before{background:var(--yellow);}
+  .dim .tag{font-weight:800; font-size:12px; letter-spacing:1px;}
+  .dim.d1 .tag{color:var(--accent);} .dim.d2 .tag{color:var(--magenta);}
+  .dim.d3 .tag{color:var(--green);} .dim.d4 .tag{color:var(--yellow);}
+  .dim h4{font-size:15px; font-weight:700; color:#fff; margin:3px 0 7px;}
+  .dim p{font-size:11.5px; color:var(--muted); line-height:1.4;}
+  .dim .fn{font-size:10.5px; color:var(--text); margin-top:9px; font-weight:600;}
+
+  /* momentos ruler */
+  .ruler{margin-top:26px;}
+  .ruler .line{position:relative; height:2px; background:linear-gradient(90deg,var(--red),var(--yellow),var(--green)); margin:42px 14px 0; border-radius:2px;}
+  .nodes{display:flex; justify-content:space-between; position:absolute; top:-9px; left:0; right:0;}
+  .node{width:18px; height:18px; border-radius:50%; background:var(--navy2); border:2px solid var(--accent); display:flex; align-items:center; justify-content:center;}
+  .node b{font-size:8px; color:var(--accent); font-weight:800;}
+  .mlabels{display:flex; justify-content:space-between; margin:16px 6px 0; text-align:center;}
+  .ml{flex:1; padding:0 3px;} .ml b{display:block; font-size:11px; color:#fff; font-weight:700;} .ml span{font-size:9.5px; color:var(--muted);}
+
+  /* CT gauge */
+  .ct{margin-top:14px;}
+  .ctbar{display:flex; height:30px; border-radius:8px; overflow:hidden; font-size:10px; font-weight:700; text-align:center;}
+  .ctbar div{display:flex; align-items:center; justify-content:center; color:#0B1A2B;}
+  .ctbar .g{background:var(--green); flex:2;} .ctbar .y{background:var(--yellow); flex:1.5;} .ctbar .r{background:var(--red); flex:1.5; color:#fff;}
+  .ctlabels{display:flex; justify-content:space-between; font-size:10px; color:var(--muted); margin-top:6px;}
+  .ctnote{font-size:11px; color:var(--text); margin-top:11px;} .ctnote b{color:var(--accent);}
+
+  .foot{margin-top:30px; padding-top:16px; border-top:1px solid var(--cardborder); display:flex; justify-content:space-between; align-items:center; font-size:11px; color:var(--muted);}
+  .foot b{color:#fff; font-weight:700;}
+  .swipehint{display:none; text-align:center; font-size:10px; color:var(--muted); margin-top:10px; letter-spacing:0.5px;}
+
+  /* ===== RESPONSIVO / MOBILE ===== */
+  @media (max-width:760px){
+    body{padding:22px 16px; background-attachment:scroll;}
+    h1{font-size:34px;}
+    .sub{font-size:13px;}
+    .accentbar{margin:16px 0 22px;}
+    .grid2{grid-template-columns:1fr; gap:16px;}
+    .card{padding:18px 18px;}
+    .dims{grid-template-columns:1fr 1fr; gap:12px; margin-top:18px;}
+    .ruler{overflow-x:auto; -webkit-overflow-scrolling:touch;}
+    .rinner{min-width:560px;}
+    .swipehint{display:block;}
+    .foot{flex-direction:column; align-items:flex-start; gap:8px;}
+  }
+  @media (max-width:430px){
+    body{padding:18px 13px;}
+    h1{font-size:27px;}
+    .eyebrow{font-size:10px; letter-spacing:1.6px;}
+    .dims{grid-template-columns:1fr;}
+    .q .qt{font-size:12px;} .q .qt span{font-size:11px;}
+    .ctbar{height:34px; font-size:9px;}
+  }
+
+  @page{size:A4; margin:14mm;}
+  @media print{ body{padding:0;} .grid2{grid-template-columns:1.05fr 1fr;} .dims{grid-template-columns:repeat(4,1fr);} .ruler{overflow:visible;} .rinner{min-width:0;} .swipehint{display:none;} .card,.dim{break-inside:avoid;} }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="eyebrow">Metodologia Elevate · Diagnóstico TikTok Shop</div>
+  <h1>Elevate <b>4D</b></h1>
+  <div class="sub">As <b>4 Dimensões</b> que sustentam uma operação no TikTok Shop, lidas por <b>momento</b> e pela métrica-guia de saúde da conta. Onde sua loja está hoje — e qual dimensão elevar primeiro.</div>
+  <div class="accentbar"></div>
+
+  <div class="grid2">
+    <!-- RADAR -->
+    <div class="card radarwrap">
+      <svg viewBox="-28 0 392 320" role="img" aria-label="Radar das 4 dimensões">
+        <!-- rings (diamonds) -->
+        <g fill="none" stroke="rgba(126,200,227,0.16)" stroke-width="1">
+          <polygon points="180,60 300,160 180,260 60,160"/>
+          <polygon points="180,80 280,160 180,240 80,160"/>
+          <polygon points="180,100 260,160 180,220 100,160"/>
+          <polygon points="180,120 240,160 180,200 120,160"/>
+          <polygon points="180,140 220,160 180,180 140,160"/>
+        </g>
+        <!-- axes -->
+        <g stroke="rgba(126,200,227,0.22)" stroke-width="1">
+          <line x1="180" y1="160" x2="180" y2="60"/>
+          <line x1="180" y1="160" x2="300" y2="160"/>
+          <line x1="180" y1="160" x2="180" y2="260"/>
+          <line x1="180" y1="160" x2="60" y2="160"/>
+        </g>
+        <!-- sample polygon: D1=4,D2=3,D3=4,D4=3 -->
+        <polygon points="180,80 252,160 180,240 108,160"
+                 fill="rgba(126,200,227,0.22)" stroke="#7EC8E3" stroke-width="2.5"/>
+        <g fill="#7EC8E3">
+          <circle cx="180" cy="80" r="3.5"/><circle cx="252" cy="160" r="3.5"/>
+          <circle cx="180" cy="240" r="3.5"/><circle cx="108" cy="160" r="3.5"/>
+        </g>
+        <!-- labels -->
+        <text class="axislabel" x="180" y="42" text-anchor="middle">D1 · Produtos</text>
+        <text class="axissub" x="180" y="54" text-anchor="middle">catálogo · o chão</text>
+        <text class="axislabel" x="306" y="160" text-anchor="start">D2 · Ads</text>
+        <text class="axissub" x="306" y="172" text-anchor="start">GMV Max</text>
+        <text class="axislabel" x="180" y="284" text-anchor="middle">D3 · Afiliados</text>
+        <text class="axissub" x="180" y="296" text-anchor="middle">creators · motor</text>
+        <text class="axislabel" x="54" y="160" text-anchor="end">D4 · Social</text>
+        <text class="axissub" x="54" y="172" text-anchor="end">orgânico + lives</text>
+      </svg>
+    </div>
+
+    <!-- 3 PERGUNTAS + CT -->
+    <div class="card">
+      <h3>O método em 3 perguntas</h3>
+      <div class="q"><div class="qn">1</div><div class="qt"><b>Em que momento o cliente está?</b><br><span>Dos 7 momentos: M0 Probatório → M6 Maturidade</span></div></div>
+      <div class="q"><div class="qn">2</div><div class="qt"><b>Como o GMV se distribui — e quanto custa gerá-lo?</b><br><span>Decomposição pelas 4 dimensões + Custo de Tração</span></div></div>
+      <div class="q"><div class="qn">3</div><div class="qt"><b>Qual dimensão fortalecer agora?</b><br><span>A mais curta para aquele momento — D1 desempata</span></div></div>
+
+      <div class="ct">
+        <h3 style="margin-top:20px;">Custo de Tração (CT%) — o "TACOS do TikTok"</h3>
+        <div class="ctbar"><div class="g">SAUDÁVEL</div><div class="y">ATENÇÃO</div><div class="r">CRÍTICO</div></div>
+        <div class="ctlabels"><span>≤ 20%</span><span>20–35%</span><span>&gt; 35%</span></div>
+        <div class="ctnote"><b>CT% = (Ads + comissões + lives) ÷ GMV.</b> Mostra quanto de cada R$ 1 de GMV está sendo comprado.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIMENSION CARDS -->
+  <div class="dims">
+    <div class="dim d1"><div class="tag">D1</div><h4>Produtos</h4><p>Catálogo, preço, margem, kits, estoque e avaliações.</p><div class="fn">É o chão. Sustenta as outras 3.</div></div>
+    <div class="dim d2"><div class="tag">D2</div><h4>Ads</h4><p>GMV Max (Product + LIVE) e Spark Ads sobre o que já converte.</p><div class="fn">Acelera o que funciona.</div></div>
+    <div class="dim d3"><div class="tag">D3</div><h4>Afiliados</h4><p>Exército de creators por comissão: outreach, amostras, Pareto.</p><div class="fn">Motor distribuído — o + barato.</div></div>
+    <div class="dim d4"><div class="tag">D4</div><h4>Social</h4><p>Conta orgânica, conteúdo shoppable e lives próprias.</p><div class="fn">Marca + recorrência.</div></div>
+  </div>
+
+  <!-- MOMENTOS RULER -->
+  <div class="card ruler" style="margin-top:24px;">
+    <h3>Os 7 momentos — onde sua loja está</h3>
+    <div class="rinner">
+    <div class="line">
+      <div class="nodes">
+        <div class="node"><b>M0</b></div><div class="node"><b>M1</b></div><div class="node"><b>M2</b></div>
+        <div class="node"><b>M3</b></div><div class="node"><b>M4</b></div><div class="node"><b>M5</b></div><div class="node"><b>M6</b></div>
+      </div>
+    </div>
+    <div class="mlabels">
+      <div class="ml"><b>Probatório</b><span>loja em aprovação</span></div>
+      <div class="ml"><b>Lançamento</b><span>1ªs vendas</span></div>
+      <div class="ml"><b>Tração</b><span>1 dimensão puxa</span></div>
+      <div class="ml"><b>Escala</b><span>GMV cresce</span></div>
+      <div class="ml"><b>Platô</b><span>GMV achatou</span></div>
+      <div class="ml"><b>Crise</b><span>GMV caindo</span></div>
+      <div class="ml"><b>Maturidade</b><span>otimizar margem</span></div>
+    </div>
+    </div>
+    <div class="swipehint">← deslize para ver todos os momentos →</div>
+  </div>
+
+  <div class="foot">
+    <span>Cada momento exige uma dimensão diferente forte. Dimensão fraca só é problema se o momento já a exigia.</span>
+    <span><b>Elevate Ecom.</b> — Sua marca acima nos marketplaces.</span>
+  </div>
+
+</div>
+</body>
+</html>

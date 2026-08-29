@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Setup de Live</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Elevate Ecom · Formação Live que Vende</div>
+    <h1>Guia de Setup de Live</h1>
+    <div class="meta"><b>Anexo técnico</b> · 4 faixas · de R$ 5 mil a R$ 50 mil · Atualizado: 14 de agosto de 2026</div>
+  </div>
+  <div class="content">
+<blockquote>
+<h3>Quatro faixas de investimento, de R$ 5 mil a R$ 50 mil</h3>
+<p><strong>Leia isto antes de comprar qualquer coisa.</strong><br />
+Equipamento não vende. Método vende. Já vimos loja faturar em live com um celular apoiado numa pilha de caixas, e já vimos estúdio de R$ 40 mil transmitindo para 12 pessoas.<br />
+A ordem correta é: <strong>áudio, luz, internet, câmera.</strong> Nessa ordem. Quase todo mundo compra na ordem inversa e erra.</p>
+</blockquote>
+<hr />
+<h2>A REGRA DAS QUATRO PRIORIDADES</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Prioridade</th>
+<th>Por quê</th>
+<th>O que acontece se falhar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Áudio</strong></td>
+<td>O espectador perdoa imagem ruim, não perdoa som ruim</td>
+<td>Ele sai em 5 segundos</td>
+</tr>
+<tr>
+<td><strong>2. Luz</strong></td>
+<td>Luz define se o produto parece bom ou barato</td>
+<td>Produto some, cor errada, devolução</td>
+</tr>
+<tr>
+<td><strong>3. Internet</strong></td>
+<td>Live travada é live encerrada pelo algoritmo</td>
+<td>Perda de audiência que não volta</td>
+</tr>
+<tr>
+<td><strong>4. Câmera</strong></td>
+<td>É o item mais visível e o menos determinante</td>
+<td>Imagem menos nítida, e só</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Regra prática:</strong> se o orçamento é curto, um celular bom com microfone de lapela decente e duas luzes corretas entrega mais do que uma câmera cara com áudio embutido.</p>
+<h3>Requisito de internet (vale para todas as faixas)</h3>
+<ul>
+<li><strong>Mínimo:</strong> 10 Mbps de <strong>upload</strong> estável</li>
+<li><strong>Recomendado:</strong> 20 Mbps de upload, com cabo de rede, nunca Wi-Fi</li>
+<li>Testar upload no horário da live, não de manhã. A rede cai de noite, que é justamente quando a live acontece.</li>
+<li>Ter um celular com plano de dados como plano B, pronto para virar roteador</li>
+</ul>
+<hr />
+<h2>FAIXA 1 · ENTRADA · até R$ 5.000</h2>
+<p><strong>Para quem:</strong> loja começando, primeira live, quer validar antes de investir.<br />
+<strong>O que essa faixa entrega:</strong> live estável, com áudio limpo e produto bem iluminado. É suficiente para as 23 lives do programa inteiro.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Especificação</th>
+<th>Faixa de preço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Celular</td>
+<td>Use o que a loja já tem, se grava em 1080p ou 4K. Se precisar comprar, intermediário-superior recente</td>
+<td>R$ 0 a 2.200</td>
+</tr>
+<tr>
+<td>Microfone de lapela sem fio (duplo)</td>
+<td>Sistema com 2 transmissores e receptor USB-C, tipo Lark M2, Wireless Go, Boya</td>
+<td>R$ 650 a 900</td>
+</tr>
+<tr>
+<td>Tripé com braço articulado</td>
+<td>Altura mínima 1,60m, com suporte de celular firme</td>
+<td>R$ 200 a 350</td>
+</tr>
+<tr>
+<td>Iluminação principal</td>
+<td>2 painéis LED bicolor com softbox, 50W ou mais</td>
+<td>R$ 600 a 900</td>
+</tr>
+<tr>
+<td>Luz de preenchimento</td>
+<td>Ring light 18" com tripé</td>
+<td>R$ 250 a 400</td>
+</tr>
+<tr>
+<td>Fundo</td>
+<td>Backdrop de tecido liso com suporte, ou parede pintada</td>
+<td>R$ 200 a 350</td>
+</tr>
+<tr>
+<td>Mesa ou arara de apoio</td>
+<td>Produtos ao alcance da mão, sem sair do enquadramento</td>
+<td>R$ 200 a 400</td>
+</tr>
+<tr>
+<td>Segundo dispositivo</td>
+<td>Notebook ou tablet da loja para o operador acompanhar o LIVE Dashboard</td>
+<td>R$ 0</td>
+</tr>
+<tr>
+<td>Cabo de rede + adaptador</td>
+<td>Tirar a live do Wi-Fi</td>
+<td>R$ 80 a 150</td>
+</tr>
+<tr>
+<td>Extensões e organização</td>
+<td>Filtro de linha, fita, presilhas</td>
+<td>R$ 100</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Total estimado:</strong> R$ 2.300 a R$ 5.000, conforme o celular já existir ou não.</p>
+<p><strong>O erro clássico dessa faixa:</strong> comprar um ring light grande e nada de microfone. O ring light sozinho estoura o rosto, achata o produto e não resolve som.</p>
+<hr />
+<h2>FAIXA 2 · PROFISSIONAL · R$ 12.000 a R$ 15.000</h2>
+<p><strong>Para quem:</strong> loja que já fez lives, tem constância e quer subir a percepção de valor do produto.<br />
+<strong>O que muda:</strong> entra câmera dedicada, transmissão por desktop (mais controle e mais estabilidade) e iluminação de três pontos.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Especificação</th>
+<th>Faixa de preço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Câmera mirrorless</td>
+<td>Corpo com saída limpa HDMI e sem limite de gravação, tipo ZV-E10, Canon R50</td>
+<td>R$ 4.000 a 5.500</td>
+</tr>
+<tr>
+<td>Lente</td>
+<td>16mm ou 18-50mm, abertura f/2.8 ou menor</td>
+<td>incluso no kit ou R$ 1.200</td>
+</tr>
+<tr>
+<td>Fonte dummy battery</td>
+<td>Para a câmera não desligar em live de 3h</td>
+<td>R$ 150 a 300</td>
+</tr>
+<tr>
+<td>Placa de captura</td>
+<td>HDMI para USB, 1080p60</td>
+<td>R$ 250 a 600</td>
+</tr>
+<tr>
+<td>Computador de transmissão</td>
+<td>Notebook da loja serve, se tiver 16GB de RAM</td>
+<td>R$ 0 a 3.500</td>
+</tr>
+<tr>
+<td>Iluminação 3 pontos</td>
+<td>Key com softbox 100W, fill 60W, back light para separar do fundo</td>
+<td>R$ 1.800 a 2.800</td>
+</tr>
+<tr>
+<td>Microfone</td>
+<td>Manter o lapela duplo, ou shotgun com boom se o host circula</td>
+<td>R$ 650 a 1.500</td>
+</tr>
+<tr>
+<td>Tripé de vídeo</td>
+<td>Cabeça fluida, coluna estável</td>
+<td>R$ 400 a 800</td>
+</tr>
+<tr>
+<td>Monitor de retorno</td>
+<td>O host precisa se ver e ver o chat</td>
+<td>R$ 600 a 1.200</td>
+</tr>
+<tr>
+<td>Cenário</td>
+<td>Painel de fundo, prateleira com produtos, identidade da marca</td>
+<td>R$ 800 a 1.500</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Total estimado:</strong> R$ 11.000 a R$ 16.000.</p>
+<p><strong>O ganho real dessa faixa</strong> não é a imagem bonita, é o controle: transmitir pelo desktop permite trocar cena, mostrar close do produto e operar promoções sem tocar no celular que está transmitindo.</p>
+<hr />
+<h2>FAIXA 3 · ESTÚDIO · R$ 25.000</h2>
+<p><strong>Para quem:</strong> loja com live 3 ou mais vezes por semana, espaço fixo dedicado, e mais de um host.<br />
+<strong>O que muda:</strong> duas câmeras com corte ao vivo. Corte de câmera é o recurso que mais aumenta tempo de permanência em live longa, porque quebra a monotonia visual sem depender do host.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Especificação</th>
+<th>Faixa de preço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2 câmeras</td>
+<td>Uma em plano médio do host, uma em close de produto</td>
+<td>R$ 8.000 a 11.000</td>
+</tr>
+<tr>
+<td>Switcher de vídeo</td>
+<td>ATEM Mini ou similar, corte ao vivo entre câmeras</td>
+<td>R$ 2.500 a 4.000</td>
+</tr>
+<tr>
+<td>Iluminação COB profissional</td>
+<td>2 COB 150W com softbox octabox, 1 fill, 1 back, 1 luz de fundo RGB</td>
+<td>R$ 4.500 a 7.000</td>
+</tr>
+<tr>
+<td>Áudio dedicado</td>
+<td>Microfone de lapela profissional ou condensador com interface de áudio</td>
+<td>R$ 1.500 a 2.500</td>
+</tr>
+<tr>
+<td>PC dedicado à transmissão</td>
+<td>Máquina que só faz live, nunca compartilhada</td>
+<td>R$ 4.000 a 6.000</td>
+</tr>
+<tr>
+<td>Cenografia modular</td>
+<td>Fundo intercambiável, prateleiras, mesa de apresentação</td>
+<td>R$ 2.000 a 3.500</td>
+</tr>
+<tr>
+<td>Monitores</td>
+<td>Retorno para o host e dashboard para o operador</td>
+<td>R$ 1.200 a 2.000</td>
+</tr>
+<tr>
+<td>Tratamento básico do espaço</td>
+<td>Painéis acústicos, cortina blackout</td>
+<td>R$ 800 a 1.500</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Total estimado:</strong> R$ 24.000 a R$ 28.000.</p>
+<p><strong>Pré-requisito honesto:</strong> só faz sentido se a loja já tem sala fixa. Montar e desmontar esse setup a cada live consome uma hora de equipe por transmissão e a operação abandona em duas semanas.</p>
+<hr />
+<h2>FAIXA 4 · OPERAÇÃO CONTÍNUA · R$ 50.000</h2>
+<p><strong>Para quem:</strong> loja que trata live como canal principal, transmite todo dia, tem equipe dedicada e não pode ter live caindo.<br />
+<strong>O que muda:</strong> redundância. Nessa faixa o dinheiro compra a garantia de que a live não para, mais do que qualidade de imagem.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Especificação</th>
+<th>Faixa de preço</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 câmeras</td>
+<td>Plano geral, plano médio e close cenital de produto</td>
+<td>R$ 13.000 a 18.000</td>
+</tr>
+<tr>
+<td>Switcher com gravação ISO</td>
+<td>ATEM Mini Pro ISO ou equivalente, grava cada câmera separada</td>
+<td>R$ 5.500 a 8.000</td>
+</tr>
+<tr>
+<td>Internet redundante</td>
+<td>Dois provedores com failover automático, ou bonding 4G</td>
+<td>R$ 2.500 a 4.000 de setup</td>
+</tr>
+<tr>
+<td>Nobreak</td>
+<td>A live não cai com oscilação de energia</td>
+<td>R$ 1.500 a 3.000</td>
+</tr>
+<tr>
+<td>Iluminação completa</td>
+<td>Key, fill, back, luz de fundo, luz de produto, tudo controlável por app</td>
+<td>R$ 8.000 a 12.000</td>
+</tr>
+<tr>
+<td>Áudio profissional</td>
+<td>Microfones sem fio duplos, mixer, monitoração por fone</td>
+<td>R$ 3.500 a 5.000</td>
+</tr>
+<tr>
+<td>Teleprompter</td>
+<td>Roteiro e ofertas na frente do host, sem quebra de olhar</td>
+<td>R$ 1.500 a 3.000</td>
+</tr>
+<tr>
+<td>2 estações de trabalho</td>
+<td>Uma do host, uma do operador de live</td>
+<td>R$ 8.000 a 12.000</td>
+</tr>
+<tr>
+<td>Estúdio tratado</td>
+<td>Acústica, piso, cenografia fixa da marca</td>
+<td>R$ 5.000 a 10.000</td>
+</tr>
+<tr>
+<td>Storage do acervo</td>
+<td>NAS ou nuvem para guardar todas as gravações</td>
+<td>R$ 1.500 a 3.000</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Total estimado:</strong> R$ 48.000 a R$ 55.000.</p>
+<hr />
+<h2>COMPARATIVO RÁPIDO</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th></th>
+<th>Faixa 1</th>
+<th>Faixa 2</th>
+<th>Faixa 3</th>
+<th>Faixa 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Investimento</td>
+<td>até R$ 5k</td>
+<td>R$ 12 a 15k</td>
+<td>R$ 25k</td>
+<td>R$ 50k</td>
+</tr>
+<tr>
+<td>Câmeras</td>
+<td>celular</td>
+<td>1 mirrorless</td>
+<td>2 com corte</td>
+<td>3 com corte e ISO</td>
+</tr>
+<tr>
+<td>Transmissão</td>
+<td>app do celular</td>
+<td>desktop</td>
+<td>desktop dedicado</td>
+<td>desktop redundante</td>
+</tr>
+<tr>
+<td>Frequência que suporta</td>
+<td>1 a 3 lives/semana</td>
+<td>3 a 5 lives/semana</td>
+<td>diária</td>
+<td>diária, várias por dia</td>
+</tr>
+<tr>
+<td>Montagem</td>
+<td>15 min</td>
+<td>20 min</td>
+<td>fixo</td>
+<td>fixo</td>
+</tr>
+<tr>
+<td>Pessoas necessárias</td>
+<td>2</td>
+<td>2</td>
+<td>2 a 3</td>
+<td>3</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>As faixas acima assumem <strong>óptica intermediária</strong>. Uma única lente série L pode consumir 40% do orçamento sozinha e jogar um setup de 1 câmera para a casa dos R$ 40 mil, como mostra o caso real abaixo.</p>
+</blockquote>
+<hr />
+<h2>CASO REAL · ORÇAMENTO DE ESTÚDIO LIVE</h2>
+<p>Orçamento real levantado para montagem de estúdio de live. Serve como referência de preço de mercado praticado, e como exercício de leitura de onde o dinheiro vai.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th style="text-align: right;">#</th>
+<th>Produto</th>
+<th style="text-align: right;">Qtd</th>
+<th style="text-align: right;">Valor unitário</th>
+<th style="text-align: right;">Valor total</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Câmera Canon EOS R8 (corpo)</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">R$ 9.890,00</td>
+<td style="text-align: right;">R$ 9.890,00</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Lente Canon RF 24-70mm f/2.8 L IS USM</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">R$ 17.900,00</td>
+<td style="text-align: right;">R$ 17.900,00</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Adaptador de vídeo Elgato Cam Link 4K</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">R$ 1.069,00</td>
+<td style="text-align: right;">R$ 1.069,00</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Microfone Hollyland Lark Max 2 Ultimate Combo</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">R$ 1.770,00</td>
+<td style="text-align: right;">R$ 1.770,00</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Iluminador LED Amaran 200x S Bicolor COB 200W</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">R$ 2.909,03</td>
+<td style="text-align: right;">R$ 5.818,06</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>Softbox lanterna Godox 85cm</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">R$ 510,00</td>
+<td style="text-align: right;">R$ 510,00</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Softbox Godox QR-P120 parabólico Bowens</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">R$ 1.749,00</td>
+<td style="text-align: right;">R$ 1.749,00</td>
+</tr>
+<tr>
+<td style="text-align: right;">8</td>
+<td>Tripé inox Greika iluminação profissional 2,5m</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">R$ 297,00</td>
+<td style="text-align: right;">R$ 594,00</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td>Monitor Dell U2724D 27" 4K</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">R$ 2.999,00</td>
+<td style="text-align: right;">R$ 2.999,00</td>
+</tr>
+<tr>
+<td style="text-align: right;">10</td>
+<td>Suporte duplo para monitor e notebook</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">R$ 193,90</td>
+<td style="text-align: right;">R$ 193,90</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td>Mesa ajustável com rodas (ZIPZAP)</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">R$ 143,99</td>
+<td style="text-align: right;">R$ 143,99</td>
+</tr>
+<tr>
+<td style="text-align: right;"></td>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: right;"><strong>R$ 42.636,95</strong></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Conferência de soma:</strong> a lista original fecha em R$ 42.635,95. Somando item a item dá <strong>R$ 42.636,95</strong>, R$ 1,00 de diferença. Vale corrigir antes de mandar para aprovação, porque orçamento que não fecha na conta é a primeira coisa que o financeiro do cliente pega.</p>
+</blockquote>
+<h3>Leitura da Elevate sobre este orçamento</h3>
+<p><strong>Onde o dinheiro está indo.</strong> Câmera e lente somam <strong>R$ 27.790,00, ou 65% do orçamento</strong>. Só a lente é 42% do total, mais cara que o corpo da câmera. Iluminação inteira, que é o que mais muda a percepção do produto na tela, ficou em R$ 8.671,06, menos da metade do que foi para a óptica.</p>
+<p><strong>O ponto a questionar antes de aprovar.</strong> Uma RF 24-70mm f/2.8 L é uma lente de uso profissional versátil, feita para quem muda de distância, de cena e de condição de luz o tempo todo. Live de loja é o cenário oposto: distância fixa, cena fixa, luz controlada e sempre a mesma. Nesse uso, uma lente bem mais barata entrega imagem praticamente idêntica no streaming, que ainda por cima comprime tudo para 1080p. Trocar por uma opção intermediária libera algo entre <strong>R$ 12 mil e R$ 14 mil</strong> sem perda visível ao vivo.</p>
+<p><strong>O que está faltando na lista.</strong> Quatro itens que a operação vai precisar e que não aparecem no orçamento:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Faltando</th>
+<th>Por que importa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Computador de transmissão</strong></td>
+<td>O Cam Link só funciona plugado em um PC ou notebook. Sem ele, a lista não transmite</td>
+</tr>
+<tr>
+<td><strong>Internet dedicada e cabeada</strong></td>
+<td>10 Mbps de upload no mínimo, com cabo. É o item que mais derruba live</td>
+</tr>
+<tr>
+<td><strong>Cenário e fundo</strong></td>
+<td>Sem fundo tratado, todo o investimento em óptica aparece como uma parede branca</td>
+</tr>
+<tr>
+<td><strong>Fonte contínua para a câmera</strong></td>
+<td>Bateria de mirrorless não aguenta live de 3 horas. Precisa de dummy battery ou fonte</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Como este orçamento se encaixa nas faixas deste guia.</strong> É um setup de <strong>1 câmera</strong> custando o de um estúdio de 3. Com a troca de lente sugerida e os quatro itens faltantes incluídos, esse mesmo estúdio fecha na casa dos <strong>R$ 32 a 35 mil</strong> e fica mais completo do que está agora.</p>
+<hr />
+<h2>O QUE NÃO COMPRAR</h2>
+<ul>
+<li><strong>Ring light gigante como única fonte de luz.</strong> Estoura o rosto e mata o volume do produto.</li>
+<li><strong>Microfone de mesa tipo podcast</strong> se o host se movimenta ou mostra produto. Ele sai do eixo e o som some.</li>
+<li><strong>Câmera cara antes de resolver áudio e luz.</strong> É a compra que menos muda resultado.</li>
+<li><strong>Lente profissional de zoom rápido para cena fixa.</strong> Live de loja é distância fixa e luz controlada. Uma lente de R$ 18 mil entrega, no streaming comprimido, o mesmo que uma de R$ 4 mil. Ver o caso real acima.</li>
+<li><strong>Fundo verde (chroma).</strong> Consome luz, exige calibração e trava a operação. Fundo físico limpo entrega mais.</li>
+<li><strong>Equipamento que precisa ser montado e desmontado toda vez.</strong> A operação abandona.</li>
+</ul>
+<hr />
+<h2>RECOMENDAÇÃO DA ELEVATE</h2>
+<p><strong>Comece na Faixa 1, mesmo que haja orçamento para mais.</strong> Rode as 3 primeiras lives do programa com o setup de entrada. Ao fim da Fase 1, com dados reais das lives, o Playbook da Loja indica exatamente o que vale subir: se o gargalo é luz, é luz que se compra. Comprar estúdio antes da primeira live é comprar no escuro.</p>
+<p>Na prática, a maioria das lojas que atendemos resolve o trimestre inteiro na Faixa 1 ou 2, e sobe de faixa depois, com a operação já validada.</p>
+<hr />
+<p><em>Elevate Ecom · Anexo técnico do programa Formação Live que Vende.</em><br />
+<em>Preços são faixas estimadas de mercado em agosto de 2026 e devem ser confirmados no momento da compra.</em></p>
+  </div>
+  <div class="footer">Elevate Ecom. · Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

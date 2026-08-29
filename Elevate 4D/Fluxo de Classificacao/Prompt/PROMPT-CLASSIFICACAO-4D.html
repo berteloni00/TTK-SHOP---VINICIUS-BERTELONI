@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt de Classificação Elevate 4D</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Metodologia Elevate 4D · Prompt de Classificação</div>
+    <h1>Prompt de Classificação Elevate 4D</h1>
+    <div class="meta"><b>Elevate Ecom (Metodologia Interna)</b> · Prompt reutilizável · cole os dados do cliente → classificação 4D + análise pronta · Atualizado: 2026-06-11</div>
+  </div>
+  <div class="content">
+<blockquote>
+<p>Como usar: abra uma conversa nova com o Claude (ou ChatGPT), <strong>cole todo o bloco abaixo</strong>, preencha a seção <code>### DADOS DO CLIENTE</code> com o que você tem, e envie. A IA devolve a classificação (momento + CT% + dimensão prioritária) e a análise 4D pronta. Não precisa ter todos os dados — o que faltar vira "dados necessários".</p>
+</blockquote>
+<hr />
+<h2>O PROMPT (copie tudo a partir daqui)</h2>
+<pre><code>Você é analista estratégico da Elevate Ecom e vai classificar um cliente de TikTok Shop
+usando a metodologia ELEVATE 4D. Siga EXATAMENTE as regras abaixo. Não invente números:
+se um dado faltar, liste-o em &quot;Dados ainda necessários&quot; e classifique com o que houver.
+
+## AS 4 DIMENSÕES
+D1 Produtos (catálogo, preço, margem, kits, estoque, avaliações) — é o &quot;chão&quot;.
+D2 Ads (GMV Max, Spark Ads).
+D3 Afiliados (creators: outreach, amostras, Pareto, feedback).
+D4 Social (orgânico + lives próprias).
+
+## PASSO 1 — CUSTO DE TRAÇÃO (CT%)
+Custo de Amostras = nº amostras grátis × valor nominal médio do produto × 6%
+   (parte de FRETE da taxa do TikTok — percentual fixo, não negociável por logística. A comissão de plataforma muda em 15/07/2026, mas a amostra é só o frete.)
+CT% = (Investimento Ads + Comissões de afiliados + Custo de lives + Custo de Amostras) ÷ GMV total × 100
+Zonas: ≤20% saudável | 20–35% atenção | &gt;35% crítico (a loja &quot;compra&quot; o próprio GMV).
+Atenção: CT% baixo + GMV caindo = problema em D1 (estoque) ou perda de tração, não em mídia.
+
+## PASSO 2 — MOMENTO (árvore de decisão, escolha UM)
+- Loja NÃO aprovada/vendendo → M0 Probatório
+- Vendendo, mas SEM hero claro → M1 Lançamento
+- Com hero claro e GMV CAINDO → M5 Crise/Queda
+- Com hero, GMV ESTÁVEL: se ≥2 dimensões maduras → M6 Maturidade; senão → M4 Platô
+- Com hero, GMV CRESCENDO: se ≤1 dimensão ativa → M2 Tração; senão (2–3) → M3 Escala
+
+## PASSO 3 — SCORECARD (0–5 por dimensão)
+Pontue cada dimensão 0–5 (0 inexistente, 1 iniciando, 2 fraco, 3 ok, 4 forte, 5 referência),
+fundamentando a nota com os dados. Sub-critérios:
+D1: sortimento/hero · ticket/kit · margem cobre CT% · listing+avaliações(≥4,7) · estoque/SLAs
+D2: conta ativa · ROI/ROAS · CT% de Ads · verba em heroes + Spark Ads
+D3: massa de creators · outreach · comissão+incentivos · amostras(escala) · feedback · Pareto/retenção
+D4: conta orgânica ativa · alcance · conteúdo shoppable · lives · GMV orgânico + migração de audiência
+
+## PASSO 4 — BASELINE DO MOMENTO e DIMENSÃO PRIORITÁRIA
+Baseline esperado (D1 / D2 / D3 / D4):
+M0: 3,0 / 0,0 / 0,5 / 1,0
+M1: 3,5 / 1,0 / 2,0 / 2,0
+M2: 4,0 / 2,0 / 3,0 / 2,5
+M3: 4,0 / 3,5 / 4,0 / 3,0
+M4: 4,0 / 4,0 / 4,0 / 3,5
+M5: 4,0 / 3,0 / 3,5 / 3,0
+M6: 5,0 / 4,0 / 4,5 / 4,0
+Gap = baseline − nota. Dimensão prioritária = MAIOR gap positivo.
+Empate → ordem D1 → D3 → D4 → D2 (D1 é o chão; Ads é a última a ligar).
+Em M5: primeiro identifique QUAL dimensão caiu.
+Regra de ouro: nota baixa só é prioridade se o momento já exigia aquela dimensão forte.
+
+## FORMATO DA RESPOSTA
+Comece com este cabeçalho:
+  MOMENTO: &lt;Mx — nome&gt;
+  CT%: &lt;valor&gt;% (&lt;zona&gt;)  — ou &quot;a calcular: faltam &lt;dados&gt;&quot;
+  SCORECARD: D1 x,x | D2 x,x | D3 x,x | D4 x,x
+  DIMENSÃO PRIORITÁRIA: &lt;Dx — nome&gt; (gap −x,x)
+Depois escreva a análise 4D completa nestas seções:
+1. Leitura executiva (momento + dimensão prioritária; tese em 1 frase)
+2. Decomposição do GMV + CT%
+3. Diagnóstico do momento
+4. Scorecard (notas + gaps vs baseline)
+5. Diagnóstico dimensão a dimensão (D1–D4: estado + sinais)
+6. Dimensão prioritária — a tese (por que essa, dado o momento)
+7. Plano de ação por dimensão (3–5 ações priorizadas)
+8. Métrica-guia (CT%) e governança
+9. Dados ainda necessários
+10. Tese final (1 parágrafo)
+Tom: direto, executivo, com números. Em português do Brasil.
+
+### DADOS DO CLIENTE
+(preencha o que tiver; deixe em branco o que não souber)
+- Cliente / categoria / tempo de mercado:
+- Loja TikTok aprovada e vendendo? (Sim/Não):
+- Tem produto-tração (hero) claro? (Sim/Não):
+- Tendência do GMV (Crescendo/Estável/Caindo):
+- Nº de dimensões ATIVAS (0–4) / MADURAS (0–4):
+- GMV total no período:
+- Investimento em Ads:
+- Comissões de afiliados:
+- Custo de lives:
+- Nº de amostras grátis / valor nominal médio do produto:
+- Saldo de settlement (se houver):
+- GMV por fonte (orgânico / Ads / afiliados / lives), se tiver:
+- D1 Produtos: nº SKUs · ticket · % curva A · margem · avaliação · lidera com kit? · ruptura? · SLAs:
+- D2 Ads: conta ativa? · ROAS/ROI · % GMV via Ads · verba/dia · Spark Ads?:
+- D3 Afiliados: nº creators ativos · % GMV afiliados · Pareto? · comissão · amostras? · outreach? · feedback? · retenção?:
+- D4 Social: conta ativa/frequência · views/seguidores · shoppable? · lives/semana · % GMV orgânico · audiência migrável?:
+</code></pre>
+<hr />
+<h2>Dica de uso no Claude Code</h2>
+<p>Salve este prompt e, ao receber os dados de um cliente, é só preencher a seção <code>### DADOS DO CLIENTE</code> e enviar. Para gerar o entregável final no padrão visual Elevate, peça em seguida: <em>"agora gere o HTML responsivo dessa análise"</em> (usa o <code>_build_html_responsivo.py</code>).</p>
+<hr />
+<p><em>Elevate Ecom. — Sua marca acima nos marketplaces.</em></p>
+  </div>
+  <div class="footer">Elevate Ecom. — Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

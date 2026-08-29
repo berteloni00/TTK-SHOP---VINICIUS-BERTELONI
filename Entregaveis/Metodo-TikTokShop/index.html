@@ -1,0 +1,301 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metodo - Inteligencia TikTok Shop - Elevate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#7EC8E3;--teal2:#2DD4BF;--coral:#E11D48;--yellow:#FACC15;--ink:#E8EEF2;--mut:#98B0BC;--bg:#0B1A2B;--card:rgba(15,43,58,0.55);--line:rgba(126,200,227,0.18)}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Poppins',-apple-system,Segoe UI,Roboto,Arial,sans-serif;color:var(--ink);line-height:1.6;
+ background:radial-gradient(60% 55% at 88% 4%,rgba(45,212,191,0.18),transparent 60%),radial-gradient(62% 55% at 6% 98%,rgba(225,29,72,0.16),transparent 60%),linear-gradient(140deg,#07131F 0%,#0B1A2B 46%,#0F2B3A 100%);background-attachment:fixed;min-height:100vh}
+.wrap{max-width:860px;margin:0 auto;padding:40px 22px 70px}
+h1{font-size:clamp(26px,4.5vw,38px);font-weight:800;letter-spacing:-.02em;line-height:1.1;margin:0 0 6px}
+.bar{height:3px;width:130px;background:linear-gradient(90deg,#2DD4BF,#7EC8E3,#E11D48);border-radius:3px;box-shadow:0 0 18px rgba(126,200,227,.35);margin:14px 0 30px}
+h2{font-size:20px;font-weight:800;margin:38px 0 12px;padding-top:16px;border-top:1px solid var(--line);color:#fff}
+h3{font-size:15px;font-weight:700;color:var(--teal);margin:24px 0 8px}
+p,li{color:var(--ink);opacity:.92;font-size:14.5px}
+a{color:var(--teal);text-decoration:none}a:hover{text-decoration:underline}
+strong,b{color:#fff}
+blockquote{margin:16px 0;padding:12px 16px;background:var(--card);border-left:4px solid var(--teal);border-radius:0 10px 10px 0;color:var(--ink)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:12.5px;background:rgba(126,200,227,.10);color:#cfeffb;padding:1px 6px;border-radius:5px}
+pre{background:#08131d;border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}
+pre code{background:none;color:#cfe;padding:0;font-size:12.5px;line-height:1.5}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;display:block;overflow-x:auto}
+th{background:rgba(126,200,227,.10);color:#fff;text-align:left;padding:9px 12px;border:1px solid var(--line);font-weight:700}
+td{padding:9px 12px;border:1px solid var(--line);color:var(--ink);vertical-align:top}
+tr:nth-child(even) td{background:rgba(255,255,255,.02)}
+hr{border:none;border-top:1px solid var(--line);margin:26px 0}
+.kick{text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800;color:var(--mut);margin:0 0 10px}
+</style></head><body><div class="wrap">
+<p class="kick">Elevate - Inteligencia de Marketplaces - Uso interno</p>
+<h1 id="metodo-inteligencia-de-tiktok-shop-via-fastmoss">Método: Inteligência de TikTok Shop via FastMoss</h1>
+<p>Documentação do processo completo usado para gerar as análises de TikTok Shop do Hub 4D
+(Análise de Beleza, Top 200 Marcas, Creators de Acessórios). Serve como runbook para
+reproduzir e para criar novas análises de nicho.</p>
+<blockquote>
+<p><strong>TL;DR do princípio-chave:</strong> os dados vêm do <strong>FastMoss</strong> (conta Flagship). O jeito
+que funciona é <strong>dirigir a interface real do FastMoss</strong> (Edge logado, em modo depuração)
+e <strong>capturar as respostas JSON assinadas</strong> que a própria página dispara. <strong>Nunca forjar
+<code>fetch</code> direto na API</strong> dos dados: dispara anti-bot (retorna dados demo falsos ou captcha).</p>
+</blockquote>
+<hr />
+<h2 id="1-fonte-de-dados-e-acesso">1. Fonte de dados e acesso</h2>
+<ul>
+<li><strong>Ferramenta:</strong> FastMoss (<code>fastmoss.com</code>), edição Flagship, conta logada no Microsoft Edge.</li>
+<li><strong>Por que não é uma API "limpa":</strong> o FastMoss assina cada request no front (params <code>df</code>,
+  <code>_time</code>, <code>cnonce</code> + fingerprint). Sem essa assinatura, a API devolve:</li>
+<li><code>MAG_AUTH_3011 / 3006 / 3002</code> (não autorizado) e/ou <strong>payload demo</strong> (nicks estrangeiros,
+    moeda errada tipo RM/฿) que parece real mas é fixo;</li>
+<li><code>MSG_SAFE_0001</code> = <strong>captcha</strong> anti-bot, que trava a sessão até ser resolvido na janela.</li>
+<li><strong>Regra de ouro:</strong> deixar a página do FastMoss fazer o request (clicando filtros, paginando)
+  e só <strong>capturar a resposta</strong>. Ritmo humano (2 a 3 s entre ações) passa limpo.</li>
+</ul>
+<h3 id="11-abrir-o-edge-em-modo-depuracao-com-o-perfil-logado">1.1 Abrir o Edge em modo depuração (com o perfil logado)</h3>
+<pre><code class="language-powershell">Get-Process msedge -ErrorAction SilentlyContinue | Stop-Process -Force
+Start-Process &quot;C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe&quot; `
+  -ArgumentList '--remote-debugging-port=9222', `
+  &quot;--user-data-dir=$env:LOCALAPPDATA\Microsoft\Edge\User Data&quot;, `
+  '--profile-directory=Default', 'https://www.fastmoss.com/pt/dashboard'
+</code></pre>
+<ul>
+<li><strong>Sessão é de dispositivo único e volátil.</strong> Fechar o Edge, expirar, ou logar a mesma
+  conta em outro lugar (celular, outra aba) <strong>derruba</strong> a sessão. Sinal: <code>is_login=0</code> /
+  <code>MSG_30001</code>. Solução: relogar na janela do Edge.</li>
+<li>Conferir login (via <code>fetch</code> do próprio site, esse endpoint não é gated):
+  <code>GET /api/user/index/userInfo</code> → <code>ext.is_login === 1</code>.</li>
+</ul>
+<h3 id="12-automacao-cdp-cru-nao-puppeteer">1.2 Automação: CDP cru, não puppeteer</h3>
+<p>O puppeteer trava (<code>Network.enable timed out</code>) ao anexar em páginas SPA pesadas do FastMoss,
+e crasha quando um clique abre nova aba. <strong>A automação usa CDP cru</strong> (WebSocket direto no
+DevTools Protocol), que é estável mesmo quando o puppeteer trava. Helper: <code>cdp.js</code>.</p>
+<p>Capacidades do helper: <code>navigate</code>, <code>evaluate</code> (rodar JS na página), <code>clickText</code>,
+<code>enableCapture(regex)</code> (guarda respostas JSON de URLs que casam a regex) e <code>drainCaptured()</code>.</p>
+<hr />
+<h2 id="2-endpoints-do-fastmoss-mapa">2. Endpoints do FastMoss (mapa)</h2>
+<p>Todos em base <code>https://www.fastmoss.com/api/</code>. Capturados dirigindo a UI.</p>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>O que traz</th>
+<th>Params-chave</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shop/v3/shopList</code></td>
+<td>Ranking de <strong>lojas</strong></td>
+<td><code>l1_cid</code> (categoria), <code>l2_cid</code> (subnicho), <code>date_type=3&amp;date_value=YYYY-MM</code> (mês fechado), <code>order=1,2</code>, <code>page</code>, <code>pagesize=10</code></td>
+</tr>
+<tr>
+<td><code>shop/V3/categoryInfo</code></td>
+<td>Árvore de categorias L1 + subnichos (<code>c_code</code>)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>shop/v3/author</code></td>
+<td><strong>Creators de uma loja</strong> (GMV/loja)</td>
+<td><code>id=&lt;seller_id&gt;</code>, <code>d_type=28</code>, <code>order=2,2</code>, <code>pagesize</code></td>
+</tr>
+<tr>
+<td><code>shop/v3/videoAnalysis</code></td>
+<td>Vídeos de uma loja</td>
+<td><strong>gated no plano</strong> (retorna demo). Evitar.</td>
+</tr>
+<tr>
+<td><code>goods/v3/video</code></td>
+<td><strong>Vídeos de um produto</strong> com GMV, ROAS, gasto ads</td>
+<td><code>product_id</code>, <code>date_type=28</code>, <code>pagesize=5</code>, <code>is_promoted=-1</code></td>
+</tr>
+<tr>
+<td><code>video/hotGoodsVideoGroupByProduct</code></td>
+<td>Top <strong>produtos</strong> por vendas + <code>video_list</code> (criativos)</td>
+<td><code>l1_cid</code>, <code>rank_type=28</code>, <code>region=BR</code></td>
+</tr>
+<tr>
+<td><code>author/search</code></td>
+<td><strong>Busca de influenciadores</strong> (ranking global de creators)</td>
+<td><code>sale_category_l1</code> (categoria de vendas), <code>columnKey/field</code> (ordenação), <code>page</code></td>
+</tr>
+<tr>
+<td><code>author/index/country</code>, <code>shop/V3/baseInfo</code>, <code>goods/v3/base</code></td>
+<td>metadados de apoio</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="21-pagina-de-detalhe-da-loja">2.1 Página de detalhe da loja</h3>
+<p><code>/pt/shop-marketing/detail/&lt;seller_id&gt;</code> — ao <strong>rolar a página</strong>, dispara sozinho o
+<code>shop/v3/author</code> (top 5 creators, 28d) com o GMV que cada creator gerou <strong>para aquela loja</strong>.
+É a fonte confiável de "creators por loja" (e de "por quais empresas um creator vendeu").</p>
+<hr />
+<h2 id="3-pegadinhas-importantes-aprendizados">3. Pegadinhas importantes (aprendizados)</h2>
+<ol>
+<li><strong>O ranking de lojas é por UNIDADES vendidas, não por GMV.</strong> <code>order=1,2</code> ordena por
+   quantidade. Uma loja de eletrônico barato fica em 1º por volume, mas fatura menos que uma
+   de ticket alto. <strong>Para "maiores por faturamento": colete tudo (até 500, o teto do ranking)
+   e reordene por GMV do seu lado.</strong></li>
+<li><strong>Janela de tempo:</strong> o <strong>mês-calendário fechado</strong> (ex.: Junho) só existe no <strong>ranking de
+   lojas</strong> (<code>date_type=3&amp;date_value</code>). Creators e vídeos por loja só têm <strong>janela móvel</strong>
+   (<code>d_type=28</code> / 90). O FastMoss tem <strong>defasagem de ~2 dias</strong> (28d vai até ~anteontem).</li>
+<li><strong>Vídeos por loja (<code>videoAnalysis</code>) é gated</strong> e devolve demo. Use <code>goods/v3/video</code>
+   por produto (traz GMV, ROAS, <code>estimate_cost_amount</code> = gasto de ads).</li>
+<li><strong>Gasto de ads é uma ESTIMATIVA</strong> (<code>estimate_cost_amount</code>); às vezes vem 0 (orgânico ou o
+   FastMoss não estimou) → ROAS não calcula. Mostrar como "-".</li>
+<li><strong>Duplicatas de vídeo:</strong> o mesmo vídeo aparece em vários produtos/lojas; só uma instância
+   carrega o gasto real. <strong>Deduplicar por <code>video_id</code></strong> mantendo a de maior gasto/ROAS.</li>
+<li><strong><code>author/search</code> (busca de influenciadores)</strong> só ordena por <strong>unidades vendidas 28d</strong> e
+   os creators são <strong>generalistas</strong> (vendem 40+ categorias); o volume é o <strong>total</strong> deles, e
+   <strong>não mostra por quais lojas</strong>. Para "por quais empresas" + volume específico do nicho,
+   use o caminho <strong>loja → creators</strong> (<code>shop/v3/author</code>).</li>
+<li><strong>Captcha por rajada:</strong> <code>fetch</code> in-page em série (&gt;~30) dispara <code>MSG_SAFE_0001</code>. Pace em
+   ~2,6 s ou dirija a UI (paginação por clique).</li>
+<li><strong>Números do FastMoss vêm "tortos"</strong> para pt-BR: "R$4.7 milhão" (singular, ponto decimal).
+   Normalizar: "R$ 4,7 milhões" (plural conforme valor, vírgula). Função <code>br()</code> nos builders.</li>
+</ol>
+<hr />
+<h2 id="4-pipelines-por-tipo-de-analise">4. Pipelines por tipo de análise</h2>
+<p>Cada análise = <strong>coleta (Node/CDP)</strong> → JSON → <strong>build (Python)</strong> → Excel + HTML → <strong>publica</strong>.</p>
+<h3 id="a-analise-de-nicho-ex-beleza-out_beleza">A) Análise de nicho (ex.: Beleza) — <code>out_beleza/</code></h3>
+<ol>
+<li><code>pull_categories.js</code> / <code>categoryInfo</code> → subnichos (<code>l2_cid</code>).</li>
+<li><strong>Fase 1</strong> <code>collect_beleza.js</code>: por subnicho, dirige o ranking mensal e captura
+   <code>shopList</code> (top 5 lojas, <code>l1_cid</code> + <code>l2_cid</code> + <code>date_value=YYYY-MM</code>).</li>
+<li><strong>Fase 2</strong>: navega o detalhe de cada loja, captura <code>shop/v3/author</code> (top 5 creators, 28d),
+   com o GMV por loja. Valida que o <code>id=</code> da resposta bate com a loja (evita "capture bleed").</li>
+<li>Criativos: <code>collect_criativos.js</code> (<code>hotGoodsVideoGroupByProduct</code>) + <code>collect_criativos5.js</code>
+   (<code>goods/v3/video</code> por produto → GMV, ROAS, gasto, top 5 por produto).</li>
+<li><code>build_final.py</code> → <code>Analise_Nicho_Beleza.xlsx</code> (4 abas) + <code>.html</code>.</li>
+</ol>
+<h3 id="b-top-n-marcas-todas-as-categorias-out_top100">B) Top N marcas (todas as categorias) — <code>out_top100/</code></h3>
+<ol>
+<li><code>collect_top100.js</code>: ranking mensal <strong>sem filtro de categoria</strong>, pagina até 500 (o teto).</li>
+<li><code>build_top100.py</code>: <strong>reordena por GMV</strong>, corta top 200 (piso de R$ 50 mil), gera HTML com
+   <strong>filtro por categoria</strong> + busca, e selos (fitness, feminino) por regex de categoria.</li>
+</ol>
+<h3 id="c-creators-de-um-nicho-por-quais-empresas-ex-acessorios-out_acessorios">C) Creators de um nicho + por quais empresas (ex.: Acessórios) — <code>out_acessorios/</code></h3>
+<ol>
+<li><code>collect_acessorios.js</code>: <strong>Fase 1</strong> top lojas de acessórios (<code>shopList l1_cid=8</code>, paginado);
+   <strong>Fase 2</strong> creators de cada loja (<code>shop/v3/author</code>, 28d).</li>
+<li><code>collect_influ_acessorios.js</code> (opcional): <code>author/search</code> para enriquecer com o <strong>volume
+   geral</strong> do creator.</li>
+<li><code>collect_acess_video_roas.js</code>: produtos de acessórios + <code>goods/v3/video</code> (GMV, ROAS, gasto).</li>
+<li><code>build_acessorios.py</code>: <strong>agrega por creator</strong> (soma GMV entre as lojas + <strong>divisão de GMV
+   por empresa</strong>) e monta a seção de <strong>vídeos por performance</strong> (dedup por <code>video_id</code>).</li>
+</ol>
+<hr />
+<h2 id="5-geracao-da-saida-builders-python">5. Geração da saída (builders Python)</h2>
+<ul>
+<li><strong>Excel</strong> via <code>openpyxl</code> (abas por tema, links do TikTok clicáveis).</li>
+<li><strong>HTML</strong> self-contained (roda offline / como Artifact), com:</li>
+<li><strong>Identidade Elevate</strong>: paleta navy/teal/coral, fonte <strong>Poppins</strong>, accent bar, fundo em
+    gradiente, assinatura "Elevate Ecom". (Ver seção 6.)</li>
+<li>Normalização pt-BR dos números (<code>br()</code>), acentuação correta.</li>
+<li>Elementos: hero com KPIs, seções numeradas, tabelas com barras de GMV, divisão por
+    empresa (chips + barra empilhada), selo AD/orgânico, <strong>link direto do TikTok</strong>
+    (<code>https://www.tiktok.com/@&lt;unique_id&gt;/video/&lt;video_id&gt;</code>), nota de leitura do ROAS.</li>
+</ul>
+<h3 id="51-link-do-video-no-tiktok">5.1 Link do vídeo no TikTok</h3>
+<p>Montado a partir de <code>unique_id</code> (handle) + <code>video_id</code>:
+<code>https://www.tiktok.com/@{unique_id}/video/{video_id}</code>.</p>
+<hr />
+<h2 id="6-identidade-visual-elevate-para-reuso">6. Identidade visual Elevate (para reuso)</h2>
+<pre><code>Paleta:  navy1 #0B1A2B · navy2 #0F2B3A · teal accent #7EC8E3 · teal2 #2DD4BF
+         coral #E11D48 · yellow #FACC15 · texto #E8EEF2 · muted #98B0BC
+Fonte:   Poppins (Google Fonts). No Hub/Vercel carrega; em Artifact do claude.ai o CSP
+         bloqueia fonte externa e cai para fonte de sistema (resto da identidade fica igual).
+Fundo:   gradientes radiais teal/coral + linear navy.
+Accent bar: linear-gradient(90deg,#2DD4BF,#7EC8E3,#E11D48).
+</code></pre>
+<hr />
+<h2 id="7-publicacao-no-hub-4d">7. Publicação no Hub 4D</h2>
+<p>O Hub 4D é o próprio repo desta pasta-raiz (<code>CONTINGENCIA</code> = repo
+<code>github.com/fox-ttssquad/elevate-4d-hub</code>), com auto-deploy no Vercel a cada push na <code>main</code>.</p>
+<ol>
+<li>Copiar o HTML/Excel para uma pasta <strong>versionada</strong> (não gitignored):
+   <code>Entregaveis/&lt;Nome-Da-Analise&gt;/index.html</code> (+ <code>.xlsx</code>).</li>
+<li>Adicionar um card na seção <strong>Inteligência de Marketplaces</strong> do <code>index.html</code> (raiz).
+   O Hub classifica o card por marketplace <strong>pelo link</strong> (função <code>keysFor</code>): o padrão da URL
+   precisa casar com o regex de TikTok (ex.: <code>TikTok</code>, <code>Analise-Nicho-Beleza</code>, <code>Creators-Acessorios</code>),
+   senão o card aparece em todos os filtros por engano.</li>
+<li>Commit <strong>cirúrgico</strong> (só os arquivos da entrega, nunca <code>git add -A</code> — há dados de cliente
+   gitignored) e <code>git push</code> → deploy em ~1 min.</li>
+</ol>
+<p>URL de produção: <code>https://elevate-4d-hub-git-main-fox-squad-s-projects.vercel.app/</code>
+(sempre o alias fixo da <code>main</code>; nunca as URLs com hash, que são congeladas).</p>
+<hr />
+<h2 id="8-runbook-reproduzir-do-zero">8. Runbook (reproduzir do zero)</h2>
+<pre><code class="language-bash"># 1. Abrir Edge logado em modo depuração (PowerShell da seção 1.1) e logar no FastMoss.
+# 2. Confirmar login (deve dar is_login=1):
+node -e &quot;require('./cdp')...userInfo&quot;           # ou os scripts check de login
+
+# 3. Coletar (exemplos):
+node collect_top100.js 50                        # 500 marcas -&gt; reordena por GMV no build
+node collect_acessorios.js 8                     # lojas de acessorios -&gt; creators
+node collect_acess_video_roas.js 4 25            # videos de acessorios com ROAS
+
+# 4. Gerar saida:
+python build_top100.py
+python build_acessorios.py
+
+# 5. Publicar no Hub:
+#   cp para Entregaveis/&lt;Nome&gt;/  -&gt;  editar card no index.html  -&gt;  git add (cirurgico) + push
+</code></pre>
+<p><strong>Se aparecer captcha (<code>MSG_SAFE_0001</code>)</strong> ou <code>is_login=0</code>: resolver na janela do Edge /
+relogar, e rodar de novo (coletores são <strong>resumíveis</strong>, pulam o que já foi coletado).</p>
+<hr />
+<h2 id="9-indice-de-arquivos">9. Índice de arquivos</h2>
+<table>
+<thead>
+<tr>
+<th>Arquivo</th>
+<th>Papel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cdp.js</code></td>
+<td>Helper de CDP cru (navegar, capturar, clicar)</td>
+</tr>
+<tr>
+<td><code>collect_top100.js</code></td>
+<td>Ranking de lojas (todas as categorias)</td>
+</tr>
+<tr>
+<td><code>collect_beleza.js</code></td>
+<td>Nicho: subnichos → lojas → creators</td>
+</tr>
+<tr>
+<td><code>collect_criativos.js</code>, <code>collect_criativos5.js</code></td>
+<td>Criativos por produto (GMV, ROAS)</td>
+</tr>
+<tr>
+<td><code>collect_acessorios.js</code></td>
+<td>Lojas de acessórios → creators</td>
+</tr>
+<tr>
+<td><code>collect_influ_acessorios.js</code></td>
+<td>Enriquecimento via busca de influenciadores</td>
+</tr>
+<tr>
+<td><code>collect_acess_video_roas.js</code></td>
+<td>Vídeos de acessórios com ROAS</td>
+</tr>
+<tr>
+<td><code>build_final.py</code></td>
+<td>Build da Análise de Beleza (Excel + HTML)</td>
+</tr>
+<tr>
+<td><code>build_top100.py</code></td>
+<td>Build do Top 200 Marcas</td>
+</tr>
+<tr>
+<td><code>build_acessorios.py</code></td>
+<td>Build dos Creators de Acessórios</td>
+</tr>
+</tbody>
+</table>
+<p><em>Fonte de dados: FastMoss. Uso interno Elevate Ecom.</em></p>
+<div class="bar" style="margin-top:40px"></div>
+<p style="color:var(--mut);font-size:12px">Fonte: FastMoss - <b style="color:var(--teal)">Elevate Ecom</b> - Sua marca acima nos marketplaces.</p>
+</div></body></html>

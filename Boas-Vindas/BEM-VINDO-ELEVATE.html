@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Bem-vindo(a) à Elevate · Boas-vindas ao time</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;
+    --card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--yellow:#FACC15;
+    --tealbright:#25F4EE;--red:#FE2C55;--green:#22C55E;--magenta:#E11D48;
+    --crow:#8B5CF6;--fox:#EC4899;--jaguar:#EE4D2D;--monkey:#F59E0B;--sphynx:#FF9900;--shark:#25F4EE;}
+  *{box-sizing:border-box;margin:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif;color:var(--text);
+    background:
+      radial-gradient(60% 55% at 88% 6%, rgba(45,212,191,0.22), transparent 60%),
+      radial-gradient(62% 55% at 6% 96%, rgba(225,29,72,0.20), transparent 60%),
+      radial-gradient(50% 45% at 70% 80%, rgba(126,200,227,0.07), transparent 70%),
+      linear-gradient(140deg,#07131F 0%,#0B1A2B 46%,#0F2B3A 100%);
+    background-attachment:fixed;min-height:100vh;line-height:1.6;overflow-x:hidden;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .wrap{max-width:900px;margin:0 auto;padding:46px 24px 70px;}
+  p,li,td,th{overflow-wrap:break-word;word-break:break-word;}
+
+  .back{display:inline-block;color:var(--muted);font-size:12px;text-decoration:none;margin-bottom:22px;border:1px solid var(--cardborder);border-radius:999px;padding:5px 13px;transition:.15s;}
+  .back:hover{color:var(--accent);border-color:var(--accent);}
+  .eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+  h1{font-weight:300;font-size:42px;line-height:1.06;letter-spacing:-0.8px;color:#fff;}
+  h1 b{font-weight:800;}
+  .sub{color:var(--muted);font-size:15px;margin-top:16px;max-width:660px;}
+  .accentbar{height:3px;width:120px;background:linear-gradient(90deg,#2DD4BF 0%,#7EC8E3 40%,#E11D48 100%);border-radius:3px;margin:24px 0 8px;box-shadow:0 0 18px rgba(126,200,227,0.35);}
+  .hello{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px;}
+  .pillb{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:600;color:var(--text);border:1px solid var(--cardborder);background:rgba(15,43,58,0.5);border-radius:999px;padding:6px 13px;}
+  .pillb .dot{width:9px;height:9px;border-radius:50%;background:var(--tealbright);box-shadow:6px 0 0 -1px var(--red);}
+
+  .lnav{position:sticky;top:0;z-index:40;display:flex;flex-wrap:nowrap;gap:8px;margin:18px -24px 8px;padding:11px 24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    background:rgba(9,19,31,0.82);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-bottom:1px solid var(--cardborder);}
+  .lnav::-webkit-scrollbar{display:none;}
+  .lnav a{flex:0 0 auto;font-size:11.5px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--cardborder);border-radius:999px;padding:6px 13px;transition:.15s;background:rgba(15,43,58,0.4);white-space:nowrap;}
+  .lnav a:hover{color:var(--accent);border-color:var(--accent);}
+  .lnav a.active{color:#fff;border-color:var(--accent);background:linear-gradient(135deg,rgba(126,200,227,0.22),rgba(37,212,191,0.14));box-shadow:0 0 14px rgba(126,200,227,0.18);}
+
+  section{margin-top:46px;scroll-margin-top:72px;}
+  h2{font-weight:800;font-size:25px;color:#fff;letter-spacing:-0.4px;line-height:1.15;padding-top:18px;border-top:1px solid var(--cardborder);}
+  h3{font-weight:700;font-size:16.5px;color:var(--accent);margin:26px 0 10px;}
+  p{margin:13px 0;font-size:15px;}
+  p.lead{font-size:15.5px;color:var(--muted);}
+  strong{color:#fff;font-weight:700;}
+
+  /* grupo / BUs */
+  .bus{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;}
+  .bu{background:var(--card);border:1px solid var(--cardborder);border-radius:16px;padding:18px;border-top:4px solid var(--accent);}
+  .bu.elevate{border-top-color:#7EC8E3;}
+  .bu.adscale{border-top-color:#C9E265;}
+  .bu.mg{border-top-color:#E11D48;}
+  .bu.avant{border-top-color:#9AA6B2;}
+  .bu.hypea{border-top-color:#2DD4BF;}
+  .bu .bn{font-weight:800;color:#fff;font-size:16px;}
+  .bu .bt{font-size:11px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--accent);margin-top:3px;}
+  .bu p{font-size:12.5px;color:var(--muted);margin:8px 0 0;}
+  @media (max-width:660px){.bus{grid-template-columns:1fr;}}
+
+  /* cultura */
+  .culture{background:linear-gradient(135deg,rgba(45,212,191,0.10),rgba(15,43,58,0.6));border:1px solid rgba(45,212,191,0.28);border-radius:18px;padding:24px;margin:20px 0;}
+  .culture .big{font-weight:800;font-size:24px;color:#fff;letter-spacing:-0.4px;line-height:1.25;}
+  .culture .big span{color:var(--tealbright);}
+  .culture p{font-size:13.5px;color:var(--muted);margin:10px 0 0;}
+  .pv{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0;}
+  .pv .b{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:18px;}
+  .pv .b .k{font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--accent);}
+  .pv .b p{font-size:13.5px;color:var(--text);margin:8px 0 0;}
+  @media (max-width:660px){.pv{grid-template-columns:1fr;}}
+  .focus{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0;}
+  .focus .f{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:16px 18px;border-left:3px solid var(--yellow);}
+  .focus .f .fh{font-weight:700;color:#fff;font-size:14px;}
+  .focus .f p{font-size:12.5px;color:var(--muted);margin:6px 0 0;}
+  @media (max-width:660px){.focus{grid-template-columns:1fr;}}
+  .mantra{text-align:center;font-weight:800;font-size:20px;color:#fff;background:linear-gradient(135deg,rgba(254,44,85,0.14),rgba(37,244,238,0.10));border:1px solid var(--cardborder);border-radius:16px;padding:22px;margin:22px 0;letter-spacing:-0.3px;}
+  .mantra span{color:var(--yellow);}
+  .ways{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0;counter-reset:w;}
+  .way{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:16px 18px 16px 50px;position:relative;}
+  .way::before{counter-increment:w;content:counter(w);position:absolute;left:16px;top:16px;width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,var(--tealbright),var(--accent));color:#06141f;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .way .wn{font-weight:700;color:#fff;font-size:14.5px;}
+  .way .wd{font-size:12.5px;color:var(--muted);margin-top:3px;}
+  @media (max-width:660px){.ways{grid-template-columns:1fr;}}
+
+  /* fórmula do squad */
+  .formula{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;background:rgba(11,26,43,0.6);border:1px solid var(--cardborder);border-radius:16px;padding:22px 18px;margin:20px 0;}
+  .formula .pc{background:var(--card);border:1px solid var(--cardborder);border-radius:12px;padding:12px 16px;text-align:center;min-width:120px;}
+  .formula .pc .n{font-weight:800;color:#fff;font-size:14px;}
+  .formula .pc .s{font-size:11px;color:var(--muted);margin-top:2px;}
+  .formula .op{font-weight:800;font-size:20px;color:var(--accent);}
+  .formula .eq{font-weight:800;font-size:20px;color:var(--yellow);}
+  .formula .pc.total{border-color:rgba(250,204,21,0.4);background:linear-gradient(135deg,rgba(250,204,21,0.10),rgba(15,43,58,0.6));}
+
+  .chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:16px 0;font-size:13px;color:var(--muted);}
+  .chain b{color:#fff;}
+  .chain .ar{color:var(--accent);font-weight:800;}
+
+  /* papéis */
+  .roles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0;}
+  .role{background:var(--card);border:1px solid var(--cardborder);border-radius:16px;padding:20px;border-top:4px solid var(--accent);}
+  .role.sup{border-top-color:var(--tealbright);}
+  .role.acc{border-top-color:var(--accent);}
+  .role.exe{border-top-color:var(--yellow);}
+  .role .rn{font-weight:800;color:#fff;font-size:17px;}
+  .role .rd{font-size:12.5px;color:var(--muted);margin:4px 0 10px;}
+  .role .meta{display:inline-block;font-size:11px;font-weight:800;color:#0B1A2B;background:var(--accent);border-radius:6px;padding:3px 9px;margin-bottom:10px;}
+  .role.sup .meta{background:var(--tealbright);}.role.exe .meta{background:var(--yellow);}
+  .role ul{list-style:none;padding:0;margin:0;}
+  .role li{font-size:12.5px;color:var(--text);padding:6px 0 6px 20px;position:relative;border-bottom:1px solid rgba(126,200,227,0.08);}
+  .role li:last-child{border-bottom:none;}
+  .role li.y:before{content:"✓";position:absolute;left:2px;color:var(--green);font-weight:800;}
+  .role li.n{color:var(--muted);}
+  .role li.n:before{content:"✕";position:absolute;left:2px;color:var(--red);font-weight:800;}
+  .role .nh{font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin:12px 0 4px;}
+  @media (max-width:760px){.roles{grid-template-columns:1fr;}}
+
+  /* liderança + squads */
+  .leadgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0;}
+  .leadgrid .l{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:16px 18px;text-align:center;}
+  .leadgrid .l .ln{font-weight:800;color:#fff;font-size:16px;}
+  .leadgrid .l .lr{font-size:11.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin-top:3px;}
+  @media (max-width:660px){.leadgrid{grid-template-columns:1fr;}}
+
+  .squads{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0;}
+  .squad{background:var(--card);border:1px solid var(--cardborder);border-radius:16px;padding:18px;border-left:4px solid var(--accent);}
+  .squad.crow{border-left-color:var(--crow);}
+  .squad.fox{border-left-color:var(--fox);}
+  .squad.jaguar{border-left-color:var(--jaguar);}
+  .squad.monkey{border-left-color:var(--monkey);}
+  .squad.sphynx{border-left-color:var(--sphynx);}
+  .squad.shark{border-left-color:var(--shark);}
+  .squad.forming{border-style:dashed;border-left-style:solid;opacity:.92;}
+  .squad .sq{display:flex;align-items:baseline;justify-content:space-between;gap:8px;}
+  .squad .sqn{font-weight:800;color:#fff;font-size:17px;}
+  .squad .sqm{font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--muted);}
+  .squad .row{font-size:12.5px;color:var(--text);margin-top:9px;}
+  .squad .row .rk{font-size:10px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:1px;}
+  .squad .row b{color:#fff;}
+  @media (max-width:660px){.squads{grid-template-columns:1fr;}}
+
+  /* carreira */
+  .career{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0;}
+  .lvl{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:16px 14px;text-align:center;border-top:4px solid var(--accent);}
+  .lvl.n1{border-top-color:#7EC8E3;}.lvl.n2{border-top-color:#22C55E;}.lvl.n3{border-top-color:#EC4899;}.lvl.n4{border-top-color:#FACC15;}
+  .lvl .lk{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+  .lvl .lt{font-weight:800;color:#fff;font-size:14.5px;margin:6px 0;line-height:1.2;}
+  .lvl .lf{font-size:13px;color:var(--text);font-weight:700;}
+  .lvl .lv{font-size:11.5px;color:var(--muted);margin-top:2px;}
+  .lvl .lmax{font-size:12px;font-weight:800;color:var(--accent);margin-top:10px;padding-top:10px;border-top:1px solid var(--cardborder);}
+  @media (max-width:760px){.career{grid-template-columns:1fr 1fr;}}
+
+  /* metas */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0;}
+  .stat{background:var(--card);border:1px solid var(--cardborder);border-radius:16px;padding:18px;text-align:center;}
+  .stat .big{font-weight:800;font-size:26px;line-height:1;color:#fff;letter-spacing:-1px;}
+  .stat .lab{font-size:11.5px;color:var(--muted);margin-top:8px;}
+  @media (max-width:760px){.stats{grid-template-columns:1fr 1fr;}}
+
+  .callout{background:linear-gradient(135deg,rgba(15,43,58,0.62),rgba(45,212,191,0.06));border:1px solid rgba(45,212,191,0.28);border-left:3px solid #2DD4BF;border-radius:0 12px 12px 0;padding:14px 18px;margin:20px 0;font-size:13.5px;color:var(--text);}
+  .callout b{color:#fff;}
+
+  /* próximos passos */
+  .steps{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:20px 0;}
+  a.step{display:block;text-decoration:none;background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:18px 20px;transition:.15s;}
+  a.step:hover{border-color:var(--accent);box-shadow:0 6px 26px rgba(37,212,191,0.10);transform:translateY(-1px);}
+  a.step .t{font-weight:700;color:#fff;font-size:15px;}
+  a.step .d{color:var(--muted);font-size:12.5px;margin-top:5px;}
+  @media (max-width:660px){.steps{grid-template-columns:1fr;}}
+
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:linear-gradient(90deg,#2DD4BF,#7EC8E3 45%,#E11D48);box-shadow:0 0 10px rgba(126,200,227,0.5);transition:width .08s linear;}
+  #totop{position:fixed;right:20px;bottom:22px;z-index:55;width:46px;height:46px;border-radius:50%;border:1px solid var(--cardborder);
+    background:rgba(11,26,43,0.86);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:var(--accent);font-size:19px;line-height:1;
+    display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;visibility:hidden;transform:translateY(10px);transition:.22s;box-shadow:0 6px 22px rgba(0,0,0,0.35);}
+  #totop.show{opacity:1;visibility:visible;transform:translateY(0);}
+  #totop:hover{color:#fff;border-color:var(--accent);}
+
+  .foot{margin-top:54px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+  @media (max-width:660px){
+    .wrap{padding:32px 16px 50px;}
+    h1{font-size:30px;}h2{font-size:21px;}
+    body{background-attachment:scroll;}
+    .lnav{margin-left:-16px;margin-right:-16px;padding-left:16px;padding-right:16px;}
+    #totop{right:14px;bottom:16px;width:42px;height:42px;}
+  }
+  @media print{body{background-attachment:scroll;}.lnav,.back,#progress,#totop{display:none;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../index.html">← Voltar ao Hub</a>
+  <div class="eyebrow">Elevate Ecom · Boas-vindas ao time</div>
+  <h1>Bem-vindo(a) à <b>Elevate</b>.<br>Que bom ter você aqui.</h1>
+  <div class="sub">Este é o seu ponto de partida. Aqui você entende <b style="color:var(--text);">quem somos</b>, a <b style="color:var(--text);">cultura</b> que nos move, <b style="color:var(--text);">como o time se organiza</b> e <b style="color:var(--text);">qual é o seu papel</b>, pra você começar com clareza e velocidade.</div>
+  <div class="hello">
+    <span class="pillb"><span class="dot"></span>Sua marca acima nos marketplaces</span>
+    <span class="pillb">🚀 Learn by doing</span>
+    <span class="pillb">🤝 Grupo Next</span>
+  </div>
+  <div class="accentbar"></div>
+
+  <nav class="lnav">
+    <a href="#grupo">Grupo Next</a>
+    <a href="#cultura">Cultura</a>
+    <a href="#estrutura">Como nos organizamos</a>
+    <a href="#papeis">Os 3 papéis</a>
+    <a href="#squads">Organograma</a>
+    <a href="#carreira">Plano de carreira</a>
+    <a href="#metas">Metas</a>
+    <a href="#passos">Primeiros passos</a>
+  </nav>
+
+  <!-- GRUPO -->
+  <section id="grupo">
+    <h2>Faz parte de um grupo: a Next</h2>
+    <p class="lead">A Elevate Ecom é uma das empresas do <strong>Grupo Next (Next Ecommerce)</strong>, um ecossistema de unidades de negócio que se complementam no varejo digital. Isso significa rede, troca e <strong>cross-sell entre as BUs</strong>: um cliente de uma pode crescer com a solução de outra.</p>
+    <div class="bus">
+      <div class="bu elevate"><div class="bn">Elevate Ecom</div><div class="bt">Gestão de Marketplaces</div><p>Onde você está. Gestão e consultoria de marketplaces (TikTok Shop, Amazon, Mercado Livre e Shopee), pela metodologia Elevate 4D.</p></div>
+      <div class="bu adscale"><div class="bn">Adscale</div><div class="bt">Escala &amp; Performance</div><p>Mídia paga e performance para escalar operações digitais.</p></div>
+      <div class="bu mg"><div class="bn">MG</div><div class="bt">Marketing para ecommerce</div><p>Marketing para ecommerce, incluindo a frente de conteúdo e criadores.</p></div>
+      <div class="bu avant"><div class="bn">Avant</div><div class="bt">Inteligência de dados</div><p>Inteligência de dados para ecommerce: leitura e decisão baseada em dados.</p></div>
+    </div>
+    <div class="callout">🤝 <b>Por que isso importa pra você:</b> quando você identifica uma dor que outra BU resolve, existe uma <b>política de cross-sell</b> que reconhece quem puxa a indicação. Crescer a base do grupo é trabalho de todo mundo.</div>
+  </section>
+
+  <!-- CULTURA -->
+  <section id="cultura">
+    <h2>A cultura é o nosso sistema operacional</h2>
+    <div class="culture">
+      <div class="big">A cultura é o nosso <span>sistema operacional</span>.</div>
+      <p>Ela existe para sustentar <strong>Clientes Ativos</strong> e <strong>NPS</strong> com padrão, integridade e execução. Não é quadro na parede: é como a gente decide e age todo dia.</p>
+    </div>
+    <div class="pv">
+      <div class="b"><div class="k">Nosso propósito</div><p>Profissionalizar comércios digitais para que <strong>empreguem mais pessoas</strong> e melhorem o país por meio da <strong>cultura do empreendedorismo</strong>.</p></div>
+      <div class="b"><div class="k">Nossa visão</div><p>Ser o <strong>maior hub de educação para o varejo digital</strong>, alterando a realidade do país por intermédio da cultura do empreendedorismo.</p></div>
+    </div>
+    <h3>Foco operacional · o que esperamos de você</h3>
+    <div class="focus">
+      <div class="f"><div class="fh">🧭 Zelo pelo negócio e pelo cliente</div><p>Trate a conta do cliente como se fosse a sua.</p></div>
+      <div class="f"><div class="fh">💬 Comunicação é prioridade máxima</div><p>Alinhe antes, durante e depois. Nada de silêncio.</p></div>
+      <div class="f"><div class="fh">🎯 Foco no cliente e no resultado</div><p>Sempre. Sem lavar as mãos, sem braço curto.</p></div>
+    </div>
+    <h3>A forma Next de operar</h3>
+    <p class="lead">Quatro princípios que orientam como a gente trabalha no dia a dia:</p>
+    <div class="ways">
+      <div class="way"><div class="wn">Clareza antes de velocidade</div><div class="wd">Alinhamento reduz retrabalho.</div></div>
+      <div class="way"><div class="wn">Sistema &gt; esforço</div><div class="wd">Processo e checklist vencem heroísmo.</div></div>
+      <div class="way"><div class="wn">Dados + bom senso</div><div class="wd">Métrica com contexto.</div></div>
+      <div class="way"><div class="wn">Sem vaidade</div><div class="wd">O objetivo é o cliente vencer.</div></div>
+    </div>
+    <div class="mantra">🛠️ <span>Learn by doing!</span> Troque o pneu com o carro andando.</div>
+  </section>
+
+  <!-- ESTRUTURA -->
+  <section id="estrutura">
+    <h2>Como o time se organiza</h2>
+    <p class="lead">A operação roda em <strong>squads</strong>. Cada squad é uma célula completa que cuida de até <strong>50 contas</strong> num marketplace. A fórmula é sempre a mesma:</p>
+    <div class="formula">
+      <div class="pc"><div class="n">1 Supervisor</div><div class="s">dono do resultado</div></div>
+      <div class="op">+</div>
+      <div class="pc"><div class="n">2 Accounts</div><div class="s">25 contas cada</div></div>
+      <div class="op">+</div>
+      <div class="pc"><div class="n">2 Executores</div><div class="s">execução 360</div></div>
+      <div class="eq">=</div>
+      <div class="pc total"><div class="n">50 contas</div><div class="s">por squad</div></div>
+    </div>
+    <div class="chain"><b>Coordenador</b> <span class="ar">→</span> <b>Supervisor</b> <span class="ar">→</span> <b>Account</b> <span class="ar">→</span> <b>Executor</b> &nbsp;·&nbsp; Account e Executor reportam ao Supervisor. No dia a dia, o <b>Account direciona o Executor</b>: traduz a estratégia em instrução operacional.</div>
+    <div class="callout">🌱 <b>O time cresce com a base:</b> um <b>novo squad surge quando um marketplace bate 50 contas</b>. Mais clientes = mais squads = mais oportunidade de carreira pra quem está dentro. <b>Hoje somos 31 pessoas</b> (19 gestores · 6 supervisores · 2 coordenadores · 4 comercial) cuidando de <b>155 contas</b>.</div>
+  </section>
+
+  <!-- PAPÉIS -->
+  <section id="papeis">
+    <h2>Os 3 papéis do squad</h2>
+    <p class="lead">Cada papel tem uma <strong>meta-chave</strong> e uma fronteira clara de <strong>o que faz</strong> e <strong>o que não faz</strong>. Saber a fronteira é o que evita retrabalho e ruído.</p>
+    <div class="roles">
+      <div class="role sup">
+        <div class="rn">Supervisor</div>
+        <div class="rd">Dono do resultado do squad. Estratégia, processo e gente.</div>
+        <span class="meta">Meta: churn &lt; 10%</span>
+        <ul>
+          <li class="y">Define a estratégia macro por conta (prioridade, canal, movimento)</li>
+          <li class="y">Conduz daily (15min), weekly (30min) e 1:1 semanal</li>
+          <li class="y">Intervém em red flag e risco de churn</li>
+          <li class="y">Liga para cada cliente Nível A (mensal, não delegável)</li>
+          <li class="y">Monitora KPIs do squad e conduz treinamento quinzenal</li>
+        </ul>
+        <div class="nh">Não faz</div>
+        <ul>
+          <li class="n">Reunião operacional com cliente: é do Account</li>
+          <li class="n">ADS e promoções: é do Account / Executor</li>
+          <li class="n">Apagar incêndio individual: constrói o sistema que evita</li>
+        </ul>
+      </div>
+      <div class="role acc">
+        <div class="rn">Account</div>
+        <div class="rd">A voz do cliente no squad. Dono do relacionamento e do Monday da conta.</div>
+        <span class="meta">Meta: cadência &gt; 95%</span>
+        <ul>
+          <li class="y">Atendimento obrigatório 2ª, 4ª e 6ª (ideal: diário)</li>
+          <li class="y">ADS: subir, ajustar, escalar e otimizar campanhas pagas</li>
+          <li class="y">Conduz reuniões: check-in, planejamento, resultado</li>
+          <li class="y">Registra TODAS as demandas e tarefas no Monday</li>
+          <li class="y">Direciona o Executor e detecta red flag cedo</li>
+        </ul>
+        <div class="nh">Não faz</div>
+        <ul>
+          <li class="n">Define estratégia macro: é do Supervisor</li>
+          <li class="n">Executa anúncios e promoções: é do Executor</li>
+          <li class="n">Negocia desconto / retenção sozinho: escala pro Supervisor</li>
+        </ul>
+      </div>
+      <div class="role exe">
+        <div class="rn">Executor</div>
+        <div class="rd">O 360 da conta. Executa todos os entregáveis operacionais.</div>
+        <span class="meta">Meta: execução &gt; 95%</span>
+        <ul>
+          <li class="y">Anúncios: subir e otimizar (cadastro, título, fotos, conversão)</li>
+          <li class="y">Central de promoções: inscrever produtos nas campanhas certas</li>
+          <li class="y">Demais entregáveis operacionais da conta (360, ex-ADS)</li>
+          <li class="y">Executa as demandas do Monday no prazo</li>
+          <li class="y">Sinaliza bloqueio em menos de 24h</li>
+        </ul>
+        <div class="nh">Não faz</div>
+        <ul>
+          <li class="n">ADS: agora é do Account</li>
+          <li class="n">Conversa com o cliente final: é do Account</li>
+          <li class="n">Aceita demanda avulsa fora do Monday / prioriza sozinho</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SQUADS / ORGANOGRAMA -->
+  <section id="squads">
+    <h2>Quem é quem · o organograma</h2>
+    <p class="lead">A liderança que sustenta a operação:</p>
+    <div class="leadgrid">
+      <div class="l"><div class="ln">Talisson</div><div class="lr">Head</div></div>
+      <div class="l"><div class="ln">Klyver</div><div class="lr">Coordenador</div></div>
+      <div class="l"><div class="ln">Higor</div><div class="lr">Viabilização de IA</div></div>
+    </div>
+    <h3>Os squads por marketplace</h3>
+    <div class="squads">
+      <div class="squad fox">
+        <div class="sq"><span class="sqn">Fox</span><span class="sqm">TikTok Shop</span></div>
+        <div class="row"><span class="rk">Accounts</span>Julia · Lorena</div>
+        <div class="row"><span class="rk">Executores</span>Leandro · João</div>
+        <div class="row"><span class="rk">Relacionamento Creators</span>Rhayssa</div>
+      </div>
+      <div class="squad shark">
+        <div class="sq"><span class="sqn">Shark</span><span class="sqm">TikTok Shop · Ads &amp; Contas-chave</span></div>
+        <div class="row"><span class="rk">Supervisor</span><b>Davi</b></div>
+        <div class="row"><span class="rk">Time</span>Lucas Munhoz</div>
+        <div class="row"><span class="rk">Foco</span>GMV Max · Awareness · Key accounts</div>
+        <div class="row"><span class="rk">Relacionamento Creators</span>Rhayssa</div>
+      </div>
+      <div class="squad sphynx">
+        <div class="sq"><span class="sqn">Sphynx</span><span class="sqm">TikTok Shop · Amazon</span></div>
+        <div class="row"><span class="rk">Supervisor</span><b>Vinícius</b></div>
+        <div class="row"><span class="rk">Accounts</span>Gabriel · Maciel</div>
+        <div class="row"><span class="rk">Executores</span>João e Lucas · Murilo</div>
+        <div class="row"><span class="rk">Relacionamento Creators</span>Rhayssa</div>
+      </div>
+      <div class="squad crow">
+        <div class="sq"><span class="sqn">Crow</span><span class="sqm">Mercado Livre</span></div>
+        <div class="row"><span class="rk">Supervisor</span><b>Erick Lima</b></div>
+        <div class="row"><span class="rk">Accounts</span>Guilherme · Bianca · Alexandre</div>
+        <div class="row"><span class="rk">Executores</span>Joacir · Liziane · Renan · Yasser</div>
+      </div>
+      <div class="squad jaguar">
+        <div class="sq"><span class="sqn">Jaguar</span><span class="sqm">Shopee</span></div>
+        <div class="row"><span class="rk">Supervisor</span><b>Machado</b></div>
+        <div class="row"><span class="rk">Accounts</span>Rafael · Gustavo</div>
+        <div class="row"><span class="rk">Executores</span>Ezequiel · Eduarda</div>
+      </div>
+      <div class="squad forming">
+        <div class="sq"><span class="sqn">Klyve</span><span class="sqm">Em formação</span></div>
+        <div class="row">Um novo squad surge quando um marketplace bate <b>50 contas</b>. O próximo pode ser o seu.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARREIRA -->
+  <section id="carreira">
+    <h2>Plano de carreira</h2>
+    <p class="lead">Estrutura fixa + variável por nível, com performance reconhecida. (As comissões comerciais entram em política própria, no fechamento.)</p>
+    <div class="career">
+      <div class="lvl n1"><div class="lk">Nível 1</div><div class="lt">Gestor<br>Regular Team</div><div class="lf">R$ 3.000 fixo</div><div class="lv">+ R$ 1.500 variável</div><div class="lmax">Máx R$ 4.500</div></div>
+      <div class="lvl n2"><div class="lk">Nível 2</div><div class="lt">Gestor<br>Black Panther</div><div class="lf">R$ 4.500 fixo</div><div class="lv">+ R$ 1.500 variável</div><div class="lmax">Máx R$ 6.000</div></div>
+      <div class="lvl n3"><div class="lk">Nível 3</div><div class="lt">Supervisor<br>de Operação</div><div class="lf">R$ 5.000 fixo</div><div class="lv">+ R$ 2.000 variável</div><div class="lmax">Máx R$ 7.000</div></div>
+      <div class="lvl n4"><div class="lk">Nível 4</div><div class="lt">Supervisor<br>Black Panther</div><div class="lf">R$ 7.000 fixo</div><div class="lv">+ R$ 2.000 variável</div><div class="lmax">Máx R$ 9.000</div></div>
+    </div>
+    <div class="callout">📈 <b>O variável segue o squad:</b> sua parte do variável está ligada ao resultado do time (churn do squad) e à sua execução, então crescer junto compensa individualmente.</div>
+  </section>
+
+  <!-- METAS -->
+  <section id="metas">
+    <h2>Para onde a companhia rema</h2>
+    <p class="lead">Os números que orientam o jogo. Saber a meta é saber o que conta como vitória.</p>
+    <div class="stats">
+      <div class="stat"><div class="big">155</div><div class="lab">contas na base<br>(+17,4% no mês)</div></div>
+      <div class="stat"><div class="big">20%</div><div class="lab">meta de crescimento<br>líquido no mês</div></div>
+      <div class="stat"><div class="big">&lt; 10%</div><div class="lab">churn-teto · hoje<br>em 1,52%</div></div>
+      <div class="stat"><div class="big">31</div><div class="lab">pessoas ativas<br>no time</div></div>
+    </div>
+    <div class="callout">🎯 <b>A tese do momento (All Hands de Julho):</b> a base cresceu forte (132 → 155 contas), então agora é <b>crescer sem perder o padrão</b>. Já medimos clientes, entradas, churn e time; o próximo movimento é <b>medir a adoção do método por squad</b>, garantir que o 4D chegue de fato a toda a base.</div>
+    <div class="callout">📋 <b>Como o churn conta (regra canônica):</b> o <b>aviso prévio já entra no churn</b> — a baixa é contabilizada no <b>mês da comunicação</b>, não na data final do contrato (exceto conta congelada ou inadimplente). Comunicou, contou.</div>
+  </section>
+
+  <!-- PRIMEIROS PASSOS -->
+  <section id="passos">
+    <h2>Seus primeiros passos</h2>
+    <p class="lead">Agora que você entendeu o todo, comece por aqui. Tudo isto vive no <strong>Hub Elevate 4D</strong>:</p>
+    <div class="steps">
+      <a class="step" href="../Elevate%204D/Visao%20Geral/ELEVATE-4D-VISAO-GERAL.html" target="_blank" rel="noopener"><div class="t">⭐ Entenda o método · Elevate 4D</div><div class="d">O documento mestre: as 4 dimensões do diagnóstico que guiam toda conta.</div></a>
+      <a class="step" href="../Formacao/FUNDAMENTOS-TIKTOK-SHOP.html" target="_blank" rel="noopener"><div class="t">🎓 Formação</div><div class="d">Cursos destilados de TikTok Shop &amp; GMV Max, com quiz. Sua base técnica.</div></a>
+      <a class="step" href="../Elevate%204D/Playbook%20de%20Implantacao/PLAYBOOK-IMPLANTACAO-4D.html" target="_blank" rel="noopener"><div class="t">📘 Playbook de Implantação</div><div class="d">As 7 fases do onboarding de cliente, do "fechou" ao "operando".</div></a>
+      <a class="step" href="../index.html" target="_blank" rel="noopener"><div class="t">🧭 Explore o Hub</div><div class="d">Metodologia, datas comerciais, classificação, comercial e mais. Filtrável por marketplace.</div></a>
+    </div>
+    <div class="callout">💙 <b>Bem-vindo(a) ao time.</b> Aqui a gente aprende fazendo e cresce junto. Qualquer dúvida, fale com seu Supervisor ou Coordenador: comunicação é prioridade máxima.</div>
+  </section>
+
+  <div class="foot">Elevate Ecom. · Sua marca acima nos marketplaces. · Boas-vindas ao time · Conteúdo destilado do All Hands de Julho/2026 (corte 23/07). Estrutura e metas sujeitas a evolução a cada ciclo.</div>
+</div>
+
+<div id="progress"></div>
+<button id="totop" aria-label="Voltar ao topo" title="Voltar ao topo">↑</button>
+
+<script>
+(function(){
+  var bar=document.getElementById('progress');
+  var top=document.getElementById('totop');
+  var nav=document.querySelector('.lnav');
+  var map={};
+  [].forEach.call(document.querySelectorAll('.lnav a'),function(a){ map[a.getAttribute('href').slice(1)]=a; });
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    bar.style.width=(max>0?(h.scrollTop/max)*100:0)+'%';
+    if(h.scrollTop>520){top.classList.add('show');}else{top.classList.remove('show');}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  top.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  var current=null;
+  function setActive(id){
+    if(id===current||!map[id])return; current=id;
+    [].forEach.call(document.querySelectorAll('.lnav a'),function(a){a.classList.remove('active');});
+    var a=map[id]; a.classList.add('active');
+    var l=a.offsetLeft, r=l+a.offsetWidth;
+    if(l<nav.scrollLeft+24) nav.scrollTo({left:l-24,behavior:'smooth'});
+    else if(r>nav.scrollLeft+nav.clientWidth-24) nav.scrollTo({left:r-nav.clientWidth+24,behavior:'smooth'});
+  }
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)setActive(e.target.id);});},{rootMargin:'-80px 0px -65% 0px',threshold:0});
+  document.querySelectorAll('section[id]').forEach(function(s){io.observe(s);});
+})();
+</script>
+</body>
+</html>

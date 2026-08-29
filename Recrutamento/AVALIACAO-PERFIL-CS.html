@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Processo Seletivo · Gestor Elevate</title>
+<style>
+  :root{
+    --navy-0:#0B1A2B; --navy-1:#0F2B3A; --navy-2:#1A4A5A;
+    --accent:#7EC8E3; --accent-strong:#A9DCEF;
+    --ok:#22C55E; --warn:#FACC15; --bad:#EC4899;
+
+    /* tokens (light default) */
+    --bg-grad: radial-gradient(1200px 600px at 85% -10%, rgba(126,200,227,.18), transparent 60%),
+               linear-gradient(135deg,#F4F8FB 0%,#EAF2F6 100%);
+    --ink:#14303f; --ink-strong:#0B1A2B; --muted:#5B7885;
+    --card:rgba(255,255,255,.72); --card-brd:rgba(20,60,80,.14);
+    --field:rgba(255,255,255,.9); --field-brd:rgba(20,60,80,.18);
+    --hair:rgba(20,60,80,.12);
+    --accent-ink:#0E5E7A;
+    --shadow:0 18px 50px -20px rgba(11,26,43,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg-grad: radial-gradient(1100px 620px at 88% -12%, rgba(126,200,227,.22), transparent 58%),
+                 linear-gradient(135deg,var(--navy-0) 0%,var(--navy-1) 52%,var(--navy-2) 100%);
+      --ink:#E8EEF2; --ink-strong:#FFFFFF; --muted:#98B0BC;
+      --card:rgba(18,44,58,.55); --card-brd:rgba(126,200,227,.20);
+      --field:rgba(9,26,36,.55); --field-brd:rgba(126,200,227,.22);
+      --hair:rgba(126,200,227,.16);
+      --accent-ink:var(--accent);
+      --shadow:0 24px 60px -24px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="light"]{
+    --bg-grad: radial-gradient(1200px 600px at 85% -10%, rgba(126,200,227,.18), transparent 60%),
+               linear-gradient(135deg,#F4F8FB 0%,#EAF2F6 100%);
+    --ink:#14303f; --ink-strong:#0B1A2B; --muted:#5B7885;
+    --card:rgba(255,255,255,.72); --card-brd:rgba(20,60,80,.14);
+    --field:rgba(255,255,255,.9); --field-brd:rgba(20,60,80,.18);
+    --hair:rgba(20,60,80,.12); --accent-ink:#0E5E7A;
+    --shadow:0 18px 50px -20px rgba(11,26,43,.35);
+  }
+  :root[data-theme="dark"]{
+    --bg-grad: radial-gradient(1100px 620px at 88% -12%, rgba(126,200,227,.22), transparent 58%),
+               linear-gradient(135deg,var(--navy-0) 0%,var(--navy-1) 52%,var(--navy-2) 100%);
+    --ink:#E8EEF2; --ink-strong:#FFFFFF; --muted:#98B0BC;
+    --card:rgba(18,44,58,.55); --card-brd:rgba(126,200,227,.20);
+    --field:rgba(9,26,36,.55); --field-brd:rgba(126,200,227,.22);
+    --hair:rgba(126,200,227,.16); --accent-ink:var(--accent);
+    --shadow:0 24px 60px -24px rgba(0,0,0,.6);
+  }
+
+  *{box-sizing:border-box}
+  body{margin:0}
+  #app{
+    min-height:100vh;
+    font-family:"Poppins","Segoe UI",system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--bg-grad);
+    background-attachment:fixed;
+    padding:clamp(16px,4vw,48px) 16px;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+
+  /* Brand header */
+  .brand{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+  .brand .dot{width:26px;height:26px;border-radius:8px;
+    background:linear-gradient(135deg,var(--accent),#4FA8C8);
+    box-shadow:0 0 0 4px rgba(126,200,227,.12)}
+  .brand b{font-weight:800;letter-spacing:-.02em;color:var(--ink-strong)}
+  .brand span{color:var(--muted);font-size:13px}
+  .theme-btn{margin-left:auto;background:transparent;border:1px solid var(--card-brd);
+    color:var(--muted);border-radius:999px;padding:6px 12px;font:inherit;font-size:12px;cursor:pointer}
+  .theme-btn:hover{color:var(--ink);border-color:var(--accent)}
+
+  .card{
+    background:var(--card);border:1px solid var(--card-brd);
+    border-radius:20px;padding:clamp(22px,4vw,38px);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    box-shadow:var(--shadow);
+  }
+  .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    font-weight:600;color:var(--accent-ink);margin:0 0 10px}
+  h1{font-size:clamp(26px,5vw,38px);line-height:1.08;letter-spacing:-.03em;
+    margin:0 0 14px;text-wrap:balance;color:var(--ink-strong)}
+  h1 .lt{font-weight:300;color:var(--accent-ink)}
+  h1 .bd{font-weight:800}
+  .lead{color:var(--muted);font-size:15.5px;margin:0 0 22px;max-width:56ch}
+
+  .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin:0 0 26px}
+  .pill{display:inline-flex;gap:8px;align-items:baseline;
+    border:1px solid var(--hair);border-radius:999px;padding:7px 13px;font-size:12.5px}
+  .pill b{color:var(--ink-strong);font-weight:700}
+  .pill span{color:var(--muted)}
+
+  label.field{display:block;margin:0 0 16px}
+  label.field .lab{display:block;font-size:13px;color:var(--muted);margin-bottom:6px;font-weight:600}
+  input[type=text],input[type=email]{
+    width:100%;background:var(--field);border:1px solid var(--field-brd);
+    color:var(--ink-strong);border-radius:12px;padding:12px 14px;font:inherit;font-size:15px}
+  input:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:transparent}
+
+  .btn{appearance:none;border:0;cursor:pointer;font:inherit;font-weight:700;
+    border-radius:12px;padding:14px 24px;font-size:15px;
+    background:linear-gradient(135deg,var(--accent),#4FA8C8);color:#062230;
+    box-shadow:0 10px 24px -10px rgba(79,168,200,.7);transition:transform .12s ease,filter .12s ease}
+  .btn:hover{filter:brightness(1.06)}
+  .btn:active{transform:translateY(1px)}
+  .btn.ghost{background:transparent;border:1px solid var(--card-brd);color:var(--ink);box-shadow:none}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .btn-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:26px}
+
+  .note{font-size:12.5px;color:var(--muted);margin-top:18px;padding-top:16px;border-top:1px solid var(--hair)}
+
+  .mstatus{font-size:13.5px;font-weight:600;border-radius:12px;padding:11px 15px;margin-top:22px;
+    border:1px solid var(--hair);display:flex;gap:10px;align-items:center}
+  .mstatus.pending{color:var(--muted)}
+  .mstatus.ok{color:var(--ok);border-color:rgba(34,197,94,.4);background:rgba(34,197,94,.08)}
+  .mstatus.err{color:var(--warn);border-color:rgba(250,204,21,.4);background:rgba(250,204,21,.08)}
+  .mstatus .sp{width:15px;height:15px;border-radius:50%;border:2px solid var(--muted);
+    border-top-color:transparent;animation:spin .7s linear infinite;flex:0 0 auto}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* progress */
+  .prog{margin:0 0 20px}
+  .prog .track{height:6px;border-radius:999px;background:var(--hair);overflow:hidden}
+  .prog .fill{height:100%;background:linear-gradient(90deg,var(--accent),#4FA8C8);
+    width:0;border-radius:999px;transition:width .35s ease}
+  .prog .lbl{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:8px}
+
+  /* questions */
+  .q{padding:18px 0;border-bottom:1px solid var(--hair)}
+  .q:last-child{border-bottom:0}
+  .q .qh{display:flex;gap:12px;margin-bottom:14px}
+  .q .qn{flex:0 0 auto;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;
+    font-size:12.5px;font-weight:700;color:var(--accent-ink);
+    background:rgba(126,200,227,.14);border:1px solid var(--hair)}
+  .q .qt{font-size:15.5px;color:var(--ink-strong);font-weight:500}
+
+  /* likert */
+  .likert{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .likert .opt{position:relative}
+  .likert input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+  .likert .box{display:flex;flex-direction:column;align-items:center;gap:6px;
+    padding:9px 4px;border:1px solid var(--field-brd);border-radius:12px;
+    background:var(--field);cursor:pointer;transition:.12s;min-height:56px;justify-content:center}
+  .likert .dotm{width:14px;height:14px;border-radius:50%;border:2px solid var(--muted);transition:.12s}
+  .likert .cap{font-size:10.5px;color:var(--muted);text-align:center;line-height:1.15}
+  .likert input:checked + .box{border-color:var(--accent);background:rgba(126,200,227,.14)}
+  .likert input:checked + .box .dotm{background:var(--accent);border-color:var(--accent)}
+  .likert input:focus-visible + .box{outline:2px solid var(--accent);outline-offset:2px}
+  .likert .box:hover{border-color:var(--accent)}
+  .scale-legend{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin:2px 2px 12px}
+
+  /* choice (cognitive) */
+  .choices{display:flex;flex-direction:column;gap:8px}
+  .choice{position:relative}
+  .choice input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+  .choice .cbox{display:flex;align-items:center;gap:12px;padding:12px 14px;
+    border:1px solid var(--field-brd);border-radius:12px;background:var(--field);cursor:pointer;transition:.12s}
+  .choice .mk{flex:0 0 auto;width:22px;height:22px;border-radius:50%;border:2px solid var(--muted);
+    display:grid;place-items:center;font-size:12px;font-weight:700;color:var(--muted)}
+  .choice .ct{font-size:14.5px;color:var(--ink-strong)}
+  .choice input:checked + .cbox{border-color:var(--accent);background:rgba(126,200,227,.14)}
+  .choice input:checked + .cbox .mk{background:var(--accent);border-color:var(--accent);color:#062230}
+  .choice input:focus-visible + .cbox{outline:2px solid var(--accent);outline-offset:2px}
+  .choice .cbox:hover{border-color:var(--accent)}
+
+  .q.missing .qn{background:rgba(236,72,153,.18);color:var(--bad);border-color:var(--bad)}
+
+  .timer{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);
+    border:1px solid var(--hair);border-radius:999px;padding:6px 13px;font-variant-numeric:tabular-nums}
+  .timer b{color:var(--ink-strong);font-weight:700}
+
+  /* results */
+  .verdict{display:flex;gap:16px;align-items:center;padding:20px;border-radius:16px;
+    border:1px solid var(--card-brd);margin-bottom:26px}
+  .verdict .badge{flex:0 0 auto;width:64px;height:64px;border-radius:16px;display:grid;place-items:center;
+    font-size:30px;font-weight:800;color:#062230}
+  .verdict.forte .badge{background:linear-gradient(135deg,#34d399,var(--ok))}
+  .verdict.moderado .badge{background:linear-gradient(135deg,#fde047,var(--warn));color:#3a2e00}
+  .verdict.baixo .badge{background:linear-gradient(135deg,#f472b6,var(--bad))}
+  .verdict h2{margin:0 0 4px;font-size:20px;letter-spacing:-.02em;color:var(--ink-strong)}
+  .verdict p{margin:0;font-size:13.5px;color:var(--muted)}
+
+  .grid2{display:grid;grid-template-columns:1fr;gap:22px;margin-bottom:8px}
+  @media(min-width:640px){.grid2{grid-template-columns:1.35fr 1fr}}
+  .panel{border:1px solid var(--hair);border-radius:16px;padding:20px}
+  .panel h3{margin:0 0 16px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+
+  .meter{margin-bottom:16px}
+  .meter:last-child{margin-bottom:0}
+  .meter .mh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .meter .mn{font-size:14px;color:var(--ink-strong);font-weight:600}
+  .meter .mv{font-size:13px;font-variant-numeric:tabular-nums;font-weight:700}
+  .meter .mt{height:9px;border-radius:999px;background:var(--hair);overflow:hidden}
+  .meter .mf{height:100%;border-radius:999px;width:0;transition:width .8s cubic-bezier(.2,.7,.2,1)}
+  .meter .msub{font-size:11.5px;color:var(--muted);margin-top:4px}
+
+  .cog{text-align:center}
+  .cog .ring{width:150px;height:150px;margin:6px auto 12px;position:relative}
+  .cog .ring svg{transform:rotate(-90deg)}
+  .cog .ring .num{position:absolute;inset:0;display:grid;place-content:center;line-height:1}
+  .cog .ring .num b{font-size:40px;font-weight:800;color:var(--ink-strong);letter-spacing:-.02em}
+  .cog .ring .num small{font-size:13px;color:var(--muted)}
+  .cog .band{font-size:14px;font-weight:700;margin-top:2px}
+  .cog .bd2{font-size:12.5px;color:var(--muted);margin-top:4px}
+
+  .flags{margin-top:22px}
+  .flags h3{margin:0 0 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .flag{display:flex;gap:10px;font-size:13.5px;padding:8px 0;border-bottom:1px dashed var(--hair);color:var(--ink)}
+  .flag:last-child{border-bottom:0}
+  .flag .ic{flex:0 0 auto}
+
+  .hidden{display:none}
+  .screen{animation:fade .4s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .disclaimer{font-size:11.5px;color:var(--muted);margin-top:24px;text-align:center;max-width:60ch;margin-left:auto;margin-right:auto}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none!important;transition:none!important}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="wrap">
+    <div class="brand">
+      <span class="dot" aria-hidden="true"></span>
+      <b>Elevate Ecom</b>
+      <span>· Recrutamento</span>
+      <button class="theme-btn" id="themeToggle" type="button">◐ Tema</button>
+    </div>
+
+    <!-- INTRO -->
+    <section id="screen-intro" class="screen">
+      <div class="card">
+        <p class="eyebrow">Processo Seletivo · Elevate Ecom</p>
+        <h1><span class="lt">Gestor</span> <span class="bd">Elevate</span></h1>
+        <p class="lead">Uma avaliação (~12 min) em três blocos: <b>perfil comportamental</b>, <b>fit cultural Next</b> e <b>raciocínio</b>. Não existe resposta "certa" nos blocos comportamental e cultural, responda com sinceridade, o que reflete melhor como você realmente age.</p>
+
+        <div class="meta-row">
+          <span class="pill"><b>3</b><span>blocos</span></span>
+          <span class="pill"><b>30</b><span>questões</span></span>
+          <span class="pill"><b>~12</b><span>minutos</span></span>
+          <span class="pill"><b>Respostas</b><span>confidenciais</span></span>
+        </div>
+
+        <label class="field"><span class="lab">Nome completo</span>
+          <input type="text" id="candName" placeholder="Seu nome" autocomplete="name"></label>
+        <label class="field"><span class="lab">E-mail</span>
+          <input type="email" id="candEmail" placeholder="voce@email.com" autocomplete="email"></label>
+
+        <div class="btn-row">
+          <button class="btn" id="startBtn" type="button">Começar avaliação →</button>
+        </div>
+        <p class="note">Bloco 1 — Comportamental: 16 afirmações. &nbsp;·&nbsp; Bloco 2 — Fit cultural Next: 8 afirmações. &nbsp;·&nbsp; Bloco 3 — Raciocínio: 6 questões com resposta única.</p>
+      </div>
+    </section>
+
+    <!-- BEHAVIORAL -->
+    <section id="screen-behavioral" class="screen hidden">
+      <div class="card">
+        <div class="prog"><div class="track"><div class="fill" style="width:25%"></div></div>
+          <div class="lbl"><span>Bloco 1 de 3 · Comportamental</span><span>16 afirmações</span></div></div>
+        <p class="eyebrow">Como você age no dia a dia</p>
+        <h1 style="font-size:clamp(22px,4vw,28px)">O quanto cada frase <span class="lt">combina com você</span></h1>
+        <p class="lead">Marque de <b>Discordo totalmente</b> a <b>Concordo totalmente</b>. Vá pela primeira impressão.</p>
+        <div class="scale-legend"><span>← Discordo</span><span>Concordo →</span></div>
+        <div id="behavioralList"></div>
+        <div class="btn-row">
+          <button class="btn ghost" data-back="intro" type="button">← Voltar</button>
+          <button class="btn" id="toCultural" type="button">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CULTURAL -->
+    <section id="screen-cultural" class="screen hidden">
+      <div class="card">
+        <div class="prog"><div class="track"><div class="fill" style="width:55%"></div></div>
+          <div class="lbl"><span>Bloco 2 de 3 · Fit Cultural Next</span><span>8 afirmações</span></div></div>
+        <p class="eyebrow">A forma Next de operar</p>
+        <h1 style="font-size:clamp(22px,4vw,28px)">O quanto você <span class="lt">trabalha assim</span></h1>
+        <p class="lead">Estes são os quatro princípios que orientam o dia a dia no Grupo Next. Marque o quanto cada frase combina com o seu jeito de trabalhar.</p>
+        <div class="scale-legend"><span>← Discordo</span><span>Concordo →</span></div>
+        <div id="culturalList"></div>
+        <div class="btn-row">
+          <button class="btn ghost" data-back="behavioral" type="button">← Voltar</button>
+          <button class="btn" id="toCognitive" type="button">Continuar →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COGNITIVE -->
+    <section id="screen-cognitive" class="screen hidden">
+      <div class="card">
+        <div class="prog"><div class="track"><div class="fill" style="width:82%"></div></div>
+          <div class="lbl"><span>Bloco 3 de 3 · Raciocínio</span><span class="timer">⏱ <b id="clock">0:00</b></span></div></div>
+        <p class="eyebrow">Raciocínio lógico, numérico e verbal</p>
+        <h1 style="font-size:clamp(22px,4vw,28px)">Escolha a <span class="lt">resposta correta</span></h1>
+        <p class="lead">6 questões, uma resposta cada. Não há penalidade por tempo, mas tente resolver com agilidade.</p>
+        <div id="cognitiveList"></div>
+        <div class="btn-row">
+          <button class="btn ghost" data-back="cultural" type="button">← Voltar</button>
+          <button class="btn" id="finishBtn" type="button">Ver meu resultado →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- THANKS (candidato) -->
+    <section id="screen-thanks" class="screen hidden">
+      <div class="card" style="text-align:center">
+        <div style="font-size:56px;line-height:1;margin-bottom:8px">✅</div>
+        <p class="eyebrow" style="justify-content:center">Concluído</p>
+        <h1 style="font-size:clamp(28px,5.5vw,38px)">Obrigado! <span class="lt">Recebemos suas respostas.</span></h1>
+        <p class="lead" style="margin-left:auto;margin-right:auto;font-size:17.5px;line-height:1.65;max-width:46ch">Sua avaliação foi enviada ao time de recrutamento da Elevate. A partir daqui, avaliamos suas respostas e entramos em contato com os próximos passos. Boa sorte! 🚀</p>
+        <div id="mondayStatus" class="mstatus pending" hidden style="justify-content:center;font-size:14.5px"></div>
+      </div>
+    </section>
+
+    <!-- RESULT (apenas interno · não exibido ao candidato) -->
+    <section id="screen-result" class="screen hidden">
+      <div class="card">
+        <p class="eyebrow">Resultado</p>
+        <h1 style="font-size:clamp(22px,4.5vw,32px)" id="resTitle">Perfil de <span class="bd">—</span></h1>
+        <div class="verdict" id="verdict">
+          <div class="badge" id="vBadge">—</div>
+          <div><h2 id="vTitle">—</h2><p id="vDesc">—</p></div>
+        </div>
+
+        <div class="grid2">
+          <div class="panel">
+            <h3>Perfil comportamental</h3>
+            <div id="meters"></div>
+          </div>
+          <div class="panel">
+            <h3>Fit cultural · forma Next de operar</h3>
+            <div id="cultMeters"></div>
+          </div>
+        </div>
+
+        <div class="panel cog" style="margin-top:22px">
+          <h3>Raciocínio</h3>
+          <div class="ring">
+            <svg width="150" height="150" viewBox="0 0 150 150">
+              <circle cx="75" cy="75" r="62" fill="none" stroke="var(--hair)" stroke-width="12"/>
+              <circle id="cogArc" cx="75" cy="75" r="62" fill="none" stroke="var(--accent)"
+                stroke-width="12" stroke-linecap="round" stroke-dasharray="389.6" stroke-dashoffset="389.6"/>
+            </svg>
+            <div class="num"><b id="cogScore">0</b><small>de 6 corretas</small></div>
+          </div>
+          <div class="band" id="cogBand">—</div>
+          <div class="bd2" id="cogDesc">—</div>
+        </div>
+
+        <div class="flags">
+          <h3>Leitura para o recrutador</h3>
+          <div id="flagList"></div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn" id="copyCodeBtn" type="button">📥 Copiar código p/ Monday</button>
+          <button class="btn ghost" id="copyBtn" type="button">📋 Copiar resumo</button>
+          <button class="btn ghost" id="restartBtn" type="button">Refazer</button>
+        </div>
+        <p class="note" style="margin-top:14px">O resultado é registrado no Monday <b>automaticamente</b> ao finalizar. O <b>código</b> acima é um backup: se o envio automático falhar, o recrutador cola em <code>python avaliacao_monday.py push &lt;código&gt;</code>.</p>
+        <p class="disclaimer">Instrumento de triagem interna Elevate. Serve para apoiar a decisão, não substitui entrevista nem avaliação profissional. As dimensões medem tendências de comportamento auto-relatado, não capacidade fixa.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Theme ---------- */
+  var root=document.documentElement;
+  document.getElementById('themeToggle').addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    var isDark = cur ? cur==='dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  });
+
+  /* ---------- Data ---------- */
+  // dim: ORG (organização/confiabilidade), REL (relacionamento/comunicação),
+  //      RES (resiliência/estabilidade), PRO (proatividade/resultado)
+  // rev: true => item reverso (pontuação invertida)
+  var DIMS={
+    ORG:{name:'Organização & Confiabilidade', sub:'não deixa pendência escapar'},
+    REL:{name:'Relacionamento & Comunicação', sub:'lê e conduz bem o cliente'},
+    RES:{name:'Resiliência sob Pressão',       sub:'mantém a calma no aperto'},
+    PRO:{name:'Proatividade & Resultado',      sub:'dono do resultado do cliente'}
+  };
+  var BEHAV=[
+    {t:'Mantenho um sistema para acompanhar cada pendência de cada cliente, e raramente algo escapa.',d:'ORG',rev:false},
+    {t:'Percebo rápido quando um cliente está insatisfeito, mesmo que ele não diga diretamente.',d:'REL',rev:false},
+    {t:'Quando um cliente reclama de forma agressiva, mantenho a calma e foco na solução.',d:'RES',rev:false},
+    {t:'Quando vejo uma oportunidade de melhorar o resultado do cliente, ajo sem esperar me pedirem.',d:'PRO',rev:false},
+    {t:'Costumo deixar tarefas administrativas acumularem até o prazo apertar.',d:'ORG',rev:true},
+    {t:'Consigo explicar um assunto complicado de um jeito simples para quem não é da área.',d:'REL',rev:false},
+    {t:'Levo os problemas do trabalho para casa e demoro a desligar.',d:'RES',rev:true},
+    {t:'Acompanho os números do cliente e proponho ações antes de ele cobrar.',d:'PRO',rev:false},
+    {t:'Antes de terminar o dia, reviso o que ficou em aberto e organizo o dia seguinte.',d:'ORG',rev:false},
+    {t:'Tenho dificuldade de manter conversas quando não conheço bem a pessoa.',d:'REL',rev:true},
+    {t:'Prazos apertados e várias demandas ao mesmo tempo me deixam travado.',d:'RES',rev:true},
+    {t:'Costumo fazer o que foi pedido e nada além disso.',d:'PRO',rev:true},
+    {t:'Prefiro improvisar na hora a seguir um processo definido.',d:'ORG',rev:true},
+    {t:'Me esforço para entender o lado do cliente antes de responder a uma reclamação.',d:'REL',rev:false},
+    {t:'Depois de um erro, consigo aprender e seguir em frente sem me abalar por muito tempo.',d:'RES',rev:false},
+    {t:'Me sinto responsável pelo resultado do cliente como se fosse meu.',d:'PRO',rev:false}
+  ];
+  var LIKERT=['Discordo totalmente','Discordo','Neutro','Concordo','Concordo totalmente'];
+
+  // Fit cultural — "A forma Next de operar" (4 princípios oficiais do Grupo Next)
+  var CULT_DIMS={
+    CLA:{name:'Clareza antes de velocidade', sub:'alinha pra não retrabalhar'},
+    SIS:{name:'Sistema > esforço',           sub:'processo vence heroísmo'},
+    DAD:{name:'Dados + bom senso',           sub:'métrica com contexto'},
+    VAI:{name:'Sem vaidade',                 sub:'o objetivo é o cliente vencer'}
+  };
+  var CULT=[
+    {t:'Antes de sair executando, prefiro alinhar o combinado para não gerar retrabalho depois.',d:'CLA',rev:false},
+    {t:'Costumo começar a fazer antes de ter clareza do que exatamente é esperado.',d:'CLA',rev:true},
+    {t:'Confio mais em um bom processo e checklist do que em resolver tudo no esforço de última hora.',d:'SIS',rev:false},
+    {t:'Me orgulho de apagar incêndios, mesmo quando o problema volta na semana seguinte.',d:'SIS',rev:true},
+    {t:'Baseio minhas decisões em números, mas sempre leio o contexto por trás deles.',d:'DAD',rev:false},
+    {t:'Costumo decidir no feeling, mesmo quando tenho dados disponíveis.',d:'DAD',rev:true},
+    {t:'Prefiro que o cliente vença a que a minha ideia seja a escolhida.',d:'VAI',rev:false},
+    {t:'Fico incomodado quando adotam a ideia de outra pessoa no lugar da minha.',d:'VAI',rev:true}
+  ];
+
+  var COG=[
+    {t:'Um cliente faturava R$ 20.000/mês e passou a faturar R$ 25.000/mês. Qual foi o crescimento percentual?',
+     o:['20%','25%','5%','125%'],a:1,tag:'Numérico'},
+    {t:'Uma campanha gastou R$ 2.000 em anúncios e gerou R$ 8.000 em vendas. Qual foi o ROAS (retorno sobre o investimento)?',
+     o:['4','6','0,25','16'],a:0,tag:'Numérico'},
+    {t:'Numa carteira, todo cliente que reclamou no mês também acabou renovando. Sabemos que a Maria reclamou. O que dá para concluir com certeza?',
+     o:['Maria não renovou','Maria renovou','Maria não reclamou de verdade','Nada pode ser concluído'],a:1,tag:'Lógico'},
+    {t:'Complete a sequência: 2, 6, 12, 20, 30, ?',
+     o:['36','40','42','44'],a:2,tag:'Lógico'},
+    {t:'"O cliente ficou satisfeito, apesar do atraso na entrega." A frase indica que:',
+     o:['O atraso deixou o cliente insatisfeito','O cliente ficou satisfeito mesmo tendo havido atraso','Não houve nenhum atraso','A entrega foi feita no prazo'],a:1,tag:'Verbal'},
+    {t:'MÉDICO está para PACIENTE assim como GESTOR DE CONTAS está para:',
+     o:['Concorrente','Chefe','Fornecedor','Cliente'],a:3,tag:'Verbal'}
+  ];
+
+  /* ---------- Render behavioral ---------- */
+  var bl=document.getElementById('behavioralList');
+  BEHAV.forEach(function(q,i){
+    var opts=LIKERT.map(function(cap,v){
+      return '<label class="opt"><input type="radio" name="b'+i+'" value="'+(v+1)+'" aria-label="'+cap+'">'+
+             '<span class="box"><span class="dotm"></span><span class="cap">'+cap+'</span></span></label>';
+    }).join('');
+    bl.insertAdjacentHTML('beforeend',
+      '<div class="q" id="qb'+i+'"><div class="qh"><span class="qn">'+(i+1)+'</span>'+
+      '<span class="qt">'+q.t+'</span></div><div class="likert">'+opts+'</div></div>');
+  });
+
+  /* ---------- Render cultural ---------- */
+  var ul=document.getElementById('culturalList');
+  CULT.forEach(function(q,i){
+    var opts=LIKERT.map(function(cap,v){
+      return '<label class="opt"><input type="radio" name="u'+i+'" value="'+(v+1)+'" aria-label="'+cap+'">'+
+             '<span class="box"><span class="dotm"></span><span class="cap">'+cap+'</span></span></label>';
+    }).join('');
+    ul.insertAdjacentHTML('beforeend',
+      '<div class="q" id="qu'+i+'"><div class="qh"><span class="qn">'+(i+1)+'</span>'+
+      '<span class="qt">'+q.t+'</span></div><div class="likert">'+opts+'</div></div>');
+  });
+
+  /* ---------- Render cognitive ---------- */
+  var cl=document.getElementById('cognitiveList');
+  var letters=['A','B','C','D'];
+  COG.forEach(function(q,i){
+    var opts=q.o.map(function(txt,v){
+      return '<label class="choice"><input type="radio" name="c'+i+'" value="'+v+'">'+
+             '<span class="cbox"><span class="mk">'+letters[v]+'</span><span class="ct">'+txt+'</span></span></label>';
+    }).join('');
+    cl.insertAdjacentHTML('beforeend',
+      '<div class="q" id="qc'+i+'"><div class="qh"><span class="qn">'+(i+1)+'</span>'+
+      '<span class="qt">'+q.t+'</span></div><div class="choices">'+opts+'</div></div>');
+  });
+
+  /* ---------- Navigation ---------- */
+  var screens={intro:'screen-intro',behavioral:'screen-behavioral',cultural:'screen-cultural',cognitive:'screen-cognitive',thanks:'screen-thanks',result:'screen-result'};
+  function show(name){
+    Object.keys(screens).forEach(function(k){document.getElementById(screens[k]).classList.add('hidden');});
+    var el=document.getElementById(screens[name]);
+    el.classList.remove('hidden');
+    // re-trigger animation
+    el.classList.remove('screen'); void el.offsetWidth; el.classList.add('screen');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  document.querySelectorAll('[data-back]').forEach(function(b){
+    b.addEventListener('click',function(){show(b.getAttribute('data-back'));});
+  });
+
+  document.getElementById('startBtn').addEventListener('click',function(){show('behavioral');});
+
+  function validate(prefix,count){
+    var firstMissing=null;
+    for(var i=0;i<count;i++){
+      var q=document.getElementById('q'+prefix+i);
+      var answered=document.querySelector('input[name="'+prefix+i+'"]:checked');
+      if(!answered){ q.classList.add('missing'); if(firstMissing===null) firstMissing=q; }
+      else q.classList.remove('missing');
+    }
+    if(firstMissing){ firstMissing.scrollIntoView({behavior:'smooth',block:'center'}); return false; }
+    return true;
+  }
+
+  /* timer for cognitive */
+  var timer=null, secs=0;
+  function startTimer(){
+    stopTimer(); secs=0; render();
+    timer=setInterval(function(){secs++;render();},1000);
+    function render(){
+      var m=Math.floor(secs/60), s=secs%60;
+      document.getElementById('clock').textContent=m+':'+(s<10?'0':'')+s;
+    }
+  }
+  function stopTimer(){ if(timer){clearInterval(timer);timer=null;} }
+
+  document.getElementById('toCultural').addEventListener('click',function(){
+    if(!validate('b',BEHAV.length)) return;
+    show('cultural');
+  });
+
+  document.getElementById('toCognitive').addEventListener('click',function(){
+    if(!validate('u',CULT.length)) return;
+    show('cognitive'); startTimer();
+  });
+
+  document.getElementById('finishBtn').addEventListener('click',function(){
+    if(!validate('c',COG.length)) return;
+    stopTimer(); computeAndShow();
+  });
+
+  /* ---------- Scoring ---------- */
+  var lastResult=null;
+  function bandColor(v){ return v>=70?'var(--ok)': v>=50?'var(--accent)':'var(--bad)'; }
+
+  function computeAndShow(){
+    // behavioral by dimension
+    var sums={ORG:0,REL:0,RES:0,PRO:0}, cnt={ORG:0,REL:0,RES:0,PRO:0};
+    BEHAV.forEach(function(q,i){
+      var raw=parseInt(document.querySelector('input[name="b'+i+'"]:checked').value,10);
+      var val=q.rev?(6-raw):raw;
+      sums[q.d]+=val; cnt[q.d]++;
+    });
+    var dimPct={};
+    Object.keys(sums).forEach(function(d){
+      var min=cnt[d]*1, max=cnt[d]*5;
+      dimPct[d]=Math.round(((sums[d]-min)/(max-min))*100);
+    });
+    var behavAvg=Math.round((dimPct.ORG+dimPct.REL+dimPct.RES+dimPct.PRO)/4);
+
+    // cultural (fit Next) by dimension
+    var csums={CLA:0,SIS:0,DAD:0,VAI:0}, ccnt={CLA:0,SIS:0,DAD:0,VAI:0};
+    CULT.forEach(function(q,i){
+      var raw=parseInt(document.querySelector('input[name="u'+i+'"]:checked').value,10);
+      var val=q.rev?(6-raw):raw;
+      csums[q.d]+=val; ccnt[q.d]++;
+    });
+    var cultPct={};
+    Object.keys(csums).forEach(function(d){
+      var min=ccnt[d]*1, max=ccnt[d]*5;
+      cultPct[d]=Math.round(((csums[d]-min)/(max-min))*100);
+    });
+    var cultAvg=Math.round((cultPct.CLA+cultPct.SIS+cultPct.DAD+cultPct.VAI)/4);
+
+    // cognitive
+    var correct=0;
+    COG.forEach(function(q,i){
+      var v=parseInt(document.querySelector('input[name="c'+i+'"]:checked').value,10);
+      if(v===q.a) correct++;
+    });
+    var cogPct=Math.round(correct/COG.length*100);
+
+    // composite = mix dos 3 (comportamental 40% · cultural 35% · cognitivo 25%)
+    var composite=Math.round(0.40*behavAvg + 0.35*cultAvg + 0.25*cogPct);
+    var minDim=Math.min(dimPct.ORG,dimPct.REL,dimPct.RES,dimPct.PRO,
+                        cultPct.CLA,cultPct.SIS,cultPct.DAD,cultPct.VAI);
+
+    var fit;
+    if(composite>=75 && minDim>=50) fit='forte';
+    else if(composite>=55) fit='moderado';
+    else fit='baixo';
+
+    var name=(document.getElementById('candName').value||'').trim();
+    var email=(document.getElementById('candEmail').value||'').trim();
+    var date=new Date().toISOString().slice(0,10);
+    var note=buildReading(dimPct,cultPct,correct).join(' · ');
+    var payload={v:1,n:name,e:email,f:fit,c:composite,
+      b:behavAvg,o:dimPct.ORG,r:dimPct.REL,s:dimPct.RES,p:dimPct.PRO,
+      fc:cultAvg,cla:cultPct.CLA,sis:cultPct.SIS,dad:cultPct.DAD,vai:cultPct.VAI,
+      k:correct,t:secs,d:date,note:note};
+    var code='ELV1:'+b64utf8(JSON.stringify(payload));
+
+    lastResult={dimPct:dimPct,behavAvg:behavAvg,cultPct:cultPct,cultAvg:cultAvg,
+      correct:correct,cogPct:cogPct,composite:composite,fit:fit,secs:secs,code:code};
+    // candidato NAO ve o resultado: vai pra tela de agradecimento.
+    // o resultado detalhado vai so pro recrutador, via Monday.
+    show('thanks');
+    fireConfetti();
+    submitToMonday(payload);
+  }
+
+  // Confete no final — canvas puro, sem libs. Respeita prefers-reduced-motion.
+  function fireConfetti(){
+    if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var cvs=document.createElement('canvas');
+    cvs.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999';
+    document.body.appendChild(cvs);
+    var ctx=cvs.getContext('2d'), W,H;
+    function resize(){ W=cvs.width=window.innerWidth; H=cvs.height=window.innerHeight; }
+    resize(); window.addEventListener('resize',resize);
+    var colors=['#7EC8E3','#22C55E','#FACC15','#EC4899','#FFFFFF','#4FA8C8'];
+    var parts=[];
+    for(var i=0;i<150;i++){
+      parts.push({
+        x:W/2+(Math.random()-0.5)*W*0.35, y:H*0.30+(Math.random()-0.5)*40,
+        vx:(Math.random()-0.5)*12, vy:Math.random()*-12-4,
+        g:0.26+Math.random()*0.14, size:6+Math.random()*7,
+        color:colors[(Math.random()*colors.length)|0],
+        rot:Math.random()*Math.PI*2, vr:(Math.random()-0.5)*0.32,
+        shape:Math.random()<0.5?'rect':'circ'
+      });
+    }
+    var start=null, DUR=2800;
+    function frame(ts){
+      if(start===null) start=ts;
+      var t=ts-start;
+      ctx.clearRect(0,0,W,H);
+      for(var i=0;i<parts.length;i++){
+        var p=parts[i];
+        p.vy+=p.g; p.x+=p.vx; p.y+=p.vy; p.vx*=0.99; p.rot+=p.vr;
+        ctx.globalAlpha = t>DUR-800 ? Math.max(0,(DUR-t)/800) : 1;
+        ctx.fillStyle=p.color;
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot);
+        if(p.shape==='rect') ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*0.6);
+        else { ctx.beginPath(); ctx.arc(0,0,p.size/2,0,Math.PI*2); ctx.fill(); }
+        ctx.restore();
+      }
+      if(t<DUR) requestAnimationFrame(frame);
+      else { window.removeEventListener('resize',resize); cvs.remove(); }
+    }
+    requestAnimationFrame(frame);
+  }
+
+  // Leitura para o recrutador (vai pro Monday, coluna Notes). Nao e exibida ao candidato.
+  function buildReading(dimPct,cultPct,correct){
+    var out=[];
+    var strong=Object.keys(dimPct).filter(function(d){return dimPct[d]>=75;});
+    var weak=Object.keys(dimPct).filter(function(d){return dimPct[d]<50;});
+    var cstrong=Object.keys(cultPct).filter(function(d){return cultPct[d]>=75;});
+    var cweak=Object.keys(cultPct).filter(function(d){return cultPct[d]<50;});
+    if(strong.length) out.push('Forte (comportamental): '+strong.map(function(d){return DIMS[d].name;}).join(', '));
+    if(cstrong.length) out.push('Aderencia cultura Next: '+cstrong.map(function(d){return CULT_DIMS[d].name;}).join(', '));
+    if(weak.length) out.push('Investigar (comportamental): '+weak.map(function(d){return DIMS[d].name;}).join(', '));
+    if(cweak.length) out.push('Desalinhamento cultural: '+cweak.map(function(d){return CULT_DIMS[d].name;}).join(', '));
+    if(dimPct.RES<50) out.push('Resiliencia baixa: explorar exemplo real de conflito.');
+    if(dimPct.REL>=75 && dimPct.ORG<50) out.push('Relacionamento alto + organizacao fraca: risco de encanta-e-esquece follow-up.');
+    if(cultPct.VAI<50) out.push('"Sem vaidade" baixo: checar se poe o resultado do cliente acima da propria ideia.');
+    if(cultPct.SIS<50) out.push('"Sistema>esforco" baixo: pode resistir a processo/checklist.');
+    if(correct<=2) out.push('Raciocinio abaixo do esperado: aplicar case numerico na entrevista.');
+    if(!out.length) out.push('Perfil consistente entre as tres dimensoes, sem pontos de atencao.');
+    return out;
+  }
+
+  // Endpoint serverless (self-hosted na Vercel). No artifact do claude.ai isto falha
+  // por CSP e cai no fallback do código — comportamento esperado.
+  var MONDAY_ENDPOINT='/api/avaliacao';
+  function submitToMonday(payload){
+    var el=document.getElementById('mondayStatus');
+    if(!el) return;
+    el.hidden=false; el.className='mstatus pending';
+    el.innerHTML='<span class="sp"></span> Enviando suas respostas...';
+    var ctrl=new AbortController();
+    var to=setTimeout(function(){ctrl.abort();},12000);
+    fetch(MONDAY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify(payload),signal:ctrl.signal})
+      .then(function(r){return r.json().catch(function(){return {};}).then(function(j){return {ok:r.ok,j:j};});})
+      .then(function(res){
+        clearTimeout(to);
+        if(res.ok && res.j && res.j.ok){
+          el.className='mstatus ok';
+          el.textContent='✓ Respostas enviadas com sucesso.';
+        } else { throw new Error((res.j&&res.j.error)||'falha no envio'); }
+      })
+      .catch(function(){
+        clearTimeout(to);
+        el.className='mstatus err';
+        el.textContent='Tivemos um problema ao enviar suas respostas. Por favor, avise a pessoa que te enviou este link.';
+      });
+  }
+
+  function b64utf8(str){
+    var bytes=new TextEncoder().encode(str), bin='';
+    for(var i=0;i<bytes.length;i++) bin+=String.fromCharCode(bytes[i]);
+    return btoa(bin);
+  }
+
+  function renderResult(r){
+    var name=(document.getElementById('candName').value||'').trim();
+    document.getElementById('resTitle').innerHTML='Perfil de <span class="bd">'+(name?escapeHtml(name):'Candidato(a)')+'</span>';
+
+    // verdict
+    var v=document.getElementById('verdict');
+    v.className='verdict '+r.fit;
+    var vt={forte:'Forte fit para Gestão de Contas',moderado:'Fit moderado',baixo:'Baixo fit para esta vaga'};
+    var vd={
+      forte:'Perfil alinhado com o que a função exige. Recomendado avançar para entrevista.',
+      moderado:'Tem base, mas há dimensões a investigar em entrevista antes de decidir.',
+      baixo:'O perfil auto-relatado destoa das exigências centrais de CS. Avançar só com ressalvas.'
+    };
+    var vb={forte:'A',moderado:'B',baixo:'C'};
+    document.getElementById('vBadge').textContent=vb[r.fit];
+    document.getElementById('vTitle').textContent=vt[r.fit];
+    document.getElementById('vDesc').textContent=vd[r.fit];
+
+    // meters
+    var m=document.getElementById('meters'); m.innerHTML='';
+    ['ORG','REL','RES','PRO'].forEach(function(d){
+      var pct=r.dimPct[d];
+      m.insertAdjacentHTML('beforeend',
+        '<div class="meter"><div class="mh"><span class="mn">'+DIMS[d].name+'</span>'+
+        '<span class="mv" style="color:'+bandColor(pct)+'">'+pct+'</span></div>'+
+        '<div class="mt"><div class="mf" data-w="'+pct+'" style="background:'+bandColor(pct)+'"></div></div>'+
+        '<div class="msub">'+DIMS[d].sub+'</div></div>');
+    });
+    requestAnimationFrame(function(){
+      m.querySelectorAll('.mf').forEach(function(f){ f.style.width=f.getAttribute('data-w')+'%'; });
+    });
+
+    // cultural meters
+    var cm=document.getElementById('cultMeters'); cm.innerHTML='';
+    ['CLA','SIS','DAD','VAI'].forEach(function(d){
+      var pct=r.cultPct[d];
+      cm.insertAdjacentHTML('beforeend',
+        '<div class="meter"><div class="mh"><span class="mn">'+CULT_DIMS[d].name+'</span>'+
+        '<span class="mv" style="color:'+bandColor(pct)+'">'+pct+'</span></div>'+
+        '<div class="mt"><div class="mf" data-w="'+pct+'" style="background:'+bandColor(pct)+'"></div></div>'+
+        '<div class="msub">'+CULT_DIMS[d].sub+'</div></div>');
+    });
+    requestAnimationFrame(function(){
+      cm.querySelectorAll('.mf').forEach(function(f){ f.style.width=f.getAttribute('data-w')+'%'; });
+    });
+
+    // cognitive ring
+    document.getElementById('cogScore').textContent=r.correct;
+    var circ=389.6;
+    var arc=document.getElementById('cogArc');
+    arc.setAttribute('stroke', r.cogPct>=70?'var(--ok)': r.cogPct>=50?'var(--accent)':'var(--bad)');
+    requestAnimationFrame(function(){ arc.style.transition='stroke-dashoffset .9s ease';
+      arc.setAttribute('stroke-dashoffset', circ*(1-r.correct/COG.length)); });
+    var cb = r.correct>=5?'Alto':r.correct>=3?'Médio':'Abaixo';
+    var cbd= r.correct>=5?'Raciocínio ágil e preciso.':r.correct>=3?'Raciocínio dentro do esperado.':'Recomenda-se validar em entrevista.';
+    var cbEl=document.getElementById('cogBand');
+    cbEl.textContent=cb+' · '+r.correct+'/6';
+    cbEl.style.color = r.correct>=5?'var(--ok)': r.correct>=3?'var(--accent-ink)':'var(--bad)';
+    document.getElementById('cogDesc').textContent=cbd;
+
+    // flags / reading
+    var fl=document.getElementById('flagList'); fl.innerHTML='';
+    var flags=[];
+    var strong=Object.keys(r.dimPct).filter(function(d){return r.dimPct[d]>=75;});
+    var weak=Object.keys(r.dimPct).filter(function(d){return r.dimPct[d]<50;});
+    var cstrong=Object.keys(r.cultPct).filter(function(d){return r.cultPct[d]>=75;});
+    var cweak=Object.keys(r.cultPct).filter(function(d){return r.cultPct[d]<50;});
+    if(strong.length) flags.push({ic:'✅',t:'Ponto forte (comportamental): '+strong.map(function(d){return DIMS[d].name;}).join(', ')+'.'});
+    if(cstrong.length) flags.push({ic:'🤝',t:'Aderência à cultura Next: '+cstrong.map(function(d){return CULT_DIMS[d].name;}).join(', ')+'.'});
+    if(weak.length) flags.push({ic:'⚠️',t:'Investigar (comportamental): '+weak.map(function(d){return DIMS[d].name;}).join(', ')+' (abaixo de 50).'});
+    if(cweak.length) flags.push({ic:'⚠️',t:'Desalinhamento cultural: '+cweak.map(function(d){return CULT_DIMS[d].name;}).join(', ')+' (abaixo de 50). Aprofundar em entrevista.'});
+    if(r.dimPct.RES<50) flags.push({ic:'🔎',t:'Resiliência baixa é sensível em CS (cliente insatisfeito). Explore um exemplo real de conflito.'});
+    if(r.dimPct.REL>=75 && r.dimPct.ORG<50) flags.push({ic:'🧩',t:'Bom no relacionamento, mas organização frágil: risco de "encanta e esquece o follow-up".'});
+    if(r.cultPct.VAI<50) flags.push({ic:'🧭',t:'"Sem vaidade" baixo: cheque se coloca o resultado do cliente acima da própria ideia (valor Next).'});
+    if(r.cultPct.SIS<50) flags.push({ic:'🧭',t:'"Sistema > esforço" baixo: pode resistir a processo/checklist. Sensível pra escala de squad.'});
+    if(r.correct<=2) flags.push({ic:'🔎',t:'Raciocínio abaixo do esperado: aplicar um case numérico simples na entrevista.'});
+    if(!flags.length) flags.push({ic:'✅',t:'Sem pontos de atenção relevantes. Perfil consistente entre as três dimensões.'});
+    flags.forEach(function(f){ fl.insertAdjacentHTML('beforeend','<div class="flag"><span class="ic">'+f.ic+'</span><span>'+f.t+'</span></div>'); });
+  }
+
+  function escapeHtml(s){return s.replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+
+  /* ---------- Copy summary ---------- */
+  document.getElementById('copyBtn').addEventListener('click',function(){
+    if(!lastResult) return;
+    var r=lastResult;
+    var name=(document.getElementById('candName').value||'—').trim()||'—';
+    var email=(document.getElementById('candEmail').value||'—').trim()||'—';
+    var mm=Math.floor(r.secs/60), ss=r.secs%60;
+    var fitTxt={forte:'FORTE FIT',moderado:'FIT MODERADO',baixo:'BAIXO FIT'}[r.fit];
+    var txt=
+      'AVALIAÇÃO DE PERFIL & FIT CULTURAL — GESTÃO DE CONTAS / CS (Elevate)\n'+
+      '===================================================================\n'+
+      'Candidato: '+name+'\nE-mail: '+email+'\n\n'+
+      'VEREDITO: '+fitTxt+' (score composto '+r.composite+'/100)\n'+
+      '  mix: comportamental 40% · cultural 35% · cognitivo 25%\n\n'+
+      'Comportamental (média '+r.behavAvg+'):\n'+
+      '  Organização & Confiabilidade: '+r.dimPct.ORG+'/100\n'+
+      '  Relacionamento & Comunicação: '+r.dimPct.REL+'/100\n'+
+      '  Resiliência sob Pressão:      '+r.dimPct.RES+'/100\n'+
+      '  Proatividade & Resultado:     '+r.dimPct.PRO+'/100\n\n'+
+      'Fit cultural Next (média '+r.cultAvg+'):\n'+
+      '  Clareza antes de velocidade:  '+r.cultPct.CLA+'/100\n'+
+      '  Sistema > esforço:            '+r.cultPct.SIS+'/100\n'+
+      '  Dados + bom senso:            '+r.cultPct.DAD+'/100\n'+
+      '  Sem vaidade:                  '+r.cultPct.VAI+'/100\n\n'+
+      'Raciocínio: '+r.correct+'/6 corretas ('+r.cogPct+'%) · tempo '+mm+':'+(ss<10?'0':'')+ss+'\n\n'+
+      'Nota: triagem interna, não substitui entrevista.';
+    var btn=this;
+    navigator.clipboard.writeText(txt).then(function(){
+      var o=btn.textContent; btn.textContent='✓ Copiado'; setTimeout(function(){btn.textContent=o;},1600);
+    }).catch(function(){
+      var o=btn.textContent; btn.textContent='Selecione e copie manualmente'; console.log(txt); setTimeout(function(){btn.textContent=o;},2200);
+    });
+  });
+
+  /* ---------- Copy Monday code ---------- */
+  document.getElementById('copyCodeBtn').addEventListener('click',function(){
+    if(!lastResult||!lastResult.code) return;
+    var btn=this, o=btn.textContent;
+    navigator.clipboard.writeText(lastResult.code).then(function(){
+      btn.textContent='✓ Código copiado'; setTimeout(function(){btn.textContent=o;},1600);
+    }).catch(function(){
+      window.prompt('Copie o código abaixo (Ctrl+C):', lastResult.code);
+    });
+  });
+
+  /* ---------- Restart ---------- */
+  document.getElementById('restartBtn').addEventListener('click',function(){
+    document.querySelectorAll('input[type=radio]').forEach(function(r){r.checked=false;});
+    document.querySelectorAll('.q.missing').forEach(function(q){q.classList.remove('missing');});
+    lastResult=null; secs=0; stopTimer();
+    show('intro');
+  });
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Elevate · Gestão de Marketplaces (Shopee + Mercado Livre) · Apresentação Comercial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#9FB6C2;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.20);--yellow:#FACC15;--green:#22C55E;--magenta:#EC4899;--red:#EF4444;--az:#FF9900;--sh:#EE4D2D;--ml:#FFE600;}
+  *{box-sizing:border-box;margin:0;}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;}
+  body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--navy1);}
+  .deck{scroll-snap-type:y mandatory;}
+  .slide{min-height:100vh;width:100%;padding:6vh 7vw;display:flex;flex-direction:column;justify-content:center;
+    background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));border-bottom:1px solid rgba(126,200,227,0.10);
+    scroll-snap-align:start;position:relative;overflow:hidden;}
+  .num{position:absolute;top:24px;right:30px;font-size:12px;color:var(--muted);letter-spacing:1px;}
+  .kicker{font-weight:700;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:18px;}
+  h1{font-weight:900;font-size:clamp(34px,6vw,68px);line-height:1.02;letter-spacing:-1.5px;color:#fff;}
+  h2{font-weight:800;font-size:clamp(26px,4.4vw,46px);line-height:1.08;letter-spacing:-0.8px;color:#fff;margin-bottom:8px;}
+  .lead{color:var(--muted);font-size:clamp(15px,1.9vw,21px);max-width:880px;margin-top:18px;line-height:1.5;}
+  .accentbar{height:4px;width:90px;background:var(--accent);border-radius:4px;margin:22px 0;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px;}
+  .chip{border:1px solid var(--cardborder);background:var(--card);border-radius:30px;padding:9px 18px;font-weight:600;font-size:14px;color:var(--text);}
+  .chip.az{border-color:rgba(255,153,0,0.5);color:#fff;} .chip.sh{border-color:rgba(238,77,45,0.5);color:#fff;} .chip.ml{border-color:rgba(255,230,0,0.5);color:#fff;}
+  ul.big{list-style:none;margin-top:24px;max-width:920px;}
+  ul.big li{position:relative;padding:13px 0 13px 38px;font-size:clamp(15px,1.9vw,20px);border-bottom:1px solid rgba(126,200,227,0.10);line-height:1.45;}
+  ul.big li:before{content:"";position:absolute;left:6px;top:21px;width:10px;height:10px;border-radius:3px;background:var(--accent);}
+  ul.big li b{color:#fff;}
+  .grid{display:grid;gap:16px;margin-top:28px;}
+  .g2{grid-template-columns:repeat(2,1fr);}.g3{grid-template-columns:repeat(3,1fr);}.g4{grid-template-columns:repeat(4,1fr);}
+  .cardbox{background:var(--card);border:1px solid var(--cardborder);border-radius:16px;padding:22px 22px;}
+  .cardbox .t{font-weight:800;color:#fff;font-size:17px;margin-bottom:8px;}
+  .cardbox .d{color:var(--muted);font-size:14px;line-height:1.5;}
+  .pill{display:inline-block;font-weight:800;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--navy1);background:var(--accent);border-radius:8px;padding:5px 12px;margin-bottom:14px;}
+  .big-num{font-weight:900;font-size:clamp(44px,8vw,96px);color:var(--accent);line-height:1;letter-spacing:-2px;}
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:26px;max-width:960px;}
+  .vs .col{border-radius:16px;padding:22px;}
+  .vs .bad{background:rgba(236,72,153,0.08);border:1px solid rgba(236,72,153,0.3);}
+  .vs .good{background:rgba(34,197,94,0.08);border:1px solid rgba(34,197,94,0.35);}
+  .vs h4{font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;}
+  .vs.col .bad h4{color:#f9a8d4;} .good h4{color:#86efac;}
+  .vs ul{list-style:none;} .vs li{padding:7px 0;font-size:15px;color:var(--text);padding-left:22px;position:relative;}
+  .vs li:before{position:absolute;left:0;}
+  .vs .bad li:before{content:"✕";color:var(--magenta);} .vs .good li:before{content:"✓";color:var(--green);}
+  .contact{font-size:clamp(17px,2.4vw,26px);font-weight:600;margin-top:8px;}
+  .contact span{color:var(--accent);}
+  .final{font-weight:300;font-size:clamp(24px,3.6vw,40px);line-height:1.2;max-width:1000px;}
+  .final b{font-weight:800;color:#fff;}
+  .hint{margin-top:20px;font-size:12.5px;color:var(--muted);font-style:italic;}
+  .proof{margin:0;}
+  .print{width:100%;height:auto;border-radius:12px;border:1px solid var(--cardborder);display:block;background:#0d2230;}
+  .print.tall{aspect-ratio:9/16;object-fit:cover;object-position:center 35%;}
+  .proof figcaption{margin-top:9px;font-size:13.5px;color:var(--muted);line-height:1.35;}
+  .proof figcaption b{color:#fff;}
+  .proof figcaption .gr{color:#86efac;font-weight:700;}
+  .vid{aspect-ratio:9/16;height:56vh;width:auto;max-width:100%;object-fit:cover;border-radius:16px;border:1px solid var(--cardborder);display:block;background:#000;margin:0 auto;}
+  .testi3{text-align:center;padding:16px 16px 20px;display:flex;flex-direction:column;}
+  .testi3 .vid{height:40vh;width:auto;max-width:100%;margin:0 auto 14px;}
+  .testi3 .nm{display:block;font-weight:800;color:#fff;font-size:18px;}
+  .testi3 .rl{display:block;color:var(--muted);font-size:13px;margin-top:2px;}
+  .testi3 .res{display:block;margin-top:auto;padding-top:10px;font-weight:900;font-size:23px;color:var(--accent);line-height:1;}
+  .testi3 .res small{font-size:12px;color:var(--muted);font-weight:600;}
+  /* ==== metodologia 4D ==== */
+  .fourd{display:grid;grid-template-columns:1.05fr 1fr;gap:18px;margin-top:16px;align-items:stretch;}
+  .radarwrap{display:flex;align-items:center;justify-content:center;padding:6px;}
+  .radarwrap svg{width:100%;height:auto;max-height:44vh;}
+  .axislabel{font-weight:700;font-size:13px;fill:#fff;}
+  .axissub{font-weight:400;font-size:10px;fill:var(--muted);}
+  .qhead{font-size:11px;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:12px;}
+  .q{display:flex;gap:12px;margin-bottom:11px;}
+  .qn{flex:0 0 28px;height:28px;border-radius:50%;background:rgba(126,200,227,0.14);border:1px solid var(--cardborder);color:var(--accent);font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+  .qt{font-size:13.5px;line-height:1.35;} .qt b{color:#fff;font-weight:700;} .qt span{color:var(--muted);font-size:11.5px;}
+  /* ==== comparativo 3 canais ==== */
+  .cmp{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:22px;max-width:1180px;width:100%;}
+  .cmpcol{background:var(--card);border:1px solid var(--cardborder);border-radius:16px;padding:18px;position:relative;overflow:hidden;}
+  .cmpcol:before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+  .cmpcol.az:before{background:var(--az);} .cmpcol.sh:before{background:var(--sh);} .cmpcol.ml:before{background:var(--ml);}
+  .cmpcol .head{font-weight:900;font-size:20px;color:#fff;margin-bottom:2px;line-height:1.1;}
+  .cmpcol.az .head{color:var(--az);} .cmpcol.sh .head{color:var(--sh);} .cmpcol.ml .head{color:var(--ml);}
+  .cmpcol .sub{font-size:11.5px;color:var(--muted);margin-bottom:12px;min-height:30px;}
+  .cmprow{padding:8px 0;border-top:1px solid rgba(126,200,227,0.10);font-size:12.5px;line-height:1.35;}
+  .cmprow .lbl{display:block;font-weight:800;color:var(--muted);font-size:10px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:2px;}
+  .cmprow .val{color:var(--text);} .cmprow .val b{color:#fff;font-weight:700;}
+  .metrics{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px;}
+  .metricpill{display:inline-block;font-weight:800;font-size:10.5px;letter-spacing:.3px;border-radius:7px;padding:3px 8px;}
+  .cmpcol.az .metricpill{background:rgba(255,153,0,0.16);color:var(--az);}
+  .cmpcol.sh .metricpill{background:rgba(238,77,45,0.16);color:var(--sh);}
+  .cmpcol.ml .metricpill{background:rgba(255,230,0,0.16);color:var(--ml);}
+  @media (max-width:760px){
+    .deck{scroll-snap-type:none;}
+    .slide{min-height:auto;height:auto;justify-content:flex-start;overflow:visible;scroll-snap-align:none;padding:5vh 6vw 5vh;}
+    .g2,.g3,.g4,.vs,.fourd,.cmp{grid-template-columns:1fr;}
+    .grid,.vs{gap:12px;margin-top:18px;}
+    .kicker{margin-bottom:12px;}
+    .lead{margin-top:12px;}
+    ul.big{margin-top:16px;} ul.big li{padding:10px 0 10px 32px;}
+    .num{top:12px;right:14px;}
+    h1{font-size:clamp(32px,10vw,48px);}
+    h2{font-size:clamp(23px,6.6vw,32px);}
+    .lead{font-size:clamp(14.5px,4.2vw,18px);}
+    .radarwrap svg{max-height:none;}
+    .big-num{font-size:clamp(38px,14vw,60px);}
+    .cmpcol .sub{min-height:0;}
+    .print.tall{aspect-ratio:auto;max-height:68vh;object-fit:contain;}
+    .vid{height:auto;aspect-ratio:9/16;width:100%;max-width:300px;}
+    .testi3 .vid{height:auto;width:100%;max-width:300px;}
+    .fourd .cardbox,.cardbox{padding:16px 16px;}
+  }
+  @media (min-width:761px){
+    .slide{padding:5.5vh 7vw;}
+  }
+  @media print{
+    @page{size:landscape;margin:0;}
+    html,body{background:#0B1A2B;}
+    .deck{scroll-snap-type:none;}
+    .slide{min-height:auto;height:100vh;page-break-after:always;break-after:page;border:none;}
+  }
+</style>
+</head>
+<body>
+<div class="deck">
+
+  <!-- 1 CAPA -->
+  <section class="slide">
+    <div class="num">Elevate Ecom</div>
+    <div class="kicker">Gestão de Marketplaces</div>
+    <h1>ELEVATE <span style="color:var(--accent)">ECOM</span></h1>
+    <div class="lead" style="font-size:clamp(18px,2.6vw,28px);color:var(--text);max-width:860px;">Especialistas em <b style="color:#fff">posicionar sua marca</b> no topo da <b style="color:var(--sh)">Shopee</b> e do <b style="color:var(--ml)">Mercado Livre</b>, com foco em <b style="color:var(--accent)">margem de contribuição</b> e <b style="color:var(--accent)">resultado efetivo</b>.</div>
+    <div class="chips">
+      <div class="chip sh">Shopee</div><div class="chip ml">Mercado Livre</div><div class="chip">Posicionamento de marca</div><div class="chip">Margem de contribuição</div><div class="chip">Resultado efetivo</div>
+    </div>
+  </section>
+
+  <!-- 2 OPORTUNIDADE -->
+  <section class="slide">
+    <div class="num">02</div>
+    <div class="kicker">Dois gigantes, uma estratégia</div>
+    <h2>Shopee e Mercado Livre se complementam, e quem está nos dois vende mais</h2>
+    <div class="accentbar"></div>
+    <div class="lead">Não é escolher um canal: é cobrir a jornada inteira com o mesmo método. Cada marketplace captura uma fatia diferente da demanda. Juntos, multiplicam o alcance da sua marca.</div>
+    <ul class="big">
+      <li><b style="color:var(--sh)">Shopee</b>: audiência gigante e recorrente, puxada por oferta, cupom, afiliados e lives.</li>
+      <li><b style="color:var(--ml)">Mercado Livre</b>: líder da América Latina, onde reputação verde e o Full (fulfillment) decidem a venda.</li>
+    </ul>
+  </section>
+
+  <!-- 3 DOR -->
+  <section class="slide">
+    <div class="num">03</div>
+    <div class="kicker">Por que sozinho não funciona</div>
+    <h2>Cada marketplace é uma operação diferente, e tocar os dois sozinho multiplica o caos</h2>
+    <div class="lead">São <b style="color:#fff">4 operações em cada canal</b>: catálogo, mídia, motor de vendas e reputação. Lógicas e painéis distintos. Sem método, a verba queima nos dois ao mesmo tempo.</div>
+    <div class="vs">
+      <div class="col bad">
+        <h4>Marca sozinha nos dois</h4>
+        <ul>
+          <li>Catálogo replicado sem adaptar a cada canal</li>
+          <li>Shopee Ads e Mercado Ads sem controle de retorno</li>
+          <li>Catálogo, Full e reputação caindo por falta de gestão</li>
+          <li>Preço que não cobre as taxas de cada plataforma</li>
+        </ul>
+      </div>
+      <div class="col good">
+        <h4>Com a Elevate</h4>
+        <ul>
+          <li>Catálogo calibrado por canal (oferta Shopee · ficha técnica ML)</li>
+          <li>Mídia com ROAS e TACOS sob controle</li>
+          <li>Catálogo, Full e reputação geridos no dia a dia</li>
+          <li>Precificação por margem de contribuição, taxa a taxa</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hint">Isso já aconteceu com a sua marca?</div>
+  </section>
+
+  <!-- 4 CASES (divisória) -->
+  <section class="slide" style="justify-content:center;align-items:flex-start;">
+    <div class="num">04</div>
+    <div class="pill">Resultados reais</div>
+    <h1 style="font-size:clamp(38px,7vw,80px)">Cases de sucesso<br>da operação Elevate</h1>
+    <div class="lead">O mesmo método aplicado em marcas reais, do cadastro à escala.</div>
+  </section>
+
+  <!-- 5 PROVA REAL (prints Mercado Livre) -->
+  <section class="slide">
+    <div class="num">05</div>
+    <div class="kicker">Resultados reais · direto da plataforma</div>
+    <h2>Os números das marcas que confiam na Elevate</h2>
+    <div class="lead" style="margin-top:6px;">Resumo de desempenho de contas reais que gerimos no Mercado Livre, direto do Seller Central.</div>
+    <div class="grid g3" style="margin-top:16px;align-items:start;">
+      <figure class="proof"><img class="print" src="./prints/Meli/meli-3.jpeg" alt="Mercado Livre"><figcaption><b style="color:#fff">R$ 4,3 milhões/mês</b> · <span class="gr">+85%</span> · 866 mil visitas</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Meli/meli-6.jpeg" alt="Mercado Livre"><figcaption><b style="color:#fff">R$ 574 mil/mês</b> · <span class="gr">+26%</span> · 1.961 vendas</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Meli/meli-1.jpg" alt="Mercado Livre"><figcaption><b style="color:#fff">R$ 250 mil/mês</b> · <span class="gr">+481%</span> · 234 mil visitas</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Meli/meli-4.jpg" alt="Mercado Livre"><figcaption><b style="color:#fff">R$ 108 mil/mês</b> · <span class="gr">+37%</span> em vendas</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Meli/meli-2.jpg" alt="Mercado Livre"><figcaption><b style="color:#fff">R$ 43 mil</b> · <span class="gr">+10.000%</span> · conta recém-lançada</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Meli/meli-5.jpg" alt="Mercado Livre"><figcaption><b style="color:#fff">R$ 12 mil</b> · <span class="gr">+1.682%</span> · conta recém-lançada</figcaption></figure>
+    </div>
+    <div class="hint">Resumo de desempenho · Mercado Livre Seller Central, 2026. Crescimento vs. período anterior.</div>
+  </section>
+
+  <!-- 5b PROVA REAL (prints Shopee - parte 1) -->
+  <section class="slide">
+    <div class="num">06</div>
+    <div class="kicker">Resultados reais · direto da plataforma</div>
+    <h2>Na Shopee, o método também vende</h2>
+    <div class="lead" style="margin-top:6px;">Desempenho de contas reais que gerimos na Shopee, direto do Seller Center.</div>
+    <div class="grid g3" style="margin-top:16px;align-items:start;">
+      <figure class="proof"><img class="print" src="./prints/Shopee/Saint%20Germain.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Relógios</span><b style="color:#fff">R$ 742 mil/mês</b> · <span class="gr">+21%</span> · 6.119 pedidos</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Shopee/WT%20Personalizados.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Personalizados</span><b style="color:#fff">R$ 277 mil/mês</b> · <span class="gr">+70%</span> · 1.211 pedidos</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Shopee/My%20modas.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Roupa feminina</span><b style="color:#fff">R$ 175 mil/mês</b> · <span class="gr">+148%</span> · 1.672 pedidos</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Shopee/Not-me%20shoes.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Calçados femininos</span><b style="color:#fff">R$ 44 mil/mês</b> · <span class="gr">+51%</span> · 92 pedidos</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Shopee/Hiven.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Cosméticos</span><b style="color:#fff">R$ 37 mil/mês</b> · <span class="gr">+10.066%</span> · escala recente</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Shopee/Livny.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Roupa fitness feminina</span><b style="color:#fff">R$ 31 mil/mês</b> · <span class="gr">+54%</span> · 192 pedidos</figcaption></figure>
+    </div>
+    <div class="hint">Métricas principais · Shopee Seller Center, junho/2026. Crescimento vs. mês anterior.</div>
+  </section>
+
+  <!-- 5c PROVA REAL (prints Shopee - parte 2) -->
+  <section class="slide">
+    <div class="num">07</div>
+    <div class="kicker">Resultados reais · direto da plataforma</div>
+    <h2>Mais marcas crescendo na Shopee</h2>
+    <div class="lead" style="margin-top:6px;">De contas recém-estruturadas a operações consolidadas: o mesmo método, resultados consistentes.</div>
+    <div class="grid g3" style="margin-top:16px;align-items:start;">
+      <figure class="proof"><img class="print" src="./prints/Shopee/Argennti.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Joias</span><b style="color:#fff">R$ 31 mil/mês</b> · <span class="gr">+119%</span> · 180 pedidos</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Shopee/Dilla.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Roupa feminina</span><b style="color:#fff">R$ 29 mil/mês</b> · <span class="gr">+453%</span> · 127 pedidos</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Shopee/Destak.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Móveis</span><b style="color:#fff">R$ 18,5 mil/mês</b> · <span class="gr">+52%</span> · 401 pedidos</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Shopee/P%C3%A9tala%20Beauty.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Perfumes</span><b style="color:#fff">R$ 18 mil/mês</b> · <span class="gr">+34%</span> · 80 pedidos</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Shopee/Nouf.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Cosméticos</span><b style="color:#fff">R$ 12,4 mil/mês</b> · <span class="gr">+77%</span> · 181 pedidos</figcaption></figure>
+      <figure class="proof"><img class="print" src="./prints/Shopee/Ela%20Up.jpeg" alt="Shopee"><figcaption><span style="display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--accent);font-weight:700;margin-bottom:2px;">Semi joias</span><b style="color:#fff">R$ 11,9 mil/mês</b> · <span class="gr">+47%</span> · 237 pedidos</figcaption></figure>
+    </div>
+    <div class="hint">Métricas principais · Shopee Seller Center, junho/2026. Crescimento vs. mês anterior.</div>
+  </section>
+
+  <!-- 8 METODOLOGIA 4D -->
+  <section class="slide">
+    <div class="num">08</div>
+    <div class="kicker">Nosso diferencial</div>
+    <h2>Metodologia Elevate 4D</h2>
+    <div class="lead" style="margin-top:4px;font-size:clamp(14px,1.6vw,18px);max-width:1000px;">Um único método, <b style="color:#fff">calibrado para cada marketplace</b>. 4 dimensões lidas por <b style="color:#fff">momento</b> e pelo <b style="color:#fff">custo de tração</b>: onde a loja está e qual dimensão elevar primeiro. Cada decisão existe para <b style="color:#fff">posicionar sua marca</b> e proteger a <b style="color:var(--accent)">margem de contribuição</b>. <b style="color:#fff">Não é achismo, nem vaidade. É método com resultado efetivo.</b></div>
+    <div class="fourd">
+      <div class="cardbox radarwrap">
+        <svg viewBox="-28 0 392 320" role="img" aria-label="Radar das 4 dimensões">
+          <g fill="none" stroke="rgba(126,200,227,0.16)" stroke-width="1">
+            <polygon points="180,60 300,160 180,260 60,160"/><polygon points="180,80 280,160 180,240 80,160"/>
+            <polygon points="180,100 260,160 180,220 100,160"/><polygon points="180,120 240,160 180,200 120,160"/>
+            <polygon points="180,140 220,160 180,180 140,160"/>
+          </g>
+          <g stroke="rgba(126,200,227,0.22)" stroke-width="1">
+            <line x1="180" y1="160" x2="180" y2="60"/><line x1="180" y1="160" x2="300" y2="160"/>
+            <line x1="180" y1="160" x2="180" y2="260"/><line x1="180" y1="160" x2="60" y2="160"/>
+          </g>
+          <polygon points="180,80 252,160 180,240 108,160" fill="rgba(126,200,227,0.22)" stroke="#7EC8E3" stroke-width="2.5"/>
+          <g fill="#7EC8E3"><circle cx="180" cy="80" r="3.5"/><circle cx="252" cy="160" r="3.5"/><circle cx="180" cy="240" r="3.5"/><circle cx="108" cy="160" r="3.5"/></g>
+          <text class="axislabel" x="180" y="42" text-anchor="middle">D1 · Catálogo</text>
+          <text class="axissub" x="180" y="54" text-anchor="middle">o chão</text>
+          <text class="axislabel" x="306" y="160" text-anchor="start">D2 · Ads</text>
+          <text class="axissub" x="306" y="172" text-anchor="start">mídia paga</text>
+          <text class="axislabel" x="180" y="284" text-anchor="middle">D3 · Motor</text>
+          <text class="axissub" x="180" y="296" text-anchor="middle">o que distribui</text>
+          <text class="axislabel" x="54" y="160" text-anchor="end">D4 · Reputação</text>
+          <text class="axissub" x="54" y="172" text-anchor="end">confiança</text>
+        </svg>
+      </div>
+      <div class="cardbox">
+        <div class="qhead">O método em 3 perguntas</div>
+        <div class="q"><div class="qn">1</div><div class="qt"><b>Em que momento o cliente está?</b><br><span>Dos 7 momentos: M0 Cadastro → M6 Maturidade</span></div></div>
+        <div class="q"><div class="qn">2</div><div class="qt"><b>Como o faturamento se distribui e quanto custa gerá-lo?</b><br><span>Decomposição pelas 4 dimensões + Custo de Tração</span></div></div>
+        <div class="q"><div class="qn">3</div><div class="qt"><b>Qual dimensão fortalecer agora?</b><br><span>A mais curta para aquele momento. D1 desempata.</span></div></div>
+        <div class="qhead" style="margin-top:14px;">Custo de Tração · o controle da margem</div>
+        <div class="qt" style="color:var(--text);"><b>Mercado Livre = TACOS</b> (Ads ÷ faturamento). <b>Shopee = CT%</b> (Ads + afiliados + lives ÷ faturamento). Em ambos: quanto de cada R$ 1 vendido está sendo comprado.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9 COMPARATIVO 3 CANAIS -->
+  <section class="slide">
+    <div class="num">09</div>
+    <div class="kicker">O mesmo método, dois canais</div>
+    <h2>Como as 4 dimensões viram alavanca em cada marketplace</h2>
+    <div class="cmp">
+      <div class="cmpcol sh">
+        <div class="head">Shopee</div>
+        <div class="sub">Maior tráfego do Brasil · recorrência</div>
+        <div class="cmprow"><span class="lbl">D1 · Catálogo</span><span class="val"><b>Ofertas, cupom</b> e frete grátis</span></div>
+        <div class="cmprow"><span class="lbl">D2 · Ads</span><span class="val"><b>Shopee Ads</b>: busca e descoberta</span></div>
+        <div class="cmprow"><span class="lbl">D3 · Motor</span><span class="val"><b>Afiliados & Lives</b>: creators</span></div>
+        <div class="cmprow"><span class="lbl">D4 · Reputação</span><span class="val"><b>Avaliações</b> e Loja Oficial/Preferida</span></div>
+        <div class="cmprow"><span class="lbl">Métricas de leitura</span><div class="metrics"><span class="metricpill">CT%</span><span class="metricpill">ROAS</span><span class="metricpill">Conversão</span><span class="metricpill">Avaliação ★</span></div></div>
+      </div>
+      <div class="cmpcol ml">
+        <div class="head">Mercado Livre</div>
+        <div class="sub">Líder da América Latina · confiança</div>
+        <div class="cmprow"><span class="lbl">D1 · Catálogo</span><span class="val"><b>Ficha técnica</b>, atributos e SEO ML</span></div>
+        <div class="cmprow"><span class="lbl">D2 · Ads</span><span class="val"><b>Mercado Ads</b>: Product Ads</span></div>
+        <div class="cmprow"><span class="lbl">D3 · Motor</span><span class="val"><b>Catálogo & Full</b>: ganhar a publicação e entregar</span></div>
+        <div class="cmprow"><span class="lbl">D4 · Reputação</span><span class="val"><b>Termômetro verde</b> e MercadoLíder</span></div>
+        <div class="cmprow"><span class="lbl">Métricas de leitura</span><div class="metrics"><span class="metricpill">ACOS / TACOS</span><span class="metricpill">Reputação</span><span class="metricpill">Conversão</span><span class="metricpill">% Full</span></div></div>
+      </div>
+    </div>
+    <div class="hint">D1 (catálogo) é o chão em ambos; muda o que distribui a venda: catálogo e Full no Mercado Livre, afiliados e lives na Shopee.</div>
+  </section>
+
+  <!-- 10 CONSULTORIA × ASSESSORIA -->
+  <section class="slide">
+    <div class="num">10</div>
+    <div class="kicker">Dois modelos de trabalho</div>
+    <h2>Consultoria ou Assessoria: você escolhe</h2>
+    <div class="grid g2" style="margin-top:22px;">
+      <div class="cardbox">
+        <div class="pill">Consultoria</div>
+        <div class="d" style="font-size:15px;margin-bottom:6px;">Orientação estratégica,<b style="color:#fff">o seu time executa</b>.</div>
+        <ul style="list-style:disc;padding-left:20px;margin:10px 0 0;font-size:15px;line-height:1.65;color:var(--text);">
+          <li>Diagnóstico 4D dos dois canais e plano de ação</li>
+          <li>Precificação e estratégia (catálogo, mídia, motor)</li>
+          <li>Orientação de catálogo/Full, afiliados e lives</li>
+          <li>Treinamento e acompanhamento do seu time</li>
+        </ul>
+      </div>
+      <div class="cardbox" style="border-color:rgba(34,197,94,0.45);">
+        <div class="pill" style="background:#22C55E;color:#06210f;">Assessoria · Gestão</div>
+        <div class="d" style="font-size:15px;margin-bottom:6px;">Operação completa nos dois canais,<b style="color:#fff">a Elevate executa por você</b>.</div>
+        <ul style="list-style:disc;padding-left:20px;margin:10px 0 0;font-size:15px;line-height:1.65;color:var(--text);">
+          <li><b style="color:#fff">Tudo da consultoria</b>, e mais:</li>
+          <li>Operamos catálogo e mídia na Shopee e no Mercado Livre</li>
+          <li>Gestão de Ads, catálogo, Full e afiliados</li>
+          <li>Acompanhamento de TACOS, CT% e do resultado</li>
+        </ul>
+      </div>
+    </div>
+    <div class="lead" style="margin-top:20px;">Em uma frase: na <b style="color:#fff">consultoria</b> nós orientamos e <b style="color:#fff">você executa</b>; na <b style="color:#fff">assessoria</b> nós <b style="color:#fff">executamos por você</b>.</div>
+  </section>
+
+  <!-- 11 INÍCIO DA OPERAÇÃO -->
+  <section class="slide">
+    <div class="num">11</div>
+    <div class="kicker">Início da operação</div>
+    <h2>No ar em dias, não em meses</h2>
+    <div class="lead">Implantação estruturada (nosso Playbook de 7 fases), do "fechou" ao "operando", nos dois canais.</div>
+    <ul class="big">
+      <li><b>Onboarding & Kickoff em até 3 dias úteis</b>: acessos liberados com segurança (sem compartilhar senha).</li>
+      <li><b>Reunião estratégica</b>: diagnóstico 4D de cada canal, metas, precificação e cronograma.</li>
+      <li><b>Setup completo</b>: catálogo → mídia → logística (Full) → reputação → go-live na Shopee e no Mercado Livre.</li>
+    </ul>
+  </section>
+
+  <!-- 12 SERVIÇOS INCLUSOS -->
+  <section class="slide">
+    <div class="num">12</div>
+    <div class="kicker">Serviços inclusos</div>
+    <h2>O que rodamos para você todo mês</h2>
+    <ul class="big">
+      <li><b>Catálogo & precificação</b> por <b>margem de contribuição</b>, calibrados por canal (ofertas e cupom na Shopee · ficha técnica no ML).</li>
+      <li><b>Mídia paga</b>: Shopee Ads e Mercado Ads, com otimização contínua de ROAS/TACOS.</li>
+      <li><b>Motor de vendas</b>: afiliados e lives na Shopee; catálogo e Full no Mercado Livre.</li>
+      <li><b>Reputação</b>: avaliações/Loja Oficial na Shopee e termômetro verde/MercadoLíder no ML.</li>
+      <li><b>Dashboard + acompanhamento</b> de CT% e TACOS, por canal e por dimensão.</li>
+    </ul>
+  </section>
+
+  <!-- 13 NÃO INCLUSOS -->
+  <section class="slide">
+    <div class="num">13</div>
+    <div class="kicker">Serviços não inclusos</div>
+    <h2>O que fica com o cliente</h2>
+    <div class="grid g2">
+      <div class="cardbox"><div class="t">Produção de fotos e vídeos</div><div class="d">Captação/edição de criativos para os anúncios e listings.</div></div>
+      <div class="cardbox"><div class="t">SAC e atendimento ao cliente final</div><div class="d">Pós-venda e mensagens do comprador nos dois canais.</div></div>
+      <div class="cardbox"><div class="t">Estoque, logística e expedição</div><div class="d">Remessa ao Full e ao Shopee, envio dos pedidos e amostras.</div></div>
+      <div class="cardbox"><div class="t">Verba de mídia, amostras e inventário</div><div class="d">Investimento em Ads, seeding e estoque.</div></div>
+    </div>
+    <div class="hint">Escopo ajustável conforme o pacote contratado.</div>
+  </section>
+
+  <!-- 14 ROTINA -->
+  <section class="slide">
+    <div class="num">14</div>
+    <div class="kicker">Nossa rotina</div>
+    <h2>Transparência e alinhamento constantes</h2>
+    <div class="grid g3">
+      <div class="cardbox"><div class="t">Reuniões quinzenais</div><div class="d">Revisão de resultados, alinhamento de expectativas e próximos passos.</div></div>
+      <div class="cardbox"><div class="t">WhatsApp do projeto</div><div class="d">Alinhamento contínuo: dúvidas e ajustes em tempo real.</div></div>
+      <div class="cardbox"><div class="t">Acompanhamento diário</div><div class="d">Monitoramento das entregas e da operação, todos os dias.</div></div>
+    </div>
+  </section>
+
+  <!-- 15 RESPONSABILIDADES DO CLIENTE -->
+  <section class="slide">
+    <div class="num">15</div>
+    <div class="kicker">Responsabilidades do cliente</div>
+    <h2>Para a operação girar bem</h2>
+    <ul class="big">
+      <li><b>Liberar os acessos</b> (Seller Center/Shopee Ads na Shopee · conta e Mercado Ads no ML), por convite, sem senha.</li>
+      <li><b>Participar das reuniões</b> e aprovar estratégias, preços e próximos passos.</li>
+      <li><b>Manter estoque, remessa (Full) e SAC</b> rodando.</li>
+      <li><b>Disponibilizar verba</b> de mídia, amostras e inventário.</li>
+    </ul>
+  </section>
+
+  <!-- 16 EQUIPE -->
+  <section class="slide">
+    <div class="num">16</div>
+    <div class="kicker">Equipe multidisciplinar</div>
+    <h2>Um time inteiro nas suas contas</h2>
+    <div class="grid g4">
+      <div class="cardbox"><div class="t">Gestor de Projetos</div><div class="d">Alinha esforços, prazos e entregas nos dois canais; garante as metas.</div></div>
+      <div class="cardbox"><div class="t">Especialista de Tráfego</div><div class="d">Shopee Ads e Mercado Ads, ROAS e TACOS: escala com rentabilidade.</div></div>
+      <div class="cardbox"><div class="t">Creator Leader</div><div class="d">Afiliados e lives na Shopee: recrutamento, seeding e Pareto (D3).</div></div>
+      <div class="cardbox"><div class="t">Especialista de Catálogo & Operação</div><div class="d">Listing, catálogo, Full e saúde das contas.</div></div>
+    </div>
+  </section>
+
+  <!-- 17 INVESTIMENTO -->
+  <section class="slide" style="align-items:center;text-align:center;">
+    <div class="num">17</div>
+    <div class="kicker">Investimento</div>
+    <h2>Gestão completa, canal a canal</h2>
+    <div id="precos" style="margin-top:26px;max-width:820px;width:100%;text-align:left;">
+      <div class="grid g2">
+        <div class="cardbox" style="border-color:rgba(34,197,94,0.45);display:flex;flex-direction:column;">
+          <div class="pill" style="background:#22C55E;color:#06210f;">1º marketplace</div>
+          <div style="font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:700;">Gestão completa · Shopee ou Mercado Livre</div>
+          <div style="font-weight:900;font-size:clamp(34px,5vw,52px);color:var(--accent);line-height:1;margin-top:6px;">R$ 3.800<span style="font-size:16px;font-weight:700;color:var(--muted);"> /mês</span></div>
+          <div class="d" style="margin-top:10px;">Operação completa de um canal: a Elevate <b style="color:#fff">executa por você</b>.</div>
+        </div>
+        <div class="cardbox" style="display:flex;flex-direction:column;">
+          <div class="pill">2º marketplace</div>
+          <div style="font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:700;">Adicione o segundo canal</div>
+          <div style="font-weight:900;font-size:clamp(34px,5vw,52px);color:var(--accent);line-height:1;margin-top:6px;">R$ 3.000<span style="font-size:16px;font-weight:700;color:var(--muted);"> /mês</span></div>
+          <div class="d" style="margin-top:10px;">O segundo canal com <b style="color:#fff">valor reduzido</b>: gestão completa nos dois.</div>
+        </div>
+      </div>
+      <div id="total2mkt" style="margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:linear-gradient(90deg,rgba(126,200,227,0.14),rgba(126,200,227,0.04));border:1px solid rgba(126,200,227,0.35);border-radius:16px;padding:16px 22px;">
+        <div>
+          <div style="font-weight:800;color:#fff;font-size:16px;">Os dois canais juntos</div>
+          <div style="color:var(--muted);font-size:13px;margin-top:2px;">Shopee + Mercado Livre, gestão completa nos dois.</div>
+        </div>
+        <div style="font-weight:900;font-size:clamp(28px,4vw,40px);color:var(--accent);line-height:1;white-space:nowrap;">R$ 6.800<span style="font-size:15px;font-weight:700;color:var(--muted);"> /mês</span></div>
+      </div>
+    </div>
+    <div id="sobconsulta" style="display:none;">
+      <div class="big-num" style="margin:18px 0;">sob consulta</div>
+      <div class="lead" style="margin:0 auto;">O valor é apresentado pelo seu consultor Elevate, conforme o escopo da sua operação.</div>
+    </div>
+    <div class="hint">Proposta válida pelo período de 7 dias.</div>
+  </section>
+
+  <!-- 18 CONTATO / OBRIGADO -->
+  <section class="slide" style="justify-content:center;">
+    <div class="num">18</div>
+    <div class="final">Com a Elevate, sua marca não só <b>entra</b> na Shopee e no Mercado Livre.<br>Ela se <b>posiciona</b>, vende <b>com método</b> e cresce com <b>margem de contribuição</b>.</div>
+    <div class="accentbar" style="margin:34px 0 26px;"></div>
+    <div class="contact"><span>@</span>ecomelevatebr</div>
+  </section>
+
+</div>
+<script>
+  // versão "sem valor": abra com ?semvalor
+  if ((location.search + location.hash).toLowerCase().indexOf('semvalor') >= 0) {
+    var pr = document.getElementById('precos'), sc = document.getElementById('sobconsulta'), tt = document.getElementById('total2mkt');
+    if (pr) pr.style.display = 'none';
+    if (tt) tt.style.display = 'none';
+    if (sc) sc.style.display = 'block';
+  }
+  document.querySelectorAll('img.print').forEach(function(i){
+    i.addEventListener('error', function(){
+      i.style.background='#13344a';i.style.minHeight='130px';
+      i.alt='(adicione o print em Comercial/prints/'+i.getAttribute('src').split('/').pop()+')';
+    });
+  });
+</script>
+</body>
+</html>

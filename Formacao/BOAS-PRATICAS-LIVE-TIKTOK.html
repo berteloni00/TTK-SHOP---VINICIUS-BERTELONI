@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Boas práticas de Live no TikTok · Guia rápido</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap');
+
+:root{
+  --bg:#0B1A2B; --bg2:#0F2B3A; --card:rgba(15,43,58,0.55); --line:rgba(126,200,227,.14);
+  --txt:#E8EEF2; --mut:#98B0BC;
+  --cyan:#7EC8E3; --magenta:#EC4899; --amber:#FACC15; --good:#3DDC84;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:linear-gradient(135deg,#0B1A2B,#0F2B3A,#1A4A5A); background-attachment:fixed; min-height:100vh;
+  color:var(--txt); font-family:'Poppins',system-ui,sans-serif; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:920px; margin:0 auto; padding:34px 20px 70px}
+
+/* header */
+.eyebrow{font-family:'Poppins',sans-serif; font-size:12px; letter-spacing:.22em; text-transform:uppercase; color:var(--cyan); font-weight:600}
+h1{font-family:'Poppins',sans-serif; font-weight:700; font-size:clamp(28px,7vw,46px); line-height:1.02; margin:.28em 0 .18em; letter-spacing:-.02em}
+h1 .m{color:var(--magenta)}
+.sub{color:var(--mut); font-size:15px; max-width:60ch; margin:0}
+.note{margin:16px 0 0; padding:12px 15px; border-left:2px solid var(--amber);
+  background:rgba(255,194,75,.07); border-radius:0 10px 10px 0; font-size:13.5px; color:#F3E9CF}
+.note b{color:var(--amber)}
+
+/* controls */
+.tools{display:flex; gap:12px; align-items:center; flex-wrap:wrap; margin:26px 0 8px}
+.search{flex:1; min-width:220px; position:relative}
+.search input{width:100%; background:var(--bg2); border:1px solid var(--line); color:var(--txt);
+  padding:12px 14px 12px 40px; border-radius:12px; font-size:15px; font-family:inherit; outline:none}
+.search input:focus{border-color:var(--cyan); box-shadow:0 0 0 3px rgba(126,200,227,.15)}
+.search svg{position:absolute; left:13px; top:50%; transform:translateY(-50%); opacity:.5}
+.legend{display:flex; gap:16px; font-size:12.5px; color:var(--mut); flex-wrap:wrap}
+.legend span{display:inline-flex; align-items:center; gap:7px}
+.dot{width:9px; height:9px; border-radius:50%}
+.dot.p{background:var(--magenta)} .dot.c{background:var(--cyan)}
+
+/* sections */
+.grid{display:grid; gap:16px; margin-top:18px}
+.section{background:linear-gradient(180deg,var(--card),rgba(17,23,57,.6));
+  border:1px solid var(--line); border-radius:18px; padding:20px 20px 22px; transition:opacity .18s}
+.section.dim{opacity:.28}
+.shead{display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:4px}
+.stitle{font-family:'Poppins',sans-serif; font-weight:600; font-size:18px; display:flex; align-items:center; gap:10px}
+.num{font-size:12px; color:var(--mut); font-weight:700; letter-spacing:.05em}
+.badge{font-size:10.5px; font-weight:700; letter-spacing:.08em; text-transform:uppercase;
+  padding:4px 9px; border-radius:999px; white-space:nowrap}
+.badge.p{color:var(--magenta); background:rgba(236,72,153,.12); border:1px solid rgba(236,72,153,.4)}
+.badge.c{color:var(--cyan); background:rgba(126,200,227,.10); border:1px solid rgba(126,200,227,.38)}
+.sdesc{color:var(--mut); font-size:13px; margin:2px 0 14px}
+.sdesc b{color:var(--txt); font-weight:600}
+
+/* chips (as estrelas) */
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{font-size:14.5px; font-weight:500; padding:7px 13px; border-radius:10px; white-space:nowrap; line-height:1.2}
+.chip.p{color:#FFD9E8; background:rgba(236,72,153,.11); border:1px solid rgba(236,72,153,.34)}
+.chip.c{color:#CFF9FA; background:rgba(126,200,227,.09); border:1px solid rgba(126,200,227,.30)}
+.chip.hidden{display:none}
+
+/* rewrite pairs */
+.pairs{display:grid; gap:10px; margin-top:4px}
+.pair{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:12px;
+  background:var(--bg2); border:1px solid var(--line); border-radius:12px; padding:11px 14px}
+.pair .bad{color:#FFB4CE; text-decoration:line-through; text-decoration-color:rgba(236,72,153,.6); font-size:14px}
+.pair .arrow{color:var(--good); font-weight:700}
+.pair .good{color:#CFF7E4; font-size:14px}
+
+/* comportamentos (regras da live) */
+.rules{display:grid; gap:10px; margin-top:4px}
+.rule{background:var(--bg2); border:1px solid var(--line); border-radius:12px; padding:12px 15px}
+.rule.stop{border-left:3px solid var(--magenta)}
+.rule.warn{border-left:3px solid var(--amber)}
+.rule .rt{font-family:'Poppins',sans-serif; font-weight:600; color:var(--txt); font-size:14.5px; margin-bottom:3px; display:flex; align-items:center; gap:8px}
+.rule .rd{color:var(--mut); font-size:13px}
+.rule .rd b{color:#FFD9E8; font-weight:600}
+
+.foot{margin-top:26px; color:var(--mut); font-size:12.5px; text-align:center}
+.foot b{color:var(--cyan)}
+.empty{display:none; text-align:center; color:var(--mut); padding:30px; font-size:14px}
+.empty.show{display:block}
+
+@media(max-width:560px){
+  .pair{grid-template-columns:1fr; gap:5px; text-align:left}
+  .pair .arrow{justify-self:start; transform:rotate(90deg)}
+  .shead{flex-direction:column; align-items:flex-start; gap:6px}
+}
+
+/* parte 1: operação da live */
+.partdiv{margin:32px 0 4px; display:flex; align-items:center; gap:12px}
+.partdiv .pn{font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--bg); background:var(--cyan); padding:5px 12px; border-radius:999px}
+.partdiv .pt{font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; color:var(--txt)}
+.partdiv .pl{flex:1; height:1px; background:var(--line)}
+.partdiv{transition:opacity .18s}.partdiv.dim{opacity:.28}
+.imgf{border-radius:12px; border:1px solid var(--line); overflow:hidden; margin:8px 0 4px; background:var(--bg2)}
+.imgf img{width:100%; display:block}
+.imgc{font-size:11.5px; color:var(--mut); font-style:italic; margin:2px 0 12px; line-height:1.5}
+.g2{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.g3{display:grid; grid-template-columns:repeat(3,1fr); gap:12px}
+.mini{background:var(--bg2); border:1px solid var(--line); border-radius:12px; padding:14px}
+.mini .mt{font-size:10.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--mut); margin-bottom:8px}
+.mini .md{font-size:13px; color:var(--txt); line-height:1.75}
+.co{display:flex; gap:10px; align-items:flex-start; padding:11px 13px; border-radius:10px; background:var(--bg2); border:1px solid var(--line); margin-bottom:8px}
+.co .cn{background:var(--cyan); color:var(--bg); width:24px; height:24px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:12px; flex-shrink:0}
+.co .cx{font-size:13px; color:var(--mut); line-height:1.55}.co .cx b{color:var(--txt)}
+.tip{background:rgba(61,220,132,.07); border:1px solid rgba(61,220,132,.22); border-radius:10px; padding:11px 13px; margin:8px 0}
+.tip .tg{font-size:10.5px; font-weight:700; color:var(--good); letter-spacing:.05em; margin-bottom:3px}.tip .tx{font-size:13px; color:var(--txt); line-height:1.55}
+.warnbox{background:rgba(236,72,153,.07); border:1px solid rgba(236,72,153,.22); border-radius:10px; padding:11px 13px; margin:8px 0}
+.warnbox .tg{font-size:10.5px; font-weight:700; color:var(--magenta); letter-spacing:.05em; margin-bottom:3px}.warnbox .tx{font-size:13px; color:var(--txt); line-height:1.55}
+.roles{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.role{border-radius:14px; padding:16px; border:1px solid var(--line); background:var(--bg2)}
+.role .ri{font-size:30px; margin-bottom:6px}.role .rtt{font-weight:700; font-size:15px}.role .rss{font-size:11px; font-weight:600; letter-spacing:.04em; text-transform:uppercase; margin-bottom:8px; color:var(--mut)}
+.role .rl{font-size:13px; color:var(--txt); line-height:1.85}.role .rl b{color:var(--txt); font-weight:600}
+.flow{display:flex; gap:8px; margin:12px 0; flex-wrap:wrap}
+.fstep{flex:1; min-width:120px; text-align:center; padding:14px 10px; background:var(--bg2); border:1px solid var(--line); border-radius:12px}
+.fstep .fn{font-size:20px; font-weight:800; color:var(--cyan)}.fstep .ft{font-size:12px; font-weight:700; margin:3px 0 2px}.fstep .fd{font-size:11px; color:var(--mut); line-height:1.4}
+.tl{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:12px 0}
+.tlb{padding:12px; background:var(--bg2); border:1px solid var(--line); border-radius:12px; border-top:3px solid var(--cyan)}
+.tlb .tlt{font-size:10.5px; font-weight:700; color:var(--cyan); letter-spacing:.05em; margin-bottom:4px}.tlb .tll{font-size:12px; font-weight:700; margin-bottom:3px}.tlb .tld{font-size:11.5px; color:var(--mut); line-height:1.5}
+@media(max-width:560px){.g2,.g3,.roles,.tl{grid-template-columns:1fr}}
+
+/* índice navegável */
+.toc{background:linear-gradient(180deg,var(--card),rgba(17,23,57,.6)); border:1px solid var(--line); border-radius:16px; padding:16px 18px; margin:20px 0 4px}
+.toc-lab{font-size:11px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:var(--cyan); margin-bottom:10px}
+.toc-h{font-size:13px; font-weight:700; color:var(--txt); margin:12px 0 7px}
+.toc-list{display:flex; flex-wrap:wrap; gap:7px}
+.toc-a{display:inline-flex; align-items:center; gap:6px; font-size:12.5px; color:var(--mut); text-decoration:none; background:var(--bg2); border:1px solid var(--line); border-radius:8px; padding:6px 11px; transition:.15s}
+.toc-a:hover{color:var(--txt); border-color:var(--cyan); transform:translateY(-1px)}
+.toc-a i{color:var(--cyan); font-weight:800; font-size:11px; font-style:normal}
+.section{scroll-margin-top:16px}
+
+/* lightbox nos prints */
+.imgf img{cursor:zoom-in}
+.lb{position:fixed; inset:0; background:rgba(6,14,24,.93); display:none; align-items:center; justify-content:center; z-index:200; padding:24px; cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:100%; max-height:100%; border-radius:10px; border:1px solid var(--line); box-shadow:0 12px 70px rgba(0,0,0,.6)}
+.lb-hint{position:fixed; top:16px; right:20px; font-size:12px; color:var(--mut); letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Fox Squad · Elevate</div>
+    <h1>Boas práticas de <span class="m">Live</span> no TikTok</h1>
+    <p class="sub">Guia completo de live no TikTok Shop: <b>como fazer uma live que vende</b> (equipe, aquecimento, GMV Max de Live, flash sales, console e roteiro) e <b>o que não falar nem fazer</b> pra não tomar violação nem derrubar a entrega.</p>
+    <div class="note"><b>Importante:</b> o TikTok não publica lista oficial de palavras proibidas. Isto aqui é o padrão observado; na dúvida, seja conservadora, principalmente em live.</div>
+  </header>
+
+  <div style="margin:22px 0;padding:20px 22px;border:1px solid rgba(126,200,227,.32);background:rgba(126,200,227,.07);border-radius:14px">
+    <div style="font-weight:800;font-size:17px;color:#fff;margin-bottom:6px">🏜️ Expectativa: o deserto de live</div>
+    <p style="margin:8px 0"><b style="color:#fff">"Quantas horas de live tem que fazer pra ter resultado rápido?"</b> Não existe resultado rápido, então já esquece isso.</p>
+    <p style="margin:8px 0">Pra começar a ter resultado no Live Shop, você precisa de <b style="color:#fff">constância de pelo menos um mês</b>.</p>
+    <p style="margin:8px 0">Todo Live Seller fala de um termo: o <b style="color:#fff">deserto de live</b>, e você precisa passar por ele. São <b style="color:#fff">40 dias e 40 noites de live no deserto</b>, muitas vezes falando com uma ou duas pessoas, até o resultado começar a aparecer.</p>
+    <p style="margin:8px 0 0"><b style="color:#fff">Mas o resultado vale a pena.</b> A recompensa vem depois do deserto. Quem aguenta a constância dos primeiros dias é quem colhe.</p>
+  </div>
+
+  <div class="tools">
+    <div class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8B93C4" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4-4"/></svg>
+      <input id="q" type="text" placeholder="Buscar uma palavra…" autocomplete="off">
+    </div>
+    <div class="legend">
+      <span><i class="dot p"></i> Proibido · derruba/viola</span>
+      <span><i class="dot c"></i> Cuidado · corta alcance</span>
+    </div>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <div class="partdiv"><span class="pn">Parte 1</span><span class="pt">🎥 Como fazer a live (operação que vende)</span><span class="pl"></span></div>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">01</span> Formato ideal: 2 pessoas</div><span class="badge c">Equipe</span></div>
+      <p class="sdesc">A live de maior conversão sempre tem <b>duas pessoas</b>: uma na frente da câmera e outra nos bastidores.</p>
+      <div class="roles">
+        <div class="role" style="border-color:rgba(126,200,227,.3)"><div class="ri">🎤</div><div class="rtt" style="color:var(--cyan)">Apresentador</div><div class="rss">na frente da câmera</div><div class="rl">● Apresentar cada produto com energia e detalhes<br>● Demonstrar: girar, vestir, mostrar a textura<br>● Ler os comentários e chamar pelo nome<br>● CTAs: "clica no carrinho", "aproveita o cupom"<br>● Anunciar ofertas relâmpago e cupons<br>● Manter o ritmo e a energia da live</div></div>
+        <div class="role" style="border-color:rgba(61,220,132,.3)"><div class="ri">💻</div><div class="rtt" style="color:var(--good)">Bastidores</div><div class="rss">no Console de Live</div><div class="rl">● <b>Fixar o produto</b> que o apresentador mostra<br>● <b>Ativar a flash sale</b> na hora certa<br>● <b>Monitorar pedidos</b> e confirmar vendas<br>● <b>Acompanhar métricas</b>: GMV, viewers, CTR<br>● <b>Filtrar o chat</b> e avisar o apresentador<br>● <b>Preparar o próximo produto</b> na fila</div></div>
+      </div>
+      <div class="warnbox"><div class="tg">Por que não fazer sozinho?</div><div class="tx">Na câmera não dá pra fixar produto, ativar flash sale e ler métrica ao mesmo tempo. Cada segundo parado no computador perde espectador. O bastidor garante que a operação flui sem pausa.</div></div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">02</span> Aquecimento pré-live com criativos</div><span class="badge c">Estratégia</span></div>
+      <p class="sdesc">Antes de ir ao vivo, publique 1 a 2 vídeos curtos no perfil da loja pra aquecer a audiência. Depois, impulsione com GMV Max.</p>
+      <div class="flow">
+        <div class="fstep"><div class="fn">1</div><div class="ft">Gravar criativo</div><div class="fd">vídeo curto (15 a 30s) com os produtos da live</div></div>
+        <div class="fstep"><div class="fn">2</div><div class="ft">Postar no perfil</div><div class="fd">publicar 2 a 4h antes da live</div></div>
+        <div class="fstep"><div class="fn">3</div><div class="ft">GMV Max</div><div class="fd">impulsionar o criativo com campanha</div></div>
+        <div class="fstep"><div class="fn">4</div><div class="ft">Ir ao vivo</div><div class="fd">público já aquecido e engajado</div></div>
+      </div>
+      <div class="imgf"><img src="./live-prints/img-criativos.png" alt="Gerenciar conteúdo criativo" loading="lazy"></div>
+      <div class="imgc">Seller Center › Marketing › Anúncios da loja › Gerenciar conteúdo criativo: selecione os vídeos do perfil pra usar nas campanhas GMV Max.</div>
+      <div class="g2">
+        <div class="mini"><div class="mt">🎬 O que gravar</div><div class="md">Vídeo rápido com os produtos da live: "Hoje às 19h tem live com tudo isso com preço especial!" Áudio alto, produto na mão, CTA claro.</div></div>
+        <div class="mini"><div class="mt">⏰ Timing ideal</div><div class="md">Poste <b>2 a 4h antes</b> da live e impulsione com GMV Max na hora. Quando entrar ao vivo, o algoritmo já está distribuindo.</div></div>
+      </div>
+      <div class="tip"><div class="tg">Estratégia avançada</div><div class="tx">Poste 2 criativos: um de manhã (teaser) e outro 1h antes (lembrete). Impulsione os dois. Quem viu os dois tem muito mais chance de entrar e comprar.</div></div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">03</span> GMV Max de Live: como funciona</div><span class="badge c">Anúncios</span></div>
+      <p class="sdesc">O GMV Max de Live impulsiona a <b>transmissão ao vivo</b>, colocando sua live no Feed Para Você de mais gente. É diferente do GMV Max de produto.</p>
+      <div class="g2">
+        <div><div class="imgf"><img src="./live-prints/img-gmvmax-criar.png" alt="Criar campanha GMV Max de Live" loading="lazy"></div><div class="imgc">Criar campanha › Promover LIVE: orçamento e meta de otimização.</div></div>
+        <div><div class="imgf"><img src="./live-prints/img-gmvmax-criativos.png" alt="Criativos e programação" loading="lazy"></div><div class="imgc">Criativos de vídeo, programação e nome da campanha.</div></div>
+      </div>
+      <div class="g2">
+        <div class="mini" style="border-left:3px solid var(--cyan)"><div class="mt" style="color:var(--cyan)">🔴 GMV Max de LIVE</div><div class="md">Impulsiona a <b>transmissão ao vivo</b> · coloca a live no Feed Para Você · atrai viewers em tempo real · orçamento gasto <b>durante</b> a live.</div></div>
+        <div class="mini" style="border-left:3px solid var(--amber)"><div class="mt" style="color:var(--amber)">📦 GMV Max de PRODUTO</div><div class="md">Impulsiona <b>vídeos de produto</b> · mostra o vídeo no Feed com link · funciona 24/7 (sem live) · orçamento contínuo.</div></div>
+      </div>
+      <div class="imgf"><img src="./live-prints/img-gmvmax-painel.png" alt="Painel de anúncios" loading="lazy"></div>
+      <div class="imgc">Painel de controle: acompanhe o LIVE GMV Max e o GMV Max de produto lado a lado.</div>
+      <div class="tip"><div class="tg">Como configurar</div><div class="tx">Seller Center › GMV Max › Criar campanha › <b>"Promover LIVE"</b>. Defina o orçamento, selecione os criativos (os vídeos de aquecimento) e programe pro horário da live.</div></div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">04</span> Flash Sales: oferta relâmpago</div><span class="badge c">Promoções</span></div>
+      <p class="sdesc">A oferta relâmpago é a ferramenta mais poderosa de conversão na live: desconto por tempo limitado, visível pra todo mundo.</p>
+      <div class="g2">
+        <div><div class="imgf"><img src="./live-prints/img-flash.png" alt="Criar oferta relâmpago" loading="lazy"></div><div class="imgc">Criar oferta relâmpago: nome, canal, período e produtos.</div></div>
+        <div><div class="imgf"><img src="./live-prints/img-promo.png" alt="Promoções" loading="lazy"></div><div class="imgc">Marketing › Promoções: todas as ferramentas de LIVE e loja.</div></div>
+      </div>
+      <div class="co"><div class="cn">1</div><div class="cx"><b>Antes da live:</b> Marketing › Promoções › Oferta relâmpago da LIVE. Crie a promo, selecione os produtos e defina o desconto.</div></div>
+      <div class="co"><div class="cn">2</div><div class="cx"><b>Configure o período:</b> início e fim. Pode ativar automática ou manualmente durante a live.</div></div>
+      <div class="co"><div class="cn">3</div><div class="cx"><b>Bastidor ativa:</b> durante a live, o bastidor ativa no Console. O banner aparece na tela de todos os viewers.</div></div>
+      <div class="co"><div class="cn">4</div><div class="cx"><b>Apresentador anuncia:</b> "Acabei de liberar 25% OFF, só vale nos próximos 10 minutos! Corre que tá no carrinho!"</div></div>
+      <div class="g2">
+        <div class="tip"><div class="tg">Timing estratégico</div><div class="tx">Ative a flash sale entre os minutos 15 e 25 da live, com a audiência já engajada. Nunca no início: você perde a urgência pro final.</div></div>
+        <div class="mini"><div class="mt">💰 Outras promos de live</div><div class="md"><b>Voucher interativo</b> (cupom na tela) · <b>Recompensa da LIVE</b> (engajamento) · <b>Cupom novo cliente</b> · <b>Compre mais, economize</b> (kits).</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">05</span> Console de Live: a tela dos bastidores</div><span class="badge c">Durante a live</span></div>
+      <p class="sdesc">Painel que a <b>pessoa dos bastidores</b> usa na transmissão: fixar produto, ativar flash sale, monitorar o chat e as métricas.</p>
+      <a href="https://shop.tiktok.com/streamer/live/event/dashboard" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;margin:14px 0 6px;font-size:14px;font-weight:700;color:#062033;text-decoration:none;background:linear-gradient(135deg,#7EC8E3,#3DDC84);border-radius:10px;padding:11px 18px;box-shadow:0 4px 18px rgba(126,200,227,.25)">🔴 Abrir o Console de LIVE ↗</a>
+      <div class="warnbox"><div class="tg">⚠️ PRECISA ESTAR LOGADO NA CONTA SOCIAL</div><div class="tx">Para o link abrir <b>direto</b> no Console de LIVE, você precisa estar conectado no navegador com a <b>conta do TikTok (rede social)</b> da loja. Se <b>não</b> estiver logado, o TikTok vai <b>pedir o login</b> antes de abrir o painel. Dica: faça login no TikTok social primeiro, depois clique no botão.</div></div>
+      <div class="imgf"><img src="./live-prints/img-console.png" alt="Console de Live" loading="lazy"></div>
+      <div class="g2">
+        <div>
+          <div class="co"><div class="cn">1</div><div class="cx"><b>Produtos + Fixar:</b> clique em "Fixar" no produto que o apresentador mostra; ele aparece em destaque pros viewers.</div></div>
+          <div class="co"><div class="cn">2</div><div class="cx"><b>Ferramentas (topo):</b> oferta relâmpago, recompensa, cartaz, LIVE premiada. O bastidor ativa cada uma na hora certa.</div></div>
+          <div class="co"><div class="cn">3</div><div class="cx"><b>Desconto fixado:</b> banner visível pra todos (ex.: "25% OFF acima de R$ 49").</div></div>
+        </div>
+        <div>
+          <div class="co"><div class="cn">4</div><div class="cx"><b>Preview da câmera:</b> o que os espectadores veem. O bastidor monitora o enquadramento e se o produto está visível.</div></div>
+          <div class="co"><div class="cn">5</div><div class="cx"><b>Chat ao vivo:</b> o bastidor filtra as perguntas e passa pro apresentador: "a Maria perguntou se tem P".</div></div>
+          <div class="co"><div class="cn">6</div><div class="cx"><b>Métricas + pedidos:</b> GMV, viewers e pedidos em tempo real. Se o GMV parar, hora de ativar flash sale ou trocar de produto.</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">06</span> Live Dashboard: as métricas</div><span class="badge c">Métricas</span></div>
+      <p class="sdesc">Dashboard em tempo real com todas as métricas. Use pra decidir durante e depois da transmissão.</p>
+      <div class="imgf"><img src="./live-prints/img-dashboard.png" alt="Live Dashboard" loading="lazy"></div>
+      <div class="g3">
+        <div class="mini" style="border-top:3px solid var(--good)"><div class="mt">💰 Vendas</div><div class="md"><b>GMV total</b> (faturamento) · <b>itens vendidos</b> · <b>GPM</b> (GMV por mil impressões) · <b>taxa de conversão</b>.</div></div>
+        <div class="mini" style="border-top:3px solid var(--cyan)"><div class="mt">👥 Audiência</div><div class="md"><b>Viewers</b> ao vivo · <b>impressões</b> (alcance) · <b>duração média</b> (retenção) · <b>CTR</b> nos produtos.</div></div>
+        <div class="mini" style="border-top:3px solid var(--amber)"><div class="mt">📍 Tráfego</div><div class="md"><b>Feed Para Você</b> (orgânico) · <b>prévia da LIVE</b> · <b>seguindo</b> · <b>perfil / caixa</b> (direto).</div></div>
+      </div>
+      <div class="tip"><div class="tg">Como usar durante a live</div><div class="tx">O bastidor monitora o dashboard. Viewers caindo: troque de produto ou ative flash sale. GPM alto num produto: fixe e foque nele. Decisão em tempo real, baseada em dado.</div></div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">07</span> Roteiro de 30 min + conversão</div><span class="badge c">Na prática</span></div>
+      <div class="tl">
+        <div class="tlb"><div class="tlt">0 a 5 min</div><div class="tll">Abertura</div><div class="tld">Apresentador: cumprimenta e dá o gancho ("cupom no final"). Bastidor: fixa o 1º produto e checa as métricas.</div></div>
+        <div class="tlb" style="border-top-color:var(--amber)"><div class="tlt" style="color:var(--amber)">5 a 15 min</div><div class="tll">Produtos</div><div class="tld">Apresentador: 2 a 3 produtos, detalha e responde o chat. Bastidor: fixa cada produto e monitora os pedidos.</div></div>
+        <div class="tlb" style="border-top-color:var(--magenta)"><div class="tlt" style="color:var(--magenta)">15 a 25 min</div><div class="tll">Flash sale</div><div class="tld">Apresentador: "oferta relâmpago AGORA!" Bastidor: ativa a flash sale e fixa o best-seller.</div></div>
+        <div class="tlb" style="border-top-color:var(--good)"><div class="tlt" style="color:var(--good)">25 a 30 min</div><div class="tll">Fechamento</div><div class="tld">Apresentador: recapitula, "última chance". Bastidor: fixa o top seller e printa as métricas.</div></div>
+      </div>
+      <div class="g2">
+        <div class="mini" style="border-left:3px solid var(--good)"><div class="mt" style="color:var(--good)">Técnicas de conversão</div><div class="md">✓ <b>CTA a cada 3 min</b> ("clica no carrinho")<br>✓ <b>Prova social</b> ("obrigada Maria, vi seu pedido!")<br>✓ <b>Urgência real</b> ("últimas 5 unidades")<br>✓ <b>Demonstração</b> (gire, mostre os detalhes)<br>✓ <b>Cupom exclusivo</b> ("só pra quem tá ao vivo")<br>✓ <b>Votação</b> (mostra 2 opções, o chat vota)</div></div>
+        <div class="mini" style="border-left:3px solid var(--magenta)"><div class="mt" style="color:var(--magenta)">Erros que matam a conversão</div><div class="md">✕ Silêncio (perde viewer em segundos)<br>✕ Ignorar o chat (mata o engajamento)<br>✕ Não fixar o produto (ninguém acha)<br>✕ Flash sale no início (perde a urgência)<br>✕ Falar sem mostrar (o viewer quer ver)<br>✕ Encerrar sem avisar a próxima live</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">08</span> Checklist e frequência</div><span class="badge c">Resumo</span></div>
+      <div class="g2">
+        <div class="mini"><div class="mt" style="color:var(--cyan)">Pré-live (2 a 4h antes)</div><div class="md">☐ Gravar 1 a 2 criativos de aquecimento<br>☐ Postar no perfil da loja<br>☐ Criar a campanha GMV Max de LIVE<br>☐ Configurar a oferta relâmpago<br>☐ Vincular os produtos na vitrine</div></div>
+        <div class="mini"><div class="mt" style="color:var(--good)">Pré-live (30 min antes)</div><div class="md">☐ Testar câmera e microfone<br>☐ Checar a internet (mín. 10 Mbps)<br>☐ Iluminação frontal ligada<br>☐ Produtos físicos em mãos<br>☐ Bastidor logado no Console<br>☐ Roteiro impresso por perto</div></div>
+      </div>
+      <div class="mini" style="text-align:center; margin-top:12px"><div class="mt">Frequência recomendada</div><div style="font-size:32px; font-weight:800; color:var(--cyan); margin:2px 0">3x por semana</div><div class="md" style="color:var(--mut)">Consistência vale mais que duração. 30 min bem feitos batem 2h sem roteiro.</div></div>
+    </section>
+
+    <div class="partdiv"><span class="pn">Parte 2</span><span class="pt">🛑 O que não falar e não fazer (compliance)</span><span class="pl"></span></div>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">01</span> Alegações de venda e saúde</div><span class="badge p">Proibido</span></div>
+      <p class="sdesc">O que mais derruba conteúdo de venda. <b>Suplemento ou alimento nunca pode dizer que previne, trata ou cura doença.</b></p>
+      <div class="chips">
+        <span class="chip p">cura</span><span class="chip p">curar</span><span class="chip p">trata</span><span class="chip p">previne</span><span class="chip p">elimina a doença</span><span class="chip p">emagrece</span><span class="chip p">seca</span><span class="chip p">perde X kg</span><span class="chip p">milagroso</span><span class="chip p">milagre</span><span class="chip p">fórmula secreta</span><span class="chip p">100%</span><span class="chip p">garantido</span><span class="chip p">resultado garantido</span><span class="chip p">imediato</span><span class="chip p">instantâneo</span><span class="chip p">em 7 dias</span><span class="chip p">da noite pro dia</span><span class="chip p">melhor do mercado</span><span class="chip p">número 1</span><span class="chip p">o único</span><span class="chip p">imbatível</span><span class="chip p">aprovado pela Anvisa</span><span class="chip p">recomendado por médicos</span><span class="chip p">acaba com rugas</span><span class="chip p">celulite</span><span class="chip p">estrias</span><span class="chip p">rejuvenesce</span><span class="chip p">detox</span><span class="chip p">desintoxica</span><span class="chip p">elimina toxinas</span><span class="chip p">vicia</span><span class="chip p">menor preço</span><span class="chip p">antes e depois</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">02</span> Tirar o cliente da plataforma</div><span class="badge p">Proibido</span></div>
+      <p class="sdesc">A compra tem que acontecer <b>dentro do TikTok Shop</b>. Puxar pra fora viola e ainda quebra a compra por impulso.</p>
+      <div class="chips">
+        <span class="chip p">WhatsApp</span><span class="chip p">chama no zap</span><span class="chip p">meu número é</span><span class="chip p">chama no direct</span><span class="chip p">Pix</span><span class="chip p">faz um pix</span><span class="chip p">pago por fora</span><span class="chip p">compra comigo</span><span class="chip p">Shopee</span><span class="chip p">Shein</span><span class="chip p">Mercado Livre</span><span class="chip p">Amazon</span><span class="chip p">meu site</span><span class="chip p">link externo</span><span class="chip p">bet</span><span class="chip p">apostas</span><span class="chip p">cassino</span><span class="chip p">renda extra garantida</span><span class="chip p">ganhe dinheiro fácil</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">03</span> Palavrão e temas sensíveis</div><span class="badge c">Cuidado</span></div>
+      <p class="sdesc"><b>Palavrão em live geralmente não derruba se escapar um ou outro; o problema é a frequência:</b> repetir muito faz a live tomar penalização e derrubar a entrega. Em live o filtro é pesado e às vezes corta até palavra neutra. Muita gente troca por código (<b>sexo → "seggs"</b>, <b>morrer/suicídio → "unalive"</b>).</p>
+      <div class="chips">
+        <span class="chip c">palavrões</span><span class="chip c">sexo</span><span class="chip c">morte</span><span class="chip c">matar</span><span class="chip c">suicídio</span><span class="chip c">arma</span><span class="chip c">drogas</span><span class="chip c">maconha</span><span class="chip c">cocaína</span><span class="chip c">sangue</span><span class="chip c">nudez</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">04</span> Proibição pesada (tema, não palavra)</div><span class="badge p">Proibido</span></div>
+      <p class="sdesc">Aqui é o <b>assunto</b> que derruba, não uma palavra específica, e vem punição forte.</p>
+      <div class="chips">
+        <span class="chip p">discurso de ódio</span><span class="chip p">grupos violentos</span><span class="chip p">exploração sexual</span><span class="chip p">assédio</span><span class="chip p">bullying</span><span class="chip p">doxing</span><span class="chip p">desinformação</span><span class="chip p">golpe / fraude</span><span class="chip p">apologia à autolesão</span><span class="chip p">desafios perigosos</span><span class="chip p">conteúdo chocante</span><span class="chip p">política / religião (em anúncio)</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">05</span> Comportamentos na live</div><span class="badge p">Regras da live</span></div>
+      <p class="sdesc">Aqui não é palavra: é <b>o que aparece e o que acontece</b> na transmissão. Isso penaliza ou derruba a entrega da live.</p>
+      <div class="rules">
+        <div class="rule stop"><div class="rt">🚫 Pele em excesso / decote</div><div class="rd">Top fitness com decote, dependendo do enquadramento e da forma, pode ser lido como <b>conteúdo adulto</b> (proibido na plataforma). Cuidado com o ângulo e o quanto aparece.</div></div>
+        <div class="rule warn"><div class="rt">⏸️ Nunca deixe a live vazia</div><div class="rd">Ficar alguns minutos <b>sem ninguém visível</b> gera penalização de <b>live inativa</b>. Precisa ir ao banheiro ou trocar de roupa? Deixe <b>outra pessoa na frente da câmera</b>.</div></div>
+        <div class="rule stop"><div class="rt">📺 Não mostre outro site/loja no cenário</div><div class="rd">TV ao fundo passando vídeo com <b>logo ou itens do seu site</b> conta como puxar o cliente pra fora. Tire do enquadramento.</div></div>
+        <div class="rule stop"><div class="rt">👶 Crianças na live</div><div class="rd">Menores de <b>3 anos não podem aparecer</b> na live (proibido). Menores de <b>12 anos</b> também podem gerar restrição (menos comum). Se der pra evitar, evite.</div></div>
+        <div class="rule stop"><div class="rt">🔀 Não insinue redirecionamento</div><div class="rd">Frases como <b>"aqui não tem esse produto, mas lá no nosso site tem"</b> viram violação de tirar o cliente da plataforma. Fale só do que está no carrinho da live.</div></div>
+        <div class="rule stop"><div class="rt">🎰 Roleta / roda da sorte</div><div class="rd">Mostrar e girar uma roleta pra sortear prêmio (tipo as de Shopee/Shein) <b>remete a jogo de azar</b> e <b>derruba a live</b>. Não use roleta, física nem digital. (Caso real: cliente rodou uma pra sortear um óculos e a live caiu.)</div></div>
+        <div class="rule warn"><div class="rt">🎁 Diga "recompensa", nunca "sorteio"</div><div class="rd">Atualização oficial do TikTok: a ferramenta de premiação em live agora chama <b>Recompensa</b>. Fale <b>"vou dar uma recompensa pra quem…"</b> e evite <b>"sortear" / "sorteio ao vivo"</b>, inclusive no <b>título e na descrição</b> da live. Já está valendo e sujeito a penalização.</div></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="shead"><div class="stitle"><span class="num">06</span> Como reescrever sem tomar violação</div><span class="badge c">Troca isso</span></div>
+      <p class="sdesc">O truque é trocar <b>promessa por experiência</b> e cortar os absolutos.</p>
+      <div class="pairs">
+        <div class="pair"><span class="bad">cura ansiedade</span><span class="arrow">→</span><span class="good">faz parte da minha rotina de bem-estar</span></div>
+        <div class="pair"><span class="bad">emagrece 5kg em 1 semana</span><span class="arrow">→</span><span class="good">me deixou me sentindo mais leve</span></div>
+        <div class="pair"><span class="bad">100% garantido, melhor do mercado</span><span class="arrow">→</span><span class="good">o que eu mais gosto e por quê</span></div>
+        <div class="pair"><span class="bad">antes e depois (saúde)</span><span class="arrow">→</span><span class="good">mostrar o uso real, sem prometer resultado</span></div>
+        <div class="pair"><span class="bad">chama no zap pra comprar</span><span class="arrow">→</span><span class="good">é só tocar no carrinho aqui na live</span></div>
+        <div class="pair"><span class="bad">sortear / sorteio ao vivo</span><span class="arrow">→</span><span class="good">vou dar uma recompensa pra quem...</span></div>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="empty" id="empty">Nenhuma palavra encontrada. Tenta outro termo.</div>
+
+  <p class="foot">Tomou violação achando injusto? Dá pra <b>recorrer</b> pelo Seller Center anexando comprovação. Guia interno · Fox Squad</p>
+
+</div>
+
+<script>
+(function(){
+  var q=document.getElementById('q'), chips=[].slice.call(document.querySelectorAll('.chip')),
+      sections=[].slice.call(document.querySelectorAll('.section')), empty=document.getElementById('empty');
+  function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');}
+  var parts=[].slice.call(document.querySelectorAll('.partdiv'));
+  q.addEventListener('input', function(){
+    var t=norm(q.value.trim());
+    parts.forEach(function(p){ p.classList.toggle('dim', !!t); });
+    chips.forEach(function(c){ c.classList.toggle('hidden', t && norm(c.textContent).indexOf(t)===-1); });
+    var anyVisible=false;
+    sections.forEach(function(sec){
+      var vis=sec.querySelectorAll('.chip:not(.hidden)').length;
+      var hasChips=sec.querySelectorAll('.chip').length>0;
+      // secoes sem chips (comportamentos, reescrita) somem quando ha busca ativa
+      var show = !t ? true : (hasChips && vis>0);
+      sec.classList.toggle('dim', !show);
+      if(t && vis>0) anyVisible=true;
+    });
+    empty.classList.toggle('show', !!t && !anyVisible);
+  });
+})();
+
+// índice navegável (gerado dos partdivs + seções)
+(function(){
+  var grid=document.getElementById('grid'); if(!grid) return;
+  var toc=document.createElement('nav'); toc.className='toc';
+  var lab=document.createElement('div'); lab.className='toc-lab'; lab.textContent='Índice do guia'; toc.appendChild(lab);
+  var i=0, curList=null;
+  [].slice.call(grid.children).forEach(function(n){
+    if(n.classList.contains('partdiv')){
+      var pt=n.querySelector('.pt');
+      var h=document.createElement('div'); h.className='toc-h'; h.textContent=pt?pt.textContent:''; toc.appendChild(h);
+      curList=document.createElement('div'); curList.className='toc-list'; toc.appendChild(curList);
+    } else if(n.classList.contains('section') && curList){
+      var st=n.querySelector('.stitle'); if(!st) return;
+      var id='sec-'+(i++); n.id=id;
+      var numEl=st.querySelector('.num'); var num=numEl?numEl.textContent.trim():'';
+      var txt=st.textContent.trim(); if(num){ txt=txt.slice(num.length).trim(); }
+      var a=document.createElement('a'); a.href='#'+id; a.className='toc-a';
+      a.innerHTML=(num?'<i>'+num+'</i> ':'')+txt;
+      curList.appendChild(a);
+    }
+  });
+  var tools=document.querySelector('.tools');
+  if(tools&&tools.parentNode) tools.parentNode.insertBefore(toc, tools.nextSibling);
+})();
+
+// lightbox nos prints (clicar pra ampliar)
+(function(){
+  var lb=document.createElement('div'); lb.className='lb';
+  var im=document.createElement('img'); lb.appendChild(im);
+  var hint=document.createElement('div'); hint.className='lb-hint'; hint.textContent='clique ou ESC pra fechar'; lb.appendChild(hint);
+  document.body.appendChild(lb);
+  [].slice.call(document.querySelectorAll('.imgf img')).forEach(function(g){
+    g.addEventListener('click', function(){ im.src=g.src; lb.classList.add('open'); });
+  });
+  lb.addEventListener('click', function(){ lb.classList.remove('open'); });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') lb.classList.remove('open'); });
+})();
+</script>
+</body>
+</html>

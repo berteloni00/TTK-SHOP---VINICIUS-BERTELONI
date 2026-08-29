@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevate 4D · Visão Geral</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Metodologia Elevate 4D · Documento Mestre</div>
+    <h1>Elevate 4D · Visão Geral</h1>
+    <div class="meta"><b>Elevate Ecom (Metodologia Interna)</b> · Documento mestre — explica o método 4D de ponta a ponta (conceito → coleta → classificação → leitura) · Atualizado: 2026-06-18</div>
+  </div>
+  <div class="content">
+<blockquote>
+<p><strong>Documento mestre.</strong> Explica todo o método 4D numa leitura só: o que é, como diagnosticar, como coletar os dados, como rodar num cliente e como ler o resultado. É o documento para abrir uma R01, treinar alguém novo ou apresentar a metodologia. Os detalhes de cada parte estão nos documentos linkados ao longo do texto.</p>
+<p>🔄 <strong>Documento vivo:</strong> é atualizado sempre que o projeto Elevate 4D muda (nova regra, correção, cliente, formato). Veja o histórico de versões no fim.</p>
+</blockquote>
+<hr />
+<h2>1. O QUE É O ELEVATE 4D</h2>
+<p><strong>Elevate 4D</strong> ("4D" = <strong>4 Dimensões + Diagnóstico</strong>) é a metodologia da Elevate para diagnosticar uma operação de <strong>TikTok Shop</strong>. É a versão TikTok do diagnóstico estratégico que já fazemos em marketplaces (ML/Shopee), adaptada às alavancas reais do canal.</p>
+<p>O método responde <strong>3 perguntas, nesta ordem</strong>:</p>
+<ol>
+<li><strong>Em que momento o cliente está?</strong> (dos 7 momentos, M0→M6)</li>
+<li><strong>Como o GMV se distribui entre as 4 dimensões — e quanto custa gerá-lo?</strong> (decomposição + CT%)</li>
+<li><strong>Qual dimensão fortalecer agora, dado o momento?</strong> (scorecard → dimensão prioritária)</li>
+</ol>
+<blockquote>
+<p>A pergunta do diagnóstico <strong>nunca</strong> é "está bom ou ruim?" — é "<strong>em que momento está, e qual a dimensão mais curta para esse momento?</strong>"</p>
+</blockquote>
+<hr />
+<h2>2. AS 4 DIMENSÕES</h2>
+<p>O TikTok Shop não cresce por uma alavanca só. Sustenta-se em quatro dimensões — e o que torna o canal único são as duas do meio.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>É</th>
+<th>Função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D1 Produtos</strong></td>
+<td>catálogo, preço, margem, kits, estoque, avaliações</td>
+<td><strong>O chão.</strong> Nada funciona sobre catálogo fraco ou mal precificado.</td>
+</tr>
+<tr>
+<td><strong>D2 Ads</strong></td>
+<td>GMV Max (Product + LIVE), Spark Ads</td>
+<td><strong>Acelerador.</strong> Amplifica o que já converte.</td>
+</tr>
+<tr>
+<td><strong>D3 Afiliados</strong></td>
+<td>creators por comissão: outreach, amostras, Pareto, feedback</td>
+<td><strong>Motor distribuído.</strong> A alavanca mais característica e barata do canal.</td>
+</tr>
+<tr>
+<td><strong>D4 Social</strong></td>
+<td>conta orgânica + lives próprias</td>
+<td><strong>Marca + recorrência.</strong> Segura o GMV quando Ads/Afiliados oscilam.</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Conta saudável tem GMV distribuído entre as dimensões.</strong> Conta frágil depende de uma só — e quando essa dimensão oscila (estoque que rompe, ROI que cai, creators que evadem, conta que morre), o GMV despenca mesmo com as métricas pontuais parecendo boas.</p>
+</blockquote>
+<p>Detalhe completo de cada dimensão (sub-critérios, sinais de força/fraqueza) na <a href="../Metodologia/ELEVATE-4D-METODOLOGIA-DIAGNOSTICO.html">Metodologia</a>.</p>
+<hr />
+<h2>3. OS 7 MOMENTOS</h2>
+<p>Todo cliente está em <strong>um</strong> momento, que define qual dimensão é esperada estar forte.</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Momento</th>
+<th>Sinal</th>
+<th>Foco</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>M0</strong> Probatório</td>
+<td>loja em aprovação · ~zero vendas</td>
+<td>destravar a loja + 1ªs vendas/avaliações</td>
+</tr>
+<tr>
+<td><strong>M1</strong> Lançamento</td>
+<td>vende, mas sem hero claro</td>
+<td>achar o produto-tração e os 1ºs afiliados</td>
+</tr>
+<tr>
+<td><strong>M2</strong> Tração inicial</td>
+<td>GMV cresce, <strong>1 dimensão puxa</strong></td>
+<td>dar consistência e acender a 2ª dimensão</td>
+</tr>
+<tr>
+<td><strong>M3</strong> Escala</td>
+<td>GMV cresce, 2–3 dimensões ativas</td>
+<td>escalar com margem · Pareto · GMV Max</td>
+</tr>
+<tr>
+<td><strong>M4</strong> Platô</td>
+<td>GMV achatou, dependência de poucos</td>
+<td>diversificar · acender a dimensão fraca</td>
+</tr>
+<tr>
+<td><strong>M5</strong> Crise/Queda</td>
+<td>GMV caindo</td>
+<td>achar a dimensão que <strong>quebrou</strong> e estancar</td>
+</tr>
+<tr>
+<td><strong>M6</strong> Maturidade</td>
+<td>4 dimensões ativas</td>
+<td>otimizar margem, recompra, LTV</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Regra de ouro:</strong> uma dimensão fraca só é problema se o <strong>momento já a exigia forte</strong>. Conta no M0 não tem Ads nem Afiliados — isso é esperado, não é fraqueza.</p>
+</blockquote>
+<hr />
+<h2>4. O CUSTO DE TRAÇÃO (CT%) — A MÉTRICA-GUIA</h2>
+<p>É o "TACOS do TikTok": quanto de cada R$ 1 de GMV está sendo <strong>comprado</strong>.</p>
+<blockquote>
+<p><strong>CT% = (Ads + Comissões de afiliados + Custo de lives + Custo de amostras) ÷ GMV total × 100</strong></p>
+</blockquote>
+<ul>
+<li><strong>Custo de amostras</strong> é a linha mais esquecida: enviar amostra grátis <strong>não é grátis</strong>. O TikTok cobra <strong>6% de frete</strong> sobre o valor nominal por amostra, debitado no settlement (aparece como "Frete"). É um <strong>percentual fixo</strong> — não dá pra baratear trocando transportadora; só se controla via <strong>volume × conversão</strong>.</li>
+</ul>
+<blockquote>
+<p>🚨 <strong>Mudança de taxas (a partir de 15/07/2026):</strong> a <strong>comissão de plataforma</strong> e a <strong>taxa fixa por item</strong> passam a depender da <strong>faixa do preço final (após desconto)</strong> — <strong>&lt; R$ 50: 10% + R$ 4</strong> · <strong>≥ R$ 50: 6% + R$ 6</strong> (antes era 6% + R$ 4 para todos). O <strong>frete de 6% continua sempre</strong>. Como a faixa é pelo preço pós-cupom, descontos podem jogar um produto para a faixa de 10%. Isso afeta a <strong>margem de contribuição</strong> (não o cálculo do CT%) e está operacionalizado na <a href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing">Planilha de Precificação</a> (interruptor Antes/Depois + faixa por tier). <strong>Estratégia completa</strong> (efeito do limiar de R$ 50, armadilha do cupom, kits) no <strong>Anexo B</strong> da <a href="../Metodologia/ELEVATE-4D-METODOLOGIA-DIAGNOSTICO.html">Metodologia</a>.</p>
+</blockquote>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>CT%</th>
+<th>Leitura</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>🟢 ≤ 20%</td>
+<td>Saudável</td>
+</tr>
+<tr>
+<td>🟡 20–35%</td>
+<td>Atenção — escala dependente de mídia</td>
+</tr>
+<tr>
+<td>🔴 &gt; 35%</td>
+<td>Crítico — a loja compra o próprio GMV</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ Cruze sempre com a tendência: <strong>CT% baixo + GMV caindo</strong> = problema em D1 (estoque) ou perda de tração, não em mídia (lição do caso Balum Baby). <strong>CT% &gt; 100%</strong> = tração comprada acima da margem (caso PeachUp).</p>
+</blockquote>
+<hr />
+<h2>5. COMO CLASSIFICAR (SCORECARD → DIMENSÃO PRIORITÁRIA)</h2>
+<ol>
+<li><strong>Momento</strong> pela árvore de decisão (loja vende? hero? GMV sobe/estável/cai? quantas dimensões ativas?).</li>
+<li><strong>Pontue cada dimensão 0–5</strong> (0 inexistente · 3 ok · 5 referência).</li>
+<li><strong>Compare com o baseline esperado do momento</strong> (cada momento tem uma nota-alvo por dimensão).</li>
+<li><strong>Gap = baseline − nota.</strong> A <strong>dimensão prioritária é a de maior gap</strong>. Empate → ordem <strong>D1 → D3 → D4 → D2</strong> (D1 é o chão; Ads é a última a ligar).</li>
+</ol>
+<p>As tabelas de baseline e a árvore completa estão na <a href="../Metodologia/ELEVATE-4D-METODOLOGIA-DIAGNOSTICO.html">Metodologia</a> e no <a href="../Fluxo%20de%20Classificacao/SOP/FLUXO-CLASSIFICACAO-4D.html">SOP</a>.</p>
+<hr />
+<h2>6. O FLUXO DE USO (DOS DADOS DO CLIENTE À ANÁLISE)</h2>
+<pre><code>COLETAR ──► CLASSIFICAR ──► RODAR ──► LER/ESCREVER
+(Guia)       (SOP/regras)   (Prompt ou        (análise 4D
+                            Calculadora)        no padrão)
+</code></pre>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Passo</th>
+<th>Ferramenta</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1. Coletar os dados</strong> (o que e onde achar no TikTok)</td>
+<td><a href="../Fluxo%20de%20Classificacao/Guia%20de%20Coleta/GUIA-COLETA-DADOS-4D.html">Guia de Coleta</a></td>
+</tr>
+<tr>
+<td><strong>2. Entender as regras</strong> (momento, CT%, scorecard)</td>
+<td><a href="../Fluxo%20de%20Classificacao/SOP/FLUXO-CLASSIFICACAO-4D.html">SOP</a></td>
+</tr>
+<tr>
+<td><strong>3a. Rodar com IA</strong> (cola os dados → classificação)</td>
+<td><a href="../Fluxo%20de%20Classificacao/Prompt/PROMPT-CLASSIFICACAO-4D.html">Prompt</a></td>
+</tr>
+<tr>
+<td><strong>3b. Rodar sem IA</strong> (campos → cálculo automático)</td>
+<td><a href="../Fluxo%20de%20Classificacao/CALCULADORA-4D.xlsx">Calculadora</a></td>
+</tr>
+<tr>
+<td><strong>3c. Rodar em lote</strong> (todas as contas do portfólio)</td>
+<td><a href="../Fluxo%20de%20Classificacao/PAINEL-PORTFOLIO-4D.xlsx">Painel de Portfólio</a></td>
+</tr>
+<tr>
+<td><strong>4. Comunicar</strong></td>
+<td><a href="../One-Pager/ELEVATE-4D-ONE-PAGER.html">One-Pager comercial</a></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>7. COMO COLETAR OS DADOS (RESUMO)</h2>
+<p>O <strong>mínimo</strong> para classificar: status da loja, tendência do GMV, GMV total, e as linhas de custo (Ads + comissões + amostras × valor nominal + lives) para fechar o CT%.</p>
+<blockquote>
+<p>📦 <strong>Pacote padrão de exports (validado no 1º caso real):</strong> os arquivos exatos a baixar do Seller Center/Ads por cliente estão no <a href="../Fluxo%20de%20Classificacao/Guia%20de%20Coleta/GUIA-COLETA-DADOS-4D.html">Guia de Coleta</a> — Shop Analytics, <strong>Product list</strong> (decomposição), Creator List (Pareto), affiliate_orders (comissão→CT%), Sample, e o Print do GMV Max.</p>
+</blockquote>
+<p>Onde achar (resumo — passo a passo completo no <a href="../Fluxo%20de%20Classificacao/Guia%20de%20Coleta/GUIA-COLETA-DADOS-4D.html">Guia de Coleta</a>):<br />
+- <strong>Seller Center</strong> → GMV, finanças/settlement, produtos, avaliações, afiliados, amostras, LIVE, e a <strong>decomposição do GMV por fonte</strong>.<br />
+- <strong>Ads Manager</strong> → gasto e ROAS do GMV Max.<br />
+- <strong>TikTok Studio</strong> (<code>tiktok.com/tiktokstudio</code>) → o <strong>D4 Social</strong> (seguidores, views, frequência, lives).</p>
+<blockquote>
+<p>⚠️ O export "Todos os pedidos" <strong>não traz a fonte do GMV</strong> — a separação orgânico × ads × afiliado × live vem dos painéis de <strong>Dados</strong> do Seller Center.</p>
+</blockquote>
+<hr />
+<h2>8. COMO LER A SAÍDA</h2>
+<p>A classificação produz um cabeçalho e uma análise em 10 seções:</p>
+<pre><code>MOMENTO: &lt;Mx — nome&gt;
+CT%: &lt;valor&gt;% (&lt;zona&gt;)
+SCORECARD: D1 x,x | D2 x,x | D3 x,x | D4 x,x
+DIMENSÃO PRIORITÁRIA: &lt;Dx&gt; (gap −x,x)
+</code></pre>
+<p>Seguido de: leitura executiva → decomposição/CT% → momento → scorecard → diagnóstico por dimensão → dimensão prioritária (a tese) → plano de ação → governança → dados necessários → tese final.</p>
+<p>Para escrever no padrão visual, peça o <strong>HTML responsivo</strong> (gerado pelo <code>_build_html_responsivo.py</code>).</p>
+<hr />
+<h2>9. EXEMPLOS REAIS</h2>
+<p><strong>Mossy Brand — M0 alavancado.</strong> Marca de moda consolidada (IG 132k) entrando no TikTok com loja em aprovação. Todas as dimensões TikTok zeradas (esperado no M0), mas com ativos prontos. Dimensão prioritária: <strong>D1 Produtos</strong> (repricing + kit como hero), com <strong>D3 Afiliados</strong> em paralelo (DM livre). → <a href="../Aplicacoes%20(exemplos)/Mossy%20Brand/analise-elevate-4d-mossy-brand-2026-06-11.html">ver análise</a></p>
+<p><strong>Peach Up — M2 com alerta financeiro.</strong> Conta operando, 834 amostras disparadas (D3 acima do baseline), mas <strong>settlement −R$ 5.708</strong> e <strong>CT% &gt; 100%</strong>. O motor (D3) está certo — o TikTok recomenda escalar amostras — mas a margem de <strong>D1</strong> (desconto de ~50%) não paga a taxa de ~6% por amostra. Dimensão prioritária: <strong>D1 Produtos</strong> (margem). → <a href="../Aplicacoes%20(exemplos)/Peach%20Up/analise-elevate-4d-peachup-2026-06-11.html">ver análise</a></p>
+<blockquote>
+<p>Os dois casos ensinam o mesmo: a dimensão <strong>mais forte</strong> pode parecer o problema, mas a culpada costuma ser <strong>D1</strong>, o chão.</p>
+</blockquote>
+<hr />
+<h2>10. O PLAYBOOK DE D3 (VALIDADO PELO TIKTOK)</h2>
+<p>O próprio TikTok ensina como ser a marca que afiliados querem: <strong>apareça onde eles estão · comissões atrativas · relacionamento de longo prazo · autenticidade</strong>, e a estratégia que funciona: <strong>espalhe (escale) → oriente e dê feedback → incentive quem performa → transforme em parceiros de longo prazo</strong>. Reproduzido no Anexo A da <a href="../Metodologia/ELEVATE-4D-METODOLOGIA-DIAGNOSTICO.html">Metodologia</a>.</p>
+<blockquote>
+<p>Implicação: <strong>escala de amostras é estratégia recomendada</strong> — num diagnóstico, "muitas amostras" não é o problema. O problema é seeding sem feedback, sem conversão medida, ou sem margem em D1 para pagar a taxa de ~6%.</p>
+</blockquote>
+<hr />
+<h2>11. MAPA DOS DOCUMENTOS DO PACOTE</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Para quê</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Visão Geral</strong> (este)</td>
+<td>Explica tudo de ponta a ponta</td>
+</tr>
+<tr>
+<td><a href="../Metodologia/ELEVATE-4D-METODOLOGIA-DIAGNOSTICO.html">Metodologia</a></td>
+<td>A teoria completa (dimensões, momentos, CT%, scorecard, matriz, Anexo TikTok)</td>
+</tr>
+<tr>
+<td><a href="../One-Pager/ELEVATE-4D-ONE-PAGER.html">One-Pager</a></td>
+<td>Asset comercial (radar + régua + CT%)</td>
+</tr>
+<tr>
+<td><a href="../Fluxo%20de%20Classificacao/Guia%20de%20Coleta/GUIA-COLETA-DADOS-4D.html">Fluxo: Guia de Coleta</a></td>
+<td>O que coletar e onde achar</td>
+</tr>
+<tr>
+<td><a href="../Fluxo%20de%20Classificacao/SOP/FLUXO-CLASSIFICACAO-4D.html">Fluxo: SOP</a></td>
+<td>As regras passo a passo</td>
+</tr>
+<tr>
+<td><a href="../Fluxo%20de%20Classificacao/Prompt/PROMPT-CLASSIFICACAO-4D.html">Fluxo: Prompt</a></td>
+<td>Rodar com IA</td>
+</tr>
+<tr>
+<td><a href="../Fluxo%20de%20Classificacao/CALCULADORA-4D.xlsx">Fluxo: Calculadora</a></td>
+<td>Rodar sem IA (Excel)</td>
+</tr>
+<tr>
+<td><a href="../Diagnostico%20Estrategico/MODELO-DIAGNOSTICO-ESTRATEGICO-4D.html">Modelo de Diagnóstico Estratégico</a></td>
+<td><strong>O deliverable do cliente</strong>, reformado sobre o 4D: o envelope estratégico (contexto, concorrência, plano por dimensão, financeiro, roadmap, governança, conclusão) com o <strong>núcleo 4D</strong> (momento + CT% + scorecard + dimensão prioritária) como espinha dorsal. Template pronto pra preencher</td>
+</tr>
+<tr>
+<td><a href="../Playbook%20de%20Implantacao/PLAYBOOK-IMPLANTACAO-4D.html">Playbook de Implantação</a></td>
+<td><strong>Onboarding → operação</strong> em 7 fases: acessos, setup do Shop/Ads/Afiliados/Social, go-live. Com kit de entrada, tutoriais p/ cliente, planilha de precificação (3 tiers + previsibilidade: cenário/projeção/payback) e checklist</td>
+</tr>
+<tr>
+<td><a href="../Aplicacoes%20(exemplos)/">Exemplos</a></td>
+<td>Mossy (M0) e Peach Up (M2) aplicados</td>
+</tr>
+<tr>
+<td><a href="../README.html">README</a></td>
+<td>Índice da pasta</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>12. GLOSSÁRIO RÁPIDO</h2>
+<ul>
+<li><strong>As 4 dimensões:</strong> D1 Produtos · D2 Ads · D3 Afiliados · D4 Social.</li>
+<li><strong>CT% (Custo de Tração):</strong> % do GMV consumido por Ads + comissões + lives + amostras.</li>
+<li><strong>Custo de amostra:</strong> ~6% de <strong>frete</strong> sobre o valor nominal, por amostra enviada (o frete de 6% vale sempre; a comissão de plataforma muda em 15/07/2026 — ver §4).</li>
+<li><strong>Baseline do momento:</strong> nota 0–5 esperada por dimensão em cada momento.</li>
+<li><strong>Gap:</strong> baseline − nota; o maior gap é a dimensão prioritária.</li>
+</ul>
+<hr />
+<h2>13. HISTÓRICO DE VERSÕES</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Versão</th>
+<th>Data</th>
+<th>Mudança</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-06-11</td>
+<td>Versão inicial. Consolida: 4 pilares (D1–D4), 7 momentos, CT% (incl. custo de amostras ~6%), scorecard/baseline/prioridade, fluxo (Guia → SOP → Prompt/Calculadora), playbook TikTok de D3, e os casos Mossy (M0) e PeachUp (M2).</td>
+</tr>
+<tr>
+<td>v1.1</td>
+<td>2026-06-11</td>
+<td>Revisão de consistência: tabela de baseline alinhada aos mesmos valores-ponto em Metodologia, SOP, Prompt e Calculadora (antes a Metodologia usava faixas); CT% da PeachUp uniformizado para "&gt;100%".</td>
+</tr>
+<tr>
+<td>v1.2</td>
+<td>2026-06-11</td>
+<td>Revisão de português/escrita: correções de ortografia e clareza no pacote (ex.: "por que" vs "por quê" na Mossy; "margem que cobre o CT%" na Metodologia; resíduo "frete de amostra" → "taxa de ~6%" na PeachUp; nome/script do template atualizados).</td>
+</tr>
+<tr>
+<td>v1.3</td>
+<td>2026-06-12</td>
+<td>Novo <strong>Painel de Portfólio</strong> (<code>PAINEL-PORTFOLIO-4D.xlsx</code>): classifica as 41 contas em lote (momento, CT%, dimensão prioritária) por fórmula. PeachUp e Mossy pré-preenchidas. Classificação por dados atuais dos 4 pilares (histórico de faturamento não entra).</td>
+</tr>
+<tr>
+<td>v1.4</td>
+<td>2026-06-12</td>
+<td><strong>Pacote padrão de exports validado</strong> no 1º caso real (Mossy): o Guia de Coleta agora lista os arquivos exatos do Seller Center/Ads por dimensão (Shop Analytics, Product list, Creator List, affiliate_orders, Sample, Print de Ads). Confirmado que a <strong>decomposição do GMV vem do Product list</strong> (atribuição por produto), não do export de pedidos.</td>
+</tr>
+<tr>
+<td>v1.5</td>
+<td>2026-06-12</td>
+<td><strong>Terminologia:</strong> o termo metafórico das dimensões passou de "perna(s)" para <strong>"pilar(es)"</strong> em todo o material (com correção de concordância de gênero). "Dimensão" segue como termo primário. Reforço cross-platform do HTML (Android + iOS/Safari, validado em WebKit).</td>
+</tr>
+<tr>
+<td>v1.6</td>
+<td>2026-06-12</td>
+<td><strong>Termo "quadripé" aposentado</strong> em todo o material — substituído por "os 4 pilares" (ex.: "SCORECARD DO QUADRIPÉ" → "SCORECARD DOS 4 PILARES", "(O QUADRIPÉ)" → "(OS 4 PILARES)"). Modelo agora referido como <strong>4 dimensões / 4 pilares</strong>.</td>
+</tr>
+<tr>
+<td>v1.7</td>
+<td>2026-06-15</td>
+<td>Novo <strong><a href="../Playbook%20de%20Implantacao/PLAYBOOK-IMPLANTACAO-4D.html">Playbook de Implantação</a></strong> — o complemento operacional do 4D (o 4D <em>diagnostica</em>, o Playbook <em>implanta</em>). 7 fases do "fechou" ao "operando" (F0 Fechamento → F6 Operação) com responsável Elevate × Cliente, documentos a enviar e "pronto quando" por fase. Inclui kit de entrada, 3 tutoriais para o cliente (acesso colaborador, conectar Ads, TikTok Studio), <strong>planilha de precificação</strong> (modelo de 3 tiers: Campanha · Venda · Live, com interruptor Própria/Afiliado) e <strong>checklist de onboarding</strong>. Adicionado ao hub público e ao mapa de documentos.</td>
+</tr>
+<tr>
+<td>v1.31</td>
+<td>2026-06-18</td>
+<td><strong>Momento mais honesto + relatório mais estratégico:</strong> (1) <strong>GMV baixo não é mais Platô</strong> — Platô/Escala/Crise passaram a exigir <strong>escala real (≥ 2 dimensões ativas)</strong>; GMV baixo com 1 dimensão é M1/M2 (início), e "estável/caindo" sem escala não vira M4/M5. A conclusão ainda alerta quando o GMV do período é baixo (foco em destravar tração, não otimizar platô). (2) O <strong>relatório</strong> ganhou a seção <strong>"Estratégia e ações"</strong> — movimentos concretos derivados dos dados (sanear CT% / aliviar mídia / escalar com margem; reduzir concentração; ligar afiliados; acender social; testar mídia; fortalecer D1; calibrar nova taxa 15/07), na ordem de impacto.</td>
+</tr>
+<tr>
+<td>v1.30</td>
+<td>2026-06-18</td>
+<td><strong>Leitura de números à prova (estrutura) — fim dos valores inflados:</strong> o parser de número foi endurecido — <strong>ponto é decimal</strong> (padrão TikTok: <code>0.040</code> = R$0,04), só vira milhar com <strong>2+ grupos</strong> (<code>1.234.567</code>); antes <code>0.040</code> virava 40 e inflava o Ads de R$0,71 para "R$710". A <strong>unidade de cada métrica</strong> (R$ / número / %) virou <strong>fonte única</strong> num formatador central com <strong>guard</strong> (avisa se criarem métrica em R$ sem registrar) — então view/like/seguidor nunca mais aparece como R$. O <code>guess()</code> passou a escolher a coluna <strong>mais específica</strong> ("GMV", não "Faixa de GMV"; "Custo", não "Custo por pedido") e <strong>ignora colunas de ID</strong> (Order ID não é somado). Coluna sem correspondência fica em "— não usar —" em vez de cair na 1ª. Tudo coberto por testes (num: 12/12; ponta a ponta com arquivos reais).</td>
+</tr>
+<tr>
+<td>v1.29</td>
+<td>2026-06-18</td>
+<td><strong>Mais exports do Seller Center entram no 4D + correção do carregador:</strong> (1) corrigido o <code>XLSX.read is not a function</code> — neutralizamos <code>module/exports/define</code> antes do SheetJS pra ele anexar ao <code>window.XLSX</code> (extensão/loader AMD capturava o export, fazendo todo xlsx falhar). (2) Três exports antes ignorados agora são reconhecidos e usados: <strong>Live Performance (Core Stats)</strong> → GMV de lives e nº de transmissões alimentam o <strong>D4</strong>; <strong>Transaction Core</strong> → GMV atribuído ao criador (total) + vídeos alimentam o <strong>D3</strong> (estima a nota pela participação quando não há Creator List); <strong>Product Card Traffic</strong> → CTR/CVR dos cards entram no <strong>D1</strong> (e tráfego no D2). Se ainda assim não reconhecer um arquivo, a página <strong>aceita mesmo assim</strong> com um seletor manual de tipo.</td>
+</tr>
+<tr>
+<td>v1.28</td>
+<td>2026-06-18</td>
+<td><strong>Entrada de Dados lê os exports do Seller Center que vinham com erro:</strong> as exportações do TikTok trazem 1–2 <strong>linhas de metadados/filtro</strong> no topo ("Data de análise:", "Tudo", "Visão geral", "Date Range:") antes do cabeçalho real — agora a página acha a <strong>linha de cabeçalho por pontuação</strong> (a de maior "cara de cabeçalho") e varre <strong>todas as abas</strong>, então Shop Analytics, Product list, Sample, Ads e Card/Live passam a ser lidos. Removido o <code>cellDates</code> (causava falha de leitura no navegador; o parser de data já cobre serial/PT). Classificação refinada: Shop Analytics distinguido por "visitantes/receita bruta"; Sample exige "enviada/COGS"; "Core Metrics" de Transaction/Card/Live (sem slot no modelo) ficam como "não identifiquei" em vez de sobrescrever o Shop.</td>
+</tr>
+<tr>
+<td>v1.27</td>
+<td>2026-06-18</td>
+<td><strong>Fila de relatórios simultânea (não-bloqueante):</strong> o botão "Gerar relatório e ir pro próximo" deixou de <strong>esperar o banco</strong> — gera o relatório, joga na lista e <strong>libera na hora</strong> pro próximo cliente; o salvamento no Supabase roda <strong>em segundo plano</strong>, com <strong>vários em paralelo</strong>. Cada item da lista mostra o status do banco (💾 salvando… / ✓ salvo / ⚠ pendente) com <strong>reenvio</strong> individual ou "Reenviar pendentes". Novo botão <strong>"⬇️ Baixar todos"</strong>. Fluxo: adiciona → gera → próximo, sem esperar.</td>
+</tr>
+<tr>
+<td>v1.26</td>
+<td>2026-06-18</td>
+<td><strong>D4 Social agora lê dados de conta (TikTok Studio):</strong> a Entrada de Dados reconhece os exports do TikTok Studio — <strong>Overview</strong> (video/profile views, likes, comentários, shares), <strong>Followers</strong> (base + crescimento), <strong>Content</strong> (nº de vídeos e views) e <strong>Viewers</strong> (audiência/recorrência). A nota do <strong>D4</strong> deixou de ser só "GMV via live": passa a combinar <strong>base de seguidores + frequência de conteúdo + engajamento + alcance + crescimento</strong> (com a live ainda somando), e o resultado mostra uma KPI de Social orgânico. As <strong>datas em português sem ano</strong> ("31 de maio") agora são lidas pelo parser, então o <strong>seletor de intervalo recorta o Social</strong> também (a dor que originou o pedido). Os <code>.zip</code> do TikTok Studio devem ser descompactados e os <code>.xlsx</code> soltos na página. Dados de conta de cliente ficam <strong>fora do repo</strong> (gitignore/vercelignore).</td>
+</tr>
+<tr>
+<td>v1.25</td>
+<td>2026-06-18</td>
+<td><strong>Entrada de Dados ganhou seletor de intervalo de datas:</strong> novo campo <strong>📅 Intervalo de análise</strong> (data início/fim) recorta <strong>cada export que tenha coluna de data</strong> para o período escolhido — detecta a coluna de data sozinho (ISO, dd/mm/aaaa, serial Excel) e mostra em cada card "recortado: N de M linhas" ou "sem coluna de data (entrou inteiro)". Nasceu da dor do <strong>Social (D4)</strong> — quando não dá pra isolar o dia exato, pega-se um intervalo maior — mas vale para <strong>todas as dimensões</strong>. O período do relatório/banco passa a vir do intervalo quando definido.</td>
+</tr>
+<tr>
+<td>v1.24</td>
+<td>2026-06-17</td>
+<td><strong>Planilha de Precificação agora é a master no Google Sheets:</strong> o card do hub e todas as referências nos docs (Metodologia, Modelo de Diagnóstico, Playbook) passaram a apontar para a <a href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing">planilha master no Google Sheets</a> — sempre atualizada — no lugar do <code>.xlsx</code> estático. Quem abrir sempre pega a versão vigente.</td>
+</tr>
+<tr>
+<td>v1.23</td>
+<td>2026-06-16</td>
+<td><strong>Entrada de Dados vira fila de clientes:</strong> botão <strong>"✅ Gerar relatório e ir pro próximo cliente"</strong> — num clique ele guarda o relatório pronto numa lista, tenta salvar no banco e <strong>já limpa pra o próximo</strong>, sem espera (roda local, é instantâneo). Aparece uma <strong>notificação</strong> (toast) a cada relatório concluído. Nova seção <strong>"📥 Relatórios prontos"</strong> lista cada análise feita (cliente · momento · CT% · data, com aviso se faltavam dados) e um botão <strong>⬇️ Baixar</strong> (.html que abre e imprime/PDF) — a lista fica <strong>guardada na máquina</strong> (localStorage), sobrevive a recarregar, com "Limpar lista". Os botões antigos viraram secundários ("só abrir o relatório", "só salvar no banco"). Fluxo p/ vários clientes: solta planilhas → ✅ → próximo → no fim baixa todos.</td>
+</tr>
+<tr>
+<td>v1.22</td>
+<td>2026-06-16</td>
+<td><strong>Entrada de Dados — cobertura, tempo e fila de clientes:</strong> a página agora <strong>devolve o que falta</strong> (painel "Cobertura dos dados": exports reconhecidos N/total + listas do que falta por essencial/recomendado/opcional, com o que cada um destrava, e o que fica bloqueado enquanto falta — ex.: sem affiliate_orders o CT% fica incompleto, sem Ads o D2 conta 0). Mostra o <strong>tempo estimado pra concluir aquele cliente</strong> (do zero ~15–25 min; faltando essenciais ~Xmin de coleta + revisão; tudo presente ~5 min). Deixa explícito que roda <strong>um cliente por vez</strong> (as planilhas não trazem o nome da empresa) e adiciona botão <strong>"🔄 Limpar e começar outro cliente"</strong> pra rodar em sequência (rode → Salvar → Limpar → próximo). Cobertura + tempo também entram no relatório gerado (nova Seção 7).</td>
+</tr>
+<tr>
+<td>v1.21</td>
+<td>2026-06-16</td>
+<td><strong>Entrada de Dados gera o relatório de análise:</strong> novo botão "📄 Gerar relatório" — além do resultado ao vivo, monta um <strong>documento de diagnóstico</strong> (abre em nova aba, imprime/PDF) preenchido com os dados da conta: cabeçalho (momento/dimensão prioritária/CT%), tese, classificação 4D (decomposição + CT% + scorecard), diagnóstico por dimensão (nota + razão + recomendação), financeiro (leitura do CT% + nova taxa 15/07), plano de ação na ordem da prioridade e conclusão. É um rascunho automático; as seções qualitativas (contexto, concorrência, ativos, roadmap) se completam no Modelo de Diagnóstico.</td>
+</tr>
+<tr>
+<td>v1.20</td>
+<td>2026-06-16</td>
+<td><strong>Entrada de Dados — menos manual, mais derivado:</strong> o que as planilhas já entregam saiu dos campos manuais e passou a ser <strong>calculado dos dados</strong>: <strong>tendência do GMV</strong> (série do Shop Analytics, 1ª vs 2ª metade), <strong>hero claro</strong> (concentração do top SKU ≥ 15%), <strong>loja vendendo</strong> (GMV &gt; 0), <strong>nº de dimensões ativas/maduras</strong> (decomposição + notas). A <strong>taxa de amostra ficou fixa em 6%</strong> (frete) e o "valor nominal" virou <strong>ticket médio</strong> (GMV ÷ unidades do Product list). Sobra de manual só o <strong>custo de lives</strong> (cachê, sem export). Tudo com override opcional num "Ajustar contexto".</td>
+</tr>
+<tr>
+<td>v1.19</td>
+<td>2026-06-16</td>
+<td><strong>Entrada de Dados à prova de erro de caixa:</strong> campo único "<strong>Solte aqui TODAS as planilhas</strong>" — cada arquivo é <strong>identificado pelo conteúdo</strong> (assinatura dos cabeçalhos/aba) e roteado pro slot certo automaticamente; mesmo se a pessoa soltar na caixa errada, o sistema reconhece e move. Mostra um resumo "arquivo → tipo detectado" e uma lista do que baixar. Validado com exports reais (FastMoss produtos/creators classificados certo).</td>
+</tr>
+<tr>
+<td>v1.18</td>
+<td>2026-06-16</td>
+<td><strong>Banco central das análises (Supabase):</strong> a <a href="../Fluxo%20de%20Classificacao/ENTRADA-DADOS-4D.html">Entrada de Dados</a> ganhou campo <strong>Cliente</strong> (obrigatório) + botão <strong>Salvar no banco</strong> — cada análise vira 1 linha (resultado + métricas brutas) numa tabela Supabase do cliente, marcada por empresa e data, respondendo "qual conta tem o quê" e permitindo comparar no tempo. Modelo de segurança: projeto Supabase <strong>do próprio cliente</strong> (não na Vercel/Elevate); a página pública usa a chave <code>anon</code> (pública por design) e o <strong>RLS só permite INSERT</strong> — leitura só autenticada no painel. Config em <code>entrada-config.js</code> (URL + anon); passo a passo e SQL em <a href="../Fluxo%20de%20Classificacao/SUPABASE-SETUP-4D.html">SUPABASE-SETUP-4D.md</a>. Importante: ao salvar, o resultado <strong>sai do navegador</strong> para o banco do cliente (os arquivos brutos seguem locais).</td>
+</tr>
+<tr>
+<td>v1.17</td>
+<td>2026-06-16</td>
+<td><strong>Entrada de Dados no próprio hub (página web):</strong> novo <code>ENTRADA-DADOS-4D.html</code> — a pessoa <strong>arrasta os arquivos de export</strong> (<code>.xlsx</code>/<code>.csv</code>) direto na página (Product list, Creator List, affiliate_orders, Sample, Ads, Shop Analytics + FastMoss) — leitura de <code>.xlsx</code> por SheetJS embutido (<code>vendor/xlsx.full.min.js</code>), sem upload —, confirma a coluna de cada métrica e vê <strong>momento · CT% · decomposição do GMV · scorecard · dimensão prioritária ao vivo</strong>. Roda 100% no navegador, nada sai da máquina; colar texto segue como alternativa. As <strong>notas 0–5 do scorecard são calculadas automaticamente dos dados</strong> (D1 por concentração de SKU + share orgânico; D2 por ROAS; D3 por nº de creators + Pareto + share; D4 por share de live), com ajuste manual opcional para o que o relatório não mostra (margem, avaliações, qualidade de conteúdo); a prioridade só considera dimensões com dado. Mesma lógica do <code>.xlsx</code>. Linkado no hub como card "📥 Entrada de Dados (na página)" no Fluxo de Classificação; o <code>.xlsx</code> segue como ferramenta completa.</td>
+</tr>
+<tr>
+<td>v1.16</td>
+<td>2026-06-16</td>
+<td><strong>Calculadora com abas de colagem (cola o export, calcula sozinho):</strong> a <a href="../Fluxo%20de%20Classificacao/CALCULADORA-4D.xlsx">Calculadora 4D</a> ganhou <strong>8 abas de entrada de dados</strong> — <code>SC Shop Analytics</code>, <code>SC Product list</code>, <code>SC Creator List</code>, <code>SC affiliate_orders</code>, <code>SC Sample</code>, <code>SC Ads</code> (oficiais da conta) + <code>FM Produtos</code>, <code>FM Creators</code> (benchmark). Cola-se o export cru e escolhe-se a <strong>letra da coluna</strong> (1 clique); uma aba <strong>Resumo Exports</strong> consolida e alimenta automaticamente a <strong>Entrada</strong> (GMV, <strong>investimento em Ads</strong>, comissões, amostras) e a <strong>Classificação</strong> (CT%, decomposição do GMV D1/D3/D4, concentração de SKU, Pareto de creators, ROAS). Só o custo de lives (cachê interno, sem export) segue digitado. Robusto a variação de cabeçalho via mapeamento de coluna.</td>
+</tr>
+<tr>
+<td>v1.15</td>
+<td>2026-06-16</td>
+<td><strong>Diagnóstico ancorado nos dados da conta:</strong> o <a href="../Diagnostico%20Estrategico/MODELO-DIAGNOSTICO-ESTRATEGICO-4D.html">Modelo</a> ganhou a <strong>Seção 0 — Base de Dados da Conta (fontes e rastreabilidade)</strong>. Todo número do diagnóstico passa a citar a fonte: <strong>[SC]</strong> Seller Center (a verdade da conta) · <strong>[FM]</strong> FastMoss (benchmark/concorrência) · <strong>[INT]</strong> controle interno. Mapa de cada saída 4D → fonte, janela/proveniência da extração, e tags de fonte na decomposição de GMV, CT%, scorecard e concorrência. O <a href="../Fluxo%20de%20Classificacao/Guia%20de%20Coleta/GUIA-COLETA-DADOS-4D.html">Guia de Coleta</a> ganhou o bloco <strong>FastMoss</strong> e a legenda das tags. Regra: "Seller Center é a verdade; FastMoss é a régua."</td>
+</tr>
+<tr>
+<td>v1.14</td>
+<td>2026-06-16</td>
+<td><strong>Terminologia unificada:</strong> 'pilar(es)' aposentado — o termo único das dimensões passa a ser 'dimensão/dimensões' em todo o material (com correção de concordância de gênero).</td>
+</tr>
+<tr>
+<td>v1.13</td>
+<td>2026-06-16</td>
+<td>Novo <strong><a href="../Diagnostico%20Estrategico/MODELO-DIAGNOSTICO-ESTRATEGICO-4D.html">Modelo de Diagnóstico Estratégico</a></strong> — reforma o diagnóstico do cliente colocando o núcleo 4D (momento, CT%, scorecard das 4 dimensões, dimensão prioritária) como espinha dorsal do deliverable, mantendo o envelope estratégico antigo (contexto, maturidade, concorrência, plano por dimensão, financeiro, roadmap, governança, conclusão). Incorpora aprendizados validados (ticket via kit; margem/repricing como alavanca nº 1) e a taxa nova de 15/07. Template reutilizável, linkado no hub.</td>
+</tr>
+<tr>
+<td>v1.12</td>
+<td>2026-06-15</td>
+<td>Novo <strong>Anexo B na <a href="../Metodologia/ELEVATE-4D-METODOLOGIA-DIAGNOSTICO.html">Metodologia</a></strong> com a estratégia de D1 sob a nova taxa: o <strong>efeito do limiar de R$ 50</strong> (as faixas se igualam em R$ 50; ticket baixo é o mais penalizado), a <strong>armadilha do cupom</strong> (desconto que cruza R$ 50 para baixo = duplo prejuízo), e o reforço de <strong>kits/combos</strong> (subir ticket muda para a faixa de 6%). A taxa da plataforma é custo de margem/D1, não entra no CT%.</td>
+</tr>
+<tr>
+<td>v1.11</td>
+<td>2026-06-15</td>
+<td>🚨 <strong>Mudança de taxas do TikTok Shop (vigência 15/07/2026):</strong> comissão e taxa fixa por item passam a depender da <strong>faixa do preço final após desconto</strong> — <strong>&lt; R$ 50: 10% + R$ 4</strong> · <strong>≥ R$ 50: 6% + R$ 6</strong> (antes 6% + R$ 4); o <strong>frete de 6% continua sempre</strong>. A planilha de precificação foi reestruturada: separa <strong>Frete</strong> da <strong>Comissão</strong>, calcula comissão+taxa fixa <strong>por faixa e por tier</strong> (Campanha/Venda/Live podem cair em faixas diferentes) e ganhou um <strong>interruptor Antes/Depois 15/07</strong>. Alerta operacional: como a faixa é pós-cupom, descontos podem jogar produtos para a comissão de 10% — revisar cupons, kits e combos. CT% inalterado (amostra segue 6% de frete).</td>
+</tr>
+<tr>
+<td>v1.10</td>
+<td>2026-06-15</td>
+<td>Planilha ganhou aba <strong>CT% (Custo de Tração)</strong> calculada por inputs (GMV + Ads + comissões + lives + amostras → CT% e zona 🟢🟡🔴, a mesma métrica do 4D). <strong>Terminologia corrigida:</strong> todas as saídas financeiras passam a falar em <strong>margem de contribuição</strong>, não "lucro líquido" (o lucro líquido depende de custos fixos/overhead do cliente, que a planilha não conhece). Vale para Projeção, Payback e Análise por Cenário.</td>
+</tr>
+<tr>
+<td>v1.9</td>
+<td>2026-06-15</td>
+<td><strong>Planilha de precificação ganhou abas de previsibilidade</strong>, conectadas à aba de preços: <strong>Análise por Cenário</strong> (lucro/venda por produto em Início M1-2 → Ajustado M3-4 → Maduro M5+, com ROAS evoluindo → Margem, CAC, Lucro/Venda), <strong>Projeção de Vendas</strong> (volume → receita/margem de contribuição/crescimento), <strong>Payback</strong> (investimento → evolução mês a mês → mês de recuperação) e <strong>Níveis Probatório</strong> (referência dos níveis do TikTok Shop). Modelo do tier Live também ajustado: interruptor <strong>Própria/Afiliado</strong> (própria = + apresentadoras, sem afiliados; afiliado = + afiliados, sem apresentadoras) e TACOS Live substitui (não soma) o de Ads.</td>
+</tr>
+<tr>
+<td>v1.8</td>
+<td>2026-06-15</td>
+<td><strong>Correção do enquadramento da taxa de amostra:</strong> a taxa do TikTok é <strong>6% de frete + 6% de plataforma = 12%</strong>; a amostra grátis incorre na <strong>parte de frete (~6%)</strong> sobre o valor nominal (aparece como "Frete" no settlement) — antes o material dizia "taxa de plataforma, não frete". O número (~6%) e o impacto no CT% não mudam; muda o rótulo. Ajustado em §4 (CT%), glossário, Metodologia, SOP e Prompt. A planilha de precificação reflete o mesmo (Comissão TikTok Shop 12% = 6% frete + 6% plataforma). <em>Pendente: revisar a subseção 2.2 da análise PeachUp, que ainda usa o enquadramento antigo.</em></td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Como manter:</strong> sempre que o projeto mudar (nova regra, correção, cliente novo, formato novo), atualizar este documento mestre <strong>primeiro</strong> e somar uma linha no histórico acima.</p>
+</blockquote>
+<hr />
+<p><em>Elevate Ecom. — Sua marca acima nos marketplaces.</em></p>
+  </div>
+  <div class="footer">Elevate Ecom. · Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 5 · Lives / Live Commerce</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Elevate Ecom · Programa TikTok Shop</div>
+    <h1>Aula 5 · Lives / Live Commerce</h1>
+    <div class="meta"><b>Módulo TikTok Shop · Conteúdo, Creators & Lives</b> · Semana 3, quinta · Estrutura da live, ritmo daily x mega live mensal, construção de oferta, roteiro e benchmark por nicho. · Atualizado: 2026-09-03</div>
+  </div>
+  <div class="content">
+<blockquote>
+<p><strong>Entregável:</strong> Roteiro + calendário de lives</p>
+</blockquote>
+<h2>Apostila</h2>
+<h3>Live é vitrine com vendedor, não transmissão</h3>
+<p>A live junta as três coisas que fazem a venda acontecer ao mesmo tempo: demonstração, resposta à objeção e urgência. É o formato de maior conversão do canal e o mais dependente de rotina.</p>
+<h3>Os dois modelos de ritmo</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Modelo</th>
+<th>Como funciona</th>
+<th>Vantagem</th>
+<th>Exige</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Daily</td>
+<td>Lives curtas, todos os dias, mesmo horário</td>
+<td>Constrói audiência recorrente e previsibilidade</td>
+<td>Time, escala de apresentador e estoque estável</td>
+</tr>
+<tr>
+<td>Mega live mensal</td>
+<td>Um evento grande por mês, com aquecimento</td>
+<td>Pico alto de GMV e concentração de esforço</td>
+<td>Planejamento, mídia e oferta forte</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><strong>Benchmark de fitness no Brasil.</strong> Entre as maiores operações do nicho, Arara Sport chegou a cerca de R$ 2,9 milhões de GMV com ticket médio na faixa de R$ 70 usando mega lives mensais, enquanto Pink Urban e Lado Fit operam com lives diárias. Os dois modelos funcionam, o que não funciona é live esporádica sem calendário.</p>
+</blockquote>
+<h3>Hora de live vira faturamento, quase linearmente</h3>
+<p>Um case acompanhado de perto: uma operação de marketplace que faturava R$ 300 mil chegou a mais de R$ 8 milhões em cerca de um ano e meio, com o TikTok Shop respondendo por uma boa fatia. A live foi a alavanca, e a curva foi essa:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Horas de live por dia</th>
+<th>Faturamento na janela</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 hora</td>
+<td>cerca de R$ 2 mil</td>
+</tr>
+<tr>
+<td>2 horas</td>
+<td>cerca de R$ 5 mil</td>
+</tr>
+<tr>
+<td>3 horas</td>
+<td>cerca de R$ 10 mil</td>
+</tr>
+</tbody>
+</table></div>
+<p>Hoje são seis pessoas se revezando na apresentação, com meta de chegar a 18 horas de live por dia. O aprendizado não é "faça live", é <strong>aumente a duração</strong>: cada hora a mais de transmissão puxou faturamento acima do proporcional.</p>
+<h3>Live do zero é diferente de live com histórico</h3>
+<p>Ajuste a expectativa do cliente conforme o ponto de partida:</p>
+<ul>
+<li><strong>Loja que ainda não vende</strong>: as primeiras lives vendem pouco. O resultado costuma aparecer por volta da décima, décima quinta transmissão, quando já existe audiência recorrente</li>
+<li><strong>Loja que já vende</strong>, na faixa de R$ 25 mil, R$ 50 mil, R$ 100 mil ou mais: a live tende a estourar rápido, porque a plataforma já sabe quem é o público comprador e espelha esse perfil, num efeito parecido com o lookalike de outras mídias</li>
+</ul>
+<p>Isso muda o discurso comercial: para quem já vende, live é aceleração imediata. Para quem está começando, é construção, e prometer resultado na primeira semana é criar frustração.</p>
+<h3>Estrutura de uma live que vende</h3>
+<p>A live não é linear, é cíclica. O espectador entra a qualquer momento, então o ciclo precisa se repetir a cada 10 ou 15 minutos:</p>
+<ol>
+<li><strong>Boas-vindas e contexto</strong>, o que está rolando e o que tem de oferta</li>
+<li><strong>Produto em demonstração</strong>, com o item fixado na tela</li>
+<li><strong>Objeção respondida</strong>, lendo comentário em voz alta</li>
+<li><strong>Prova</strong>, avaliação, quantidade vendida, resultado</li>
+<li><strong>Chamada com urgência</strong>, cupom da live, quantidade limitada, brinde por tempo</li>
+<li><strong>Recomeço do ciclo</strong> com outro produto</li>
+</ol>
+<h3>Construção de oferta</h3>
+<p>Oferta de live precisa ser diferente da oferta do dia a dia, senão não há motivo para assistir agora. Opções, da mais barata para a mais cara:</p>
+<ul>
+<li>Cupom exclusivo da live</li>
+<li>Brinde na compra durante a transmissão</li>
+<li>Kit montado só naquele horário</li>
+<li>Frete grátis em faixa menor de valor</li>
+<li>Lote com quantidade limitada anunciada ao vivo</li>
+</ul>
+<h3>Operação por trás da câmera</h3>
+<p>Live é trabalho de time: apresentador, alguém lendo e respondendo comentário, alguém fixando produto e ajustando cupom, e alguém monitorando estoque. Quando uma pessoa faz tudo, a conversão cai porque o ciclo quebra.</p>
+<h3>Erros comuns</h3>
+<ul>
+<li>Live sem produto fixado, o espectador não sabe onde clicar</li>
+<li>Silêncio durante ajuste técnico, o que esvazia a sala</li>
+<li>Anunciar oferta sem prazo, tirando a urgência</li>
+<li>Fazer uma live por mês sem aquecimento e concluir que live não funciona</li>
+<li>Vender produto sem estoque para o volume da live, gerando cancelamento</li>
+</ul>
+<h3>O que levar pra semana</h3>
+<p>Roteiro completo de uma live, com blocos e ofertas, e o calendário do próximo mês com dias, horários e responsáveis.</p>
+<h2>Roteiro</h2>
+<h3>Antes da aula</h3>
+<ul>
+<li>Levantar o benchmark de 2 ou 3 operações do nicho do cliente que fazem live</li>
+<li>Checar estoque disponível dos produtos candidatos</li>
+<li>Levantar se o cliente tem apresentador interno ou vai contratar</li>
+</ul>
+<h3>Os 60 minutos</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Tempo</th>
+<th>Bloco</th>
+<th>O que fazer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00 a 05</td>
+<td>Auditoria</td>
+<td>Recrutamento da semana, convites e amostras</td>
+</tr>
+<tr>
+<td>05 a 15</td>
+<td>Benchmark</td>
+<td>Mostrar lives do nicho e apontar o que elas fazem em cada ciclo</td>
+</tr>
+<tr>
+<td>15 a 25</td>
+<td>Modelo</td>
+<td>Escolher daily ou mega live a partir da capacidade real do time</td>
+</tr>
+<tr>
+<td>25 a 40</td>
+<td>Roteiro</td>
+<td>Escrever o ciclo de 15 minutos e a sequência de produtos</td>
+</tr>
+<tr>
+<td>40 a 50</td>
+<td>Oferta</td>
+<td>Definir a oferta exclusiva e a mecânica de urgência</td>
+</tr>
+<tr>
+<td>50 a 57</td>
+<td>Calendário</td>
+<td>Montar o mês com dias, horários e responsáveis por função</td>
+</tr>
+<tr>
+<td>57 a 60</td>
+<td>Fechamento</td>
+<td>Definir a data da primeira live e o teste técnico</td>
+</tr>
+</tbody>
+</table></div>
+<h3>O que mostrar na tela</h3>
+<p>Live de benchmark rodando, painel de lives do Seller Center, configuração de cupom e o roteiro sendo escrito.</p>
+<h3>Perguntas de checagem</h3>
+<ul>
+<li>Quem apresenta, quem responde comentário e quem controla o estoque na sua primeira live?</li>
+<li>Qual é o motivo para o espectador comprar agora e não amanhã?</li>
+<li>Seu estoque aguenta o pico se a live funcionar?</li>
+</ul>
+<h3>Fechamento</h3>
+<p>ATA na página da aula, roteiro e calendário anexados no site, gravação publicada, data da primeira live registrada com teste técnico agendado.</p>
+<h2>Template</h2>
+<h3>Roteiro de live</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Bloco</th>
+<th>Minuto</th>
+<th>Produto</th>
+<th>Oferta</th>
+<th>Quem conduz</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Abertura</td>
+<td>0 a 5</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Ciclo 1</td>
+<td>5 a 20</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Ciclo 2</td>
+<td>20 a 35</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Ciclo 3</td>
+<td>35 a 50</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fechamento</td>
+<td>50 a 60</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Funções da live</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Função</th>
+<th>Responsável</th>
+<th>Substituto</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Apresentação</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Comentários</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fixar produto e cupom</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Estoque e pedidos</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Calendário do mês</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dia</th>
+<th>Horário</th>
+<th>Tema ou produto foco</th>
+<th>Oferta</th>
+<th>Responsável</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Medição</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Live</th>
+<th>Data</th>
+<th>Duração</th>
+<th>Espectadores</th>
+<th>Pedidos</th>
+<th>GMV</th>
+<th>Aprendizado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Critério de aceite</h3>
+<p>O entregável está pronto quando existe 1 roteiro com ciclos de 15 minutos e ofertas definidas, as 4 funções têm responsável nomeado, e o calendário do próximo mês está preenchido com dia, horário e produto foco.</p>
+  </div>
+  <div class="footer">Elevate Ecom. · Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

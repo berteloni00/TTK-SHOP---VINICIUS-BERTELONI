@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico Estratégico Elevate 4D · MODELO</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Elevate 4D · Diagnóstico Estratégico (modelo)</div>
+    <h1>Diagnóstico Estratégico Elevate 4D · MODELO</h1>
+    <div class="meta"><b>[Cliente] · Template reutilizável</b> · O deliverable de diagnóstico do cliente, reformado sobre a metodologia 4D — estrutura padrão para todo cliente · Atualizado: 2026-06-16</div>
+  </div>
+  <div class="content">
+<blockquote>
+<p><strong>O que é.</strong> Este é o <strong>modelo padrão</strong> do Diagnóstico Estratégico que entregamos a cada cliente. Ele funde o que já fazíamos (contexto, maturidade, concorrência, roadmap, governança) com o <strong>núcleo analítico do <a href="../Visao%20Geral/ELEVATE-4D-VISAO-GERAL.html">Elevate 4D</a></strong> (momento, CT%, scorecard das 4 dimensões, dimensão prioritária). Substitua tudo em <code>[colchetes]</code>; as instruções em <em>itálico/citação</em> orientam o que entra em cada seção e saem da versão final.</p>
+<p>🔄 <strong>Como usar:</strong> (1) <strong>extraia os dados reais da conta</strong> (Seção 0 + <a href="../Fluxo%20de%20Classificacao/Guia%20de%20Coleta/GUIA-COLETA-DADOS-4D.html">Guia de Coleta</a>) — todo número do diagnóstico tem que ter fonte; (2) rode a classificação 4D (pelo <a href="../Fluxo%20de%20Classificacao/SOP/FLUXO-CLASSIFICACAO-4D.html">SOP</a> / <a href="../Fluxo%20de%20Classificacao/Prompt/PROMPT-CLASSIFICACAO-4D.html">Prompt</a> / <a href="../Fluxo%20de%20Classificacao/CALCULADORA-4D.xlsx">Calculadora</a>) e cole o resultado nas seções 2–4. O resto é o envelope estratégico em volta do 4D.</p>
+</blockquote>
+<hr />
+<h2>CABEÇALHO DO DIAGNÓSTICO</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Campo</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cliente</td>
+<td>[Cliente]</td>
+</tr>
+<tr>
+<td>Categoria / segmento</td>
+<td>[ex.: Moda feminina · Cosméticos · Acessórios]</td>
+</tr>
+<tr>
+<td><strong>Momento 4D</strong></td>
+<td><strong>[M0–M6 + nome]</strong></td>
+</tr>
+<tr>
+<td><strong>Dimensão prioritária</strong></td>
+<td><strong>[D1 Produtos / D2 Ads / D3 Afiliados / D4 Social]</strong> (gap [−x,x])</td>
+</tr>
+<tr>
+<td><strong>CT% (Custo de Tração)</strong></td>
+<td><strong>[xx,x%]</strong> ([🟢 saudável / 🟡 atenção / 🔴 crítico])</td>
+</tr>
+<tr>
+<td>@ TikTok Shop</td>
+<td>[@ · status: probatório/ativo]</td>
+</tr>
+<tr>
+<td>Supervisor</td>
+<td>[nome]</td>
+</tr>
+<tr>
+<td>Account (comunicador)</td>
+<td>[nome]</td>
+</tr>
+<tr>
+<td>Head</td>
+<td>[nome]</td>
+</tr>
+<tr>
+<td>Data R01</td>
+<td>[data]</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p><em>Esse cabeçalho é a leitura de 10 segundos: em que momento o cliente está, qual dimensão fortalecer primeiro e quão saudável é a tração. Tudo abaixo justifica essas 3 linhas.</em></p>
+</blockquote>
+<hr />
+<h2>0. BASE DE DADOS DA CONTA (FONTES E RASTREABILIDADE)</h2>
+<blockquote>
+<p><em>Princípio inegociável: </em><em>todo número deste diagnóstico vem de um export real da conta, não de impressão.</em><em> Cada métrica cita a fonte entre colchetes. Onde o dado ainda não existe, o campo fica marcado <code>provisório</code> e entra em "Dados ainda necessários" — o diagnóstico nunca inventa o número que falta.</em></p>
+</blockquote>
+<p><strong>Legenda de fontes:</strong><br />
+- <strong>[SC]</strong> — <strong>Seller Center</strong> (<code>seller-br.tiktok.com</code>) / <strong>Ads Manager</strong>: o <strong>dado oficial da própria conta</strong> (a verdade interna). É a base de tudo.<br />
+- <strong>[FM]</strong> — <strong>FastMoss</strong>: <strong>benchmark externo</strong> (posição na categoria, concorrentes, kit/ticket, bucket de creators) e estimativa de GMV quando ainda não há acesso à conta.<br />
+- <strong>[INT]</strong> — <strong>controle interno / cliente</strong>: custo de lives (cachê do host), COGS/margem por SKU, audiência migrável (IG/CRM) — dado que não está no TikTok.</p>
+<p><strong>Janela e proveniência (preencher sempre):</strong><br />
+| Campo | Valor |<br />
+|---|---|<br />
+| Janela de dados | [ex.: últimos 30 dias · dd/mm–dd/mm] |<br />
+| Data da extração | [dd/mm] |<br />
+| Quem extraiu | [nome] |<br />
+| Acesso à conta (Seller Center)? | [sim / não — se <strong>não</strong>, o diagnóstico apoia-se mais em [FM], fica <strong>provisório</strong> e prioriza destravar o acesso] |</p>
+<p><strong>De onde vem cada saída do 4D</strong> (o passo a passo de export está no <a href="../Fluxo%20de%20Classificacao/Guia%20de%20Coleta/GUIA-COLETA-DADOS-4D.html">Guia de Coleta</a>):</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Saída do diagnóstico</th>
+<th>Fonte primária</th>
+<th>Cruzamento</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Momento</strong> (loja vende? hero? tendência do GMV)</td>
+<td><strong>[SC]</strong> Shop Analytics + Product list</td>
+<td><strong>[FM]</strong> ranking/estimativa de GMV na categoria</td>
+</tr>
+<tr>
+<td><strong>Decomposição do GMV</strong> por dimensão</td>
+<td><strong>[SC]</strong> Product list (atribuição criador/vídeo/live) + Creator List</td>
+<td><strong>[FM]</strong> mix típico da categoria</td>
+</tr>
+<tr>
+<td><strong>CT%</strong></td>
+<td><strong>[SC]</strong> gasto de Ads + <code>affiliate_orders</code> + Sample Analysis + <strong>[INT]</strong> custo de lives ÷ <strong>[SC]</strong> GMV</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Scorecard D1 Produtos</strong></td>
+<td><strong>[SC]</strong> Produtos / Avaliações + <strong>[INT]</strong> margem</td>
+<td><strong>[FM]</strong> preço e kit dos concorrentes</td>
+</tr>
+<tr>
+<td><strong>Scorecard D2 Ads</strong></td>
+<td><strong>[SC]</strong> Ads Manager (ROI / gasto / GMV via Ads)</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>Scorecard D3 Afiliados</strong></td>
+<td><strong>[SC]</strong> Creator List / Afiliados (Pareto, comissão, amostras)</td>
+<td><strong>[FM]</strong> bucket de creators da categoria</td>
+</tr>
+<tr>
+<td><strong>Scorecard D4 Social</strong></td>
+<td><strong>[SC]</strong> LIVE + <strong>[INT/TikTok Studio]</strong> orgânico (views, seguidores)</td>
+<td><strong>[FM]</strong> benchmark de conteúdo</td>
+</tr>
+<tr>
+<td><strong>Concorrência / kit-âncora</strong> (Seção 4)</td>
+<td><strong>[FM]</strong> top concorrentes e seus kits/ticket</td>
+<td><strong>[SC]</strong> seu próprio mix</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ <strong>Seller Center é a verdade; FastMoss é a régua.</strong> Onde as duas fontes divergirem, valem os <strong>[SC]</strong> para os números da própria conta — o <strong>[FM]</strong> serve para situar a marca na categoria e achar o que copiar dos concorrentes. Lembrete do Guia: o export <em>"Todos os pedidos"</em> <strong>não</strong> traz a fonte do GMV — a decomposição real sai do <strong>Product list</strong> (atribuição por produto) + <strong>Creator List</strong> (por creator).</p>
+</blockquote>
+<hr />
+<h2>1. CONTEXTO</h2>
+<h3>1.1 Quem é o cliente</h3>
+<p><em>Marca, tempo de mercado, canais atuais (site/marketplaces/físico), faturamento de referência e o que ela já tem fora do TikTok (audiência, comunidade, CRM). Em 1 parágrafo.</em></p>
+<h3>1.2 Posicionamento estratégico</h3>
+<blockquote>
+<p><em>A pergunta-chave: o cliente está PROVANDO produto (marca nova) ou ABRINDO um canal novo com marca/audiência já provadas? Isso define todo o resto.</em> [resumo em 1–2 frases]</p>
+</blockquote>
+<p>O trabalho da Elevate aqui:<br />
+1. [destravar/operar a frente mais urgente]<br />
+2. [construir a dimensão prioritária]<br />
+3. [profissionalizar pricing e mix]</p>
+<h3>1.3 Maturidade por dimensão (estado atual)</h3>
+<p><em>Onde cada uma das 4 dimensões está hoje, com semáforo. Isto alimenta o scorecard da Seção 3.</em></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dimensão / vetor</th>
+<th>Status</th>
+<th>Comentário</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>D1 · Produtos</strong> (catálogo, preço, margem, kits)</td>
+<td>[🟢/🟡/🔴]</td>
+<td>[comentário]</td>
+</tr>
+<tr>
+<td><strong>D2 · Ads</strong> (GMV Max, Spark)</td>
+<td>[🟢/🟡/🔴]</td>
+<td>[comentário]</td>
+</tr>
+<tr>
+<td><strong>D3 · Afiliados</strong> (creators, seeding, Pareto)</td>
+<td>[🟢/🟡/🔴]</td>
+<td>[comentário]</td>
+</tr>
+<tr>
+<td><strong>D4 · Social</strong> (orgânico, lives)</td>
+<td>[🟢/🟡/🔴]</td>
+<td>[comentário]</td>
+</tr>
+<tr>
+<td>Ativos fora do TikTok (IG, comunidade, CRM)</td>
+<td>[🟢/🟡/🔴]</td>
+<td>[alavanca de migração]</td>
+</tr>
+<tr>
+<td>Logística / SLAs</td>
+<td>[🟢/🟡/🔴]</td>
+<td>[capacidade de expedição]</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.4 Estrutura de comando</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Papel</th>
+<th>Pessoa</th>
+<th>Função</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Decisor(a)</td>
+<td>[nome]</td>
+<td>[estratégia, aprovações, host de lives?]</td>
+</tr>
+<tr>
+<td>Ponto focal</td>
+<td>[nome]</td>
+<td>[financeiro/operação]</td>
+</tr>
+<tr>
+<td>[outros]</td>
+<td>[nome]</td>
+<td>[função]</td>
+</tr>
+</tbody>
+</table></div>
+<h3>1.5 Ativos de largada</h3>
+<p><em>O que acelera o início (audiência migrável, comunidade, verba de mídia pronta, estúdio próprio, DM de creators livre, etc.).</em></p>
+<hr />
+<h2>2. CLASSIFICAÇÃO 4D — O CORAÇÃO DO DIAGNÓSTICO</h2>
+<blockquote>
+<p><em>Cole aqui a saída da classificação 4D. É o que diferencia este diagnóstico de um relatório genérico: ele diz o MOMENTO e a DIMENSÃO PRIORITÁRIA com método, não achismo.</em></p>
+</blockquote>
+<h3>2.1 Momento</h3>
+<p><strong>[Mx — nome].</strong> <em>Por que este momento (árvore: loja vende? hero claro? GMV sobe/estável/cai? quantas dimensões ativas?).</em> [justificativa]</p>
+<h3>2.2 Decomposição do GMV + Custo de Tração (CT%)</h3>
+<p><em>De onde vem o GMV (orgânico/ads/afiliados/lives) e quanto custa gerá-lo.</em></p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Fonte do GMV</th>
+<th>R$</th>
+<th>%</th>
+<th>Fonte do dado</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 Orgânico/loja/recompra</td>
+<td>[R$]</td>
+<td>[%]</td>
+<td>[SC] Product list</td>
+</tr>
+<tr>
+<td>D2 Ads / GMV Max</td>
+<td>[R$]</td>
+<td>[%]</td>
+<td>[SC] Ads Manager</td>
+</tr>
+<tr>
+<td>D3 Afiliados</td>
+<td>[R$]</td>
+<td>[%]</td>
+<td>[SC] Creator List</td>
+</tr>
+<tr>
+<td>D4 Social / lives</td>
+<td>[R$]</td>
+<td>[%]</td>
+<td>[SC] LIVE / atribuição a vídeo</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>⚠️ A decomposição real sai do <strong>[SC] Product list + Creator List</strong> — o export "Todos os pedidos" não traz a fonte do GMV.</p>
+<p><strong>CT% = (Ads [SC] + comissões de afiliados [SC] + custo de lives [INT] + custo de amostras [SC]) ÷ GMV [SC] = [xx,x%]</strong> ([zona]).<br />
+Lembrete: amostra grátis = ~6% de <strong>frete</strong> do TikTok sobre o valor nominal. Cruze sempre com a tendência do GMV (CT% baixo + GMV caindo = problema em D1, não em mídia).</p>
+</blockquote>
+<h3>2.3 Scorecard das 4 dimensões (0–5 vs baseline do momento)</h3>
+<blockquote>
+<p><em>Cada nota é justificada por dado da conta [SC] (+ [FM] no benchmark, [INT] na margem/orgânico). Nota sem dado de apoio = <code>provisória</code>.</em></p>
+</blockquote>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Nota</th>
+<th>Baseline ([Mx])</th>
+<th>Gap</th>
+<th>Leitura (com a fonte)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 Produtos</td>
+<td>[x,x]</td>
+<td>[x,x]</td>
+<td>[±x,x]</td>
+<td>[ok/abaixo/crítico] · [SC] Produtos/Avaliações + [INT] margem + [FM] preço concorrência</td>
+</tr>
+<tr>
+<td>D2 Ads</td>
+<td>[x,x]</td>
+<td>[x,x]</td>
+<td>[±x,x]</td>
+<td>[ok/abaixo/crítico] · [SC] Ads Manager (ROI)</td>
+</tr>
+<tr>
+<td>D3 Afiliados</td>
+<td>[x,x]</td>
+<td>[x,x]</td>
+<td>[±x,x]</td>
+<td>[ok/abaixo/crítico] · [SC] Creator List + [FM] bucket categoria</td>
+</tr>
+<tr>
+<td>D4 Social</td>
+<td>[x,x]</td>
+<td>[x,x]</td>
+<td>[±x,x]</td>
+<td>[ok/abaixo/crítico] · [SC] LIVE + [INT/Studio] orgânico</td>
+</tr>
+</tbody>
+</table></div>
+<h3>2.4 Dimensão prioritária (a tese)</h3>
+<blockquote>
+<p><strong>[Dx] — [nome].</strong> A dimensão de <strong>maior gap</strong> para este momento (empate: D1 → D3 → D4 → D2). [Por que ela é a alavanca agora, em 2–3 frases.]</p>
+</blockquote>
+<hr />
+<h2>3. DIAGNÓSTICO POR DIMENSÃO</h2>
+<p><em>Para cada dimensão: o que está forte, o que está fraco, e o sinal mais importante. Foco extra na dimensão prioritária.</em></p>
+<ul>
+<li><strong>D1 · Produtos:</strong> [sortimento/hero · ticket/kit · margem que cobre o CT% · listing/avaliações · estoque].</li>
+<li><strong>D2 · Ads:</strong> [conta/estrutura · ROI/ROAS · CT% de ads · concentração em heroes].</li>
+<li><strong>D3 · Afiliados:</strong> [massa de creators · outreach · comissão · amostras/seeding · feedback/Pareto].</li>
+<li><strong>D4 · Social:</strong> [conta orgânica/frequência · alcance · conteúdo shoppable · lives].</li>
+</ul>
+<hr />
+<h2>4. CONCORRÊNCIA E BENCHMARK</h2>
+<h3>4.1 Concorrentes de referência</h3>
+<blockquote>
+<p><em>Fonte: </em><em>[FM]</em><em> FastMoss (top da categoria, kit/ticket, creators) cruzado com </em><em>[SC]</em><em> o próprio mix.</em></p>
+</blockquote>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Marca</th>
+<th>Por quê</th>
+<th>O que aprender</th>
+<th>Fonte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[concorrente]</td>
+<td>[público/produto similar]</td>
+<td>[pricing/kit/live/creators]</td>
+<td>[FM]</td>
+</tr>
+</tbody>
+</table></div>
+<h3>4.2 Princípio de ticket — liderar com KIT, não com peça avulsa</h3>
+<blockquote>
+<p><em>Princípio validado: subir o ticket por KIT/COMBO é estrutural (o pedido nasce maior), sem depender de desconto. Avaliar se o cliente já tem SKUs de kit e se eles lideram o sortimento ou estão na cauda.</em></p>
+</blockquote>
+<p><em>[Aplicação ao cliente: tem kits? estão como heroes ou cauda? qual "kit-âncora" criar? Detalhar impacto no Estudo Financeiro.]</em></p>
+<hr />
+<h2>5. PLANO DE AÇÃO — POR DIMENSÃO, NA ORDEM DA PRIORIDADE</h2>
+<blockquote>
+<p><em>Comece pela dimensão prioritária (Seção 2.4). As demais entram em paralelo conforme o momento exige.</em></p>
+</blockquote>
+<h3>5.1 [Dimensão prioritária] — primeiro</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Ação</th>
+<th>Prazo</th>
+<th>Responsável</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[ação]</td>
+<td>[S1/S2/Mx]</td>
+<td>[nome]</td>
+</tr>
+</tbody>
+</table></div>
+<h3>5.2 [Demais dimensões, em ordem]</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th>Ação</th>
+<th>Prazo</th>
+<th>Responsável</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[Dx]</td>
+<td>[ação]</td>
+<td>[prazo]</td>
+<td>[nome]</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>6. FINANCEIRO</h2>
+<blockquote>
+<p>✅ <em>Estudo Financeiro detalhado entregue à parte (a partir da <a href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing">Planilha de Precificação</a>). Resumo abaixo.</em></p>
+</blockquote>
+<h3>6.1 A alavanca financeira nº 1</h3>
+<p><em>Quase sempre é </em><em>margem/precificação</em><em> (D1), não volume. Identificar se o cliente está precificando como challenger tendo poder de marca de incumbente, e qual o repricing que vira o caixa positivo.</em> [achado central]</p>
+<h3>6.2 Margem de contribuição e a nova taxa do TikTok (15/07/2026)</h3>
+<p><em>A precificação tem que cobrir a taxa por faixa de preço:</em><br />
+- <strong>Preço abaixo de R$ 50:</strong> 6% frete + <strong>10% comissão</strong> + R$ 4/item.<br />
+- <strong>Preço de R$ 50 pra cima:</strong> 6% frete + <strong>6% comissão</strong> + R$ 6/item.</p>
+<blockquote>
+<p>⚠️ A faixa é pelo <strong>preço após desconto</strong> — cupom que cruza R$ 50 pra baixo joga o produto para a comissão de 10%. Calibrar faixa, cupom e kit na precificação.</p>
+</blockquote>
+<h3>6.3 Rotas para o break-even</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Rota</th>
+<th>GMV/mês alvo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Volume (preço atual)</td>
+<td>[R$]</td>
+</tr>
+<tr>
+<td><strong>Margem (repricing)</strong></td>
+<td><strong>[R$]</strong></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>7. ROADMAP, GOVERNANÇA E KPIs</h2>
+<h3>7.1 Roadmap de reuniões (R02–R0x)</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>#</th>
+<th>Quando</th>
+<th>Tema</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R02</td>
+<td>[S1]</td>
+<td>[status + decisão financeira + plano]</td>
+</tr>
+<tr>
+<td>R03</td>
+<td>[S1-2]</td>
+<td>[...]</td>
+</tr>
+</tbody>
+</table></div>
+<h3>7.2 Governança</h3>
+<ul>
+<li>[cadência de reuniões: 2/semana nos 2 primeiros meses → quinzenal]</li>
+<li>[quem participa de quê; SLA de respostas; onde ficam os dados]</li>
+</ul>
+<h3>7.3 KPIs (o supervisor envia)</h3>
+<ul>
+<li>Momento 4D / saída do probatório · <strong>CT%</strong> · GMV · pedidos · ticket</li>
+<li>Creators ativos / aceites / vídeos · performance de lives · ROAS (quando ativar)</li>
+</ul>
+<hr />
+<h2>8. CONCLUSÃO ESTRATÉGICA</h2>
+<h3>8.1 A tese em uma frase</h3>
+<blockquote>
+<p><em>O momento é [Mx]; a dimensão prioritária é [Dx]; o caminho é [a jogada central]. [1 frase].</em></p>
+</blockquote>
+<h3>8.2 Riscos e mitigação</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Risco</th>
+<th>Mitigação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>[risco]</td>
+<td>[mitigação]</td>
+</tr>
+</tbody>
+</table></div>
+<h3>8.3 Métrica única de sucesso · 90 dias</h3>
+<blockquote>
+<p><strong>[O resultado que define sucesso em 90 dias — ligado ao momento e à dimensão prioritária.]</strong></p>
+</blockquote>
+<hr />
+<h2>ANEXOS</h2>
+<ul>
+<li>[Brief Executivo] · [Estudo Financeiro] · [Anexo Creators / bucket] · [Intake]</li>
+<li><a href="../Visao%20Geral/ELEVATE-4D-VISAO-GERAL.html">Análise 4D</a> (metodologia) · <a href="../Playbook%20de%20Implantacao/PLAYBOOK-IMPLANTACAO-4D.html">Playbook de Implantação</a></li>
+</ul>
+<hr />
+<h2>HISTÓRICO DE VERSÕES</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Versão</th>
+<th>Data</th>
+<th>Mudança</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.1</td>
+<td>2026-06-16</td>
+<td>Nova <strong>Seção 0 — Base de Dados da Conta (fontes e rastreabilidade)</strong>: todo número do diagnóstico passa a citar a fonte — <strong>[SC]</strong> Seller Center (verdade da conta), <strong>[FM]</strong> FastMoss (benchmark/externo), <strong>[INT]</strong> controle interno. Mapa de cada saída 4D → fonte, janela/proveniência da extração, e tags de fonte na decomposição de GMV, CT%, scorecard e concorrência.</td>
+</tr>
+<tr>
+<td>v1.0</td>
+<td>2026-06-16</td>
+<td>Modelo inicial: reforma o Diagnóstico Estratégico antigo colocando o <strong>núcleo 4D</strong> (momento, CT%, scorecard das 4 dimensões, dimensão prioritária) como espinha dorsal, mantendo o envelope estratégico (contexto, concorrência, plano por dimensão, financeiro, roadmap, governança, conclusão). Incorpora aprendizados validados (ticket via kit; margem/repricing como alavanca nº 1) e a nova taxa do TikTok de 15/07/2026 (comissão por faixa).</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Elevate Ecom. — Sua marca acima nos marketplaces.</em></p>
+  </div>
+  <div class="footer">Elevate Ecom. — Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

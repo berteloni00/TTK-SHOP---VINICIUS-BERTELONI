@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Análise 4D · Lírios Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Elevate Ecom · Análise de Cliente</div>
+    <h1>Análise 4D · Lírios Store</h1>
+    <div class="meta"><b>Lírios Store · TikTok Shop</b> · Diagnóstico 4D + curadoria de produtos de verão (transição sazonal) · Atualizado: 2026-08-14</div>
+  </div>
+  <div class="content">
+<h2>Momento da conta</h2>
+<p><strong>M3 · Escala em transição sazonal</strong>, com risco de entrar em M4 · Platô se a curva A de inverno não for substituída rapidamente.</p>
+<p>A conta não está sem novos produtos: já existem sinais fortes de que alguns vestidos de verão podem substituir jaquetas e conjuntos de inverno. O problema é que D2 e parte de D3 ainda estão orientados majoritariamente para a curva anterior.</p>
+<h2>Scorecard revisado</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Dimensão</th>
+<th style="text-align: right;">Nota</th>
+<th>Diagnóstico</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>D1 Produtos</td>
+<td style="text-align: right;"><strong>3,7/5</strong></td>
+<td>Dois potenciais heroes de verão já validados; estoque e cauda longa continuam críticos</td>
+</tr>
+<tr>
+<td>D2 Ads</td>
+<td style="text-align: right;"><strong>3,0/5</strong></td>
+<td>Mídia rentável, mas concentrada quase integralmente em produtos de inverno</td>
+</tr>
+<tr>
+<td>D3 Afiliados</td>
+<td style="text-align: right;"><strong>4,0/5</strong></td>
+<td>Rede robusta, porém criativos e autorizações de verão ainda são insuficientes</td>
+</tr>
+<tr>
+<td>D4 Social</td>
+<td style="text-align: right;"><strong>Não mensurado</strong></td>
+<td>Deve liderar a mudança de narrativa de inverno para primavera/verão</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Nova prioridade:</strong> acelerar a migração de D1, D2 e D3 para a curva de verão sem interromper abruptamente o caixa gerado pelo inverno.</p>
+<h2>D1 · Produtos e transição sazonal</h2>
+<h3>Nova curva de verão</h3>
+<p>Os produtos recentes e reativados mostram níveis muito diferentes de validação:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Produto de verão</th>
+<th>Ativação recente</th>
+<th style="text-align: right;">Visualizações</th>
+<th style="text-align: right;">GMV</th>
+<th style="text-align: right;">GMV/1.000 views</th>
+<th>Classificação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vestido indiano longo ciganinha</td>
+<td>Segunda</td>
+<td style="text-align: right;">107.861</td>
+<td style="text-align: right;"><strong>R$ 18.872</strong></td>
+<td style="text-align: right;"><strong>R$ 175</strong></td>
+<td>Novo hero</td>
+</tr>
+<tr>
+<td>Vestido indiano curto ciganinha</td>
+<td>Hoje</td>
+<td style="text-align: right;">164.098</td>
+<td style="text-align: right;"><strong>R$ 20.964</strong></td>
+<td style="text-align: right;"><strong>R$ 128</strong></td>
+<td>Novo hero</td>
+</tr>
+<tr>
+<td>Vestido curto manga morcego</td>
+<td>Quarta</td>
+<td style="text-align: right;">116.281</td>
+<td style="text-align: right;">R$ 4.153</td>
+<td style="text-align: right;">R$ 36</td>
+<td>Challenger</td>
+</tr>
+<tr>
+<td>Blusa assimétrica/kit muscle</td>
+<td>07/08</td>
+<td style="text-align: right;">108.345</td>
+<td style="text-align: right;">R$ 3.183</td>
+<td style="text-align: right;">R$ 29</td>
+<td>Challenger</td>
+</tr>
+<tr>
+<td>Macaquinho camponesa floral</td>
+<td>08/08</td>
+<td style="text-align: right;">68.839</td>
+<td style="text-align: right;">R$ 1.640</td>
+<td style="text-align: right;">R$ 24</td>
+<td>Challenger</td>
+</tr>
+<tr>
+<td>Vestido boho bordado</td>
+<td>Quinta</td>
+<td style="text-align: right;">96.443</td>
+<td style="text-align: right;">R$ 1.117</td>
+<td style="text-align: right;">R$ 12</td>
+<td>Necessita correção</td>
+</tr>
+<tr>
+<td>Vestido Elisa boho</td>
+<td>Terça</td>
+<td style="text-align: right;">36.993</td>
+<td style="text-align: right;">R$ 321</td>
+<td style="text-align: right;">R$ 9</td>
+<td>Necessita correção</td>
+</tr>
+<tr>
+<td>Vestido Laura manga longa</td>
+<td>Terça</td>
+<td style="text-align: right;">65.164</td>
+<td style="text-align: right;">R$ 103</td>
+<td style="text-align: right;">R$ 2</td>
+<td>Baixa prioridade</td>
+</tr>
+<tr>
+<td>Vestido longo elastex 3 tiras</td>
+<td>Hoje</td>
+<td style="text-align: right;">Sem histórico</td>
+<td style="text-align: right;">·</td>
+<td style="text-align: right;">·</td>
+<td>Lançamento/teste</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Principal descoberta</h3>
+<p>Os dois vestidos ciganinha já apresentam eficiência comparável ou superior aos heroes de inverno:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Produto de inverno</th>
+<th style="text-align: right;">GMV/1.000 views</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Conjunto de cotelê</td>
+<td style="text-align: right;">aproximadamente R$ 121</td>
+</tr>
+<tr>
+<td>Jaqueta suede principal</td>
+<td style="text-align: right;">aproximadamente R$ 93</td>
+</tr>
+<tr>
+<td>Jaqueta couro PU</td>
+<td style="text-align: right;">aproximadamente R$ 23</td>
+</tr>
+</tbody>
+</table></div>
+<p>Comparação:</p>
+<ul>
+<li>Vestido longo ciganinha: <strong>R$ 175 por mil visualizações</strong>.</li>
+<li>Vestido curto ciganinha: <strong>R$ 128 por mil visualizações</strong>.</li>
+</ul>
+<p>Portanto, a nova curva A não é apenas hipotética. Ela já começa a aparecer.</p>
+<h3>Nova classificação do portfólio</h3>
+<h4>Curva A de verão · escalar</h4>
+<ol>
+<li>Vestido indiano curto ciganinha.</li>
+<li>Vestido indiano longo ciganinha.</li>
+</ol>
+<p>Esses produtos devem receber imediatamente:</p>
+<ul>
+<li>Estoque profundo por cor e tamanho.</li>
+<li>Campanha GMV Max própria.</li>
+<li>Amostras direcionadas.</li>
+<li>Novos vídeos.</li>
+<li>Autorização para Shop Ads.</li>
+<li>Participação nas campanhas comerciais.</li>
+</ul>
+<h4>Curva B · desenvolver</h4>
+<ol>
+<li>Vestido curto manga morcego.</li>
+<li>Blusa assimétrica/kit muscle.</li>
+<li>Macaquinho camponesa floral.</li>
+<li>Vestido longo elastex 3 tiras.</li>
+</ol>
+<p>O vestido elastex tem 491 unidades disponíveis, mas ainda não possui sinal de venda. É o principal produto de exploração: tem estoque suficiente para escalar, mas precisa provar CTR e conversão antes de receber verba alta.</p>
+<h4>Curva C · corrigir ou retirar do foco</h4>
+<ul>
+<li>Vestido boho bordado.</li>
+<li>Vestido Elisa.</li>
+<li>Vestido Laura.</li>
+<li>Vestido Yara.</li>
+<li>Produtos antigos de verão com visualização alta e GMV muito baixo.</li>
+</ul>
+<p>Esses produtos precisam de revisão de: preço, imagem principal, modelagem/tamanhos, demonstração no corpo, estampa, frete, oferta e prova social. Não devem receber tráfego pago indiscriminadamente.</p>
+<h2>D2 · Migração da mídia</h2>
+<p>O GMV Max atual ainda está apoiado em: conjunto de cotelê, jaqueta suede, sobretudo, jaqueta couro PU e blazer.</p>
+<p>Isso explica parte da queda semanal:</p>
+<ul>
+<li>Receita: −33,97%.</li>
+<li>Pedidos: −32,31%.</li>
+<li>ROI: −17,77%.</li>
+<li>CPA: +18,64%.</li>
+</ul>
+<p>Além de possíveis problemas de estoque e saturação, a demanda começa a migrar para peças menos pesadas.</p>
+<h3>Estratégia de transição</h3>
+<p>Não desligar toda a curva de inverno de uma vez. O conjunto de cotelê ainda apresenta ROI 9,02 e continua sendo um grande gerador de caixa.</p>
+<h4>Fase 1 · próximos 14 dias</h4>
+<p>Distribuição recomendada do investimento:</p>
+<ul>
+<li><strong>55%:</strong> inverno ainda rentável.</li>
+<li><strong>30%:</strong> vestidos ciganinha.</li>
+<li><strong>15%:</strong> exploração de verão.</li>
+</ul>
+<p>Dentro do inverno: manter conjunto de cotelê; manter blazer enquanto o ROI permanecer saudável; reduzir sobretudo; renovar ou reduzir jaqueta suede; controlar jaqueta couro PU pela margem.</p>
+<p>Dentro do verão: campanha específica para vestido curto ciganinha; campanha específica para vestido longo ciganinha; teste separado para vestido elastex; não misturar todos os vestidos em uma única campanha.</p>
+<h4>Fase 2 · após validação</h4>
+<p>Se os vestidos sustentarem ROI e estoque:</p>
+<ul>
+<li><strong>35–40%:</strong> inverno residual.</li>
+<li><strong>50–55%:</strong> verão validado.</li>
+<li><strong>10%:</strong> novos produtos.</li>
+</ul>
+<h3>Gates de escala</h3>
+<p>Um produto de verão só deve aumentar verba quando alcançar:</p>
+<ul>
+<li>Mínimo de 10–15 pedidos.</li>
+<li>ROI acima do ponto de equilíbrio.</li>
+<li>CPA compatível com a margem.</li>
+<li>Estoque para pelo menos 21 dias.</li>
+<li>Disponibilidade nos principais tamanhos.</li>
+<li>Pelo menos três criativos vendedores.</li>
+</ul>
+<h2>D3 · Redirecionamento dos afiliados</h2>
+<p>A rede de afiliados já está desenvolvida, mas ainda está produzindo principalmente para os heroes de inverno.</p>
+<h3>Situação dos produtos de verão</h3>
+<ul>
+<li><strong>Vestido curto ciganinha:</strong> 88 creators compartilhando, apenas 2 vídeos autorizados para Shop Ads.</li>
+<li><strong>Vestido longo ciganinha:</strong> 86 creators compartilhando, zero vídeos autorizados.</li>
+<li><strong>Vestido curto manga morcego:</strong> 407 creators compartilhando, apenas 1 vídeo autorizado.</li>
+<li><strong>Vestido longo elastex:</strong> apenas 1 creator compartilhando, zero vídeos autorizados.</li>
+</ul>
+<p>O problema não é apenas quantidade de creators. É a baixa disponibilidade de conteúdos autorizados e comprovadamente vendedores para mídia.</p>
+<h3>Plano de creators para o verão</h3>
+<h4>Grupo 1 · creators vendedores atuais</h4>
+<p>Acionar imediatamente: vlogdylua, Paula Indica, Rafaella Brasil, Marcela Franciscato, thamiressc0 e creators que já vendem moda feminina com demonstração no corpo.</p>
+<p>Enviar primeiro:</p>
+<ol>
+<li>Vestido curto ciganinha.</li>
+<li>Vestido longo ciganinha.</li>
+<li>Vestido elastex.</li>
+<li>Manga morcego e macaquinho floral.</li>
+</ol>
+<h4>Grupo 2 · prospecção específica</h4>
+<p>Buscar microcreators de: moda feminina, looks de verão, moda boho, vestidos para festas e viagens, moda praia e resort, looks "parece de loja cara", moda feminina 30+ e 40+, plus size quando houver grade adequada.</p>
+<h3>Hooks recomendados</h3>
+<ul>
+<li>"O vestido que parece caro, mas está no TikTok Shop."</li>
+<li>"Curto ou longo: qual versão você escolheria?"</li>
+<li>"O detalhe das costas muda completamente esse vestido."</li>
+<li>"Três formas de usar o mesmo vestido no verão."</li>
+<li>"Vestido leve que não marca."</li>
+<li>"Look pronto para viagem, almoço e festa."</li>
+<li>"Esse vestido foi feito para usar sem complicação."</li>
+<li>"A estampa e o movimento dele no corpo."</li>
+<li>"Qual cor combina mais comigo?"</li>
+<li>"Achei o vestido boho perfeito para o verão."</li>
+</ul>
+<p>A fórmula vencedora da Lírios Store continua válida: <strong>produto no corpo + textura/movimento + pergunta simples + preço/oferta + CTA.</strong></p>
+<h3>Amostras</h3>
+<p>Redirecionar o orçamento de amostras:</p>
+<ul>
+<li>60% para os dois ciganinhas.</li>
+<li>20% para o elastex.</li>
+<li>10% para manga morcego.</li>
+<li>10% para macaquinho e blusa assimétrica.</li>
+</ul>
+<p>Não enviar amostras de toda a cauda de verão. O objetivo é criar densidade de conteúdo nos possíveis heroes.</p>
+<h2>D4 · Social e LIVE</h2>
+<p>Mesmo sem dados quantitativos da conta própria, D4 deve cumprir um papel decisivo na transição: mudar a percepção da loja de "moda de inverno" para "vestidos e looks de primavera/verão".</p>
+<h3>Pilares editoriais</h3>
+<p>Provador dos novos vestidos; curto versus longo; combinação de cores; look para viagem; look para fim de semana; vestidos para festas diurnas; caimento em diferentes corpos; comparação de tamanhos; bastidores de reposição; "o mais vendido da semana"; respostas a dúvidas de tamanho e transparência.</p>
+<h3>LIVE</h3>
+<p>Estrutura recomendada:</p>
+<ul>
+<li>Live exclusiva de lançamento dos ciganinhas.</li>
+<li>Provador com pelo menos duas modelos/tamanhos.</li>
+<li>Oferta progressiva por produto.</li>
+<li>Estoque e cores exibidos em tempo real.</li>
+<li>Bloco curto de liquidação do inverno no final da live.</li>
+<li>Destaque principal sempre nos produtos da nova estação.</li>
+</ul>
+<p>Assim, a LIVE cumpre dois papéis: lançar a nova curva e liquidar o inverno sem manter toda a comunicação presa à estação anterior.</p>
+<h2>Plano de transição em 30 dias</h2>
+<h3>Semana 1</h3>
+<ul>
+<li>Garantir estoque dos dois ciganinhas.</li>
+<li>Revisar grade por tamanho e cor.</li>
+<li>Criar campanhas GMV Max separadas.</li>
+<li>Enviar amostras para os creators vendedores.</li>
+<li>Solicitar autorização de todos os vídeos existentes.</li>
+<li>Produzir pelo menos 15 criativos por hero.</li>
+</ul>
+<h3>Semana 2</h3>
+<ul>
+<li>Testar vestido elastex.</li>
+<li>Rodar primeira LIVE de verão.</li>
+<li>Comparar ROI, CPA e conversão dos ciganinhas com o cotelê.</li>
+<li>Reduzir verba dos produtos de inverno com ROI abaixo do mínimo.</li>
+</ul>
+<h3>Semana 3</h3>
+<ul>
+<li>Escalar o vestido ciganinha vencedor.</li>
+<li>Escolher um challenger entre manga morcego, macaquinho e blusa assimétrica.</li>
+<li>Reabastecer cores/tamanhos mais vendidos.</li>
+<li>Despriorizar produtos de verão com tráfego e baixa conversão.</li>
+</ul>
+<h3>Semana 4</h3>
+<ul>
+<li>Consolidar nova curva A.</li>
+<li>Migrar 50% ou mais da produção criativa para verão.</li>
+<li>Manter inverno apenas nos produtos ainda rentáveis.</li>
+<li>Preparar lançamentos seguintes com base no padrão dos ciganinhas.</li>
+</ul>
+<h3>Metas</h3>
+<ul>
+<li>Ter pelo menos <strong>dois heroes de verão</strong> representando 30–40% do GMV.</li>
+<li>Conseguir três criativos vendedores por hero.</li>
+<li>Ter dez creators vendedores em produtos de verão.</li>
+<li>Obter pelo menos 20 vídeos autorizados para Shop Ads.</li>
+<li>Manter ROI agregado acima de 5 durante a migração.</li>
+<li>Reduzir dependência do conjunto de cotelê e jaquetas sem derrubar o GMV total.</li>
+</ul>
+<h3>Tese final revisada</h3>
+<p>A Lírios Store não precisa procurar sua curva de verão do zero. Os primeiros substitutos já apareceram: <strong>vestido curto ciganinha</strong> e <strong>vestido longo ciganinha</strong>. Os dois apresentam eficiência de tráfego comparável ou superior aos maiores produtos de inverno.</p>
+<p>A estratégia correta é: <strong>usar o caixa do inverno para construir a curva A do verão antes que a demanda pelas jaquetas desapareça.</strong></p>
+<hr />
+<h2>Curadoria de produtos de verão</h2>
+<h3>Contexto Elevate 4D</h3>
+<p>A Lírios Store está em <strong>M3 · Escala</strong>, atravessando uma transição sazonal. A atual curva A é formada principalmente por produtos de inverno (conjunto de cotelê, jaquetas de suede, jaqueta de couro PU, sobretudos, blazer). Esses produtos ainda geram caixa, mas D2 já apresenta queda de receita, pedidos e ROI. Ao mesmo tempo, os vestidos ciganinha mostram que a demanda de verão começou:</p>
+<ul>
+<li>Vestido curto ciganinha: <strong>R$ 20,9 mil de GMV</strong>.</li>
+<li>Vestido longo ciganinha: <strong>R$ 18,9 mil de GMV</strong>.</li>
+<li>Ambos apresentam eficiência por visualização comparável ou superior aos heroes de inverno.</li>
+</ul>
+<p>Pela metodologia 4D, a prioridade de <strong>D1 Produtos</strong> é construir a próxima curva A antes da perda completa da sazonalidade anterior. A curadoria abaixo não busca adicionar produtos genéricos. Ela procura: aderência ao estilo boho, indiano, tropical e estampado da Lírios; potencial de demonstração em vídeos e lives; produtos complementares aos vestidos ciganinha; tickets de entrada e intermediários; capacidade de alimentar D3 Afiliados e D2 GMV Max; possibilidade de venda como look completo.</p>
+<h3>1. Short solto floral boho</h3>
+<p><a href="https://br.shein.com/Women%27s-Floral-Print-High-Waist-Loose-Shorts%2C-Suitable-For-Vacation%2CVacation%2CVacation-Style%2CBoho-Tropical-Bird-Print-High-Waist-Shorts%2C-Blue-%26-White-Floral-Print-High-Waist-Shorts%2C-Boho-Blue-White-Floral-High-Waist-Shorts%2CPocketed%2CWide-Leg%2CSummer%2CVacation%2CBeach-p-429855072.html">Ver produto na SHEIN</a></p>
+<p><strong>Papel em D1:</strong> produto de entrada e giro.</p>
+<p><strong>Por que combina com a Lírios:</strong> estampa floral; modelagem fluida; cintura alta; linguagem de férias e verão; pode ser combinado com ciganinha ou regata; mantém o estilo boho da loja.</p>
+<p><strong>Faixa de teste:</strong> R$ 59,90–79,90.</p>
+<p><strong>Conteúdo para D3/D4:</strong></p>
+<ul>
+<li>"Short soltinho que não aperta a perna."</li>
+<li>"Três blusas para usar com o mesmo short."</li>
+<li>"Look boho completo para o verão."</li>
+</ul>
+<h3>2. Short-saia floral com amarração</h3>
+<p><a href="https://br.shein.com/Women-s-Floral-Print-Short-Skirt-With-Side-Tie-High-Waist-Elastic-Back-Summer-Casual-Fashion-Assorted-Colors-Beach-Vacation-p-419966925.html">Ver produto na SHEIN</a></p>
+<p><strong>Papel em D1:</strong> challenger de verão com alta demonstração visual.</p>
+<p><strong>Por que combina com a Lírios:</strong> feminilidade próxima à categoria de vestidos; estampa floral e tropical; amarração lateral; cintura alta; aparência de saia com segurança de short; bom produto para viagem, praia e passeio.</p>
+<p><strong>Faixa de teste:</strong> R$ 59,90–89,90.</p>
+<p><strong>Conteúdo para D3/D4:</strong></p>
+<ul>
+<li>"Parece saia, mas é short."</li>
+<li>"O detalhe da amarração muda o look."</li>
+<li>"Você usaria com cropped ou ciganinha?"</li>
+</ul>
+<h3>3. Conjunto boho de regata e short tropical</h3>
+<p><a href="https://br.shein.com/Soleia-Women-s-Tropical-Plant-Print-Camisole-And-Shorts-Casual-2-Pieces-Set-p-405055832.html">Ver produto na SHEIN</a></p>
+<p><strong>Papel em D1:</strong> principal candidato a hero de verão.</p>
+<p><strong>Por que combina com a Lírios:</strong> estampa tropical; visual boho; look completo; peças utilizáveis juntas ou separadamente; permite ticket maior sem depender de vestido; forte potencial para creator e LIVE.</p>
+<p><strong>Faixa de teste:</strong> R$ 99,90–139,90.</p>
+<p><strong>Conteúdo para D3/D4:</strong></p>
+<ul>
+<li>"Um conjunto, três looks."</li>
+<li>"Use junto ou separado?"</li>
+<li>"Look pronto para viagem."</li>
+<li>Provador mostrando movimento e transparência.</li>
+</ul>
+<h3>4. Conjunto floral verde com regata e short</h3>
+<p><a href="https://br.shein.com/SHEIN-Frenchy-Women-s-Summer-Dark-Green-Floral-Watercolor-Print-Tank-Top-And-Shorts-2-Piece-Set-Boho-Tropical-Beach-Vacation-Elegant-Retro-Music-Festival-Outfit-p-473756807.html">Ver produto na SHEIN</a></p>
+<p><strong>Papel em D1:</strong> versão mais elegante do conjunto de verão.</p>
+<p><strong>Por que combina com a Lírios:</strong> estampa floral em aquarela; linguagem boho e retrô; aparência mais premium; decote quadrado e modelagem feminina; próximo ao visual "parece de loja cara", que já funciona nos vídeos da conta.</p>
+<p><strong>Faixa de teste:</strong> R$ 109,90–149,90.</p>
+<p><strong>Conteúdo para D3/D4:</strong></p>
+<ul>
+<li>"Parece conjunto de boutique."</li>
+<li>"A estampa de perto é ainda mais bonita."</li>
+<li>"Look elegante sem deixar de ser confortável."</li>
+</ul>
+<h3>5. Conjunto tropical com cropped de alça e short</h3>
+<p><a href="https://shopee.com.br/Conjunto-Feminino-Estampa-Tropical-Tendencia-2026-Short-Cropped-com-Al%C3%A7a-Moda-Ver%C3%A3o-roupa-feminina-leve-Moda-Praia-i.1420439586.23698767173">Ver produto na Shopee</a></p>
+<p><strong>Papel em D1:</strong> produto de volume e aquisição.</p>
+<p><strong>Por que combina com a Lírios:</strong> sete variações disponíveis na referência; estampas tropicais; look completo e leve; preço de mercado acessível; forte aderência a férias, praia e verão.</p>
+<p><strong>Faixa de teste:</strong> R$ 89,90–119,90.</p>
+<p><strong>Conteúdo para D3/D4:</strong></p>
+<ul>
+<li>Comparação entre estampas.</li>
+<li>"Qual cor você escolheria?"</li>
+<li>"Look completo por menos que uma peça."</li>
+<li>Vídeos rápidos de troca de estampas.</li>
+</ul>
+<h3>6. Conjunto cropped lenço e short estampado</h3>
+<p><a href="https://shopee.com.br/conjunto-feminino-duas-pe%C3%A7a-Cropped-com-short-look-ver%C3%A3o-estampa-tropical-conjuntos-estampa-localizada-cropped-len%C3%A7o-i.777769070.58202529213">Ver produto na Shopee</a></p>
+<p><strong>Papel em D1:</strong> produto fashion e visual para creators.</p>
+<p><strong>Por que combina com a Lírios:</strong> estampa localizada; cropped com visual de lenço; amarrações; grande variedade de estampas; forte potencial de viralização; próximo da identidade colorida e inspirada na Farm.</p>
+<p><strong>Faixa de teste:</strong> R$ 99,90–129,90.</p>
+<p><strong>Conteúdo para D3/D4:</strong></p>
+<ul>
+<li>"O cropped parece um lenço."</li>
+<li>"Conjunto perfeito para viagem."</li>
+<li>Transições mostrando diferentes estampas.</li>
+<li>Tutorial de amarração.</li>
+</ul>
+<h3>7. Conjunto cropped com bojo e short estampado</h3>
+<p><a href="https://shopee.com.br/Conjunto-Feminino-Cropped-Short-C-Bojo-Estampado-Moda-Ver%C3%A3o-2025-i.1001330651.23398117308">Ver produto na Shopee</a></p>
+<p><strong>Papel em D1:</strong> produto de entrada para validar conjuntos.</p>
+<p><strong>Por que combina com a Lírios:</strong> estampa de verão; cropped estruturado com bojo; look pronto; preço competitivo; pode validar rapidamente a aceitação da categoria antes de uma compra maior.</p>
+<p><strong>Faixa de teste:</strong> R$ 79,90–109,90.</p>
+<p><strong>Conteúdo para D3/D4:</strong></p>
+<ul>
+<li>"Conjunto com bojo que dispensa complicação."</li>
+<li>"O caimento dele no corpo."</li>
+<li>"Look pronto em menos de um minuto."</li>
+</ul>
+<h3>8. Conjunto de três peças com kimono</h3>
+<p><a href="https://shopee.com.br/Conjunto-Kimono-Estampado-Ver%C3%A3o-Feminino-3-Pe%C3%A7as-Cropped-Short-Verde-Azul-Elegante-e-Confort%C3%A1vel-i.453631297.18899616757">Ver produto na Shopee</a></p>
+<p><strong>Papel em D1:</strong> produto premium e potencial hero de LIVE.</p>
+<p><strong>Por que combina com a Lírios:</strong> kimono estampado; cropped e short coordenados; linguagem boho e resort; alta percepção de valor; permite diversas formas de uso; excelente para demonstração ao vivo.</p>
+<p><strong>Faixa de teste:</strong> R$ 139,90–179,90.</p>
+<p><strong>Conteúdo para D3/D4:</strong></p>
+<ul>
+<li>"Três peças, vários looks."</li>
+<li>"Com ou sem kimono?"</li>
+<li>"Look de viagem que já vem completo."</li>
+<li>Provador mostrando todas as combinações.</li>
+</ul>
+<h3>Prioridade de entrada no catálogo</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th style="text-align: right;">Ordem</th>
+<th>Produto</th>
+<th>Função estratégica</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td>Conjunto regata + short tropical</td>
+<td>Candidato a hero</td>
+</tr>
+<tr>
+<td style="text-align: right;">2</td>
+<td>Short solto floral</td>
+<td>Entrada e giro</td>
+</tr>
+<tr>
+<td style="text-align: right;">3</td>
+<td>Short-saia floral</td>
+<td>Challenger visual</td>
+</tr>
+<tr>
+<td style="text-align: right;">4</td>
+<td>Conjunto floral verde</td>
+<td>Hero premium</td>
+</tr>
+<tr>
+<td style="text-align: right;">5</td>
+<td>Cropped lenço + short</td>
+<td>Produto para creators</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td>Conjunto com bojo</td>
+<td>Teste de preço/volume</td>
+</tr>
+<tr>
+<td style="text-align: right;">7</td>
+<td>Conjunto com kimono</td>
+<td>Premium e LIVE</td>
+</tr>
+</tbody>
+</table></div>
+<h3>Plano de teste 4D</h3>
+<p><strong>D1 · Produtos:</strong> começar com três ou quatro referências; duas estampas por modelo; poucas cores e grade profunda; não repetir o problema atual de dezenas de SKUs sem estoque; medir conversão por estampa, tamanho e modelagem.</p>
+<p><strong>D2 · Ads:</strong> não anunciar todos os lançamentos juntos; campanha própria para o conjunto tropical; campanha própria para o short/short-saia; escalar somente após pelo menos 10–15 pedidos e margem confirmada.</p>
+<p><strong>D3 · Afiliados:</strong> enviar primeiro aos creators que já vendem moda feminina; solicitar três formatos (provador, look completo, uso das peças separadamente); exigir autorização para Shop Ads nos melhores conteúdos.</p>
+<p><strong>D4 · Social:</strong> apresentar a cápsula como uma coleção; trabalhar duas estampas coordenadas; criar séries de "uma peça, três looks"; fazer LIVE de lançamento com provador.</p>
+<h3>Recomendação final</h3>
+<p>A primeira compra não deveria incluir os oito produtos. O lote-piloto ideal é:</p>
+<ol>
+<li>Conjunto boho de regata e short.</li>
+<li>Short solto floral.</li>
+<li>Short-saia floral.</li>
+<li>Conjunto floral verde.</li>
+</ol>
+<p>Esses quatro produtos cobrem: hero, produto de entrada, challenger e produto premium. Assim, a Lírios constrói uma nova curva de verão coerente com a marca e testável dentro das quatro dimensões.</p>
+<h2>Referências visuais de verão</h2>
+<p>Imagens de referência de tendência e de mercado (moodboard para D1 e D4). Não são os SKUs exatos da curadoria acima; servem para orientar estampa, modelagem e linguagem visual.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:18px 0">
+<figure style="margin:0"><img src="img/ref-look-verao-listrado.jpg" alt="Look de verão listrado" style="width:100%;border-radius:10px;border:1px solid var(--cardborder)"><figcaption style="font-size:12px;color:var(--muted);margin-top:5px">Look de verão listrado · referência de tendência</figcaption></figure>
+<figure style="margin:0"><img src="img/ref-hering-verao.jpg" alt="Coleção verão Hering" style="width:100%;border-radius:10px;border:1px solid var(--cardborder)"><figcaption style="font-size:12px;color:var(--muted);margin-top:5px">Coleção verão · referência de mercado</figcaption></figure>
+<figure style="margin:0"><img src="img/ref-macaquinho-marrom.jpg" alt="Macaquinho marrom" style="width:100%;border-radius:10px;border:1px solid var(--cardborder)"><figcaption style="font-size:12px;color:var(--muted);margin-top:5px">Macaquinho / conjunto fluido · referência de peça</figcaption></figure>
+<figure style="margin:0"><img src="img/ref-look-amarelo.jpg" alt="Look de verão amarelo" style="width:100%;border-radius:10px;border:1px solid var(--cardborder)"><figcaption style="font-size:12px;color:var(--muted);margin-top:5px">Conjunto/look de verão colorido · referência de tendência</figcaption></figure>
+<figure style="margin:0"><img src="img/ref-conjunto-preto.jpg" alt="Conjunto regata e short preto" style="width:100%;border-radius:10px;border:1px solid var(--cardborder)"><figcaption style="font-size:12px;color:var(--muted);margin-top:5px">Conjunto regata + short · referência de peça</figcaption></figure>
+</div>
+  </div>
+  <div class="footer">Elevate Ecom. · Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

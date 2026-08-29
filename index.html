@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Elevate 4D · Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--yellow:#FACC15;}
+  *{box-sizing:border-box;margin:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{font-family:'Poppins',sans-serif;color:var(--text);
+    background:
+      radial-gradient(60% 55% at 88% 6%, rgba(45,212,191,0.22), transparent 60%),
+      radial-gradient(62% 55% at 6% 96%, rgba(225,29,72,0.20), transparent 60%),
+      radial-gradient(50% 45% at 70% 80%, rgba(126,200,227,0.07), transparent 70%),
+      linear-gradient(140deg,#07131F 0%,#0B1A2B 46%,#0F2B3A 100%);
+    background-attachment:fixed;min-height:100vh;padding:40px 20px 60px;line-height:1.5;overflow-x:hidden;}
+  .wrap{max-width:880px;margin:0 auto;}
+  .eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  h1{font-weight:300;font-size:44px;line-height:1.05;letter-spacing:-1px;}
+  h1 b{font-weight:800;color:#fff;}
+  .sub{color:var(--muted);font-size:14px;margin-top:12px;max-width:620px;}
+  .conf{display:inline-block;margin-top:16px;font-size:11px;font-weight:700;color:var(--yellow);border:1px solid rgba(250,204,21,0.4);background:rgba(250,204,21,0.08);border-radius:8px;padding:6px 12px;}
+  .accentbar{height:3px;width:120px;background:linear-gradient(90deg,#2DD4BF 0%,#7EC8E3 40%,#E11D48 100%);border-radius:3px;margin:22px 0 34px;box-shadow:0 0 18px rgba(126,200,227,0.35);}
+  .ttshop{display:inline-flex;align-items:center;gap:7px;margin-top:14px;margin-left:10px;font-size:12px;font-weight:600;color:var(--text);border:1px solid var(--cardborder);background:rgba(15,43,58,0.5);border-radius:999px;padding:6px 13px 6px 11px;vertical-align:middle;}
+  .ttshop .dot{width:9px;height:9px;border-radius:50%;background:#25F4EE;box-shadow:6px 0 0 -1px #FE2C55;}
+  @media (max-width:640px){.ttshop{margin-left:0;}}
+  .mkts{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center;}
+  .mkts .lab{font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);align-self:center;margin-right:2px;}
+  .mk{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:600;color:var(--text);border:1px solid var(--cardborder);background:rgba(15,43,58,0.5);border-radius:999px;padding:6px 13px 6px 11px;font-family:inherit;cursor:pointer;transition:.15s;}
+  .mk:hover{border-color:var(--accent);}
+  .mk.active{color:#fff;border-color:var(--accent);background:linear-gradient(135deg,rgba(126,200,227,0.22),rgba(37,212,191,0.14));box-shadow:0 0 14px rgba(126,200,227,0.18);}
+  .mk .dot{width:9px;height:9px;border-radius:50%;flex:0 0 auto;}
+  .mk .dot.all{background:conic-gradient(#25F4EE,#FF9900,#FFE600,#EE4D2D,#25F4EE);}
+  .mk .dot.tt{background:#25F4EE;box-shadow:6px 0 0 -1px #FE2C55;}
+  .mk .dot.az{background:#FF9900;}
+  .mk .dot.ml{background:#FFE600;}
+  .mk .dot.sh{background:#EE4D2D;}
+  .filternote{font-size:12px;color:var(--muted);margin:18px 0 -6px;display:none;}
+  .filternote b{color:var(--accent);}
+  .searchbox{position:relative;margin-top:12px;max-width:460px;}
+  .searchbox .ico{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:13px;color:var(--muted);pointer-events:none;line-height:1;}
+  #q{width:100%;font-family:inherit;font-size:13.5px;font-weight:500;color:var(--text);
+    background:rgba(15,43,58,0.55);border:1px solid var(--cardborder);border-radius:999px;
+    padding:11px 42px 11px 38px;outline:none;transition:border-color .15s,box-shadow .15s;}
+  #q::placeholder{color:var(--muted);opacity:.8;font-weight:400;}
+  #q:hover{border-color:rgba(126,200,227,0.4);}
+  #q:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(126,200,227,0.14);}
+  .searchbox .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);display:none;
+    background:none;border:0;color:var(--muted);font-family:inherit;font-size:16px;line-height:1;
+    cursor:pointer;padding:6px 9px;border-radius:999px;}
+  .searchbox .clr:hover{color:var(--accent);background:rgba(126,200,227,0.1);}
+  .searchbox .clr:focus-visible{outline:2px solid var(--accent);outline-offset:1px;}
+  .searchbox.has .clr{display:block;}
+  .kbd{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:10px;font-weight:700;
+    color:var(--muted);border:1px solid var(--cardborder);border-radius:5px;padding:2px 6px;pointer-events:none;opacity:.65;}
+  .searchbox.has .kbd,.searchbox.foc .kbd{display:none;}
+  .nores{display:none;margin:26px 0 0;padding:22px;text-align:center;border:1px dashed var(--cardborder);
+    border-radius:14px;color:var(--muted);font-size:13.5px;background:rgba(15,43,58,0.35);}
+  .nores b{color:var(--text);}
+  .nores button{margin-top:12px;font-family:inherit;font-size:12px;font-weight:700;color:#07131F;
+    background:var(--accent);border:0;border-radius:999px;padding:8px 16px;cursor:pointer;}
+  .nores button:hover{filter:brightness(1.08);}
+  @media (max-width:640px){.searchbox{max-width:none;}.kbd{display:none;}}
+  h2{font-size:12px;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent);font-weight:700;margin:34px 0 14px;scroll-margin-top:14px;}
+  h2 .cnt{color:var(--muted);font-weight:600;margin-left:8px;opacity:.65;letter-spacing:0;}
+  .nav{display:flex;flex-direction:column;gap:11px;margin:0 0 32px;}
+  .nav a{font-size:11.5px;font-weight:600;color:var(--muted);text-decoration:none;border:1px solid var(--cardborder);border-radius:999px;padding:6px 13px;transition:color .15s,border-color .15s;background:rgba(15,43,58,0.4);white-space:nowrap;}
+  .nav a:hover{color:var(--accent);border-color:var(--accent);}
+  .nav a.off{opacity:.28;pointer-events:none;}
+  .macro{display:flex;align-items:center;gap:16px;margin:56px 0 8px;}
+  .macro:first-of-type{margin-top:20px;}
+  .macro .cap{font-size:19px;font-weight:800;color:#fff;letter-spacing:-.4px;white-space:nowrap;display:flex;align-items:center;gap:9px;}
+  .macro .rule{flex:1;height:1px;background:linear-gradient(90deg,rgba(126,200,227,0.42),transparent);}
+  .navgroup{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .navlab{font-size:10px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);opacity:.75;margin-right:2px;}
+  @media (max-width:640px){.macro .cap{font-size:16px;}.macro{margin:40px 0 6px;}}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  a.card{display:block;text-decoration:none;background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:18px 20px;transition:border-color .15s,box-shadow .15s,transform .15s;overflow-wrap:break-word;}
+  a.card:hover{border-color:var(--accent);box-shadow:0 6px 26px rgba(37,212,191,0.10);transform:translateY(-1px);}
+  a.card.feat{border-color:rgba(250,204,21,0.34);background:linear-gradient(135deg,rgba(15,43,58,0.62),rgba(250,204,21,0.055));}
+  a.card.feat:hover{border-color:var(--yellow);}
+  a.card .t{font-weight:700;color:#fff;font-size:15.5px;}
+  a.card .d{color:var(--muted);font-size:12.5px;margin-top:5px;}
+  a.card .tag{display:inline-block;font-size:10px;font-weight:700;color:var(--accent);margin-top:9px;letter-spacing:0.5px;}
+  .foot{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+  @media (max-width:640px){body{padding:28px 16px 44px;background-attachment:scroll;}h1{font-size:30px;}.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Elevate Ecom<sup style="font-size:7px;top:-6px;position:relative;">®</sup> · Uso interno</div>
+  <h1>Elevate <b>4D · Hub</b></h1>
+  <div class="sub">Central da metodologia de diagnóstico e das análises de cliente, agora <b style="color:var(--text);font-weight:700;">em todos os marketplaces</b>: TikTok Shop, Amazon, Mercado Livre e Shopee. Inclui o <b style="color:var(--text);font-weight:700;">raio-X completo do TikTok Shop BR</b>: as 27 categorias com faturamento no ar (lojas, creators e criativos por subnicho) mais as Top 200 marcas. Sempre atualizado a cada publicação.</div>
+  <div>
+    <span class="conf">🔒 CONFIDENCIAL — uso interno do time. Não compartilhar fora da Elevate.</span>
+  </div>
+  <div class="mkts">
+    <span class="lab">Filtrar por</span>
+    <button type="button" class="mk active" data-f="all"><span class="dot all"></span>Todos</button>
+    <button type="button" class="mk" data-f="tt"><span class="dot tt"></span>TikTok Shop</button>
+    <button type="button" class="mk" data-f="az"><span class="dot az"></span>Amazon</button>
+    <button type="button" class="mk" data-f="ml"><span class="dot ml"></span>Mercado Livre</button>
+    <button type="button" class="mk" data-f="sh"><span class="dot sh"></span>Shopee</button>
+  </div>
+  <div class="searchbox" id="searchbox">
+    <span class="ico">🔎</span>
+    <input type="search" id="q" autocomplete="off" spellcheck="false"
+           placeholder="Buscar por termo: creators, onboarding, ACoS, Shopee…"
+           aria-label="Buscar material por termo">
+    <span class="kbd">/</span>
+    <button type="button" class="clr" id="qclr" aria-label="Limpar busca">×</button>
+  </div>
+  <div class="filternote" id="filternote"></div>
+  <div class="accentbar"></div>
+
+  <a href="./Elevate%204D/Categorias%20Restritas/LIBERACAO-CATEGORIAS-RESTRITAS.html" target="_blank" rel="noopener" style="display:block;text-decoration:none;margin:0 0 18px;padding:16px 20px;border:1px solid rgba(250,204,21,0.45);background:linear-gradient(135deg,rgba(250,204,21,0.12),rgba(15,43,58,0.55));border-radius:14px">
+    <div style="font-weight:800;color:#fff;font-size:15.5px">🔓 Liberação de Categorias Restritas · TikTok Shop</div>
+    <div style="color:var(--muted);font-size:12.5px;margin-top:4px">O que o cliente precisa comprovar (faturamento + prints da tela inteira de marketplace: Amazon, Meli, Shopee ou Shein) para liberar <b>Alimentos &amp; Bebidas</b>, <b>Cosméticos</b>, <b>Joias</b> e <b>Infantil (&lt;3 anos)</b>, mais a régua de requisitos prioritário e alternativo. <b style="color:var(--yellow)">Abrir guia →</b></div>
+  </a>
+
+  <nav class="nav">
+    <div class="navgroup"><span class="navlab">Comece aqui</span><a href="#welcome">Boas-vindas</a><a href="#elite">Time de Elite</a><a href="#carteiras">Carteiras</a><a href="#recrutamento">Recrutamento</a><a href="#start">Comece por aqui</a></div>
+    <div class="navgroup"><span class="navlab">Metodologia &amp; Operação</span><a href="#metodo">Metodologia</a><a href="#formacao">Formação</a><a href="#live-que-vende">Live que Vende</a><a href="#datas">Datas comerciais</a><a href="#datas-anteriores">Arquivo</a><a href="#fluxo">Classificação</a></div>
+    <div class="navgroup"><span class="navlab">Comercial &amp; Cliente</span><a href="#comercial">Comercial</a><a href="#onboarding">Onboarding</a><a href="#cliente">Docs do cliente</a></div>
+    <div class="navgroup"><span class="navlab">Inteligência &amp; Análises</span><a href="#marketplaces">Ferramentas &amp; Rankings</a><a href="#categorias">Análises por categoria</a><a href="#analises">Análises de cliente</a></div>
+  </nav>
+
+  <div class="macro"><span class="cap">🚀 Comece aqui · Time</span><span class="rule"></span></div>
+  <h2 id="welcome">Boas-vindas ao time <span class="cnt">· novos colaboradores</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Boas-Vindas/BEM-VINDO-ELEVATE.html"><div class="t">👋 Bem-vindo(a) à Elevate</div><div class="d">Onboarding do time: quem somos e o <b>Grupo Next</b>, a <b>cultura</b> ("a cultura é o nosso sistema operacional"), como nos organizamos em <b>squads</b>, os <b>3 papéis</b> (Supervisor · Account · Executor), o <b>organograma</b> atual, o <b>plano de carreira</b> e os primeiros passos. Destilado do All Hands.</div><div class="tag">CULTURA · ESTRUTURA · CARREIRA</div></a>
+  </div>
+
+  <h2 id="elite">Time de Elite <span class="cnt">· reconhecimento mensal</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Time%20de%20Elite/BLACK-PANTHER-JULHO-2026.html"><div class="t">🐆 Black Panther · Julho 2026</div><div class="d">O <b>Time de Elite</b> do fechamento de julho: quem cumpriu a base da posição e comprovou uma entrega acima dela. Traz a <b>nota de cada pessoa</b> com o breakdown dos 4 critérios (Resultado 4 · Execução 3 · Qualidade 2 · Time 1), a <b>entrega de destaque</b> com indicador antes e depois, e a régua completa de como se chega ao nível Black.</div><div class="tag">RECONHECIMENTO · JULHO/2026</div></a>
+  </div>
+
+  <h2 id="carteiras">Carteiras por supervisor <span class="cnt">· distribuição de clientes</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Carteiras/CARTEIRAS-POR-SUPERVISOR.html"><div class="t">💼 Carteiras por Supervisor</div><div class="d">Como os clientes ativos estão divididos entre <b>Davi (52)</b> e <b>Vinicius (50)</b>, com o critério de alocação por squad (<b>Shark → Davi</b>, <b>Sphynx → Vinicius</b>) e a lista nominal de cada carteira, já conferida contra a planilha <b>Clientes Ativos + Implantação</b> — com os <b>5 clientes em aviso prévio</b> sinalizados e <b>Manalinda</b> à parte, em regime de exceção com gestor único. Traz também a leitura do quadro <b>“Para Nova estrutura”</b>: R$ 7,59 mi de faturamento preenchido, 54 contas com valor informado e as <b>10 maiores receitas concentrando ~78%</b> do total.</div><div class="tag">GESTÃO · INTERNO</div></a>
+  </div>
+
+  <h2 id="recrutamento">Recrutamento <span class="cnt">· seleção de candidatos</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Recrutamento/AVALIACAO-PERFIL-CS.html"><div class="t">🧭 Avaliação de Perfil &amp; Fit Cultural (Gestão de Contas / CS)</div><div class="d">Teste de <b>~12 min em 3 blocos</b> para candidatos: <b>comportamental</b> (organização, relacionamento, resiliência, proatividade), <b>fit cultural Next</b> (os 4 princípios da forma Next de operar) e <b>cognitivo</b>. Corrige na hora, dá o veredito (Forte/Moderado/Baixo fit) e <b>registra o resultado no Monday automaticamente</b>. Link para enviar ao candidato.</div><div class="tag">CANDIDATO · LINK PÚBLICO</div></a>
+    <a class="card" target="_blank" rel="noopener" href="https://elevate.monday.com/boards/18423704080"><div class="t">🗂️ Board · Recrutamento · Fit Cultural (Monday)</div><div class="d">Onde os resultados das avaliações ficam registrados, com nota por dimensão, veredito e cognitivo. Workspace <b>Next - Financeiro/Administrativo</b> (acesso restrito). O time cola o código do candidato via script pra criar o item.</div><div class="tag">MONDAY · INTERNO</div></a>
+  </div>
+
+  <h2 id="start">Comece por aqui</h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Elevate%204D/Visao%20Geral/ELEVATE-4D-VISAO-GERAL.html"><div class="t">⭐ Visão Geral</div><div class="d">O documento mestre — explica todo o método numa leitura só.</div><div class="tag">DOC MESTRE · TIKTOK SHOP</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/One-Pager/ELEVATE-4D-ONE-PAGER.html"><div class="t">One-Pager</div><div class="d">Radar das 4 dimensões + 7 momentos + CT%. Para proposta/R01.</div><div class="tag">COMERCIAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Mercado%20Livre%204D/Visao%20Geral/VISAO-GERAL-ML.html"><div class="t">⭐ Visão Geral · Mercado Livre</div><div class="d">O documento mestre do 4D adaptado às regras do ML: D1 Catálogo · D2 Mercado Ads · D3 Reputação &amp; Envios · D4 Buy Box, com TACOS como métrica-guia.</div><div class="tag">DOC MESTRE · MERCADO LIVRE · RASCUNHO</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Mercado%20Livre%204D/One-Pager/ONE-PAGER-ML.html"><div class="t">One-Pager · Mercado Livre</div><div class="d">As 4 dimensões do ML + TACOS + precificação (tarifa de venda por categoria e Clássico/Premium + Full). Para proposta/R01.</div><div class="tag">COMERCIAL · MERCADO LIVRE · RASCUNHO</div></a>
+  </div>
+
+  <div class="macro"><span class="cap">🧭 Metodologia &amp; Operação</span><span class="rule"></span></div>
+  <h2 id="metodo">Metodologia</h2>
+  <div class="grid">
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Metodologia/ELEVATE-4D-METODOLOGIA-DIAGNOSTICO.html"><div class="t">Metodologia completa</div><div class="d">4 dimensões, 7 momentos, CT%, scorecard, matriz, playbook TikTok.</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/README.html"><div class="t">Índice do pacote</div><div class="d">Mapa de todos os documentos.</div></a>
+  </div>
+
+  <h2 id="formacao">Formação <span class="cnt">· plataformas</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Formacao/FUNDAMENTOS-MERCADO-LIVRE.html"><div class="t">🎓 Fundamentos do Mercado Livre</div><div class="d">Introdução ao canal <b>para recém-chegados</b>: como o ML funciona e as alavancas que decidem a venda — <b>reputação</b> (termômetro/MercadoLíder), <b>Full</b>, <b>Buy Box</b> e Clássico/Premium, <b>Mercado Ads</b> (ACOS/TACOS), catálogo/SEO e tarifas. Com glossário. Porta de entrada antes da Visão Geral.</div><div class="tag">INTRODUÇÃO · MERCADO LIVRE · RASCUNHO</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Formacao/FUNDAMENTOS-TIKTOK-SHOP.html"><div class="t">🎓 Formação TikTok Shop &amp; GMV Max</div><div class="d">Cursos da TikTok Academy destilados: <b>Introdução à TikTok Shop e ao GMV Max</b>, <b>Formatos de anúncios do GMV Max</b> e <b>Conectar suas ferramentas para o GMV Max</b> — com quiz interativo e cada conceito mapeado nas 4 dimensões. Prints originais embutidos.</div><div class="tag">3 CURSOS · QUIZ</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Formacao/BOAS-PRATICAS-LIVE-TIKTOK.html"><div class="t">🎥 Boas práticas de Live no TikTok</div><div class="d">Treinamento de <b>linguagem e comportamento em live e vídeo</b>: o que <b>não falar</b> (alegações de saúde, tirar o cliente da plataforma) e o que <b>não fazer na live</b> (conteúdo adulto, live inativa, redirecionamento), mais como reescrever sem tomar violação. Busca por palavra. Uso interno.</div><div class="tag">LIVE · COMPLIANCE</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Formacao/GUIA-CRIADOR-AUTORIZAR-ANUNCIOS.html"><div class="t">🎬 Autorizar Anúncios (guia do criador)</div><div class="d">Passo a passo pro <b>criador autorizar anúncios</b> nos vídeos (Spark Code / Shop Ads): 1º acesso, autorizações recorrentes e monetização de afiliados. Com prints. Pronto pra enviar ao creator.</div><div class="tag">CRIADOR · PASSO A PASSO</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Formacao/RECOMENDACOES-EXPLORACAO-ADS.html"><div class="t">🧭 Recomendações de Exploração (novidade Ads)</div><div class="d">Novo recurso do TikTok Ads: o <b>Resumo da exploração</b> testa suas publicações como criativos e ranqueia as vencedoras. Explica as <b>3 métricas</b> (Disponíveis · Explorados · Excelentes), como ler cobertura × qualidade e o <b>playbook</b> pra subir a % de excelentes (conecta com GMV Max).</div><div class="tag">NOVIDADE · GMV MAX</div></a>
+  </div>
+
+  <h2 id="live-que-vende">Formação Live que Vende <span class="cnt">· produto novo</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Formacao/Live%20que%20Vende/"><div class="t">📦 Pacote completo · abrir os 3 documentos</div><div class="d">Página única do produto, com <b>os três documentos</b> (programa, proposta e guia de setup) em HTML e PDF, mais o resumo do formato: 3 meses, 23 lives, R$ 15.000 em pagamento único e o add-on presencial de R$ 7.000. <b>É este o link para compartilhar.</b></div><div class="tag">ÍNDICE DO PRODUTO · 1 LINK</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Formacao/Live%20que%20Vende/Programa-Formacao-Live-que-Vende.html"><div class="t">🎙️ Programa · estrutura operacional</div><div class="d"><b>Documento interno.</b> Como o produto roda: call de diagnóstico e Playbook da Loja, as <b>23 lives</b> em 4 fases (3 seguidas → 2/semana → 1/semana → certificação), o ciclo fixo de cada live (pré-live, acompanhamento, devolutiva a quente, ficha), a <b>rubrica de 7 eixos</b>, o acervo que fica com a loja, capacidade por analista e matriz de riscos.</div><div class="tag">INTERNO · R$ 15K PAGAMENTO ÚNICO</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Formacao/Live%20que%20Vende/Proposta-Formacao-Live-que-Vende.html"><div class="t">📄 Proposta comercial (cliente)</div><div class="d">Versão de venda pro <b>dono da loja</b>: treino dentro da live real por 3 meses, com o argumento que fecha a venda — o <b>Manual de Operação</b> e o acervo ficam na loja pra sempre, então o método não vai embora se o funcionário pedir as contas. Inclui add-on presencial de <b>R$ 7k</b> e a seção "o que este programa não é".</div><div class="tag">COMERCIAL · 3 MESES</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Formacao/Live%20que%20Vende/Guia-Setup-Equipamentos.html"><div class="t">🎛️ Guia de setup · R$ 5k a R$ 50k</div><div class="d">Anexo técnico com <b>4 faixas de investimento</b> item a item e preço: entrada (celular), profissional (mirrorless + desktop), estúdio (2 câmeras com corte) e operação contínua (redundância). Traz a regra de prioridade <b>áudio → luz → internet → câmera</b>, a lista do que <b>não</b> comprar e um <b>caso real de orçamento de R$ 42.636,95</b> destrinchado item a item.</div><div class="tag">EQUIPAMENTO · 4 FAIXAS</div></a>
+  </div>
+
+  <h2 id="datas">Datas Comerciais <span class="cnt">· campanhas de data</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Campanhas/CAMPANHA-8-8-TIKTOK-SHOP.html"><div class="t">🔥 Campanha 8.8 · Liquida Dia dos Pais</div><div class="d">Guia para vendedores da 8.8 (29/07 a 13/08): as <b>3 fases</b> (Category Day Moda → 8.8 geral → Category Day Moda), a nova <b>Rolling Campaign</b> (1 cadastro vale pra 8.8, 9.9, 10.10 e 11.11), quem entra em cada fase, curva de verba nos picos e checklist por data.</div><div class="tag">29 JUL–13 AGO · GUIA</div></a>
+  </div>
+
+  <h2 id="datas-anteriores">Campanhas Anteriores <span class="cnt">· arquivo</span></h2>
+  <div class="grid">
+    <a class="card" target="_blank" rel="noopener" href="./Campanhas/CAMPANHA-7-7-TIKTOK-SHOP.html"><div class="t">🗄️ Campanha 7.7 · TikTok Shop</div><div class="d">Guia para vendedores da Liquidação 7.7 (2–12 jul): as 2 modalidades (Oferta Relâmpago × Participação Geral), regras de elegibilidade, GMV Max, estrutura de campanha por níveis, como definir a meta de ROI e o pagamento seguro (CPS). <b>Campanha encerrada</b>, mantido como referência de arquitetura.</div><div class="tag">ENCERRADA · REFERÊNCIA</div></a>
+  </div>
+
+  <h2 id="fluxo">Fluxo de Classificação <span class="cnt">9</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Mercado%20Livre%204D/Analise%20de%20Conta/MODO-ANALISE-CONTA-ML.html"><div class="t">🧠 Modo Análise de Conta · Mercado Livre</div><div class="d">Como o gestor pensa ao analisar uma conta de ML: a ordem de leitura (saúde → chão → Buy Box → mídia), o checklist de limiares (reputação/envios), o scorecard das 4 dimensões e o TACOS. Cola os dados da conta no fim → recebe momento + dimensão prioritária + plano.</div><div class="tag">MERCADO LIVRE · RASCUNHO</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Fluxo%20de%20Classificacao/Guia%20de%20Coleta/GUIA-COLETA-DADOS-4D.html"><div class="t">Guia de Coleta</div><div class="d">O que baixar do TikTok por cliente (pacote de exports).</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Fluxo%20de%20Classificacao/SOP/FLUXO-CLASSIFICACAO-4D.html"><div class="t">SOP — as regras</div><div class="d">Passo a passo: momento, CT%, scorecard, prioridade.</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Fluxo%20de%20Classificacao/Prompt/PROMPT-CLASSIFICACAO-4D.html"><div class="t">Prompt (IA)</div><div class="d">Cola os dados → a IA classifica e escreve a análise.</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Fluxo%20de%20Classificacao/ENTRADA-DADOS-4D.html"><div class="t">📥 Entrada de Dados (na página)</div><div class="d">Cole os exports aqui mesmo → momento, CT%, decomposição e prioridade na hora, sem baixar nada.</div><div class="tag">NOVO</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Fluxo%20de%20Classificacao/MODELO-PLANEJAMENTO-ESTRATEGICO-4D.html"><div class="t">🧭 Modelo · Planejamento Estratégico</div><div class="d">Exemplo do <b>Planejamento Estratégico</b> que a Entrada de Dados gera como documento à parte (tese, plano por dimensão, metas, riscos, governança, roadmap). Dados fictícios.</div><div class="tag">MODELO</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Fluxo%20de%20Classificacao/MODELO-RELATORIO-4D.html"><div class="t">📄 Modelo · Relatório 4D completo</div><div class="d">Exemplo do <b>relatório completo</b> (números + diagnóstico 4D + estratégia). Dados fictícios.</div><div class="tag">MODELO</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Fluxo%20de%20Classificacao/CALCULADORA-4D.xlsx"><div class="t">Calculadora (1 conta)</div><div class="d">Mesma lógica em planilha completa: cole os exports (Seller Center/FastMoss) → GMV, CT%, decomposição, momento e prioridade. <b>Baixar (.xlsx)</b></div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Fluxo%20de%20Classificacao/PAINEL-PORTFOLIO-4D.xlsx"><div class="t">Painel de Portfólio (41 contas)</div><div class="d">Classifica todas as contas em lote. <b>Baixar (.xlsx)</b></div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Elevate%204D/Diagnostico%20Estrategico/MODELO-DIAGNOSTICO-ESTRATEGICO-4D.html"><div class="t">⭐ Modelo de Diagnóstico Estratégico</div><div class="d">O deliverable do cliente, reformado sobre o 4D (momento + CT% + scorecard + plano por dimensão). Template pronto pra preencher.</div><div class="tag">ENTREGA</div></a>
+  </div>
+
+  <div class="macro"><span class="cap">💼 Comercial &amp; Cliente</span><span class="rule"></span></div>
+  <h2 id="comercial">Comercial <span class="cnt">· decks por marketplace</span></h2>
+  <div class="grid">
+    <a class="card" target="_blank" rel="noopener" href="./Comercial/APRESENTACAO-TIKTOK-SHOP.html"><div class="t">🎬 Apresentação · TikTok Shop (com valor)</div><div class="d">Deck completo com o investimento (plano 12 meses: Gestão R$ 72k · Consultoria R$ 36k). Projeta na call e exporta PDF.</div><div class="tag">DECK · COM VALOR</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Comercial/APRESENTACAO-TIKTOK-SHOP.html?semvalor"><div class="t">🎬 Apresentação · TikTok Shop (sem valor)</div><div class="d">Mesmo deck, mas o slide de investimento vira "sob consulta" — para quando o preço é definido na reunião.</div><div class="tag">DECK · SEM VALOR</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Comercial/ROTEIRO-CANVA-APRESENTACAO-TIKTOK.html"><div class="t">Roteiro pro Canva</div><div class="d">Conteúdo slide a slide pra recriar a deck no Canva, no padrão visual da Elevate.</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Comercial/APRESENTACAO-MERCADO-LIVRE.html"><div class="t">🏷️ Apresentação · Mercado Livre (com valor)</div><div class="d">Deck comercial de Gestão de Mercado Livre, com o slide de investimento.</div><div class="tag">DECK · MERCADO LIVRE</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Comercial/APRESENTACAO-MERCADO-LIVRE.html?semvalor"><div class="t">🏷️ Apresentação · Mercado Livre (sem valor)</div><div class="d">Mesmo deck, investimento vira "sob consulta".</div><div class="tag">DECK · SEM VALOR</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Comercial/APRESENTACAO-SHOPEE.html"><div class="t">🛍️ Apresentação · Shopee (com valor)</div><div class="d">Deck comercial de Gestão de Shopee, com o slide de investimento.</div><div class="tag">DECK · SHOPEE</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Comercial/APRESENTACAO-SHOPEE.html?semvalor"><div class="t">🛍️ Apresentação · Shopee (sem valor)</div><div class="d">Mesmo deck, investimento vira "sob consulta".</div><div class="tag">DECK · SEM VALOR</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Comercial/APRESENTACAO-MARKETPLACES.html"><div class="t">🌐 Apresentação · Marketplaces 2 em 1 (com valor)</div><div class="d">Deck combinado: Shopee + Mercado Livre numa só apresentação. Investimento: 1º marketplace R$ 3.800/mês, 2º R$ 3.000/mês.</div><div class="tag">DECK · COMBO 2 EM 1</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Comercial/APRESENTACAO-MARKETPLACES.html?semvalor"><div class="t">🌐 Apresentação · Marketplaces 2 em 1 (sem valor)</div><div class="d">Mesmo deck combinado (Shopee + Mercado Livre), investimento vira "sob consulta".</div><div class="tag">DECK · SEM VALOR</div></a>
+  </div>
+
+  <h2 id="onboarding">Onboarding &amp; Implantação <span class="cnt">· processo do time</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/PLAYBOOK-IMPLANTACAO-4D.html"><div class="t">⭐ Playbook completo</div><div class="d">As 7 fases (do "fechou" ao "operando"): passos, responsável e o que enviar ao cliente.</div><div class="tag">DOC MESTRE</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/FLUXO-ONBOARDING.html"><div class="t">🕑 Fluxo de Onboarding (linha do tempo)</div><div class="d">Do fechamento ao plano de ação: grupo, contrato, apresentação, kick-off, formulário e planejamento. Quem faz cada etapa.</div><div class="tag">PROCESSO</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html"><div class="t">📘 Guia das Reuniões (R01–R09)</div><div class="d">O conteúdo de cada reunião — exatamente o que será feito e ensinado: roteiro de quem conduz + o que o cliente aprende e prepara.</div><div class="tag">CAPACITAÇÃO</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/CHECKLIST-ONBOARDING-4D.xlsx"><div class="t">Checklist de Onboarding</div><div class="d">Acompanha cada cliente novo por fase. <b>Baixar (.xlsx)</b></div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/CHECKLIST-INTERNO-CONTA-RODANDO.html"><div class="t">✅ Checklist interno · Conta rodando</div><div class="d">Validação técnica da Elevate (acesso, banco, ads, Studio) + gate final antes de liberar operação.</div><div class="tag">INTERNO</div></a>
+  </div>
+
+  <h2 id="cliente">Documentos para o Cliente <span class="cnt">· enviar ao cliente</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Aulas%20e%20Materiais/index.html"><div class="t">📚 Aulas & Materiais · TikTok Shop</div><div class="d">Área com os <b>materiais que a Elevate envia ao cliente e ao creator</b> nas aulas: planilha de precificação, conta bancária, acesso da agência e autorização de ads. Abre como um mini-4D no padrão Elevate.</div><div class="tag">ÁREA · CLIENTE + CREATOR</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Landing%20Onboarding/index.html#reunioes"><div class="t">🌐 Onboarding do Cliente</div><div class="d">Landing pública única pro cliente: jornada, critérios, equipe, timeline, as 9 reuniões e escopo pelas 4 dimensões. Cada marca é atendida pelos 4 squads (comunicação, ads, operação e creators).</div><div class="tag">PÚBLICA · CLIENTE</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/KIT-ENTRADA-DOCUMENTOS.html"><div class="t">Kit de Entrada</div><div class="d">Lista única do que pedir ao cliente. Pronto pra enviar.</div></a>
+    <a class="card" target="_blank" rel="noopener" href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing"><div class="t">Planilha de Precificação</div><div class="d">3 tiers (Campanha · Venda · Live) + previsibilidade: cenário, projeção, payback e níveis. <b>Abrir no Google Sheets ↗</b> <span style="opacity:.7">(planilha master, sempre atualizada)</span><br><b style="color:#ffcf5c">⚠️ Para usar, faça uma cópia:</b> <span style="opacity:.85">Arquivo → Fazer uma cópia (não edite a master).</span></div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/COMO-PREENCHER-PRECIFICACAO.html"><div class="t">📋 Como preencher a planilha</div><div class="d">Guia campo a campo pro cliente entender o que está preenchendo.</div><div class="tag">PASSO A PASSO</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/TUTORIAL-ACESSO-COLABORADOR.html"><div class="t">Tutorial · Acesso colaborador</div><div class="d">Passo a passo <b>com screenshots</b>: cliente libera o Seller Center (sem senha) → Administrador Principal. <b>Também em PDF →</b></div><div class="tag">COM IMAGENS</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/TUTORIAL-ACESSO-COLABORADOR.pdf"><div class="t">Tutorial · Acesso colaborador (PDF)</div><div class="d">Mesmo tutorial em PDF para enviar ao cliente.</div><div class="tag">PDF</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/TUTORIAL-CONECTAR-CONTA-ADS.html"><div class="t">Tutorial · Conectar Ads</div><div class="d">Criar/conectar a conta de anúncios via Business Center.</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/TUTORIAL-CONECTAR-ADS-AO-BC-ELEVATE.html"><div class="t">Tutorial · Conectar Ads ao BC da Elevate</div><div class="d">Adicionar a Elevate como <b>parceira no Business Center</b> e dar acesso à conta de anúncios, Pixel e Shop, sem senha.</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/ONE-PAGER-GROWTH-CAMP.html"><div class="t">💰 Growth Camp · Crédito de Ads</div><div class="d">O TikTok devolve <b>1:1 em crédito</b> o que a loja gasta em GMV Max, por degraus de R$ 600 a R$ 33.000, numa janela de ~30 dias a partir da ativação. Traz o banner que sinaliza se a conta está elegível, a armadilha de parar entre degraus, ROI por ticket médio e as regras que zeram o acúmulo. <b>Também em PDF →</b></div><div class="tag">COM IMAGENS</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/ONE-PAGER-GROWTH-CAMP.pdf"><div class="t">Growth Camp · Crédito de Ads (PDF)</div><div class="d">Mesmo one-pager em PDF para enviar ao cliente.</div><div class="tag">PDF</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/TUTORIAL-ACESSO-TIKTOK-STUDIO.html"><div class="t">Tutorial · TikTok Studio</div><div class="d">Liberar a conta social (D4) do jeito certo.</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/TUTORIAL-CADASTRO-CONTA-BANCARIA.html"><div class="t">Tutorial · Conta bancária</div><div class="d">Cliente cadastra a conta PJ (mesmo CNPJ) que recebe o dinheiro das vendas.</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Elevate%204D/Playbook%20de%20Implantacao/Documentos%20para%20o%20Cliente/CHECKLIST-CONTA-RODANDO.html"><div class="t">✅ Checklist · Conta rodando</div><div class="d">Os 4 passos que deixam a loja pronta pra vender. Cliente marca o que já fez.</div><div class="tag">ATIVAÇÃO</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./ETOK/GUIA-CADASTRO-ETOK.html"><div class="t">🔐 Cadastro no ETOK</div><div class="d">Passo a passo <b>com screenshots</b> pro cliente criar a conta no <b>ETOK</b> (elevatok.com.br) e conectar a operação: cadastro → aprovação → conectar TikTok Shop → autorizar (ELEVATER) → conectar TikTok Ads. Dados sensíveis borrados.</div><div class="tag">COM IMAGENS · ETOK</div></a>
+  </div>
+
+  <div class="macro"><span class="cap">📊 Inteligência &amp; Análises</span><span class="rule"></span></div>
+  <h2 id="marketplaces">Ferramentas &amp; Rankings <span class="cnt">· TikTok Shop</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Creators-Master/index.html"><div class="t">🎯 Creators de Vídeo · Base para Campanhas · TikTok Shop</div><div class="d">Lista consolidada e <b>copiável</b> de <b>todos os creators que aparecem nos vídeos</b> de todas as análises: ordenados por <b>GMV gerado</b>, com <b>nichos, lojas, se rodam ADS e melhor ROAS</b>. Busca, filtro por nicho, botão de copiar (TSV pro Sheets) e planilha .xlsx. Base pra acionar creators em campanhas nas contas dos clientes. <b>2101 creators</b>.</div><div class="tag">28 DIAS · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Top-Marcas-TikTokShop/index.html"><div class="t">🏷️ Top 200 Marcas · TikTok Shop</div><div class="d">As <b>200 maiores marcas do TikTok Shop BR por faturamento (GMV)</b> no mês, todas as categorias. Traz categoria, GMV, unidades e nº de afiliados de cada loja, com <b>selos de fitness/esportes e roupa feminina</b> e link direto pra loja no FastMoss. Base: as 500 maiores do ranking mensal, reordenadas por GMV.</div><div class="tag">JUNHO/2026 · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="https://elevate-newsletters.vercel.app/"><div class="t">🌐 Elevate News · site online</div><div class="d">A newsletter <b>publicada online</b>, sempre atualizada: "as novidades que mexem com a sua operação, organizadas por marketplace". Filtra por canal (Mercado Livre, Shopee, TikTok Shop, Amazon) e acompanha logística, cupons, taxas e funcionalidades de cada plataforma.</div><div class="tag">SITE · ONLINE ↗</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Entregaveis/Roadmap-TikTokShop/index.html"><div class="t">🗺️ Roadmap · Análises de Nicho (TikTok Shop)</div><div class="d">As <b>29 categorias-mãe</b> do TikTok Shop priorizadas por tamanho de mercado (GMV), com nº de subnichos e <b>status (feito/pendente)</b> para dar cadência. Cada categoria vira um doc próprio com seus subnichos dentro.</div><div class="tag">TRACKER · INTERNO</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Entregaveis/Metodo-TikTokShop/index.html"><div class="t">📘 Método · Inteligência TikTok Shop</div><div class="d">Como as análises de TikTok Shop são feitas de ponta a ponta: a fonte (FastMoss), os endpoints, as pegadinhas (ranking por unidades vs GMV, janelas de tempo, ROAS estimado), os pipelines de cada análise e como publicar no Hub. Documentação interna para reproduzir e criar novas análises de nicho.</div><div class="tag">MÉTODO · INTERNO</div></a>
+  </div>
+
+  <h2 id="categorias">Análises por Categoria <span class="cnt">· TikTok Shop · 27 por GMV + comparativo</span></h2>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Comparativo-TikTok-Shop-Jun-Jul/index.html"><div class="t">📈 Comparativo Junho para Julho · TikTok Shop</div><div class="d">O que mudou entre os dois <b>meses fechados</b> nos <b>25 nichos</b>: GMV por subnicho, <b>quem entrou e quem saiu</b> do topo. Cada linha traz o <b>grau de confiança</b> da comparação, porque a base de junho veio de um pipeline com defeitos hoje corrigidos: <b>11 nichos</b> com comparação confiável.</div><div class="tag">COMPARATIVO · JUN → JUL/26</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Nicho-Beleza/index.html"><div class="t">💄 Análise do Nicho de Beleza · TikTok Shop</div><div class="d">Raio-X de <b>Beleza no TikTok Shop BR</b> por <b>12 sub-nichos</b>: as <b>lojas que mais venderam</b> (Junho), os <b>criadores por trás de cada loja</b> e os <b>criativos (vídeos) que geraram as vendas</b> com <b>ROAS, gasto de mídia e link direto do TikTok</b>. Inclui rankings consolidados de top criadores e criativos AD.</div><div class="tag">JUNHO/2026 · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Roupas-Femininas/index.html"><div class="t">👗 Análise de Roupas Femininas · TikTok Shop</div><div class="d">A <b>#2 categoria do TikTok Shop</b> (R$ 27 mi · jul/26). Por <b>7 subnichos</b> (peças superior/inferior, vestidos, íntimas, ternos, dormir e lazer): as <b>lojas líderes</b>, os <b>creators por trás de cada uma</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Esportes/index.html"><div class="t">🏃 Análise de Esportes e Fitness · TikTok Shop</div><div class="d">Esportes, <b>fitness, corrida e academia</b> (R$ 25 mi · jul/26). Por <b>10 subnichos</b> (roupas e calçados esportivos, equipamento de ginástica, esportes com bola/aquáticos, camping, praia): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Saude/index.html"><div class="t">💊 Análise de Saúde · TikTok Shop</div><div class="d">Saúde e bem-estar (R$ 23 mi · jul/26). Por <b>5 subnichos</b> (suplementos alimentares, suprimentos médicos, medicamentos de venda livre e alternativos, sexual wellness): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Telefones-Eletronicos/index.html"><div class="t">📱 Análise de Telefones e Eletrônicos · TikTok Shop</div><div class="d">Eletrônicos e acessórios (R$ 20 mi · jul/26). Por <b>9 subnichos</b> (acessórios de telefone, câmeras, áudio/vídeo, games, wearables, tablets): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Roupas-Masculinas/index.html"><div class="t">👔 Análise de Roupas Masculinas · TikTok Shop</div><div class="d">Moda masculina (R$ 13 mi · jul/26). Por <b>6 subnichos</b> (peças superior/inferior, íntimas, especiais, dormir e lazer, ternos): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Utensilios-Cozinha/index.html"><div class="t">🍳 Análise de Utensílios de Cozinha · TikTok Shop</div><div class="d">Cozinha (R$ 22 mi · jul/26). Por <b>9 subnichos</b> (facas, churrasco, forno, talheres, chá e café, bares e vinhos, aparelhos): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Suprimentos-Domesticos/index.html"><div class="t">🏠 Análise de Suprimentos Domésticos · TikTok Shop</div><div class="d">Casa e organização (R$ 10 mi · jul/26). Por <b>7 subnichos</b> (organizadores, banheiro, decoração, cuidados domésticos, lavanderia, festas): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Texteis-Moveis/index.html"><div class="t">🛏️ Análise de Têxteis e Móveis · TikTok Shop</div><div class="d">Enxoval e casa (R$ 8,1 mi · jul/26). Por <b>3 subnichos</b> (roupas de cama, têxteis domésticos, tecidos e costura): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Creators-Acessorios/index.html"><div class="t">👜 Top Creators de Acessórios · TikTok Shop</div><div class="d">Os <b>creators que mais venderam para as lojas de Acessórios de moda</b> (28 dias), ranqueados pelo GMV que geraram em acessórios. Cada creator mostra <b>por quais empresas vendeu e quanto de GMV em cada</b>. Base: 80 lojas de acessórios e seus criadores.</div><div class="tag">JUNHO/2026 · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Sapatos/index.html"><div class="t">👟 Análise de Sapatos · TikTok Shop</div><div class="d">Calçados (R$ 13 mi · jul/26). Por <b>3 subnichos</b> (femininos, masculinos, acessórios para sapatos): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Eletrodomesticos/index.html"><div class="t">🔌 Análise de Eletrodomésticos · TikTok Shop</div><div class="d">Eletrodomésticos (R$ 7,4 mi · jul/26). Por <b>4 subnichos</b> (portáteis, grandes, utensílios de cozinha, comerciais): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Ferramentas-Hardware/index.html"><div class="t">🔧 Análise de Ferramentas e Hardware · TikTok Shop</div><div class="d">Ferramentas (R$ 9,3 mi · jul/26). Por <b>6 subnichos</b> (manuais, elétricas, jardim, medição, hardware, bombas e encanamento): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Malas-Bolsas/index.html"><div class="t">👜 Análise de Malas e Bolsas · TikTok Shop</div><div class="d">Bolsas e mochilas (R$ 13 mi · jul/26). Por <b>5 subnichos</b> (bolsas femininas, masculinas, funcionais, viagem, acessórios): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Moda-Infantil/index.html"><div class="t">🧒 Análise de Moda Infantil · TikTok Shop</div><div class="d">Moda para crianças (R$ 3,8 mi · jul/26). Por <b>5 subnichos</b> (roupas de menino e menina, calçados de menino e menina, acessórios): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Computadores-Escritorio/index.html"><div class="t">💻 Análise de Computadores e Escritório · TikTok Shop</div><div class="d">Informática (R$ 4,8 mi · jul/26). Por <b>6 subnichos</b> (computadores e tablets, periféricos, componentes, armazenamento, papelaria, equipamentos de escritório): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Automotivo-Moto/index.html"><div class="t">🚗 Análise de Automotivo e Moto · TikTok Shop</div><div class="d">Auto e moto (R$ 5,3 mi · jul/26). Por <b>6 subnichos</b> (acessórios interiores e exteriores, peças de reposição, peças de moto, luzes, lavagem e manutenção): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Reformas-Residenciais/index.html"><div class="t">🛠️ Análise de Reformas Residenciais · TikTok Shop</div><div class="d">Casa e construção (R$ 9,2 mi · jul/26). Por <b>7 subnichos</b> (jardinagem, materiais de construção, iluminação, elétrica, acessórios de cozinha e banheiro, casa inteligente): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Alimentos-Bebidas/index.html"><div class="t">🍫 Análise de Alimentos e Bebidas · TikTok Shop</div><div class="d">Comida e bebida (R$ 8,0 mi · jul/26). Por <b>6 subnichos</b> (lanches, bebidas, comida instantânea, panificação, adega, básicos de cozinha): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Livros-Revistas/index.html"><div class="t">📚 Análise de Livros, Revistas e Áudios · TikTok Shop</div><div class="d">Livros (R$ 3,8 mi · jul/26). Por <b>6 subnichos</b> (literatura e arte, economia e gestão, infantil, educação, ciência e tecnologia, estilo de vida): as <b>editoras e lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Brinquedos-Passatempos/index.html"><div class="t">🧸 Análise de Brinquedos e Passatempos · TikTok Shop</div><div class="d">Brinquedos (R$ 7,9 mi · jul/26). Por <b>6 subnichos</b> (pelúcia, clássicos, jogos e quebra-cabeças, elétricos e RC, educativos, artesanato): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Joias-Acessorios/index.html"><div class="t">💎 Análise de Joias e Acessórios · TikTok Shop</div><div class="d">Joias (R$ 1,3 mi · jul/26). Por <b>6 subnichos</b> (ouro, prata, diamante, pedras artificiais, cristal natural, pérola): as <b>joalherias líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Moveis/index.html"><div class="t">🛋️ Análise de Móveis · TikTok Shop</div><div class="d">Móveis (R$ 7,5 mi · jul/26). Por <b>4 subnichos</b> (ambientes internos, externos, infantil, comercial): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Pet/index.html"><div class="t">🐾 Análise de Pet · TikTok Shop</div><div class="d">Suprimentos para animais (R$ 2,0 mi · jul/26). Por <b>6 subnichos</b> (comida, saúde, acessórios, adestramento, roupas, aquarismo): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok. 30 lojas, 134 creators.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Bebe-Maternidade/index.html"><div class="t">🍼 Análise de Bebê e Maternidade · TikTok Shop</div><div class="d">Bebê e maternidade (R$ 3,3 mi · jul/26). Por <b>6 subnichos</b> (cuidados e saúde, enfermagem e alimentação, roupas e sapatos, segurança, maternidade, fórmula e alimentos): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok. 28 lojas, 132 creators.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Colecionaveis/index.html"><div class="t">🃏 Análise de Colecionáveis · TikTok Shop</div><div class="d">Colecionáveis (R$ 1,8 mi · jul/26). Por <b>5 subnichos</b> (cultura contemporânea, cartões e TCG, entretenimento, esportivos, moedas): as <b>lojas líderes</b>, os <b>creators</b> e os <b>vídeos que mais venderam</b> com ROAS e link do TikTok. 15 lojas, 68 creators.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Moda-Muculmana/index.html"><div class="t">🧕 Análise de Moda Muçulmana · TikTok Shop</div><div class="d">Categoria marginal no TikTok Shop BR (faturamento baixíssimo, sem dados de criativo) (R$ 6,2 mil · jul/26). Por <b>5 subnichos</b> (roupas femininas e masculinas, hijabs, traje de oração, acessórios): as lojas e os creators mapeados. Sem seção de vídeos por falta de dados.</div><div class="tag">MENSAL · TIKTOK SHOP</div></a>
+  </div>
+
+  <h2 id="analises">Análises de Cliente</h2>
+  <p style="color:var(--muted);font-size:13px;line-height:1.6;">🔒 Os <b>dados</b> de cliente são confidenciais e não são publicados — ficam no repositório privado. Abaixo ficam os <b>entregáveis liberados</b> para o time.</p>
+  <div class="grid">
+    <a class="card feat" target="_blank" rel="noopener" href="./Entregaveis/Analise-Lirios-Store/index.html"><div class="t">👗 Análise 4D · Lírios Store</div><div class="d">Diagnóstico 4D + curadoria de verão (transição sazonal): momento, scorecard das 4 dimensões, plano de 30 dias e lote-piloto de produtos.</div><div class="tag">TIKTOK SHOP · CLIENTE</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Entregaveis/Mapa-Oportunidade-Categorias/Mapa_Oportunidade.html"><div class="t">🗺️ Mapa de Oportunidade (categorias)</div><div class="d">Análise FastMoss de categorias: ticket mediano, GMV 28d, % do GMV no maior valor e mapa ticket × GMV. 4 gráficos responsivos.</div><div class="tag">ENTREGÁVEL · FASTMOSS</div></a>
+    <a class="card" target="_blank" rel="noopener" href="./Entregaveis/Mapa-Oportunidade-Categorias/Mapa_Oportunidade.pdf"><div class="t">📄 Mapa de Oportunidade (PDF)</div><div class="d">Versão de 37 páginas para imprimir / compartilhar.</div></a>
+  </div>
+
+  <div class="foot">Elevate Ecom. · Sua marca acima nos marketplaces. · Hub interno do projeto Elevate 4D.</div>
+</div>
+
+<script>
+(function(){
+  var wrap=document.querySelector('.wrap');
+  var btns=[].slice.call(document.querySelectorAll('.mk[data-f]'));
+  var note=document.getElementById('filternote');
+  var navlinks=[].slice.call(document.querySelectorAll('.nav a'));
+  var LABELS={tt:'TikTok Shop',az:'Amazon',ml:'Mercado Livre',sh:'Shopee'};
+
+  // classifica cada card pelo link (sem precisar marcar 1 a 1 no HTML)
+  function keysFor(href){
+    var h=decodeURIComponent(href||'');
+    if(/APRESENTACAO-MARKETPLACES/i.test(h)) return ['ml','sh'];
+    if(/APRESENTACAO-AMAZON/i.test(h)) return ['az'];
+    if(/APRESENTACAO-SHOPEE/i.test(h)) return ['sh'];
+    if(/APRESENTACAO-MERCADO-LIVRE|Mercado Livre 4D|VISAO-GERAL-ML|ONE-PAGER-ML|METODOLOGIA-ML|FUNDAMENTOS-MERCADO-LIVRE/i.test(h)) return ['ml'];
+    if(/ELEVATE-4D-VISAO-GERAL|ELEVATE-4D-ONE-PAGER|ELEVATE-4D-METODOLOGIA|Elevate 4D\/README/i.test(h)) return ['tt'];
+    if(/TIKTOK|Creators-Master|Analise-Nicho-Beleza|Analise-Roupas-Femininas|Analise-Esportes|Analise-Saude|Analise-Telefones-Eletronicos|Analise-Roupas-Masculinas|Analise-Utensilios-Cozinha|Analise-Suprimentos-Domesticos|Analise-Texteis-Moveis|Analise-Sapatos|Analise-Eletrodomesticos|Analise-Ferramentas-Hardware|Analise-Malas-Bolsas|Analise-Moda-Infantil|Analise-Computadores-Escritorio|Analise-Automotivo-Moto|Analise-Reformas-Residenciais|Analise-Alimentos-Bebidas|Analise-Livros-Revistas|Analise-Brinquedos-Passatempos|Analise-Joias-Acessorios|Analise-Moveis|Analise-Pet|Analise-Bebe-Maternidade|Analise-Colecionaveis|Analise-Moda-Muculmana|Top-Marcas-TikTokShop|Creators-Acessorios|Metodo-TikTokShop|Roadmap-TikTokShop|CAMPANHA-7-7|CAMPANHA-8-8|FUNDAMENTOS|Fluxo de Classificacao|FLUXO-CLASSIFICACAO|Diagnostico Estrategico|Mapa_Oportunidade|Aulas e Materiais|ACESSO-COLABORADOR|CONECTAR-CONTA-ADS|CONECTAR-ADS-AO-BC-ELEVATE|GROWTH-CAMP|CADASTRO-CONTA-BANCARIA|CHECKLIST-CONTA-RODANDO|CHECKLIST-INTERNO-CONTA-RODANDO|CONTA-RODANDO|PROMPT-CLASSIFICACAO|GUIA-COLETA|CALCULADORA-4D|PAINEL-PORTFOLIO|ENTRADA-DADOS|MODELO-PLANEJAMENTO|MODELO-RELATORIO|AUTORIZAR-ANUNCIOS|RECOMENDACOES-EXPLORACAO/i.test(h)) return ['tt'];
+    return ['tt','az','ml','sh']; // comum / multicanal — aparece em todos os filtros
+  }
+  var cards=[].slice.call(document.querySelectorAll('.grid a.card'));
+  cards.forEach(function(c){ c._mk=keysFor(c.getAttribute('href')); });
+
+  // agrupa por seção: cada H2 + irmãos seguintes até o próximo H2 (foot fora)
+  var groups=[], macros=[], cur=null, curMacro=null;
+  [].forEach.call(wrap.children,function(el){
+    if(el.classList && el.classList.contains('macro')){ curMacro={head:el, groups:[]}; macros.push(curMacro); cur=null; }
+    else if(el.tagName==='H2'){ cur={head:el, id:el.id, els:[]}; groups.push(cur); if(curMacro){ curMacro.groups.push(cur); } }
+    else if(cur && !el.classList.contains('foot')){ cur.els.push(el); }
+  });
+
+  // ---- busca por termo ----
+  var input=document.getElementById('q');
+  var sbox=document.getElementById('searchbox');
+  var qclr=document.getElementById('qclr');
+  var state={key:'all', q:''};
+
+  function norm(s){
+    return (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+  }
+  // indexa cada card com o proprio texto + o titulo da secao onde ele vive
+  groups.forEach(function(g){
+    var gt=' '+g.head.textContent;
+    g.els.forEach(function(el){
+      if(!el.querySelectorAll) return;
+      [].slice.call(el.querySelectorAll('a.card')).forEach(function(c){
+        c._txt=norm(c.textContent+gt+' '+decodeURIComponent(c.getAttribute('href')||''));
+      });
+    });
+  });
+  cards.forEach(function(c){ if(!c._txt) c._txt=norm(c.textContent); });
+
+  // aviso de "nenhum resultado", fora dos grupos pra nao entrar na varredura acima
+  var nores=document.createElement('div');
+  nores.className='nores';
+  nores.innerHTML='<div>Nenhum material encontrado para <b class="term"></b>.</div>'+
+                  '<button type="button" id="qreset">Limpar busca</button>';
+  wrap.insertBefore(nores, wrap.querySelector('.foot'));
+  nores.querySelector('#qreset').addEventListener('click',function(){
+    input.value=''; state.q=''; sbox.classList.remove('has'); apply(); input.focus();
+  });
+
+  function matches(c){
+    if(state.key!=='all' && c._mk.indexOf(state.key)<0) return false;
+    if(!state.q) return true;
+    var terms=state.q.split(/\s+/).filter(Boolean);
+    for(var i=0;i<terms.length;i++){ if(c._txt.indexOf(terms[i])<0) return false; }
+    return true;
+  }
+
+  function apply(){
+    var key=state.key, achou=0;
+    cards.forEach(function(c){
+      var ok=matches(c);
+      c.style.display = ok ? '' : 'none';
+      if(ok) achou++;
+    });
+    nores.style.display = (state.q && achou===0) ? 'block' : 'none';
+    if(state.q) nores.querySelector('.term').textContent='“'+input.value.trim()+'”';
+    groups.forEach(function(g){
+      var inCards=[];
+      g.els.forEach(function(el){ if(el.querySelectorAll) inCards=inCards.concat([].slice.call(el.querySelectorAll('a.card'))); });
+      // secao sem card fica visivel no filtro de marketplace, mas some numa busca por termo
+      var vis = inCards.length===0 ? !state.q : inCards.some(function(c){return c.style.display!=='none';});
+      g.head.style.display = vis?'':'none';
+      g.els.forEach(function(el){ el.style.display = vis?'':'none'; });
+      // espelha no menu de navegação
+      navlinks.forEach(function(a){ if(a.getAttribute('href')==='#'+g.id){ a.classList.toggle('off',!vis); } });
+    });
+    macros.forEach(function(mc){
+      var anyVis=mc.groups.some(function(g){return g.head.style.display!=='none';});
+      mc.head.style.display=anyVis?'':'none';
+    });
+    var partes=[];
+    if(state.q){
+      partes.push(achou===1 ? '<b>1 material</b> encontrado' : '<b>'+achou+' materiais</b> encontrados');
+      partes.push('para “<b>'+input.value.trim().replace(/[<>&]/g,'')+'</b>”');
+    }
+    if(key!=='all'){
+      partes.push(state.q ? 'dentro de <b>'+LABELS[key]+'</b>'
+        : 'Mostrando <b>'+LABELS[key]+'</b> + materiais comuns (método, onboarding, documentos). Clique em <b>Todos</b> para ver tudo.');
+    }
+    if(partes.length){ note.style.display='block'; note.innerHTML=partes.join(' ')+(state.q?'.':''); }
+    else { note.style.display='none'; }
+  }
+
+  btns.forEach(function(b){
+    b.addEventListener('click',function(){
+      btns.forEach(function(x){x.classList.remove('active');});
+      b.classList.add('active');
+      state.key=b.dataset.f;
+      apply();
+    });
+  });
+
+  var deb;
+  input.addEventListener('input',function(){
+    sbox.classList.toggle('has', input.value.trim().length>0);
+    clearTimeout(deb);
+    deb=setTimeout(function(){ state.q=norm(input.value.trim()); apply(); },110);
+  });
+  input.addEventListener('focus',function(){ sbox.classList.add('foc'); });
+  input.addEventListener('blur',function(){ sbox.classList.remove('foc'); });
+  input.addEventListener('keydown',function(e){
+    if(e.key==='Escape'){ input.value=''; state.q=''; sbox.classList.remove('has'); apply(); input.blur(); }
+  });
+  qclr.addEventListener('click',function(){
+    input.value=''; state.q=''; sbox.classList.remove('has'); apply(); input.focus();
+  });
+  // "/" foca a busca, como em ferramenta de dev
+  document.addEventListener('keydown',function(e){
+    if(e.key==='/' && document.activeElement!==input && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)){
+      e.preventDefault(); input.focus();
+    }
+  });
+})();
+</script>
+</body>
+</html>

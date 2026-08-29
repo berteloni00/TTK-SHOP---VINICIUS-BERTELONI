@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Modo Análise de Conta · Mercado Livre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--yellow:#FACC15;--ml:#FFE600;--red:#E11D48;--green:#2DD4BF;}
+  *{box-sizing:border-box;margin:0;}
+  body{font-family:'Poppins',sans-serif;color:var(--text);
+    background:radial-gradient(60% 55% at 88% 6%, rgba(255,230,0,0.10), transparent 60%),
+      radial-gradient(62% 55% at 6% 96%, rgba(126,200,227,0.14), transparent 60%),
+      linear-gradient(140deg,#07131F 0%,#0B1A2B 46%,#0F2B3A 100%);
+    background-attachment:fixed;min-height:100vh;padding:40px 20px 60px;line-height:1.6;}
+  .wrap{max-width:840px;margin:0 auto;}
+  .eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  h1{font-weight:300;font-size:38px;line-height:1.05;letter-spacing:-1px;}
+  h1 b{font-weight:800;color:#fff;}
+  .sub{color:var(--muted);font-size:14px;margin-top:12px;max-width:660px;}
+  .draft{display:inline-block;margin:16px 0;font-size:12px;font-weight:700;color:var(--yellow);border:1px solid rgba(250,204,21,0.4);background:rgba(250,204,21,0.08);border-radius:8px;padding:8px 14px;}
+  .accentbar{height:3px;width:120px;background:linear-gradient(90deg,var(--ml) 0%,var(--accent) 100%);border-radius:3px;margin:22px 0 26px;}
+  h2{font-size:19px;color:#fff;margin:34px 0 8px;padding-top:8px;}
+  h2 .n{color:var(--ml);font-weight:800;margin-right:8px;}
+  h3{font-size:15px;color:var(--accent);margin:18px 0 4px;text-transform:uppercase;letter-spacing:.5px;}
+  p{margin:9px 0;font-size:14.5px;}
+  ul,ol{margin:8px 0 8px 20px;font-size:14px;}
+  li{margin:5px 0;}
+  b{color:#fff;}
+  .box{background:var(--card);border:1px solid var(--cardborder);border-radius:12px;padding:16px 20px;margin:14px 0;font-size:14px;}
+  .box.key{border-color:rgba(255,230,0,0.32);background:linear-gradient(135deg,rgba(15,43,58,0.62),rgba(255,230,0,0.05));}
+  .box.paste{border-color:rgba(126,200,227,0.4);background:linear-gradient(135deg,rgba(15,43,58,0.7),rgba(126,200,227,0.06));}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:13px;}
+  th,td{text-align:left;padding:8px 11px;border-bottom:1px solid var(--cardborder);vertical-align:top;}
+  th{color:var(--accent);font-weight:700;font-size:11px;text-transform:uppercase;}
+  .flag{font-weight:700;}
+  .flag.r{color:#ff8095;} .flag.g{color:#7ff0e0;}
+  code{background:rgba(0,0,0,0.35);padding:2px 6px;border-radius:5px;font-size:12.5px;color:var(--ml);}
+  .foot{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Mercado Livre 4D · Fluxo de Análise</div>
+  <h1>Modo Análise de Conta <b>· Mercado Livre</b></h1>
+  <div class="sub">Como o gestor pensa ao analisar uma conta de Mercado Livre — a ordem de leitura, os limiares que acendem alerta e o formato do diagnóstico. Encode do raciocínio: você cola os dados da conta no fim e recebe momento + dimensão prioritária + plano.</div>
+  <div><span class="draft">📝 RASCUNHO v0.1 — casca a validar. Limiares de saúde vêm do guia "Boas Práticas por Marketplace"; zonas de TACOS e baselines de momento a confirmar.</span></div>
+  <div class="accentbar"></div>
+
+  <div class="box key">🧠 <b>A regra do gestor:</b> no ML a pergunta nunca é "está bom ou ruim?", é <b>"a conta está saudável, e qual a alavanca mais curta agora?"</b>. Saúde (reputação/envios) vem <b>antes</b> de escala (Ads) — de nada adianta acelerar mídia sobre uma conta que está perdendo reputação.</div>
+
+  <h2><span class="n">1</span>A ordem de leitura (árvore de decisão)</h2>
+  <ol>
+    <li><b>Saúde primeiro (D3):</b> reputação está <span class="flag g">verde</span>? Despacho no prazo, Flex ≥97%, "Chegará amanhã" ok? Se <span class="flag r">não</span> → <b>a prioridade é estancar aqui</b>, antes de qualquer coisa.</li>
+    <li><b>Chão (D1):</b> catálogo/ficha completos? Preço dentro da margem? Bem posicionado nas publicações de catálogo?</li>
+    <li><b>Onde a venda é decidida (D4 · Anúncio de catálogo):</b> qual a % de vezes que ganha o destaque? Está perdendo por preço, por reputação ou por tipo de anúncio (Clássico/Premium)?</li>
+    <li><b>Acelerador (D2):</b> Mercado Ads com TACOS sob controle? Está comprando venda que já viria organicamente?</li>
+    <li><b>Contexto de mercado:</b> preço competitivo vs concorrência (mediana/quartis da categoria)? Frete grátis/Full como os líderes?</li>
+  </ol>
+
+  <h2><span class="n">2</span>Checklist de saúde (limiares que acendem alerta)</h2>
+  <p>Fonte: guia interno de boas práticas do ML. Qualquer linha fora da meta é <b>bandeira vermelha</b> e puxa a prioridade pra D3.</p>
+  <table>
+    <tr><th>Indicador</th><th>Meta / número-chave</th><th>Alerta se…</th></tr>
+    <tr><td>Resposta pré-venda</td><td>em minutos; até 1h comercial</td><td class="flag r">&gt; 1h recorrente; nunca &gt; 24h</td></tr>
+    <tr><td>Mensagens pós-venda</td><td>no mesmo dia</td><td class="flag r">acúmulo de dias</td></tr>
+    <tr><td>Despacho no prazo</td><td>100% dentro do corte</td><td class="flag r">≥ 10% de atraso (reputação cai)</td></tr>
+    <tr><td>Filtro "Chegará amanhã"</td><td>máx 3% de atrasos</td><td class="flag r">&gt; 3%</td></tr>
+    <tr><td>Flex (envios corretos)</td><td>≥ 97% por semana</td><td class="flag r">&lt; 97%</td></tr>
+    <tr><td>Reputação (termômetro)</td><td>verde + MercadoLíder</td><td class="flag r">amarelo/vermelho, ou &lt;10 vendas/365d (sem histórico)</td></tr>
+    <tr><td>Cancelamento por falta de estoque</td><td>zero</td><td class="flag r">qualquer (penaliza)</td></tr>
+  </table>
+  <div class="box">⚠️ <b>Regras de ouro (não negociáveis, cross-marketplace):</b> nunca negociar por fora / colocar contato no anúncio; nunca manipular avaliação; anúncio fiel ao produto; emitir NF; olhar o painel de saúde <b>toda semana</b>. Violação disso é risco de moderação/suspensão — reporta como <b>crítico</b>, fora do scorecard.</div>
+
+  <h2><span class="n">3</span>Scorecard das 4 dimensões (0–5)</h2>
+  <table>
+    <tr><th>Dim.</th><th>O que avaliar</th><th>0 / 3 / 5</th></tr>
+    <tr><td><b>D1 Catálogo &amp; Ficha</b></td><td>ficha completa, títulos/SEO, fotos, variações, preço na margem</td><td>0 sem ficha · 3 ok · 5 referência da categoria</td></tr>
+    <tr><td><b>D2 Mercado Ads</b></td><td>cobertura de Product Ads + controle de ACOS/TACOS</td><td>0 sem ads · 3 rodando com controle · 5 escala com TACOS saudável</td></tr>
+    <tr><td><b>D3 Reputação &amp; Envios</b></td><td>termômetro, MercadoLíder, Full, prazos do checklist §2</td><td>0 vermelho · 3 verde · 5 Platinum + Full impecável</td></tr>
+    <tr><td><b>D4 Anúncio de catálogo</b></td><td>% de vezes que ganha o destaque, preço vs concorrência, Clássico/Premium certo</td><td>0 perde sempre · 3 disputa · 5 domina</td></tr>
+  </table>
+  <p><b>Dimensão prioritária = o maior gap</b> vs o esperado. Empate: <code>D3 → D1 → D4 → D2</code> (saúde é o chão; Ads é a última a ligar).</p>
+
+  <h2><span class="n">4</span>Métrica-guia — TACOS</h2>
+  <div class="box"><code>TACOS = gasto Mercado Ads ÷ faturamento total × 100</code> — quanto de cada R$ 1 vendido está sendo comprado com mídia. <span style="color:var(--yellow)">Zonas a validar</span> (proposta inicial: 🟢 ≤ 10% · 🟡 10–20% · 🔴 &gt; 20%). Cruze sempre com a tendência: TACOS baixo + vendas caindo = problema em D1/D3, não em mídia.</div>
+
+  <h2><span class="n">5</span>Formato da saída (o diagnóstico)</h2>
+  <div class="box"><pre style="white-space:pre-wrap;font-family:inherit;margin:0;font-size:13.5px">CONTA: &lt;nome&gt;
+SAÚDE: 🟢/🟡/🔴  (bandeiras do checklist §2)
+TACOS: &lt;x&gt;%  (&lt;zona&gt;)
+SCORECARD: D1 x | D2 x | D3 x | D4 x
+DIMENSÃO PRIORITÁRIA: &lt;Dx&gt; (gap −x)
+
+→ Leitura executiva (1 parágrafo)
+→ O que está segurando (a dimensão prioritária, com evidência)
+→ Plano de ação na ordem de impacto (3–5 movimentos)
+→ Riscos/críticos (violação de regra de ouro, se houver)
+→ Dados que faltam pra fechar</pre></div>
+
+  <h2><span class="n">6</span>Cole aqui os dados da conta</h2>
+  <div class="box paste">
+    <p>Pra rodar a análise, junte o que tiver (quanto mais, melhor — o que faltar vira "dados que faltam"):</p>
+    <h3>Saúde &amp; envios (D3)</h3>
+    <ul><li>Cor do termômetro / nível MercadoLíder · nº de vendas 365d</li><li>% despacho no prazo · % Flex · % "Chegará amanhã" · cancelamentos por estoque</li><li>Tempo médio de resposta pré e pós-venda</li></ul>
+    <h3>Catálogo &amp; anúncio de catálogo (D1/D4)</h3>
+    <ul><li>Nº de anúncios ativos · % com ficha completa · Clássico vs Premium</li><li>% de vezes que ganha o destaque do catálogo · preço médio vs concorrência (se souber)</li></ul>
+    <h3>Mídia &amp; faturamento (D2)</h3>
+    <ul><li>Gasto Mercado Ads no período · faturamento total do período · ACOS médio</li></ul>
+    <p style="color:var(--muted);font-size:13px">Depois de colar, o modo devolve o diagnóstico no formato do §5.</p>
+  </div>
+
+  <div class="foot">Elevate Ecom. — Sua marca acima nos marketplaces. · Mercado Livre 4D · Modo Análise de Conta (rascunho interno).</div>
+</div>
+</body>
+</html>

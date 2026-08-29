@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aula 8 · Dados, Logística & Fechamento do Módulo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Elevate Ecom · Programa TikTok Shop</div>
+    <h1>Aula 8 · Dados, Logística & Fechamento do Módulo</h1>
+    <div class="meta"><b>Módulo TikTok Shop · Tráfego, Ferramentas & Escala</b> · Semana 5, quarta · FastMoss, ranking de conteúdo, prazos e fulfillment, resultado do módulo e ponte para o Mercado Livre. · Atualizado: 2026-09-16</div>
+  </div>
+  <div class="content">
+<blockquote>
+<p><strong>Entregável:</strong> Relatório do módulo TikTok Shop</p>
+</blockquote>
+<h2>Apostila</h2>
+<h3>Fechamento do Módulo 01</h3>
+<p>Esta aula encerra o módulo de TikTok Shop e responde uma pergunta só: o que mudou desde a Aula 01. Por isso o baseline foi congelado na primeira semana.</p>
+<p>Comparação obrigatória, mesma janela de 30 dias:</p>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Aula 01</th>
+<th>Aula 08</th>
+<th>O que explica a variação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GMV do canal</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Ticket médio</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Creators ativos</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GMV de live</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Cancelamento</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<p>Se algum número piorou, o relatório diz isso com a mesma clareza com que diz o que melhorou. Programa sério não maquia leitura.</p>
+<h3>Inteligência de mercado no TikTok Shop</h3>
+<p><strong>FastMoss</strong> é a principal ferramenta externa de leitura do canal. Serve para:</p>
+<ul>
+<li>Ver quais produtos estão vendendo mais na categoria, com estimativa de volume</li>
+<li>Identificar quais creators estão vendendo aquele tipo de produto, o que realimenta o recrutamento da Aula 04</li>
+<li>Analisar lives de concorrentes, formato, frequência e oferta</li>
+<li>Achar produto em ascensão antes de ele saturar</li>
+</ul>
+<p>O uso mais valioso é o segundo: em vez de convidar creators no escuro, você convida quem já vende produto parecido e tem audiência compradora comprovada.</p>
+<h3>Logística e prazo</h3>
+<p>O prazo de despacho pesa na exposição do canal e na experiência do comprador. Pontos de atenção ao escalar:</p>
+<ul>
+<li>Pico de live e de campanha concentra pedidos em poucas horas, o que quebra operação dimensionada para a média</li>
+<li>Estoque precisa estar sincronizado entre TikTok Shop e os demais canais, senão vira cancelamento</li>
+<li>Devolução tem regra própria, e o custo dela pertence à precificação</li>
+</ul>
+<h3>O que continua rodando durante o Módulo 02</h3>
+<p>O TikTok Shop não entra em pausa quando o módulo acaba. Antes de virar a chave para o Mercado Livre, deixe escrito quem mantém, e em que dia da semana:</p>
+<ol>
+<li>Recrutamento diário de creators e cobrança dos vídeos de amostra</li>
+<li>Calendário de lives</li>
+<li>Leitura semanal de GMV, custo por pedido e creators ativos</li>
+<li>Publicação de conteúdo, no ritmo definido na Aula 06</li>
+</ol>
+<p>Sem essa lista, o canal esfria nas 4 semanas seguintes e o programa termina com um módulo vivo e outro morto.</p>
+<h3>A ponte para o Mercado Livre</h3>
+<p>O que muda de lógica a partir da Aula 09: lá o comprador chega por busca, não por descoberta. O trabalho sai de conteúdo e creators e vai para título, ficha técnica, reputação e posição na busca. Muita coisa que você construiu aqui, principalmente kits e precificação, é reaproveitada direto.</p>
+<h3>Erros comuns</h3>
+<ul>
+<li>Encerrar o módulo sem deixar rotina definida, o que faz o resultado regredir em poucas semanas</li>
+<li>Comparar o canal com o Mercado Livre antes de o segundo módulo existir</li>
+<li>Tratar o relatório como formalidade e não como base das metas seguintes</li>
+</ul>
+<h3>O que levar pra semana</h3>
+<p>Relatório de fechamento do módulo, rotinas de manutenção com responsável e a confirmação do gate financeiro para abrir o Módulo 02.</p>
+<h2>Roteiro</h2>
+<h3>Antes da aula</h3>
+<ul>
+<li>Puxar os mesmos indicadores do baseline da Aula 01, mesma janela</li>
+<li>Preparar o comparativo antes e depois já preenchido, para discutir e não perder tempo coletando</li>
+<li>Confirmar com o cliente a situação da 2ª parcela, devida até 5 dias úteis antes da Aula 09</li>
+</ul>
+<h3>Os 60 minutos</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Tempo</th>
+<th>Bloco</th>
+<th>O que fazer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>00 a 05</td>
+<td>Auditoria</td>
+<td>Calendário de ofertas e campanhas inscritas</td>
+</tr>
+<tr>
+<td>05 a 22</td>
+<td>Resultado</td>
+<td>Ler o antes e depois indicador por indicador, com explicação de cada variação</td>
+</tr>
+<tr>
+<td>22 a 32</td>
+<td>FastMoss</td>
+<td>Demonstrar a leitura de categoria e a busca de creators</td>
+</tr>
+<tr>
+<td>32 a 42</td>
+<td>Logística</td>
+<td>Revisar prazo, sincronia de estoque e capacidade em pico</td>
+</tr>
+<tr>
+<td>42 a 52</td>
+<td>Manutenção</td>
+<td>Fechar as rotinas que seguem rodando durante o Módulo 02, com responsável</td>
+</tr>
+<tr>
+<td>52 a 60</td>
+<td>Ponte</td>
+<td>Explicar o gate da 2ª parcela e o que muda no Mercado Livre</td>
+</tr>
+</tbody>
+</table></div>
+<h3>O que mostrar na tela</h3>
+<p>Painel do Seller Center com os números do módulo, FastMoss na categoria do cliente, painel de pedidos e prazos, e o relatório de fechamento.</p>
+<h3>Perguntas de checagem</h3>
+<ul>
+<li>Qual mudança das últimas 7 aulas você consegue ligar diretamente a um número?</li>
+<li>Quem mantém o recrutamento e as lives rodando nas próximas 4 semanas?</li>
+<li>Se a próxima live vender o triplo, sua operação despacha no prazo?</li>
+</ul>
+<h3>Fechamento</h3>
+<p>ATA na página da aula, relatório do módulo e rotinas de manutenção anexados no site, gravação publicada, confirmação do gate financeiro para abrir o Módulo 02.</p>
+<h2>Template</h2>
+<h3>Relatório de fechamento do Módulo 01</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Indicador</th>
+<th>Aula 01</th>
+<th>Aula 08</th>
+<th>Variação</th>
+<th>Explicação</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GMV do canal</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Pedidos</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Ticket médio</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Creators vinculados</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Creators que venderam</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GMV do top creator</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>GMV de live</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Investimento em Ads</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Custo por pedido</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Cancelamento</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Rotinas que seguem no Módulo 02</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Rotina</th>
+<th>Frequência</th>
+<th>Dia</th>
+<th>Responsável</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Recrutamento de creators</td>
+<td>diária</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Cobrança de vídeo de amostra</td>
+<td>semanal</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Publicação de conteúdo</td>
+<td>conforme ritmo</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Lives</td>
+<td>conforme calendário</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Leitura de KPIs do canal</td>
+<td>semanal</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Abertura do Módulo 02</h3>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Situação</th>
+<th>Prazo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2ª parcela confirmada</td>
+<td></td>
+<td>até 5 dias úteis antes da Aula 09</td>
+</tr>
+<tr>
+<td>Acessos do Mercado Livre</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Conta-piloto do Mercado Livre definida</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<h3>Critério de aceite</h3>
+<p>O entregável está pronto quando os 10 indicadores têm antes, depois e explicação escrita, as 5 rotinas de manutenção têm dia e responsável, e os 3 itens de abertura do Módulo 02 estão resolvidos ou com prazo.</p>
+  </div>
+  <div class="footer">Elevate Ecom. · Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

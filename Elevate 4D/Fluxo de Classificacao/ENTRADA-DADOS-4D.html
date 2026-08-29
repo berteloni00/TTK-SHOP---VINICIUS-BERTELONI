@@ -1,0 +1,1314 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entrada de Dados · Elevate 4D</title>
+<style>
+:root{--navy:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--ink:#eaf3f7;--mut:#9fb6c2;
+--ok:#3ddc84;--warn:#ffcf5c;--crit:#ff6b6b;--card:rgba(255,255,255,.05);--line:rgba(255,255,255,.12);}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Poppins',system-ui,Segoe UI,Roboto,sans-serif;color:var(--ink);
+background:linear-gradient(160deg,var(--navy),var(--navy2) 55%,var(--navy3));min-height:100vh;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 18px 80px}
+h1{font-size:26px;margin:0 0 4px}
+.sub{color:var(--mut);font-size:14px;margin:0 0 22px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:880px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;backdrop-filter:blur(6px)}
+.card h3{margin:0 0 8px;font-size:15px;display:flex;align-items:center;gap:8px}
+.rmx{margin-left:auto;background:transparent;border:1px solid var(--line);color:var(--mut);border-radius:7px;padding:3px 9px;font-size:11px;cursor:pointer;font-family:inherit}
+.rmx:hover{border-color:var(--crit);color:var(--crit)}
+.tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:20px}
+.tag.SC{background:rgba(126,200,227,.18);color:var(--accent)}
+.tag.FM{background:rgba(255,207,92,.16);color:var(--warn)}
+.tag.TT{background:rgba(201,160,255,.18);color:#c9a0ff}
+input[type=date]{color-scheme:dark}
+input[type=date]::-webkit-calendar-picker-indicator{filter:brightness(0) invert(1);opacity:.95;cursor:pointer}
+textarea{width:100%;min-height:74px;background:rgba(0,0,0,.25);color:var(--ink);border:1px solid var(--line);
+border-radius:9px;padding:9px;font:12px/1.4 ui-monospace,Consolas,monospace;resize:vertical}
+textarea::placeholder{color:#6f8794}
+.map{margin-top:10px;display:none}
+.map.on{display:block}
+.maprow{display:grid;grid-template-columns:1fr 130px 110px;gap:8px;align-items:center;margin:5px 0;font-size:12px}
+@media(max-width:480px){.maprow{grid-template-columns:1fr 1fr;}.maprow .res{grid-column:1/3;text-align:left}}
+.maprow label{color:var(--mut)}
+select{width:100%;background:#10202c;color:var(--ink);border:1px solid var(--line);border-radius:7px;padding:5px;font-size:12px}
+.res{font-weight:700;text-align:right;color:var(--accent)}
+.note{color:var(--mut);font-size:11px;margin-top:4px}
+.manual .mrow{display:grid;grid-template-columns:1fr 120px;gap:8px;align-items:center;margin:6px 0;font-size:13px}
+.manual input,.manual select{padding:6px}
+.scoregrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:620px){.scoregrid{grid-template-columns:1fr}}
+.crit{display:grid;grid-template-columns:1fr 56px;gap:6px;align-items:center;margin:3px 0;font-size:12px}
+.crit input{width:100%;padding:4px;text-align:center}
+.dimh{font-weight:700;color:var(--accent);margin:8px 0 4px;font-size:13px}
+.dimscore{border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin:8px 0}
+.autonota{font-size:13px;font-weight:800;color:var(--ink);float:right}
+.why{font-size:11px;color:var(--mut);margin:2px 0 7px}
+.ovrow{display:grid;grid-template-columns:1fr 90px;gap:8px;align-items:center;font-size:12px;color:var(--mut)}
+.ovrow input{padding:5px;text-align:center}
+.sectitle{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:30px 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.drop{border:1px dashed var(--line);border-radius:10px;padding:10px;transition:.15s}
+.drop.dragover{border-color:var(--accent);background:rgba(126,200,227,.08)}
+.dropmsg{font-size:11px;color:var(--mut);margin-bottom:7px}
+.filebtn{color:var(--accent);cursor:pointer;text-decoration:underline;font-weight:600}
+.fname{font-size:11px;color:var(--ok);margin-top:5px;min-height:13px}
+/* OUTPUT */
+.out{}
+.bigrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.bigrow{grid-template-columns:1fr}}
+.kpi{background:rgba(0,0,0,.22);border:1px solid var(--line);border-radius:12px;padding:14px}
+.kpi .lab{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:.06em}
+.kpi .val{font-size:24px;font-weight:800;margin-top:3px}
+.badge{display:inline-block;font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;margin-top:6px}
+.b-ok{background:rgba(61,220,132,.16);color:var(--ok)}.b-warn{background:rgba(255,207,92,.16);color:var(--warn)}.b-crit{background:rgba(255,107,107,.16);color:var(--crit)}
+.bar{height:12px;border-radius:8px;background:rgba(255,255,255,.08);overflow:hidden;display:flex;margin:6px 0 2px}
+.bar i{display:block;height:100%}
+.seg-d1{background:#7EC8E3}.seg-d3{background:#3ddc84}.seg-d4{background:#ffcf5c}
+.legend{font-size:11px;color:var(--mut);display:flex;gap:12px;flex-wrap:wrap}
+.legend b{color:var(--ink)}
+table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+th,td{padding:6px;border-bottom:1px solid var(--line);text-align:center}
+th:first-child,td:first-child{text-align:left}
+.prio{background:linear-gradient(120deg,rgba(126,200,227,.16),rgba(126,200,227,.04));border:1px solid var(--accent);
+border-radius:12px;padding:14px;margin-top:12px;font-weight:600}
+.muted{color:var(--mut)}
+.hint{font-size:12px;color:var(--mut);background:rgba(0,0,0,.18);border-left:3px solid var(--accent);padding:8px 10px;border-radius:6px;margin:8px 0 18px}
+a.back{color:var(--accent);text-decoration:none;font-size:13px}
+.clientbar{font-weight:700;font-size:15px;padding:10px 14px;border-radius:10px;margin-bottom:12px;border:1px solid var(--line)}
+.clientbar.ok{background:rgba(126,200,227,.14);border-color:var(--accent);color:var(--ink)}
+.clientbar.no{background:rgba(255,107,107,.12);border-color:var(--crit);color:var(--crit)}
+.savebtn{background:var(--accent);color:#06141f;border:0;border-radius:9px;padding:10px 16px;font-weight:700;font-size:14px;cursor:pointer;width:100%}
+.savebtn:disabled{opacity:.5;cursor:default}
+.savebtn:hover:not(:disabled){filter:brightness(1.08)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="back" href="../../index.html">← Hub Elevate 4D</a>
+  <h1 style="margin-top:10px">Entrada de Dados · Elevate 4D</h1>
+  <p class="sub">Arraste os arquivos de export, escolha as colunas e veja <b>momento · CT% · decomposição · dimensão prioritária</b> na hora. Nada sai da sua máquina (roda no navegador).</p>
+
+  <div class="hint">💡 <b>Como usar:</b> escolha o <b>Cliente</b>, jogue <b>todas as planilhas</b> no campo único abaixo (.xlsx/.csv) e veja o resultado 4D na hora. O sistema identifica cada arquivo sozinho; embaixo você só confere as colunas detectadas de cada export.</div>
+
+  <div class="card manual" style="margin-bottom:16px">
+    <div class="mrow"><label><b>Cliente / conta *</b> <span class="note">(escolha da lista p/ manter o nome consistente)</span></label><input id="m_cliente" list="clientes" autocomplete="off" placeholder="ex.: Mossy Brand"></div>
+    <datalist id="clientes">
+      <option value="Mossy Brand"></option>
+      <option value="PeachUp"></option>
+      <option value="Nouf Cosméticos"></option>
+      <option value="Meu Sapato Preto"></option>
+      <option value="Risty"></option>
+      <option value="Biobone"></option>
+      <option value="Flor de Carlota"></option>
+      <option value="BioHelp"></option>
+    </datalist>
+    <div class="mrow"><label>Período dos dados <span class="note">(texto livre · preenche sozinho se usar o intervalo)</span></label><input id="m_periodo" placeholder="ex.: últimos 30 dias · 15/05–14/06"></div>
+    <div style="margin-top:10px;border-top:1px solid var(--line);padding-top:10px">
+      <label class="note" style="display:block;margin-bottom:5px"><b>📅 Intervalo de análise</b> (opcional · recorta os exports por data)</label>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <input id="dt_ini" type="date" style="flex:1;min-width:140px;background:rgba(0,0,0,.25);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px">
+        <span class="note">até</span>
+        <input id="dt_fim" type="date" style="flex:1;min-width:140px;background:rgba(0,0,0,.25);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px">
+        <button type="button" id="dtClear" style="background:transparent;border:1px solid var(--line);color:var(--mut);border-radius:7px;padding:6px 11px;cursor:pointer;font:inherit;font-size:12px">limpar</button>
+      </div>
+      <div class="note" style="margin-top:5px">Quando definido, todo export com <b>coluna de data</b> é recortado pra esse período. Resolve o <b>Social (D4)</b> · quando não dá pra isolar o dia exato, pegue um <b>intervalo maior</b>. Vale para todas as dimensões; exports sem data entram inteiros (sinalizados em cada card).</div>
+      <label class="note" style="display:block;margin:10px 0 5px"><b>↔️ Comparar com período anterior</b> (opcional · gera o comparativo com Δ%)</label>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <input id="dt_ini_prev" type="date" style="flex:1;min-width:140px;background:rgba(0,0,0,.25);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px">
+        <span class="note">até</span>
+        <input id="dt_fim_prev" type="date" style="flex:1;min-width:140px;background:rgba(0,0,0,.25);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:7px">
+      </div>
+      <div class="note" style="margin-top:5px">Use o mês/período anterior (ex.: abril) · o comparativo (GMV, pedidos, visitantes…) sai dos exports que têm <b>série por data</b> (Shop Analytics, Lives, Ads).</div>
+    </div>
+    <div class="note" style="margin-top:8px">Use sempre o <b>mesmo nome</b> por empresa · é a coluna que separa os dados no banco. Cliente novo? digite o nome (fica padrão pras próximas).</div>
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="sectitle">1 · Exports da conta <span class="tag SC">SC</span> e benchmark <span class="tag FM">FM</span></div>
+
+      <div class="card" style="margin-bottom:14px;border-color:var(--accent)">
+        <h3>⬆️ Solte aqui TODAS as planilhas de uma vez</h3>
+        <div class="note">Eu identifico cada arquivo pelo conteúdo e coloco no lugar certo · <b>não precisa acertar a caixa</b>. Se errar, eu movo sozinho.</div>
+        <div class="drop" id="dropAll" style="margin-top:8px">
+          <div class="dropmsg">📂 Arraste vários arquivos <b>.xlsx/.csv</b> aqui · <label class="filebtn">escolher arquivos<input type="file" id="fileAll" accept=".xlsx,.xls,.csv" multiple hidden></label></div>
+        </div>
+        <div id="autostatus" class="note" style="margin-top:8px"></div>
+        <div id="unmatched" style="margin-top:6px"></div>
+        <details style="margin-top:10px">
+          <summary class="note" style="cursor:pointer">📋 O que baixar (lista de exports)</summary>
+          <div class="note" style="margin-top:6px;line-height:1.7">
+            <b>No Seller Center:</b> Shop Analytics (Key metrics) · Product list (com atribuição) · Transaction → Creator List · affiliate_orders (.csv) · Sample Analysis<br>
+            <b>No Ads Manager:</b> relatório do GMV Max (custo + GMV)<br>
+            <b>No TikTok Studio (Social/D4):</b> Overview · Followers · Content · Viewers · <b>descompacte os .zip e solte os .xlsx</b><br>
+            <b>No FastMoss (benchmark):</b> Produtos e Creators da categoria<br>
+            <span style="opacity:.8">Passo a passo de onde achar cada um: ver o Guia de Coleta.</span>
+          </div>
+        </details>
+      </div>
+
+      <div class="note" id="exports-hint" style="margin:6px 0 10px;display:none">Exports reconhecidos · confira a coluna de cada métrica:</div>
+      <div id="exports"></div>
+
+      <div class="sectitle">2 · O que não tem export (manual)</div>
+      <div class="card manual">
+        <div class="mrow"><label>Custo de lives (host/apresentadora) R$ <span class="note">(cachê · único custo sem export)</span></label><input id="m_lives" type="number" min="0" value="0"></div>
+        <div class="note" style="margin-top:6px">Momento, hero, tendência e ticket médio agora vêm das planilhas. A taxa de amostra é fixa em <b>6%</b> (frete da plataforma).</div>
+        <details style="margin-top:8px">
+          <summary class="note" style="cursor:pointer">⚙️ Ajustar contexto (opcional · só se faltar dado)</summary>
+          <div style="margin-top:8px">
+            <div class="mrow"><label>Loja aprovada e vendendo?</label>
+              <select id="m_loja"><option>Auto</option><option>Sim</option><option>Não</option></select></div>
+            <div class="mrow"><label>Tem produto-tração (hero) claro?</label>
+              <select id="m_hero"><option>Auto</option><option>Sim</option><option>Não</option></select></div>
+            <div class="mrow"><label>Tendência do GMV</label>
+              <select id="m_tend"><option>Auto</option><option>Crescendo</option><option>Estável</option><option>Caindo</option></select></div>
+            <div class="mrow"><label>Nº de dimensões ATIVAS (0–4)</label><input id="m_ativas" type="number" min="0" max="4" placeholder="auto"></div>
+            <div class="mrow"><label>Nº de dimensões MADURAS (0–4)</label><input id="m_maduras" type="number" min="0" max="4" placeholder="auto"></div>
+            <div class="note">Deixe em "Auto"/vazio para usar o que as planilhas indicam.</div>
+          </div>
+        </details>
+      </div>
+
+      <div class="sectitle">3 · Notas por dimensão <span class="muted">(calculadas dos dados)</span></div>
+      <div class="card">
+        <div class="note" style="margin-bottom:6px">Cada nota 0–5 é estimada a partir das métricas dos exports (decomposição, concentração, ROAS, Pareto). O ajuste manual é <b>opcional</b> e só serve pra incorporar o que o relatório não mostra (margem, avaliações, qualidade de conteúdo).</div>
+        <div id="score"></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="sectitle">Resultado 4D <span class="muted">(ao vivo)</span></div>
+      <div class="out" id="out"></div>
+      <div class="card" style="margin-top:14px">
+        <button id="batchBtn" class="savebtn" style="margin-bottom:8px">✅ Gerar relatório e ir pro próximo cliente</button>
+        <div class="note" style="margin-bottom:10px">Guarda o relatório na lista e <b>libera na hora</b> pro próximo cliente · o salvamento no banco roda <b>em segundo plano</b> (vários em paralelo). É o fluxo pra <b>vários clientes simultâneos</b>: adiciona → gera → próximo, sem esperar.</div>
+        <button id="reportBtn" class="savebtn" style="background:transparent;color:var(--accent);border:1px solid var(--accent);margin-bottom:8px">📄 Só abrir o relatório agora</button>
+        <button id="stratBtn" class="savebtn" style="background:transparent;color:var(--accent);border:1px solid var(--accent);margin-bottom:8px">🧭 Abrir só o Planejamento Estratégico (aba à parte)</button>
+        <div class="note" style="margin-bottom:8px">Dois documentos, no padrão PeachUp: o <b>relatório</b> (os números) e o <b>Planejamento Estratégico</b> (tese, plano por dimensão, metas, riscos, governança, roadmap) como peça separada.</div>
+        <button id="saveBtn" class="savebtn" style="background:transparent;color:var(--accent);border:1px solid var(--accent)">💾 Só salvar no banco</button>
+        <div id="saveStatus" class="note" style="margin-top:8px"></div>
+        <button id="resetBtn" class="savebtn" style="background:transparent;color:var(--mut);border:1px solid var(--line);margin-top:12px">🔄 Limpar e começar outro cliente</button>
+        <div class="note" style="margin-top:8px">Cada lote de planilhas que você solta é <b>um cliente</b> (as planilhas não trazem o nome da empresa). Os relatórios prontos ficam guardados nesta máquina, na seção abaixo.</div>
+        <div class="note" style="margin-top:8px">👀 Quer ver como fica? <a href="./MODELO-RELATORIO-4D.html" target="_blank" style="color:var(--accent)">Modelo do relatório completo</a> · <a href="./MODELO-PLANEJAMENTO-ESTRATEGICO-4D.html" target="_blank" style="color:var(--accent)">Modelo do Planejamento Estratégico (à parte)</a> (dados de exemplo).</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sectitle" style="margin-top:34px">📥 Relatórios prontos <span class="muted">(guardados nesta máquina · clique pra baixar)</span></div>
+  <div class="card">
+    <div class="note" id="reportsEmpty">Nenhum relatório ainda. Preencha o cliente, solte as planilhas e clique em <b>✅ Gerar relatório e ir pro próximo</b>. Cada cliente concluído aparece aqui com botão de baixar.</div>
+    <div id="reportsList"></div>
+    <div id="reportsActions" style="margin-top:10px;display:none">
+      <button id="dlAllBtn" class="savebtn" style="width:auto;padding:7px 12px;font-size:12px;margin-right:6px">⬇️ Baixar todos</button>
+      <button id="retryAllBtn" class="savebtn" style="background:transparent;color:var(--accent);border:1px solid var(--accent);width:auto;padding:7px 12px;font-size:12px;margin-right:6px;display:none">🔁 Reenviar pendentes ao banco</button>
+      <button id="clearReportsBtn" class="savebtn" style="background:transparent;color:var(--mut);border:1px solid var(--line);width:auto;padding:7px 12px;font-size:12px">🗑️ Limpar lista</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" style="position:fixed;right:16px;bottom:16px;display:flex;flex-direction:column;gap:8px;z-index:50"></div>
+
+<!-- Garante que o SheetJS se anexe ao window.XLSX (e não a um exports/module/define injetado por extensão/loader) -->
+<script>try{window.module=undefined;window.exports=undefined;window.define=undefined;}catch(e){}</script>
+<script src="./vendor/xlsx.full.min.js"></script>
+<script>if(typeof XLSX==='undefined'||typeof XLSX.read!=='function'){console.error('SheetJS não expôs XLSX.read');}</script>
+<script src="./entrada-config.js"></script>
+<script>
+const EXPORTS=[
+ {id:'shop',tag:'SC',title:'Shop Analytics (Key metrics)',hint:'GMV, pedidos, visitantes (série diária).',metrics:[
+   {key:'gmv',label:'GMV total (R$)',agg:'sum',kw:['gmv','receita','revenue']},
+   {key:'pedidos',label:'Pedidos',agg:'sum',kw:['pedidos','orders']},
+   {key:'visitantes',label:'Visitantes',agg:'sum',kw:['visitantes','visitors','visitante']},
+   {key:'pageViews',label:'Page Views',agg:'sum',kw:['visualizações de página','page views','pageview','páginas vistas']}]},
+ {id:'prod',tag:'SC',title:'Product list (com atribuição)',hint:'A peça-chave: dá a decomposição do GMV.',metrics:[
+   {key:'gmvTotal',label:'GMV total (R$)',agg:'sum',kw:['gmv']},
+   {key:'gmvCreator',label:'GMV atribuído a CRIADOR (D3)',agg:'sum',kw:['criador','creator','afiliad']},
+   {key:'gmvLive',label:'GMV atribuído a LIVE (D4)',agg:'sum',kw:['live','transmiss']},
+   {key:'maxSku',label:'Maior GMV de 1 produto',agg:'max',kw:['gmv']},
+   {key:'units',label:'Unidades vendidas (p/ ticket médio)',agg:'sum',kw:['unit','unidade','iten','quantidade','qty','sold','vendidos']}]},
+ {id:'creators',tag:'SC',title:'Creator List (Pareto)',hint:'Quantos creators, e o top.',metrics:[
+   {key:'nCreators',label:'Nº de creators',agg:'count',kw:['creator','criador','nome','name']},
+   {key:'gmvCreators',label:'GMV total dos creators',agg:'sum',kw:['gmv']},
+   {key:'maxCreator',label:'Maior GMV de 1 creator',agg:'max',kw:['gmv']}]},
+ {id:'aff',tag:'SC',title:'affiliate_orders (.csv)',hint:'Comissão por pedido → fecha o CT%.',metrics:[
+   {key:'comm',label:'Comissões de afiliados (R$)',agg:'sum',kw:['comiss','commission']}]},
+ {id:'sample',tag:'SC',title:'Sample Analysis',hint:'Amostras enviadas (entram no CT%).',metrics:[
+   {key:'nSamples',label:'Nº de amostras',agg:'count',kw:['amostra','sample','produt','product']}]},
+ {id:'ads',tag:'SC',title:'Ads Manager (GMV Max/Spark)',hint:'Investimento e GMV de mídia.',metrics:[
+   {key:'adsSpend',label:'Investimento em Ads (R$)',agg:'sum',kw:['custo','cost','gasto','spend','investi']},
+   {key:'adsGmv',label:'GMV gerado via Ads (R$)',agg:'sum',kw:['gmv','receita','revenue','gross']}]},
+ {id:'fmProd',tag:'FM',title:'FastMoss · Produtos (benchmark)',hint:'Top produto da categoria.',metrics:[
+   {key:'fmTopProd',label:'Maior GMV · top produto',agg:'max',kw:['gmv']}]},
+ {id:'fmCrt',tag:'FM',title:'FastMoss · Creators (bucket)',hint:'Top creator da categoria.',metrics:[
+   {key:'fmTopCreator',label:'Maior GMV · top creator',agg:'max',kw:['gmv']}]},
+ {id:'socOver',tag:'TT',title:'TikTok Studio · Overview (D4)',hint:'Views, perfil e engajamento por dia.',metrics:[
+   {key:'vViews',label:'Video Views (alcance)',agg:'sum',kw:['video views','visualiz']},
+   {key:'pViews',label:'Profile Views',agg:'sum',kw:['profile views','perfil']},
+   {key:'sLikes',label:'Likes',agg:'sum',kw:['like','curtid']},
+   {key:'sComments',label:'Comentários',agg:'sum',kw:['comment','coment']},
+   {key:'sShares',label:'Compartilhamentos',agg:'sum',kw:['share','compartilh']}]},
+ {id:'socFol',tag:'TT',title:'TikTok Studio · Followers (D4)',hint:'Base de seguidores e crescimento.',metrics:[
+   {key:'followers',label:'Seguidores (total no período)',agg:'max',kw:['followers','seguidor']},
+   {key:'folGain',label:'Crescimento de seguidores',agg:'sum',kw:['difference','diferen','crescim','gain']}]},
+ {id:'socCont',tag:'TT',title:'TikTok Studio · Content (D4)',hint:'Vídeos publicados e views.',metrics:[
+   {key:'nVideos',label:'Nº de vídeos',agg:'count',kw:['video title','titulo do video','título do vídeo','title']},
+   {key:'vidViews',label:'Views totais dos vídeos',agg:'sum',kw:['total views','views','visualiz']},
+   {key:'maxVid',label:'Maior view de 1 vídeo',agg:'max',kw:['total views','views']}]},
+ {id:'socView',tag:'TT',title:'TikTok Studio · Viewers (D4)',hint:'Audiência e recorrência.',metrics:[
+   {key:'newViewers',label:'Novos espectadores',agg:'sum',kw:['new viewer','novos']},
+   {key:'retViewers',label:'Espectadores recorrentes',agg:'sum',kw:['returning','recorrent']}]},
+ {id:'socAct',tag:'TT',title:'TikTok Studio · Follower Activity (D4)',hint:'Horários de audiência ativa.',metrics:[
+   {key:'actPeak',label:'Pico de seguidores ativos',agg:'max',kw:['active followers','seguidores ativos','followers']}]},
+ {id:'socGen',tag:'TT',title:'TikTok Studio · Gênero da audiência (D4)',hint:'Distribuição por gênero.',metrics:[
+   {key:'genTop',label:'Maior fatia de gênero',agg:'max',kw:['distribution','distribuição','distrib']}]},
+ {id:'socTerr',tag:'TT',title:'TikTok Studio · Territórios (D4)',hint:'Distribuição por território.',metrics:[
+   {key:'terrTop',label:'Maior fatia de território',agg:'max',kw:['distribution','distribuição','distrib']}]},
+ {id:'liveperf',tag:'SC',title:'Live Performance (Core Stats) · D4',hint:'GMV e nº de lives.',metrics:[
+   {key:'liveGmv',label:'GMV de LIVE (R$)',agg:'sum',kw:['gmv de live','gmv atribuído a live','gmv de live']},
+   {key:'nLives',label:'Nº de transmissões (lives)',agg:'sum',kw:['número de transmiss','transmiss']}]},
+ {id:'txncore',tag:'SC',title:'Transaction Core (criador) · D3',hint:'GMV atribuído ao criador + vídeos.',metrics:[
+   {key:'creatorGmv',label:'GMV atribuído ao criador (R$)',agg:'sum',kw:['atribuído ao criador','gmv']},
+   {key:'txnVideos',label:'Nº de vídeos (creators)',agg:'sum',kw:['vídeo','video']}]},
+ {id:'cardtraffic',tag:'SC',title:'Product Card Traffic · D1/D2',hint:'Tráfego e conversão dos cards.',metrics:[
+   {key:'cardImpr',label:'Visualizações (impressões)',agg:'sum',kw:['visualiz','impress']},
+   {key:'cardClicks',label:'Cliques',agg:'sum',kw:['clique','click']},
+   {key:'cardOrders',label:'Pedidos atribuídos ao card',agg:'sum',kw:['pedidos de sku','pedido']},
+   {key:'cardGmv',label:'GMV atribuído ao card (R$)',agg:'sum',kw:['gmv']}]},
+];
+
+// metadados p/ cobertura: o que cada export destrava, quão essencial é e ~tempo de coleta
+const EXP_META={
+ shop:    {need:'ess',mins:2,unlocks:'GMV total + série diária → momento e base do CT%'},
+ prod:    {need:'ess',mins:3,unlocks:'decomposição do GMV (orgânico/creator/live) e concentração por SKU'},
+ creators:{need:'rec',mins:2,unlocks:'D3 Afiliados · nº de creators e Pareto'},
+ aff:     {need:'rec',mins:2,unlocks:'comissões reais de afiliados → fecha o CT%'},
+ ads:     {need:'rec',mins:2,unlocks:'D2 Ads · investimento, GMV de mídia e ROAS'},
+ sample:  {need:'opt',mins:2,unlocks:'amostras enviadas (entram no CT%)'},
+ fmProd:  {need:'opt',mins:3,unlocks:'benchmark · top produto da categoria'},
+ fmCrt:   {need:'opt',mins:3,unlocks:'benchmark · top creator da categoria'},
+ socOver: {need:'rec',mins:3,unlocks:'D4 Social · alcance e engajamento (views, likes, comentários)'},
+ socFol:  {need:'rec',mins:2,unlocks:'D4 Social · base de seguidores e crescimento'},
+ socCont: {need:'opt',mins:2,unlocks:'D4 Social · frequência de conteúdo e views por vídeo'},
+ socView: {need:'opt',mins:2,unlocks:'D4 Social · audiência e recorrência'},
+ socAct:  {need:'opt',mins:1,unlocks:'D4 Social · horários de audiência ativa'},
+ socGen:  {need:'opt',mins:1,unlocks:'D4 Social · perfil de gênero da audiência'},
+ socTerr: {need:'opt',mins:1,unlocks:'D4 Social · perfil de território da audiência'},
+ liveperf: {need:'opt',mins:2,unlocks:'D4 · GMV de lives e nº de transmissões'},
+ txncore:  {need:'opt',mins:2,unlocks:'D3 · GMV atribuído ao criador (total) e vídeos'},
+ cardtraffic:{need:'opt',mins:2,unlocks:'D1/D2 · tráfego e conversão dos cards de produto'},
+};
+const NEED_LABEL={ess:'essencial',rec:'recomendado',opt:'opcional'};
+
+const SCORE={
+ D1:['Sortimento / hero equilibrado','Ticket / lidera com kit','Margem cobre o CT%','Listing + avaliações ≥4,7','Estoque sem ruptura + SLAs'],
+ D2:['Conta / campanha ativa','ROI/ROAS saudável','CT% de Ads sob controle','Verba em heroes + Spark'],
+ D3:['Massa de creators ativos','Outreach sistemático','Comissão + incentivos','Programa de amostras','Feedback aos creators','Pareto + retenção'],
+ D4:['Conta orgânica ativa','Alcance (views/seguidores)','Conteúdo shoppable','Cadência de lives','GMV orgânico + migração'],
+};
+const BASE={ // D1,D2,D3,D4 + nome
+ M0:[3,0,0.5,1,'Probatório'],M1:[3.5,1,2,2,'Lançamento'],M2:[4,2,3,2.5,'Tração inicial'],
+ M3:[4,3.5,4,3,'Escala'],M4:[4,4,4,3.5,'Platô'],M5:[4,3,3.5,3,'Crise/Queda'],M6:[5,4,4.5,4,'Maturidade']};
+const MOMENTO_DESC={
+ M0:'Pré-loja / Probatório · destravar a loja e graduar do probatório com as primeiras vendas e avaliações.',
+ M1:'Lançamento · achar o produto-tração (hero) e os primeiros afiliados.',
+ M2:'Tração inicial · dar consistência ao que já vende e acender a 2ª dimensão.',
+ M3:'Escala · escalar com margem, Pareto de creators e GMV Max.',
+ M4:'Estabilização / Platô · diversificar e acender a dimensão menos desenvolvida.',
+ M5:'Crise / Queda · achar a dimensão que quebrou e estancar.',
+ M6:'Maturidade · otimizar margem, recompra e LTV.'};
+const DIM_NOME={D1:'Produtos',D2:'Ads',D3:'Afiliados',D4:'Social'};
+const DIM_REC={
+ D1:'Revisar precificação e margem para cobrir o CT%; liderar o sortimento com KIT (sobe o ticket sem desconto); garantir listing completo, avaliações ≥ 4,7 e estoque dos campeões.',
+ D2:'Estruturar/otimizar GMV Max e Spark Ads sobre heroes já validados, mantendo o ROAS acima do mínimo da margem. Não escalar mídia sobre catálogo mal precificado.',
+ D3:'Outreach sistemático de creators, programa de amostras, comissão competitiva e gestão do Pareto (reter quem performa, renovar a base).',
+ D4:'Cadência de conteúdo orgânico e lives próprias; migrar audiência de IG/CRM; usar a live como ponte entre Social e Afiliados.'};
+
+const norm=s=>(''+s).toLowerCase();
+function num(s){
+  if(s==null)return NaN;
+  if(typeof s==='number')return isFinite(s)?s:NaN;         // xlsx já entrega número
+  s=(''+s).trim(); if(!s)return NaN;
+  let m=s.replace(/[Rr]\$/g,'').replace(/\s/g,'').match(/-?[\d.,]+/); if(!m)return NaN;
+  let t=m[0]; const lc=t.lastIndexOf(','), ld=t.lastIndexOf('.');
+  if(lc>-1 && ld>-1){
+    if(lc>ld) t=t.replace(/\./g,'').replace(',','.');       // PT: 1.234,56
+    else      t=t.replace(/,/g,'');                          // US: 1,234.56
+  } else if(lc>-1){
+    t = /^-?\d{1,3}(,\d{3})+$/.test(t) ? t.replace(/,/g,'') : t.replace(',','.'); // vírgula = milhar OU decimal
+  } else if(ld>-1){
+    // ponto = DECIMAL (padrão dos exports TikTok: 0.040, 807.71). Só é milhar com 2+ grupos: 1.234.567
+    if(/^-?\d{1,3}(\.\d{3}){2,}$/.test(t)) t=t.replace(/\./g,'');
+  }
+  let v=parseFloat(t); return isFinite(v)?v:NaN;
+}
+function parse(text){
+  text=text.replace(/\r/g,'').trim(); if(!text)return null;
+  let lines=text.split('\n').filter(l=>l.trim().length);
+  if(lines.length<2)return null;
+  let d=lines[0].includes('\t')?'\t':(lines[0].includes(';')?';':',');
+  let sp=l=>l.split(d);
+  return {headers:sp(lines[0]),rows:lines.slice(1).map(sp)};
+}
+// coluna parece um ID/código (não é métrica · nunca somar)
+function isIdCol(h){h=norm(h);return /\bid\b/.test(h)||h.includes('id do')||h.includes('order id')||h.includes('código')||h.includes('codigo')||h.endsWith(' id')||h.startsWith('id ');}
+function guess(headers,kw){
+  // entre as colunas que batem, prefere o cabeçalho mais específico (mais curto): "GMV" antes de "Faixa de GMV"
+  let best=-1,bestLen=1e9;
+  for(let i=0;i<headers.length;i++){let h=norm(headers[i]);if(isIdCol(h))continue;
+    if(kw.some(k=>h.includes(k)) && h.length<bestLen){bestLen=h.length;best=i;}}
+  return best;   // -1 = nada bate → "— não usar —" (evita somar coluna errada/Order ID)
+}
+function agg(rows,ci,kind){
+  if(ci==null||ci<0)return 0;
+  if(kind==='count')return rows.filter(r=>r[ci]!=null&&(''+r[ci]).trim()!=='').length;
+  let vals=rows.map(r=>num(r[ci])).filter(v=>!isNaN(v));
+  if(!vals.length)return 0;
+  return kind==='max'?Math.max(...vals):vals.reduce((a,b)=>a+b,0);
+}
+
+// ===== datas: parse tolerante + detecção de coluna + filtro por intervalo =====
+const MES_PT={'janeiro':0,'jan':0,'fevereiro':1,'fev':1,'março':2,'marco':2,'mar':2,'abril':3,'abr':3,'maio':4,'mai':4,'junho':5,'jun':5,'julho':6,'jul':6,'agosto':7,'ago':7,'setembro':8,'set':8,'outubro':9,'out':9,'novembro':10,'nov':10,'dezembro':11,'dez':11};
+const NOW_YEAR=new Date().getFullYear();
+function parseDate(s,yearHint){
+  if(s==null||s==='')return null;
+  if(s instanceof Date)return isNaN(s.getTime())?null:s;
+  if(typeof s==='number'){ return (s>=30000&&s<=80000)?new Date(Date.UTC(1899,11,30)+Math.round(s)*86400000):null; }
+  s=(''+s).trim();
+  let m=s.match(/^(\d{4})[-\/.](\d{1,2})[-\/.](\d{1,2})/); if(m)return new Date(+m[1],+m[2]-1,+m[3]);
+  m=s.match(/^(\d{1,2})[\/\-.](\d{1,2})[\/\-.](\d{2,4})/); if(m){let y=+m[3];if(y<100)y+=2000;return new Date(y,+m[2]-1,+m[1]);}
+  // português sem ano: "31 de maio", "1 de junho" (TikTok Studio) · usa ano da dica/atual
+  m=s.toLowerCase().match(/^(\d{1,2})\s*(?:de\s*)?([a-zçé]+)(?:\s*(?:de\s*)?(\d{4}))?/);
+  if(m && MES_PT[m[2]]!=null){ const y=m[3]?+m[3]:(yearHint||NOW_YEAR); return new Date(y,MES_PT[m[2]],+m[1]); }
+  if(/^\d{5}$/.test(s)){const n=+s; if(n>=30000&&n<=80000)return new Date(Date.UTC(1899,11,30)+n*86400000);}
+  return null;
+}
+// acha a coluna de data: a que tem a MAIOR fração de valores que viram data (com dica pelo nome)
+function findDateCol(p,yh){
+  if(!p||!p.headers)return -1;
+  const sampleN=Math.min(25,p.rows.length); if(!sampleN)return -1;
+  let best=-1,bestScore=0;
+  for(let i=0;i<p.headers.length;i++){
+    let ok=0; const distinct=new Set();
+    for(let r=0;r<sampleN;r++){ const d=parseDate(p.rows[r][i],yh); if(d){ok++;distinct.add(d.getTime());} }
+    if(!ok)continue;
+    let score=ok/sampleN;
+    const h=norm(p.headers[i]); if(h.includes('data')||h.includes('date')||/\bdia\b/.test(h)||h.includes('day')||h.includes('post time')||h.includes('time')) score+=0.2;
+    score += 0.2*(distinct.size/ok);   // prefere a coluna de data que VARIA (ex.: "Post time" vs "Time" fixo)
+    if(score>bestScore&&ok>=Math.min(4,sampleN)){bestScore=score;best=i;}
+  }
+  return bestScore>=0.5?best:-1;
+}
+function intervalSel(){
+  const a=v('dt_ini'), b=v('dt_fim');
+  const di=a?new Date(a+'T00:00:00'):null, df=b?new Date(b+'T23:59:59'):null;
+  return (di||df)?{di,df,a,b,yh:(di||df).getFullYear()}:null;
+}
+// linhas a usar: recortadas por data se houver intervalo e coluna de data; senão, todas
+function rowsFor(p){
+  if(!p)return [];
+  const iv=intervalSel(); if(!iv){p._dinfo={mode:'all'};return p.rows;}
+  if(p._dcol===undefined)p._dcol=findDateCol(p,iv.yh);
+  const dc=p._dcol;
+  if(dc<0){p._dinfo={mode:'nodate'};return p.rows;}
+  const out=p.rows.filter(r=>{const d=parseDate(r[dc],iv.yh);if(!d)return false;if(iv.di&&d<iv.di)return false;if(iv.df&&d>iv.df)return false;return true;});
+  p._dinfo={mode:'filtered',kept:out.length,total:p.rows.length,col:p.headers[dc]||('col '+(dc+1))};
+  return out;
+}
+const fmtDateBR=s=>{const d=parseDate(s);return d?d.toLocaleDateString('pt-BR'):s;};
+// período anterior (comparativo) + filtro por range explícito
+function intervalPrev(){
+  const a=v('dt_ini_prev'), b=v('dt_fim_prev');
+  const di=a?new Date(a+'T00:00:00'):null, df=b?new Date(b+'T23:59:59'):null;
+  return (di||df)?{di,df,a,b,yh:(di||df).getFullYear()}:null;
+}
+function fmtRange(iv){const f=s=>{const d=parseDate(s);return d?d.toLocaleDateString('pt-BR'):s;};return iv.a&&iv.b?`${f(iv.a)}–${f(iv.b)}`:iv.a?`a partir de ${f(iv.a)}`:`até ${f(iv.b)}`;}
+function rowsInRange(p,di,df,yh){
+  if(p._dcol===undefined)p._dcol=findDateCol(p,yh);
+  const dc=p._dcol; if(dc<0)return [];
+  return p.rows.filter(r=>{const d=parseDate(r[dc],yh);if(!d)return false;if(di&&d<di)return false;if(df&&d>df)return false;return true;});
+}
+
+const state={data:{},map:{}};
+const fmtBRL=v=>v? 'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
+const fmtInt=v=>(v||v===0)?Math.round(v).toLocaleString('pt-BR'):'—';
+// ===== UNIDADE de cada métrica = fonte única da verdade (formatação) =====
+// Dinheiro (R$). Tudo o resto é contagem/número; TikTok Studio nunca é R$.
+const MONEY_KEYS=new Set(['gmv','gmvTotal','gmvCreator','gmvLive','maxSku','gmvCreators','maxCreator','comm','adsSpend','adsGmv','fmTopProd','fmTopCreator','liveGmv','creatorGmv','cardGmv']);
+const PCT_KEYS=new Set(['genTop','terrTop']);   // distribuições (0–1) → %
+function unitOf(key){return PCT_KEYS.has(key)?'pct':MONEY_KEYS.has(key)?'brl':'num';}
+// formatador único · todo valor de métrica passa por aqui
+function fmtVal(key,val,agg){
+  if(agg==='count')return fmtInt(val);
+  const u=unitOf(key);
+  if(u==='pct')return (val||val===0)?(val*100).toFixed(0)+'%':'—';
+  if(u==='brl')return val?fmtBRL(val):'—';
+  return fmtInt(val);
+}
+// guard: avisa no console se alguém criar métrica em R$ sem registrar a unidade (evita repetir o erro do "710")
+EXPORTS.forEach(ex=>ex.metrics.forEach(m=>{
+  if(/\(r\$\)|\br\$\b/i.test(m.label) && !MONEY_KEYS.has(m.key)) console.warn('[unidade] métrica em R$ fora de MONEY_KEYS:',m.key,'—',m.label);
+}));
+const fmtPct=v=>(v||v===0)?(v*100).toFixed(1).replace('.',',')+'%':'—';
+
+// build export cards
+const expHost=document.getElementById('exports');
+EXPORTS.forEach(ex=>{
+  const c=document.createElement('div');c.className='card';c.id='card-'+ex.id;c.style.display='none';
+  c.innerHTML=`<h3><span class="tag ${ex.tag}">${ex.tag}</span> ${ex.title} <button class="rmx" data-rmx="${ex.id}">✕ remover</button></h3>
+   <div class="fname" id="fname-${ex.id}"></div>
+   <div class="note" id="dateinfo-${ex.id}" style="margin:2px 0 0"></div>
+   <div class="map" id="map-${ex.id}"></div>`;
+  expHost.appendChild(c);
+});
+function removeExport(id){
+  applyData(id,null);                                  // limpa dados, esconde o card e recalcula
+  const fn=document.getElementById('fname-'+id); if(fn)fn.textContent='';
+  const di=document.getElementById('dateinfo-'+id); if(di)di.textContent='';
+  addStatus(`🗑️ Removido: ${(EXPORTS.find(e=>e.id===id)||{}).title||id}`,'mut');
+}
+expHost.addEventListener('click',e=>{const b=e.target.closest('[data-rmx]'); if(b)removeExport(b.dataset.rmx);});
+
+// build scorecard (nota automática + override opcional por dimensão)
+const DIMS=[['D1','Produtos'],['D2','Ads'],['D3','Afiliados'],['D4','Social']];
+const scoreHost=document.getElementById('score');
+scoreHost.innerHTML=DIMS.map(([d,n])=>`
+  <div class="dimscore">
+    <div class="dimh">${d} · ${n} <span class="autonota" id="auto-${d}">—</span></div>
+    <div class="why" id="why-${d}">cole os exports para calcular</div>
+    <div class="ovrow"><label>Ajustar manualmente (opcional)</label><input type="number" min="0" max="5" step="0.1" data-ov="${d}" placeholder="auto"></div>
+  </div>`).join('');
+
+// renderiza o mapa de colunas a partir de {headers,rows}
+function applyData(id,p){
+  const ex=EXPORTS.find(e=>e.id===id);
+  const host=document.getElementById('map-'+id);
+  const card=document.getElementById('card-'+id);
+  if(!p||!p.headers||!p.headers.length){state.data[id]=null;host.className='map';host.innerHTML='';if(card)card.style.display='none';compute();return;}
+  state.data[id]=p;
+  if(card)card.style.display='';
+  const eh=document.getElementById('exports-hint'); if(eh)eh.style.display='';
+  host.className='map on';
+  host.innerHTML=ex.metrics.map(m=>{
+    const gi=guess(p.headers,m.kw);
+    const opts=`<option value="-1" ${gi<0?'selected':''}>· não usar ·</option>`+p.headers.map((h,i)=>`<option value="${i}" ${i===gi?'selected':''}>${(h||('col '+(i+1)))}</option>`).join('');
+    return `<div class="maprow"><label>${m.label}</label>
+      <select data-mapex="${id}" data-mapkey="${m.key}" data-agg="${m.agg}">${opts}</select>
+      <span class="res" id="res-${id}-${m.key}">—</span></div>`;
+  }).join('');
+  host.querySelectorAll('select').forEach(s=>s.addEventListener('change',compute));
+  compute();
+}
+
+// palavras que indicam uma LINHA DE CABEÇALHO real (p/ pular metadados/seção do TikTok)
+const HDR_TOKENS=['nome','name','produto','product','gmv','creator','criador','comiss','commission','amostra','sample','custo','cost','spend','roas','roi','date','data','dia','hora','hour','views','visualiz','followers','seguidor','viewer','likes','curtid','comment','coment','share','compartilh','order','pedido','status','sku','unidad','unit','qty','quant','receita','revenue','title','titulo','título','difference','profile','video','vídeo','clique','click','conversã','conversa','transmiss','live','aov','ticket','frete','clientes','itens','gender','gênero','distribution','distribu','territor','active'];
+// "cara de cabeçalho": nº de células que batem com tokens de header (+ leve peso pela largura)
+function headerScore(row){
+  const ne=row.filter(x=>x!==''&&x!=null).length; if(ne<2)return 0;
+  let hits=0; for(const c of row){const t=norm(c); if(t && HDR_TOKENS.some(k=>t.includes(k)))hits++;}
+  return hits>=2 ? hits+ne*0.01 : 0;
+}
+// monta {headers,rows} achando a LINHA DE CABEÇALHO de maior score (pula "Data de análise:", "Tudo", "Visão geral"...)
+function buildTable(aoa,sheet){
+  aoa=(aoa||[]).filter(r=>r.some(c=>c!==''&&c!=null));
+  if(aoa.length<2)return null;
+  let hi=0,best=0; const lim=Math.min(12,aoa.length-1);   // cabeçalho não é a última linha
+  for(let i=0;i<lim;i++){const sc=headerScore(aoa[i]); if(sc>best){best=sc;hi=i;}}
+  if(best===0){ let bw=0; for(let i=0;i<Math.min(6,aoa.length);i++){const c=aoa[i].filter(x=>x!==''&&x!=null).length; if(c>bw){bw=c;hi=i;}} }
+  const headers=(aoa[hi]||[]).map(x=>''+x);
+  const rows=aoa.slice(hi+1).filter(r=>r.some(c=>c!==''&&c!=null));
+  return rows.length?{headers,rows,sheet:sheet||''}:null;
+}
+// lê o arquivo (.xlsx/.csv) -> {headers,rows,sheet}
+function readFile(file){
+  return new Promise((resolve,reject)=>{
+    const name=(file.name||'').toLowerCase();
+    if(name.endsWith('.csv')){
+      file.text().then(t=>{const p=parse(t); resolve(p?buildTable([p.headers,...p.rows],''):null);}).catch(reject);
+    }else{
+      file.arrayBuffer().then(buf=>{
+        try{
+          const wb=XLSX.read(new Uint8Array(buf),{type:'array'});
+          let best=null;                                   // escolhe a aba com mais linhas úteis
+          for(const sh of wb.SheetNames){
+            const aoa=XLSX.utils.sheet_to_json(wb.Sheets[sh],{header:1,blankrows:false,raw:true,defval:''});
+            const t=buildTable(aoa,sh);
+            if(t && (!best || t.rows.length>best.rows.length)) best=t;
+          }
+          resolve(best);
+        }catch(e){reject(e);}
+      }).catch(reject);
+    }
+  });
+}
+// identifica QUAL export é o arquivo, pelo conteúdo (assinatura dos cabeçalhos + aba)
+function classify(headers,sheet){
+  const h=norm((headers||[]).join(' | ')+' '+(sheet||''));  // " | " evita juntar palavras de colunas diferentes
+  const has=k=>h.includes(k);
+  const creatName=has('creator name')||has('creator id')||has('nome do criador')||has('id do criador')||has('nome do influenciador')||has('influencer name');
+  const prodName =has('product name')||has('nome do produto')||has('titulo do produto')||has('título do produto');
+  if(has('fastmoss')){ if(creatName)return'fmCrt'; if(prodName)return'fmProd'; if(has('gmv'))return'fmProd'; }
+  // TikTok Studio (Social / D4)
+  if(has('profile views')||has('video views'))return'socOver';
+  if(has('difference in followers'))return'socFol';
+  if((has('video title')||has('titulo do video')||has('título do vídeo'))&&(has('total views')||has('total likes')))return'socCont';
+  if(has('returning viewers')||has('total viewers'))return'socView';
+  if(has('active followers')||has('seguidores ativos'))return'socAct';
+  if(has('gender')&&has('distribution'))return'socGen';
+  if((has('top territories')||has('territor')||has('território'))&&has('distribution'))return'socTerr';
+  if((has('comiss')||has('commission'))&&(has('order')||has('pedido')))return'aff';
+  if(!has('atribuído ao criador') && (((has('amostra')&&(has('enviada')||has('cogs')||has('envio')))||(has('sample')&&(has('sent')||has('cogs'))))))return'sample';
+  if(has('custo')||has('cost')||has('gasto')||has('spend')||has('roas')||has('roi'))return'ads';
+  if(creatName)return'creators';
+  if(prodName)return'prod';
+  // Shop Analytics geral PRIMEIRO: só ele tem "visitantes/receita bruta" (os Core Stats não têm)
+  if(has('gmv') && (has('visitantes')||has('visitor')||has('receita bruta')||has('visão geral')) && !has('atribuído ao criador'))
+    return'shop';
+  // Seller Center · Core Metrics/Stats específicos (pelo conteúdo das colunas)
+  if(has('gmv de live')||(has('atribuído a live')&&has('transmiss')))return'liveperf';        // Live Performance → D4
+  if(has('atribuído ao criador')&&(has('aov')||has('vídeo')||has('reembolso')))return'txncore'; // Transaction Core → D3
+  if(has('cartão')&&(has('clique')||has('visualiz')||has('conversã')))return'cardtraffic';     // Product Card Traffic → D1/D2
+  return null;
+}
+function addStatus(html,kind){const c={ok:'var(--ok)',warn:'var(--warn)',crit:'var(--crit)'}[kind]||'var(--mut)';
+  const el=document.getElementById('autostatus'); if(el)el.innerHTML+=`<div style="color:${c};margin-top:2px">${html}</div>`;}
+// ===== aceitar QUALQUER planilha: se eu não reconhecer, você escolhe o tipo =====
+let UNMATCHED=[], UMID=0;
+function assignFile(file,p,id,manual){
+  applyData(id,p);
+  const ex=EXPORTS.find(e=>e.id===id);
+  const fn=document.getElementById('fname-'+id); if(fn){fn.style.color='var(--ok)';fn.textContent='✓ '+file+' ('+p.rows.length+' linhas)';}
+  addStatus(`✓ <b>${file}</b> → ${ex.title}${manual?' <span style="opacity:.7">(você indicou o tipo)</span>':''}`,'ok');
+}
+function renderUnmatched(){
+  const host=document.getElementById('unmatched'); if(!host)return;
+  host.innerHTML=UNMATCHED.map(u=>`<div style="border:1px dashed var(--warn);border-radius:8px;padding:8px 10px;margin-top:6px;font-size:12px">
+     <div style="color:var(--warn)">❓ <b>${u.file}</b> · não reconheci automaticamente. <b>Qual é este dado?</b></div>
+     <div class="muted" style="margin:3px 0 6px">colunas: ${(u.p.headers||[]).filter(x=>x).slice(0,6).map(x=>(''+x).slice(0,18)).join(' · ')||'—'}</div>
+     <select data-umkey="${u.key}" style="width:100%">
+       <option value="">· escolher o tipo ·</option>
+       ${EXPORTS.map(e=>`<option value="${e.id}">${e.title}</option>`).join('')}
+       <option value="__ignore">✕ Ignorar este arquivo</option>
+     </select>
+   </div>`).join('');
+  host.querySelectorAll('[data-umkey]').forEach(s=>s.addEventListener('change',()=>{
+    const u=UNMATCHED.find(x=>x.key===s.dataset.umkey); if(!u)return; const id=s.value; if(!id)return;
+    if(id!=='__ignore') assignFile(u.file,u.p,id,true);
+    UNMATCHED=UNMATCHED.filter(x=>x.key!==u.key); renderUnmatched();
+  }));
+}
+// roteia o arquivo para o slot CERTO (pelo conteúdo); se não der, oferece escolha manual
+async function route(file,hintId){
+  const name=file.name||'arquivo';
+  if(/\.zip$/i.test(name)){ addStatus(`📦 <b>${name}</b>: é um <b>.zip</b> (export do TikTok Studio) · <b>descompacte</b> e solte os <b>.xlsx</b> de dentro (Overview · FollowerHistory · Content · Viewers).`,'warn'); return; }
+  if(typeof XLSX==='undefined' && !/\.csv$/i.test(name)){ addStatus(`✕ <b>${name}</b>: o leitor de planilhas (XLSX) não carregou · recarregue a página (Ctrl+F5).`,'crit'); return; }
+  let p=null,err='';
+  try{p=await readFile(file);}catch(e){err=(e&&e.message)||(''+e);}
+  if(!p){addStatus(`✕ <b>${name}</b>: não consegui ler ${err?`<span style="opacity:.7">(${err})</span>`:'(planilha vazia ou sem tabela reconhecível)'}`,'crit');return;}
+  // "Todos os pedidos": só traz IDs de pedido, NÃO a fonte do GMV → não entra no modelo 4D
+  const hh=norm((p.headers||[]).join(' | '));
+  if((hh.includes('order id')||hh.includes('id do pedido')||hh.includes('número do pedido')||hh.includes('order number'))
+     && !hh.includes('comiss') && !hh.includes('commission')      // affiliate_orders TEM comissão → não ignorar
+     && !hh.includes('visitantes') && !hh.includes('atribuído')){
+    addStatus(`ℹ️ <b>${name}</b>: é a lista de <b>pedidos</b> (só traz o ID de cada pedido, não a fonte do GMV) · não entra no 4D. Use o <b>Product list</b>. <span style="opacity:.7">Ignorado.</span>`,'warn');return;
+  }
+  const id=classify(p.headers,p.sheet)||hintId;
+  if(!id){                                   // ACEITA mesmo assim · você diz o que é
+    const key='um'+(UMID++); UNMATCHED.push({key,file:name,p}); renderUnmatched();
+    addStatus(`❓ <b>${name}</b>: lido (${p.rows.length} linhas), mas não reconheci o tipo · escolha abaixo o que é.`,'warn'); return;
+  }
+  assignFile(name,p,id,(hintId&&hintId!==id));
+}
+
+// MASTER: solte TODAS de uma vez (identifica cada uma)
+const dropAll=document.getElementById('dropAll');
+if(dropAll){
+  dropAll.addEventListener('dragover',e=>{e.preventDefault();dropAll.classList.add('dragover');});
+  dropAll.addEventListener('dragleave',()=>dropAll.classList.remove('dragover'));
+  dropAll.addEventListener('drop',e=>{e.preventDefault();dropAll.classList.remove('dragover');
+    document.getElementById('autostatus').innerHTML=''; UNMATCHED=[];renderUnmatched(); [...e.dataTransfer.files].forEach(f=>route(f,null));});
+  document.getElementById('fileAll').addEventListener('change',e=>{
+    document.getElementById('autostatus').innerHTML=''; UNMATCHED=[];renderUnmatched(); [...e.target.files].forEach(f=>route(f,null));});
+}
+window.addEventListener('dragover',e=>e.preventDefault());
+window.addEventListener('drop',e=>e.preventDefault());
+document.querySelectorAll('.manual select,.manual input,[data-ov]').forEach(el=>el.addEventListener('input',compute));
+// limpar o intervalo de datas
+const dtClearBtn=document.getElementById('dtClear');
+if(dtClearBtn)dtClearBtn.addEventListener('click',()=>{
+  ['dt_ini','dt_fim','dt_ini_prev','dt_fim_prev'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  const mp=document.getElementById('m_periodo'); if(mp&&/[–]|a partir de|até /.test(mp.value))mp.value='';
+  compute();
+});
+
+// tendência do GMV pela série do Shop Analytics (1ª metade vs 2ª)
+function deriveTrend(){
+  const p=state.data['shop']; if(!p)return null;
+  const sel=document.querySelector('select[data-mapex="shop"][data-mapkey="gmv"]'); if(!sel)return null;
+  const ci=parseInt(sel.value); if(isNaN(ci))return null;
+  const vals=rowsFor(p).map(r=>num(r[ci])).filter(x=>!isNaN(x));
+  if(vals.length<4)return null;
+  const h=Math.floor(vals.length/2);
+  const a=vals.slice(0,h).reduce((x,y)=>x+y,0), b=vals.slice(h).reduce((x,y)=>x+y,0);
+  if(b>a*1.1)return'Crescendo'; if(b<a*0.9)return'Caindo'; return'Estável';
+}
+
+function compute(){
+  const R={};
+  const iv=intervalSel();
+  const ndExports=[]; // exports sem coluna de data (não recortados)
+  EXPORTS.forEach(ex=>{
+    const p=state.data[ex.id]; if(!p)return;
+    const rws=rowsFor(p);                       // recorta por intervalo quando houver data
+    ex.metrics.forEach(m=>{
+      const sel=document.querySelector(`select[data-mapex="${ex.id}"][data-mapkey="${m.key}"]`);
+      const ci=sel?parseInt(sel.value):-1;
+      const val=agg(rws,ci,m.agg);
+      R[m.key]=val;
+      const rc=document.getElementById(`res-${ex.id}-${m.key}`);
+      if(rc)rc.textContent=fmtVal(m.key,val,m.agg);   // formatação central por unidade (R$/número/%)
+    });
+    const di=document.getElementById('dateinfo-'+ex.id);
+    if(di){const inf=p._dinfo||{mode:'all'};
+      if(!iv){di.textContent='';}
+      else if(inf.mode==='filtered'){di.style.color='var(--accent)';di.textContent=`📅 recortado por "${inf.col}": ${inf.kept} de ${inf.total} linhas no intervalo`;}
+      else{di.style.color='var(--warn)';di.textContent='⚠️ sem coluna de data · entrou inteiro (não recortado)';ndExports.push(ex.title);}
+    }
+  });
+  // model + métricas
+  const GMV=(R.gmvTotal&&R.gmvTotal>0)?R.gmvTotal:(R.gmv||0);
+  const d3=(R.creatorGmv||R.gmvCreator||0), d4=(R.liveGmv||R.gmvLive||0), d1=Math.max(GMV-d3-d4,0);
+  const cardCTR=(R.cardImpr>0)?R.cardClicks/R.cardImpr:null;            // visualização → clique
+  const cardCVR=(R.cardClicks>0)?R.cardOrders/R.cardClicks:null;       // clique → pedido
+  const conc=(R.maxSku&&GMV)?R.maxSku/GMV:null;
+  const lives=+v('m_lives');
+  const TAXA_AMOSTRA=0.06;                                   // frete da plataforma · fixo
+  const ticket=(R.units&&R.units>0)?GMV/R.units:0;           // valor nominal médio (dos dados)
+  const custoAm=(R.nSamples||0)*ticket*TAXA_AMOSTRA;
+  const ct=GMV>0?((R.adsSpend||0)+(R.comm||0)+lives+custoAm)/GMV:null;
+  const roas=(R.adsGmv&&R.adsSpend)?R.adsGmv/R.adsSpend:null;
+  const pc=GMV?[d1/GMV,d3/GMV,d4/GMV]:[0,0,0];
+  const par=(R.maxCreator&&R.gmvCreators)?R.maxCreator/R.gmvCreators:null; // Pareto top creator
+  const clamp=x=>Math.max(0,Math.min(5,x));
+  const P=v=>(v==null?'—':(v*100).toFixed(0)+'%');
+  // ===== NOTAS AUTOMÁTICAS (calculadas dos dados do relatório) =====
+  const auto={D1:null,D2:null,D3:null,D4:null}, why={};
+  // D1 Produtos: base de catálogo vendendo + risco de concentração + presença de orgânico
+  if(GMV>0){let s=3;
+    if(conc!=null){s+= conc<=0.3?1.5: conc<=0.5?0.5: conc<=0.7?-0.5:-2;}
+    if(pc[0]>=0.3)s+=0.5;
+    if(cardCVR!=null){s+= cardCVR>=0.03?0.5: cardCVR>=0.01?0.2: -0.3;}   // conversão clique→pedido do card
+    auto.D1=clamp(s);
+    why.D1=`concentração maior SKU ${P(conc)} · GMV orgânico ${P(pc[0])}${cardCVR!=null?` · CVR card ${(cardCVR*100).toFixed(1).replace('.',',')}%`:''}`;
+  } else why.D1='cole o Product list / Shop Analytics';
+  // D2 Ads: pelo ROAS (se está rodando e quão eficiente)
+  if(R.adsSpend!=null){
+    if(R.adsSpend<=0){auto.D2=0; why.D2='sem investimento em Ads';}
+    else if(roas==null){auto.D2=2; why.D2=`rodando (R$ ${R.adsSpend.toFixed(0)}), sem GMV de Ads p/ ROAS`;}
+    else {auto.D2= roas<2?1:roas<4?2:roas<6?3:roas<10?4:5; why.D2=`ROAS ${roas.toFixed(1)}x`;}
+  } else why.D2='cole o export de Ads (GMV Max)';
+  // D3 Afiliados: nº de creators + Pareto + participação no GMV
+  if(R.nCreators!=null || pc[1]>0){
+    const nc=R.nCreators||0;
+    let b;
+    if(R.nCreators!=null){ b= nc<=0?0: nc<=5?1: nc<=20?2: nc<=50?3: nc<=100?4:5; }
+    else { b= pc[1]>=0.6?3.5: pc[1]>=0.3?2.5: pc[1]>0?1.5:0; } // sem Creator List: estima pela participação
+    if(par!=null && par>0.6) b=Math.min(b,3); // super-dependência de 1 creator
+    if(pc[1]>=0.4) b=Math.min(5,b+0.5);
+    auto.D3=clamp(b);
+    why.D3=`${R.nCreators!=null?`${nc} creators`:'D3 pelo GMV de criador'}${par!=null?` · top puxa ${P(par)}`:''} · D3 no GMV ${P(pc[1])}${R.txnVideos?` · ${Math.round(R.txnVideos)} vídeos`:''}`;
+  } else why.D3='cole o Creator List ou Transaction Core';
+  // D4 Social: dados de conta (TikTok Studio) + participação de live no GMV
+  const fmtN=n=>n?Math.round(n).toLocaleString('pt-BR'):'0';
+  const eng=(R.vViews>0)?((R.sLikes||0)+(R.sComments||0)+(R.sShares||0))/R.vViews:null;
+  const socPresent=(R.followers||R.vViews||R.nVideos||R.retViewers||R.actPeak||R.genTop||R.terrTop);
+  const livePresent=(R.nLives||R.liveGmv);
+  if(socPresent||livePresent){
+    let s=1;
+    const fol=R.followers||0;
+    s+= fol>=100000?2: fol>=20000?1.5: fol>=5000?1: fol>0?0.5:0;          // base de seguidores
+    s+= R.nVideos>=20?1: R.nVideos>=8?0.6: R.nVideos>=3?0.3:0;             // frequência de conteúdo
+    if(eng!=null) s+= eng>=0.06?1: eng>=0.03?0.6: eng>0?0.3:0;            // engajamento
+    s+= R.vViews>=200000?0.5: R.vViews>=50000?0.3:0;                       // alcance
+    if(R.folGain>0) s+=0.3;                                                // crescimento
+    s+= R.nLives>=12?0.8: R.nLives>=4?0.5: R.nLives>=1?0.25:0;             // cadência de lives
+    if(pc[2]>=0.1) s+=0.4;                                                 // live puxa GMV
+    auto.D4=clamp(s);
+    const parts=[];
+    if(socPresent)parts.push(`${fmtN(fol)} seguidores · ${R.nVideos||0} vídeos · eng ${eng!=null?(eng*100).toFixed(1).replace('.',',')+'%':'—'} · ${fmtN(R.vViews)} views`);
+    if(livePresent)parts.push(`${R.nLives?Math.round(R.nLives)+' lives':''}${R.liveGmv?` · GMV live ${fmtBRL(R.liveGmv)}`:''}`.replace(/^ · /,''));
+    if(pc[2]>0)parts.push(`live no GMV ${P(pc[2])}`);
+    why.D4=parts.filter(Boolean).join(' · ');
+  } else if(GMV>0){const ls=pc[2]; auto.D4= ls<=0?1: ls<=0.1?2: ls<=0.3?3: ls<=0.5?4:5;
+    why.D4=`GMV via live ${P(pc[2])} (sem dados de conta · solte o TikTok Studio / Live Performance p/ medir)`;
+  } else why.D4='cole o Product list (live), Live Performance ou o TikTok Studio';
+  // ===== CONTEXTO / MOMENTO (derivado dos dados, com override opcional) =====
+  const anyData=Object.values(state.data).some(x=>x);
+  const dloja=GMV>0?'Sim':(anyData?'Não':'Sim');
+  const dhero=(conc!=null)?(conc>=0.15?'Sim':'Não'):'Sim';
+  const dtend=deriveTrend()||'Crescendo';
+  const dativas=(pc[0]>=0.1?1:0)+(pc[1]>=0.1?1:0)+((pc[2]>=0.1||socPresent||livePresent)?1:0)+((R.adsSpend>0)?1:0);
+  const dmaduras=[auto.D1,auto.D2,auto.D3,auto.D4].filter(n=>n!=null&&n>=4).length;
+  const pick=(id,def)=>{const x=v(id);return(!x||x==='Auto')?def:x;};
+  const loja=pick('m_loja',dloja), hero=pick('m_hero',dhero), tend=pick('m_tend',dtend);
+  const ativas=(v('m_ativas')!=='')?+v('m_ativas'):dativas;
+  const maduras=(v('m_maduras')!=='')?+v('m_maduras'):dmaduras;
+  // escala = já tem mais de 1 dimensão realmente puxando. Platô/Escala/Crise pressupõem escala —
+  // GMV baixo com 1 dimensão é início (M1/M2), não platô.
+  const escala = ativas>=2;
+  let M;
+  if(loja==='Não') M='M0';
+  else if(hero==='Não') M='M1';
+  else if(tend==='Caindo') M = escala?'M5':'M1';                 // só é "crise" se havia escala; senão ainda é início
+  else if(tend==='Estável') M = (maduras>=2?'M6': escala?'M4':'M2'); // estável sem escala = tração inicial, não platô
+  else M = escala?'M3':'M2';                                      // crescendo
+  const base=BASE[M];
+  // override manual opcional + render
+  const notas={}, hasData={};
+  ['D1','D2','D3','D4'].forEach(d=>{
+    const ov=document.querySelector(`input[data-ov="${d}"]`);
+    const ovv=(ov && ov.value!=='')?clamp(parseFloat(ov.value)):null;
+    const real = ovv!=null ? ovv : auto[d];
+    hasData[d]= real!=null;
+    notas[d]= real!=null ? real : 0;
+    const an=document.getElementById('auto-'+d), wy=document.getElementById('why-'+d);
+    if(an) an.textContent = auto[d]!=null ? ('auto '+auto[d].toFixed(1)+(ovv!=null?` → manual ${ovv.toFixed(1)}`:'')) : (ovv!=null?`manual ${ovv.toFixed(1)}`:'—');
+    if(wy) wy.textContent = why[d]||'';
+  });
+  const bl={D1:base[0],D2:base[1],D3:base[2],D4:base[3]};
+  const gaps={};['D1','D2','D3','D4'].forEach(d=>gaps[d]=+(bl[d]-notas[d]).toFixed(2));
+  // prioridade: só entre dimensões COM dado (evita priorizar o que não foi medido)
+  const cand=['D1','D2','D3','D4'].filter(d=>hasData[d]);
+  const order=['D1','D3','D4','D2']; let prio, pdim=null, maxg=-99;
+  order.forEach(d=>{ if(cand.includes(d) && gaps[d]>maxg){maxg=gaps[d];pdim=d;} });
+  const PRN={D1:'D1 Produtos · o chão; corrigir antes das outras',D3:'D3 Afiliados · o motor distribuído',D4:'D4 Social · marca + recorrência',D2:'D2 Ads · acelerador'};
+  if(!cand.length) prio='cole os exports para apontar a prioridade';
+  else if(maxg<=0) prio='D1 Produtos · nenhuma abaixo do baseline; otimizar a partir do chão (margem/LTV)';
+  else prio=PRN[pdim];
+  // CT zona
+  let ctb='',ctt=''; if(ct!=null){if(ct<=0.2){ctb='b-ok';ctt='🟢 Saudável';}else if(ct<=0.35){ctb='b-warn';ctt='🟡 Atenção';}else{ctb='b-crit';ctt='🔴 Crítico';}}
+  const stat=(d,g)=> !hasData[d] ? '<span class="badge" style="background:rgba(255,255,255,.08);color:var(--mut)">sem dados</span>'
+    : (g<=0?'<span class="b-ok badge">✓ ok</span>':(g>=1.5?'<span class="b-crit badge">🔴 crítico</span>':'<span class="b-warn badge">🟡 abaixo</span>'));
+  // período: vem do intervalo (se definido) ou do texto livre
+  let periodoStr;
+  if(iv){
+    const f=s=>{const d=parseDate(s);return d?d.toLocaleDateString('pt-BR'):s;};
+    periodoStr = iv.a&&iv.b ? `${f(iv.a)}–${f(iv.b)}` : iv.a ? `a partir de ${f(iv.a)}` : `até ${f(iv.b)}`;
+    const mp=document.getElementById('m_periodo'); if(mp&&!mp.value.trim())mp.value=periodoStr;
+  } else { periodoStr=(v('m_periodo')||'').trim()||null; }
+  const ivHTML = iv ? `<div class="note" style="margin:8px 0;background:rgba(126,200,227,.1);border-left:3px solid var(--accent);padding:8px 10px;border-radius:6px">📅 <b>Intervalo:</b> ${periodoStr} · exports com data foram recortados para o período.${ndExports.length?` <span style="color:var(--warn)">Sem coluna de data (entraram inteiros): ${ndExports.join(', ')}.</span>`:''}</div>` : '';
+  // snapshot p/ salvar no banco (colunas batem com a tabela analises_4d)
+  const snap={
+    cliente:(v('m_cliente')||'').trim(), periodo:periodoStr||null,
+    momento:M, ct_pct:ct,
+    gmv_total:GMV||null, gmv_d1:d1||null, gmv_d3:d3||null, gmv_d4:d4||null,
+    d1_pct:pc[0]||null, d3_pct:pc[1]||null, d4_pct:pc[2]||null, conc_sku:conc,
+    comissoes:(R.comm??null), custo_amostras:custoAm||null, n_amostras:(R.nSamples??null),
+    ads_spend:(R.adsSpend??null), ads_gmv:(R.adsGmv??null), roas:roas,
+    n_creators:(R.nCreators??null), top_creator_pct:par,
+    nota_d1:hasData.D1?notas.D1:null, nota_d2:hasData.D2?notas.D2:null,
+    nota_d3:hasData.D3?notas.D3:null, nota_d4:hasData.D4?notas.D4:null,
+    prioridade:prio, fm_top_prod:(R.fmTopProd??null), fm_top_creator:(R.fmTopCreator??null)
+  };
+  snap.payload={...snap, raw:R, baseline:bl, gaps:gaps};
+  window.lastSnapshot=snap;
+  // ===== COBERTURA DOS DADOS + TEMPO PARA CONCLUIR =====
+  const present=id=>!!state.data[id];
+  const nPresent=EXPORTS.filter(e=>present(e.id)).length, nTotal=EXPORTS.length;
+  const missEss=EXPORTS.filter(e=>EXP_META[e.id].need==='ess'&&!present(e.id));
+  const missRec=EXPORTS.filter(e=>EXP_META[e.id].need==='rec'&&!present(e.id));
+  const missOpt=EXPORTS.filter(e=>EXP_META[e.id].need==='opt'&&!present(e.id));
+  const collectMins=[...missEss,...missRec].reduce((a,e)=>a+EXP_META[e.id].mins,0);
+  const reviewMins=5;
+  const missLine=arr=>arr.map(e=>`<li><span class="tag ${e.tag}">${e.tag}</span> <b>${e.title}</b> · ${EXP_META[e.id].unlocks} <span class="muted">(~${EXP_META[e.id].mins} min)</span></li>`).join('');
+  let eta;
+  if(nPresent===0) eta='Tempo típico de um cliente do zero: <b>~15–25 min</b> · coletar os exports (Seller Center · Ads · FastMoss) + soltar aqui + revisar. A leitura na página é instantânea.';
+  else if(missEss.length) eta=`Faltam dados <b>essenciais</b> · ainda não dá pra fechar momento/CT%. Coletar o que falta ≈ <b>~${collectMins} min</b> + ~${reviewMins} min de revisão.`;
+  else if(missRec.length) eta=`Essenciais ✓. Para fechar tudo faltam recomendados (~${collectMins} min de coleta). Concluir este cliente ≈ <b>~${collectMins+reviewMins} min</b>.`;
+  else eta=`Dados suficientes ✓ · concluir este cliente ≈ <b>~${reviewMins} min</b> (revisar e gerar o relatório).`;
+  const blkList=[];
+  if(missEss.length){ if(!present('shop')&&!present('prod'))blkList.push('GMV, momento e CT% (sem Shop Analytics nem Product list)'); if(!present('prod'))blkList.push('decomposição do GMV e concentração por SKU'); }
+  if(!present('aff'))blkList.push('CT% fica <b>incompleto</b> (sem comissões reais de afiliados)');
+  if(!present('creators'))blkList.push('D3 Afiliados sem Pareto (nota estimada)');
+  if(!present('ads'))blkList.push('D2 Ads conta como 0 (sem export de mídia)');
+  if(!socPresent)blkList.push('D4 Social só pela live (sem dados de conta do TikTok Studio)');
+  const coverageHTML=`<div class="card" style="margin-top:12px;background:rgba(0,0,0,.18)">
+    <h3>🧩 Cobertura dos dados &amp; tempo</h3>
+    <div class="note">Exports reconhecidos: <b>${nPresent}/${nTotal}</b></div>
+    <div class="bar" style="margin:6px 0"><i style="background:var(--accent);width:${(nPresent/nTotal*100)||0}%"></i></div>
+    ${missEss.length?`<div class="note" style="color:var(--crit);margin-top:8px"><b>⛔ Falta (essencial):</b></div><ul style="margin:4px 0;padding-left:18px;font-size:12px;color:var(--mut)">${missLine(missEss)}</ul>`:''}
+    ${missRec.length?`<div class="note" style="color:var(--warn);margin-top:6px"><b>⚠️ Recomendado (fecha o quadro):</b></div><ul style="margin:4px 0;padding-left:18px;font-size:12px;color:var(--mut)">${missLine(missRec)}</ul>`:''}
+    ${missOpt.length?`<div class="note" style="margin-top:6px"><b>➕ Opcional:</b></div><ul style="margin:4px 0;padding-left:18px;font-size:12px;color:var(--mut)">${missLine(missOpt)}</ul>`:''}
+    ${(!missEss.length&&!missRec.length)?'<div class="note" style="color:var(--ok);margin-top:8px">✓ Pacote essencial e recomendado completo.</div>':''}
+    ${blkList.length?`<div class="note" style="margin-top:8px">Enquanto falta: ${blkList.map(x=>'• '+x).join(' · ')}.</div>`:''}
+    <div class="note" style="margin-top:10px;border-top:1px solid var(--line);padding-top:8px">⏱️ ${eta}</div>
+  </div>`;
+  // top creators (ranking de linhas do Creator List, recortado por intervalo)
+  let topCreators=[];
+  if(state.data['creators']){
+    const cp=state.data['creators'], cr=rowsFor(cp);
+    const nameSel=document.querySelector('select[data-mapex="creators"][data-mapkey="nCreators"]');
+    const gmvSel=document.querySelector('select[data-mapex="creators"][data-mapkey="gmvCreators"]');
+    const ni=nameSel?parseInt(nameSel.value):-1, gi=gmvSel?parseInt(gmvSel.value):-1;
+    if(ni>=0&&gi>=0) topCreators=cr.map(row=>({name:(''+row[ni]).trim(),gmv:num(row[gi])||0}))
+      .filter(x=>x.name&&!/^(nome|creator|criador|name)$/i.test(x.name)).sort((a,b)=>b.gmv-a.gmv).slice(0,10);
+  }
+  // comparativo com período anterior (só exports com série por data)
+  let prevComp=null, prevLabel='';
+  const ivPrev=intervalPrev();
+  if(ivPrev){
+    prevLabel=fmtRange(ivPrev);
+    const Rp={};
+    EXPORTS.forEach(ex=>{const p=state.data[ex.id]; if(!p)return;
+      if(p._dcol===undefined)p._dcol=findDateCol(p,ivPrev.yh);
+      if(p._dcol<0)return;
+      const rows=rowsInRange(p,ivPrev.di,ivPrev.df,ivPrev.yh);
+      ex.metrics.forEach(m=>{const sel=document.querySelector(`select[data-mapex="${ex.id}"][data-mapkey="${m.key}"]`);const ci=sel?parseInt(sel.value):-1;Rp[m.key]=agg(rows,ci,m.agg);});
+    });
+    const GMVp=(Rp.gmv||Rp.gmvTotal||0), gmvC=R.gmv||GMV;
+    const aovC=R.pedidos?gmvC/R.pedidos:ticket, aovP=Rp.pedidos?GMVp/Rp.pedidos:0;
+    const cvrC=(R.pedidos&&R.visitantes)?R.pedidos/R.visitantes:null, cvrP=(Rp.pedidos&&Rp.visitantes)?Rp.pedidos/Rp.visitantes:null;
+    prevComp=[
+      ['GMV',gmvC,GMVp,'brl'],
+      ['Pedidos',R.pedidos||0,Rp.pedidos||0,'int'],
+      ['Visitantes',R.visitantes||0,Rp.visitantes||0,'int'],
+      ['Page Views',R.pageViews||0,Rp.pageViews||0,'int'],
+      ['AOV',aovC,aovP,'brl'],
+      ['Conversão',cvrC,cvrP,'pct1'],
+      ['GMV via Lives',R.liveGmv||d4,Rp.liveGmv||0,'brl'],
+      ['Investimento Ads',R.adsSpend||0,Rp.adsSpend||0,'brl'],
+      ['Receita Ads',R.adsGmv||0,Rp.adsGmv||0,'brl'],
+    ].filter(row=>row[2]);   // só métricas com valor no período anterior
+  }
+  window.lastReport={cliente:snap.cliente,periodo:snap.periodo,M,momNome:base[4],prevComp,prevLabel,
+    ct,ctzone:ctt,GMV,d1,d3,d4,pc,conc,roas,comm:R.comm||0,custoAm,lives,ads:R.adsSpend||0,adsGmv:R.adsGmv||0,
+    nSamples:R.nSamples||0,nCreators:R.nCreators||0,par,ticket,
+    pedidos:R.pedidos||0,visitantes:R.visitantes||0,pageViews:R.pageViews||0,
+    nLives:R.nLives||0,liveGmv:R.liveGmv||0,creatorGmv:R.creatorGmv||0,txnVideos:R.txnVideos||0,
+    followers:R.followers||0,folGain:R.folGain||0,vViews:R.vViews||0,nVideos:R.nVideos||0,
+    sLikes:R.sLikes||0,sComments:R.sComments||0,sShares:R.sShares||0,
+    notas,auto,why,gaps,bl,hasData,prio,loja,hero,tend,ativas,maduras,topCreators,
+    fmTopProd:R.fmTopProd||null,fmTopCreator:R.fmTopCreator||null,
+    missEss:missEss.map(e=>e.title),missRec:missRec.map(e=>e.title),nPresent,nTotal,eta:eta.replace(/<[^>]+>/g,'')};
+  document.getElementById('out').innerHTML=`
+   <div class="clientbar ${snap.cliente?'ok':'no'}">${snap.cliente?('📁 '+snap.cliente+(snap.periodo?(' <span style="font-weight:400;opacity:.8">· '+snap.periodo+'</span>'):'')):'⚠️ Informe o Cliente (campo no topo) · todo registro precisa de empresa'}</div>
+   ${ivHTML}
+   <div class="bigrow">
+     <div class="kpi"><div class="lab">Momento</div><div class="val">${M}</div><div class="muted" style="font-size:12px">${base[4]}</div></div>
+     <div class="kpi"><div class="lab">CT% (Custo de Tração)</div><div class="val">${ct!=null?fmtPct(ct):'—'}</div>${ct!=null?`<span class="badge ${ctb}">${ctt}</span>`:'<div class="note">faltam GMV/custos</div>'}</div>
+   </div>
+   <div class="note" style="margin-top:8px">Contexto (dos dados): loja <b>${loja}</b> · hero <b>${hero}</b> · tendência <b>${tend}</b> · <b>${ativas}</b> dim. ativas · <b>${maduras}</b> maduras · ticket médio <b>${ticket?fmtBRL(ticket):'—'}</b></div>
+   <div class="kpi" style="margin-top:12px">
+     <div class="lab">Decomposição do GMV · ${GMV?fmtBRL(GMV):'cole o Product list'}</div>
+     <div class="bar"><i class="seg-d1" style="width:${pc[0]*100}%"></i><i class="seg-d3" style="width:${pc[1]*100}%"></i><i class="seg-d4" style="width:${pc[2]*100}%"></i></div>
+     <div class="legend"><span><b style="color:#7EC8E3">D1</b> orgânico ${fmtPct(pc[0])}</span><span><b style="color:#3ddc84">D3</b> afiliados ${fmtPct(pc[1])}</span><span><b style="color:#ffcf5c">D4</b> live ${fmtPct(pc[2])}</span></div>
+     <div class="note">Concentração maior SKU: <b>${conc!=null?fmtPct(conc):'—'}</b> · ROAS de Ads: <b>${roas!=null?roas.toFixed(1).replace('.',',')+'x':'—'}</b></div>
+   </div>
+   ${socPresent?`<div class="kpi" style="margin-top:12px;border-color:rgba(201,160,255,.4)">
+     <div class="lab" style="color:#c9a0ff">Social orgânico (D4 · TikTok Studio)</div>
+     <div class="note" style="margin-top:5px">👥 <b>${fmtN(R.followers)}</b> seguidores${R.folGain?` <span style="color:var(--ok)">(+${fmtN(R.folGain)} no período)</span>`:''} · 🎬 <b>${R.nVideos||0}</b> vídeos · 👁️ <b>${fmtN(R.vViews)}</b> video views · ❤️ engajamento <b>${eng!=null?(eng*100).toFixed(1).replace('.',',')+'%':'—'}</b>${R.retViewers?` · 🔁 ${fmtN(R.retViewers)} recorrentes`:''}</div>
+     ${(R.genTop||R.terrTop||R.actPeak)?`<div class="note" style="margin-top:3px">Perfil da audiência:${R.genTop?` gênero dom. <b>${(R.genTop*100).toFixed(0)}%</b>`:''}${R.terrTop?` · território top <b>${(R.terrTop*100).toFixed(0)}%</b>`:''}${R.actPeak?` · pico ativos <b>${fmtN(R.actPeak)}</b>`:''}</div>`:''}
+   </div>`:''}
+   <table>
+     <tr><th>Dimensão</th><th>Nota</th><th>Baseline</th><th>Gap</th><th>Status</th></tr>
+     ${[['D1','Produtos'],['D2','Ads'],['D3','Afiliados'],['D4','Social']].map(([d,n])=>
+       `<tr><td>${d} ${n}</td><td>${hasData[d]?notas[d].toFixed(1):'—'}</td><td>${bl[d].toFixed(1)}</td><td>${hasData[d]?gaps[d].toFixed(1):'—'}</td><td>${stat(d,gaps[d])}</td></tr>`).join('')}
+   </table>
+   <div class="prio">🎯 Dimensão prioritária: ${prio}</div>
+   <div class="note" style="margin-top:8px">Regra: dimensão fraca só é prioridade se o momento já a exigia forte. Empate → D1 › D3 › D4 › D2.</div>
+   ${(R.fmTopProd||R.fmTopCreator)?`<div class="note">Benchmark [FM]: top produto ${R.fmTopProd?fmtBRL(R.fmTopProd):'—'} · top creator ${R.fmTopCreator?fmtBRL(R.fmTopCreator):'—'}</div>`:''}
+   ${coverageHTML}
+  `;
+}
+const v=id=>{const el=document.getElementById(id);return el?el.value:'';};
+
+// ===== salvar análise no banco central (Supabase) =====
+const saveBtn=document.getElementById('saveBtn'), saveStatus=document.getElementById('saveStatus');
+saveBtn.addEventListener('click',async()=>{
+  const s=window.lastSnapshot||{};
+  if(!s.cliente){saveStatus.style.color='var(--crit)';saveStatus.textContent='Informe o Cliente antes de salvar.';return;}
+  if(!s.gmv_total){saveStatus.style.color='var(--crit)';saveStatus.textContent='Cole ao menos o GMV (Shop Analytics ou Product list) antes de salvar.';return;}
+  if(!window.SUPA||!SUPA.url||!SUPA.anonKey){saveStatus.style.color='var(--warn)';
+    saveStatus.innerHTML='Banco não configurado · preencha <b>entrada-config.js</b> (ver SUPABASE-SETUP-4D.md).';return;}
+  saveBtn.disabled=true; saveStatus.style.color='var(--mut)'; saveStatus.textContent='Salvando…';
+  try{
+    const r=await fetch(`${SUPA.url}/rest/v1/${SUPA.table}`,{method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SUPA.anonKey,'Authorization':'Bearer '+SUPA.anonKey,'Prefer':'return=minimal'},
+      body:JSON.stringify(s)});
+    if(r.ok){saveStatus.style.color='var(--ok)';
+      saveStatus.textContent='✓ Salvo: '+s.cliente+' · '+s.momento+' · '+new Date().toLocaleString('pt-BR');}
+    else{const t=await r.text();saveStatus.style.color='var(--crit)';saveStatus.textContent='Erro '+r.status+': '+t.slice(0,160);}
+  }catch(e){saveStatus.style.color='var(--crit)';saveStatus.textContent='Falha de rede: '+e.message;}
+  saveBtn.disabled=false;
+});
+
+document.getElementById('m_cliente').addEventListener('input',()=>{if(window.lastSnapshot)window.lastSnapshot.cliente=v('m_cliente').trim();});
+
+// ===== limpar e começar outro cliente (rodar em sequência) =====
+const resetBtn=document.getElementById('resetBtn');
+resetBtn.addEventListener('click',()=>{
+  state.data={};
+  EXPORTS.forEach(e=>{const c=document.getElementById('card-'+e.id);if(c)c.style.display='none';
+    const m=document.getElementById('map-'+e.id);if(m){m.className='map';m.innerHTML='';}
+    const f=document.getElementById('fname-'+e.id);if(f)f.textContent='';});
+  const as=document.getElementById('autostatus');if(as)as.innerHTML='';
+  UNMATCHED=[];renderUnmatched();
+  const eh=document.getElementById('exports-hint');if(eh)eh.style.display='none';
+  const fa=document.getElementById('fileAll');if(fa)fa.value='';
+  ['m_cliente','m_periodo','dt_ini','dt_fim','dt_ini_prev','dt_fim_prev'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  const ml=document.getElementById('m_lives');if(ml)ml.value='0';
+  ['m_loja','m_hero','m_tend'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='Auto';});
+  ['m_ativas','m_maduras'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  document.querySelectorAll('[data-ov]').forEach(i=>i.value='');
+  saveStatus.textContent='';
+  compute();
+  document.getElementById('m_cliente').focus();
+});
+
+// ===== gerar relatório de análise (documento) =====
+function buildReportHTML(r,mode){
+  const pct=v=>(v||v===0)?(v*100).toFixed(1).replace('.',',')+'%':'—';
+  const brl=v=>v?'R$ '+v.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2}):'—';
+  const hoje=new Date().toLocaleDateString('pt-BR');
+  const ord=['D1','D3','D4','D2'].filter(d=>r.hasData[d]).sort((a,b)=>r.gaps[b]-r.gaps[a]);
+  const ctzona=r.ct==null?'—':(r.ct<=0.2?'🟢 Saudável':r.ct<=0.35?'🟡 Atenção':'🔴 Crítico');
+  const linhaDim=d=>{
+    if(!r.hasData[d]) return `<p><b>${d} ${DIM_NOME[d]}:</b> <i>sem dados · incluir o export correspondente.</i></p>`;
+    const st=r.gaps[d]<=0?'no baseline ou acima':(r.gaps[d]>=1.5?'criticamente abaixo':'abaixo');
+    return `<p><b>${d} ${DIM_NOME[d]} · nota ${r.notas[d].toFixed(1)}/5 (baseline ${r.bl[d].toFixed(1)}, ${st}):</b> ${r.why[d]||''}. <span class="rec">${DIM_REC[d]}</span></p>`;
+  };
+  const planoRows=ord.map((d,i)=>`<tr><td>${i+1}º</td><td><b>${d} ${DIM_NOME[d]}</b>${r.hasData[d]?` <span class="note">(nota ${r.notas[d].toFixed(1)}/${r.bl[d].toFixed(1)})</span>`:''}</td><td>${DIM_REC[d]}</td></tr>`).join('')||'<tr><td colspan="3"><i>Inclua os exports para gerar o plano por dimensão.</i></td></tr>';
+  // ===== ações estratégicas derivadas dos dados =====
+  const acts=[];
+  acts.push({t:`Foco do momento (${r.M} · ${r.momNome})`, d: MOMENTO_DESC[r.M]||'—'});
+  if(r.ct!=null){
+    if(r.ct>0.35) acts.push({t:'Sanear o CT% (crítico)', d:`CT% em ${pct(r.ct)} · a operação compra o próprio GMV. Repricing/kit para elevar a margem, renegociar/cortar o que traz GMV acima da margem e segurar mídia até a margem cobrir o CT%.`});
+    else if(r.ct>0.2) acts.push({t:'Aliviar a dependência de mídia', d:`CT% em ${pct(r.ct)} · reforçar D1 (margem) e as dimensões orgânicas (D3 afiliados e D4 social) para baixar o custo de tração.`});
+    else acts.push({t:'Escalar com margem', d:`CT% saudável (${pct(r.ct)}) · há espaço para acelerar (GMV Max sobre heroes validados) mantendo o ROI acima do mínimo da margem.`});
+  }
+  if(r.conc!=null && r.conc>=0.5) acts.push({t:'Reduzir o risco de concentração', d:`${pct(r.conc)} do GMV num único SKU · proteger o estoque do campeão e construir 2º/3º herói (kit, variação, bundle) para diluir o risco.`});
+  if(r.hasData.D3 && r.notas.D3<3) acts.push({t:'Ligar o motor de afiliados (D3)', d:`${r.why.D3||''}. Outreach sistemático de creators, programa de amostras, comissão competitiva e gestão do Pareto (reter quem performa, renovar a base).`});
+  if(!r.hasData.D4 || r.notas.D4<2.5) acts.push({t:'Acender o Social (D4)', d:`Cadência de conteúdo orgânico + lives próprias; migrar audiência de IG/CRM. Usar a live como ponte entre Social e Afiliados.`});
+  if(r.hasData.D2 && r.notas.D2<2 && r.ct!=null && r.ct<=0.2) acts.push({t:'Testar mídia (D2) sobre o que já converte', d:`GMV Max sobre heroes validados, ROI-alvo na margem · sem escalar mídia sobre catálogo mal precificado.`});
+  if(r.hasData.D1 && r.notas.D1<3) acts.push({t:'Fortalecer o chão (D1)', d:`Listing completo, avaliações ≥ 4,7, estoque dos campeões e precificação que cobre o CT%; liderar o sortimento com KIT (sobe o ticket sem desconto).`});
+  acts.push({t:'Calibrar para a nova taxa (15/07/2026)', d:`A comissão passa a depender da faixa do preço pós-desconto (< R$ 50: 10% + R$ 4 · ≥ R$ 50: 6% + R$ 6). Revisar cupom/kit para não jogar o produto na faixa de 10%.`});
+  const actsHTML=acts.map((a,i)=>`<p><b>${i+1}. ${a.t}:</b> ${a.d}</p>`).join('');
+  // ===== metas do próximo ciclo (números-alvo, derivados dos dados) =====
+  const shortRec=d=>((DIM_REC[d]||'').split(/[·.;]/)[0]||'').trim();
+  const metas=[];
+  if(r.ct!=null)metas.push(['CT% (Custo de Tração)',pct(r.ct),r.ct<=0.2?'manter ≤ 20%':'≤ 20%','D1 margem + D3/D4 orgânico; segurar mídia até a margem cobrir o CT%']);
+  if(r.conc!=null)metas.push(['Concentração do campeão',pct(r.conc),r.conc<0.5?'manter < 50%':'< 50%','construir 2º/3º herói (kit, variação, bundle)']);
+  ['D1','D3','D4','D2'].forEach(d=>{if(r.hasData[d]&&r.gaps[d]>0)metas.push([`${d} ${DIM_NOME[d]}`,r.notas[d].toFixed(1)+'/5','≥ '+r.bl[d].toFixed(1)+' (baseline)',shortRec(d)]);});
+  if(r.roas!=null&&r.hasData.D2)metas.push(['ROI de Ads',r.roas.toFixed(1)+'x','≥ ROI que cobre a margem','escalar só sobre heroes validados']);
+  const metasHTML=metas.length?`<div class="cd"><div class="cdt">Metas do próximo ciclo</div><table><tr><th>Métrica</th><th style="text-align:right">Hoje</th><th style="text-align:right">Meta</th><th>Alavanca</th></tr>${metas.map(m=>`<tr><td><strong>${m[0]}</strong></td><td style="text-align:right">${m[1]}</td><td style="text-align:right;color:#22C55E;font-weight:700">${m[2]}</td><td class="note" style="color:#9CA3AF">${m[3]}</td></tr>`).join('')}</table></div>`:'';
+  // ===== planejamento estratégico (padrão PeachUp: tese · plano por dimensão · métrica-guia/governança/dados · tese final) =====
+  const teseDim=ord[0]?`${ord[0]} ${DIM_NOME[ord[0]]}`:((r.prio||'').replace(/ ·.*/,'')||'a dimensão prioritária');
+  const jogada=(acts[1]?acts[1].t:acts[0].t);
+  const tese=`O momento é <strong>${r.M} ${r.momNome}</strong>; a dimensão prioritária é <strong>${teseDim}</strong> (maior gap para o momento); a jogada central é <strong>${jogada.toLowerCase()}</strong>.`;
+  // plano de ação por dimensão (ordem de prioridade · prazo · responsável por papel)
+  const DIM_RESP={D1:'Supervisor × Cliente',D2:'Supervisor (Ads)',D3:'Creator Leader',D4:'Creator Leader × Cliente'};
+  const prazoBy=['Imediato','S1','S1 e S2','Paralelo'];
+  const planoAcao=ord.length?ord.map((d,i)=>`<tr><td><b>${d} ${DIM_NOME[d]}</b></td><td>${DIM_REC[d]}</td><td>${prazoBy[i]||'Paralelo'}</td><td class="note" style="color:#9CA3AF">${DIM_RESP[d]||'Supervisor'}</td></tr>`).join(''):'<tr><td colspan="4"><i>Inclua os exports para gerar o plano por dimensão.</i></td></tr>';
+  // riscos e mitigação (derivados dos dados)
+  const riscos=[];
+  if(r.conc!=null&&r.conc>=0.5)riscos.push([`Dependência de um só SKU (${pct(r.conc)} do GMV)`,'Proteger o estoque do campeão e construir 2º/3º herói (kit, variação, bundle).']);
+  if(r.ct!=null&&r.ct>0.35)riscos.push([`CT% crítico (${pct(r.ct)}): a margem compra o próprio GMV`,'Repricing, corte do GMV caro e segurar mídia até a margem cobrir o CT%.']);
+  if(!r.hasData.D4||r.notas.D4<2.5)riscos.push(['Marca sem lastro orgânico (D4 fraco)','Cadência de conteúdo e lives próprias; migrar audiência de IG/CRM.']);
+  if(r.hasData.D3&&r.notas.D3<3)riscos.push(['Motor de distribuição parado (D3)','Outreach de creators, amostras e comissão competitiva; gerir o Pareto.']);
+  if(!riscos.length)riscos.push(['Ritmo de execução','Manter a cadência de otimização e a revisão semanal dos KPIs.']);
+  // métrica-guia (90 dias)
+  let win90;
+  if(r.ct!=null&&r.ct>0.35)win90=`trazer o <strong>CT% de ${pct(r.ct)} para ≤ 20%</strong>, com o GMV mantido ou crescente.`;
+  else if(r.conc!=null&&r.conc>=0.5)win90=`reduzir a <strong>concentração do campeão de ${pct(r.conc)} para < 50%</strong>, com um 2º herói validado.`;
+  else if(ord[0])win90=`levar <strong>${teseDim}</strong> ao baseline do momento (nota ≥ ${r.bl[ord[0]].toFixed(1)}) e destravar o próximo momento.`;
+  else win90=`consolidar o momento ${r.M} e abrir a próxima dimensão com o CT% saudável.`;
+  // dados necessários para fechar o 4D
+  const dadosNec=[...(r.missEss||[]),...(r.missRec||[])];
+  const govHTML=`<div class="cd"><div class="cdt">Métrica-guia · Governança · Dados necessários</div>
+      <div class="bnx"><b>Métrica-guia (90 dias):</b> ${win90}</div>
+      <div class="bnx" style="margin-top:8px"><b>Governança:</b> todo report abre pelo <b>CT%</b> (custo de tração) e pelo resultado (margem/caixa), não só pelo GMV. Cadência sugerida: 2 reuniões por semana nos 2 primeiros meses, depois quinzenal.</div>
+      ${dadosNec.length?`<div class="bnx" style="margin-top:8px"><b>Dados para fechar o 4D:</b> ${dadosNec.join(', ')}.</div>`:'<div class="bnx" style="margin-top:8px"><b>Dados para fechar o 4D:</b> cobertura completa dos exports essenciais.</div>'}
+      <div class="bnx" style="margin-top:8px"><b>Estudo Financeiro (à parte):</b> na <a href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit" target="_blank" style="color:#7EC8E3">planilha de precificação atual</a>, preenchida pelo <b>cliente</b> (produtos e custos). É de lá que sai a <b>margem de contribuição por SKU</b> que valida se o preço cobre o CT%.</div></div>`;
+  const roadmap=[['R02','Semana 1',`Aprovar a decisão financeira (repricing/kit) e o plano de ${teseDim}`],['R03','Semanas 1 e 2',`Ligar ${teseDim}: primeiras ações em execução`],['R04','Semana 3',`Ler os primeiros números (CT%, ${teseDim}) e calibrar`]];
+  // tese final (fecho)
+  const teseFinal=`O salto de <strong>${r.cliente||'a marca'}</strong> não depende de fazer tudo ao mesmo tempo: depende de <strong>encurtar ${teseDim} primeiro</strong>. Feito isso, as demais dimensões passam a girar com <strong>margem de contribuição positiva</strong> e o momento ${r.M} destrava para o próximo.`;
+  const planEstHTML=`
+    <div class="stt">Planejamento Estratégico</div>
+    <div class="bnr gr"><div class="bnt">A tese em uma frase</div><div class="bnx">${tese}</div></div>
+    <div class="cd"><div class="cdt">Plano de ação por dimensão</div><table><tr><th>Dimensão</th><th>Ação</th><th>Prazo</th><th>Responsável</th></tr>${planoAcao}</table></div>
+    ${metasHTML}
+    <div class="cd"><div class="cdt">Riscos e mitigação</div><table><tr><th>Risco</th><th>Mitigação</th></tr>${riscos.map(x=>`<tr><td><strong>${x[0]}</strong></td><td class="note" style="color:#9CA3AF">${x[1]}</td></tr>`).join('')}</table></div>
+    ${govHTML}
+    <div class="cd"><div class="cdt">Próximas reuniões · R02 em diante</div><table><tr><th>#</th><th>Quando</th><th>Tema</th></tr>${roadmap.map(x=>`<tr><td style="color:#7EC8E3;font-weight:700">${x[0]}</td><td>${x[1]}</td><td>${x[2]}</td></tr>`).join('')}</table></div>
+    <div class="bnr"><div class="bnt">Tese final</div><div class="bnx">${teseFinal}</div></div>`;
+  // métricas derivadas para o relatório
+  const fI=fmtInt;
+  const aov=r.pedidos?r.GMV/r.pedidos:(r.ticket||0);
+  const cvr=(r.pedidos&&r.visitantes)?r.pedidos/r.visitantes:null;
+  const cpa=(r.ads&&r.pedidos)?r.ads/r.pedidos:null;
+  const engR=(r.vViews>0)?((r.sLikes||0)+(r.sComments||0)+(r.sShares||0))/r.vViews:null;
+  const ctColor=r.ct==null?'#6B7280':(r.ct<=0.2?'#22C55E':r.ct<=0.35?'#FACC15':'#EF4444');
+  const kpi=(c,v,l,s)=>`<div class="kpi"><i style="background:${c}"></i><div class="v">${v}</div><div class="l">${l}</div>${s?`<div class="s">${s}</div>`:''}</div>`;
+  const statB=d=>!r.hasData[d]?'<span class="badge" style="background:rgba(255,255,255,.08);color:#6B7280">sem dados</span>':(r.gaps[d]<=0?'<span class="badge" style="background:rgba(34,197,94,.16);color:#22C55E">✓ ok</span>':r.gaps[d]>=1.5?'<span class="badge" style="background:rgba(239,68,68,.16);color:#EF4444">crítico</span>':'<span class="badge" style="background:rgba(250,204,21,.16);color:#FACC15">abaixo</span>');
+  // resumo executivo (narrativa a partir dos dados)
+  let resumo=`A operação registrou GMV de <strong>${brl(r.GMV)}</strong>`;
+  if(r.pedidos)resumo+=` em <strong>${fI(r.pedidos)} pedidos</strong> (AOV ${brl(aov)})`;
+  resumo+=`. No diagnóstico <strong>Elevate 4D</strong> está no momento <strong>${r.M} · ${r.momNome}</strong>, com <strong>CT% de ${pct(r.ct)}</strong> (${ctzona}). Decomposição do GMV: D1 orgânico ${pct(r.pc[0])} · D3 afiliados ${pct(r.pc[1])} · D4 live ${pct(r.pc[2])}.`;
+  if(r.ads)resumo+=` Ads: investimento ${brl(r.ads)}${r.adsGmv?`, receita ${brl(r.adsGmv)}`:''}${r.roas!=null?` (ROI ${r.roas.toFixed(1)}x)`:''}.`;
+  if(r.d3||r.creatorGmv)resumo+=` Afiliados puxaram ${brl(r.d3||r.creatorGmv)}${r.nCreators?` via ${fI(r.nCreators)} creators`:''}.`;
+  if(r.liveGmv||r.d4)resumo+=` Lives geraram ${brl(r.liveGmv||r.d4)}${r.nLives?` em ${fI(r.nLives)} transmissões`:''}.`;
+  resumo+=` <strong>Dimensão prioritária: ${r.prio}.</strong>`;
+  // KPIs de visão geral (só os que têm dado)
+  const vg=[kpi('#22C55E',brl(r.GMV),'GMV','faturamento bruto')];
+  if(r.pedidos)vg.push(kpi('#7EC8E3',fI(r.pedidos),'Pedidos','no período'));
+  if(aov)vg.push(kpi('#FACC15',brl(aov),'AOV','ticket médio (GMV ÷ pedidos)'));
+  vg.push(kpi(ctColor,pct(r.ct),'CT%',ctzona+' · custo de tração'));
+  if(cvr!=null)vg.push(kpi('#7EC8E3',(cvr*100).toFixed(2).replace('.',',')+'%','Conversão','pedidos ÷ visitantes'));
+  if(r.visitantes)vg.push(kpi('#A78BFA',fI(r.visitantes),'Visitantes'));
+  if(r.pageViews)vg.push(kpi('#06B6D4',fI(r.pageViews),'Page Views'));
+  const vgKpis=vg.join('');
+  const css=`*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+   body{background:radial-gradient(ellipse at top right,rgba(126,200,227,.06) 0%,transparent 50%),linear-gradient(135deg,#0B1A2B 0%,#0F2B3A 50%,#1A4A5A 100%);background-attachment:fixed;color:#E8EEF2;font-family:'Poppins','Segoe UI',Arial,sans-serif;font-size:14px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+   .tb{position:sticky;top:0;text-align:right;padding:10px 16px;background:rgba(11,26,43,.85);border-bottom:1px solid rgba(126,200,227,.2);z-index:5;backdrop-filter:blur(6px)}
+   .tb button{background:#7EC8E3;color:#0B1A2B;border:0;border-radius:8px;padding:9px 16px;font-weight:700;cursor:pointer;font-family:inherit}
+   .hd{background:linear-gradient(135deg,#0B1A2B,#0F2B3A 50%,#1A4A5A);border-bottom:1px solid rgba(126,200,227,.28);padding:30px 36px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px}
+   .bn{font-size:25px;font-weight:800;letter-spacing:-.02em;color:#FFFFFF}.bn span{color:#7EC8E3}
+   .bt{font-size:9px;font-weight:600;letter-spacing:.3em;color:rgba(126,200,227,.75);text-transform:uppercase;margin-top:6px}
+   .hi{text-align:right}.he{font-size:11px;font-weight:600;letter-spacing:.22em;color:#7EC8E3;text-transform:uppercase}.ht{font-size:22px;font-weight:700;color:#FFFFFF}.hm{font-size:11px;color:#98B0BC}
+   .ct{max-width:1180px;margin:0 auto;padding:26px 22px 50px;counter-reset:sec}
+   .cover{min-height:100vh;padding:48px 56px;display:flex;flex-direction:column;justify-content:space-between;text-align:center;position:relative;overflow:hidden;page-break-after:always}
+   .cover-bar{display:flex;justify-content:space-between;align-items:center;padding-bottom:16px;border-bottom:1px solid rgba(126,200,227,.18);text-align:left}
+   .cover-logo{font-weight:800;font-size:20px;color:#FFFFFF;letter-spacing:-.02em}.cover-logo .dot{color:#7EC8E3}
+   .cover-meta{font-size:11px;color:#98B0BC;text-align:right;line-height:1.5}.cover-meta strong{color:#7EC8E3;font-weight:600}
+   .cover-mid{margin:auto 0;padding:40px 0}
+   .cover-eyebrow{display:inline-block;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:#7EC8E3;font-weight:600;padding:7px 16px;border:1px solid rgba(126,200,227,.18);border-radius:999px;margin-bottom:24px}
+   .cover-h1{font-size:min(56px,11vw);line-height:1.02;letter-spacing:-.035em}.cover-h1 .light{display:block;font-weight:300;color:#7EC8E3}.cover-h1 .bold{display:block;font-weight:800;color:#FFFFFF}
+   .cover-client{margin-top:30px;font-size:26px;font-weight:700;color:#FFFFFF;letter-spacing:-.015em}
+   .cover-segment{margin:10px auto 0;font-size:13px;color:#98B0BC;font-style:italic;max-width:520px;line-height:1.5}
+   .cover-pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:28px}
+   .cover-pill{background:rgba(15,43,58,.55);border:1px solid rgba(126,200,227,.18);border-radius:999px;padding:8px 16px;font-size:11px;font-weight:500;color:#E8EEF2}.cover-pill b{color:#7EC8E3;font-weight:700;margin-right:6px;letter-spacing:.06em;text-transform:uppercase}
+   .cover-bottom{padding-top:24px;border-top:1px solid rgba(126,200,227,.18)}
+   .cover-tagline{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:#FFFFFF;font-weight:600;margin-bottom:10px}.cover-tagline span{color:#7EC8E3}
+   .cover-contact{font-size:11px;color:#98B0BC;display:flex;justify-content:center;gap:22px;flex-wrap:wrap}.cover-contact strong{color:#7EC8E3;margin-right:4px}
+   .page-header{display:flex;justify-content:space-between;align-items:center;padding-bottom:12px;margin-bottom:24px;border-bottom:1px solid rgba(126,200,227,.18);font-size:11px;color:#98B0BC;letter-spacing:.04em}.page-header .ph-logo{font-weight:800;color:#FFFFFF;font-size:14px;letter-spacing:-.01em}.page-header .ph-logo .dot{color:#7EC8E3}
+   .bnr{border-radius:14px;padding:18px;margin-bottom:22px;border:1px solid rgba(126,200,227,.25);background:linear-gradient(180deg,rgba(126,200,227,.07),rgba(126,200,227,.02))}
+   .bnr.gr{border-color:rgba(34,197,94,.22);background:linear-gradient(180deg,rgba(34,197,94,.07),rgba(34,197,94,.02))}
+   .bnt{font-size:10px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:10px;color:#7EC8E3}.bnr.gr .bnt{color:#22C55E}
+   .bnx{font-size:13px;line-height:1.7;color:#E8EEF2}.bnx strong{color:#FFFFFF}
+   .stt{font-size:17px;font-weight:700;letter-spacing:-.01em;color:#FFFFFF;text-transform:none;margin:36px 0 16px;padding:6px 0 6px 16px;border-left:3px solid #7EC8E3}.stt::before{counter-increment:sec;content:counter(sec) ". ";color:#7EC8E3;font-weight:800}
+   .kr{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}
+   .kpi{background:rgba(15,43,58,.55);border:1px solid rgba(126,200,227,.18);border-radius:14px;padding:16px;position:relative;overflow:hidden}
+   .kpi>i{position:absolute;top:0;left:0;right:0;height:3px;display:block}
+   .kpi .v{font-size:21px;font-weight:800;margin:8px 0 4px;line-height:1.1;color:#FFFFFF}.kpi .l{font-size:10px;color:#98B0BC;font-weight:600;letter-spacing:.12em;text-transform:uppercase}.kpi .s{font-size:11px;color:#98B0BC;margin-top:6px}
+   .cd{background:rgba(15,43,58,.55);border:1px solid rgba(126,200,227,.18);border-radius:14px;padding:18px;margin-bottom:14px}
+   .cdt{font-size:11px;font-weight:700;letter-spacing:.16em;color:#7EC8E3;text-transform:uppercase;margin-bottom:12px}
+   table{width:100%;border-collapse:collapse;font-size:12px}th{text-align:left;padding:9px 8px;font-size:9px;letter-spacing:.14em;color:#7EC8E3;text-transform:uppercase;border-bottom:1px solid rgba(126,200,227,.25)}td{padding:9px 8px;border-bottom:1px solid rgba(126,200,227,.10);color:#E8EEF2}tr:last-child td{border-bottom:none}
+   .dbar{height:16px;border-radius:8px;overflow:hidden;display:flex;border:1px solid rgba(126,200,227,.18);margin:8px 0}.dbar i{display:block;height:100%}
+   .lg{font-size:11px;color:#98B0BC;display:flex;gap:14px;flex-wrap:wrap}.lg b{color:#FFFFFF}
+   .badge{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px}
+   .prio{background:rgba(126,200,227,.1);border:1px solid rgba(126,200,227,.4);border-radius:10px;padding:12px 14px;font-weight:600;margin-top:12px;color:#cfeef9}
+   .act{font-size:13px;line-height:1.65;color:#E8EEF2;margin:9px 0}.act b{color:#FFFFFF}
+   .note{font-size:12px;color:#98B0BC}
+   .ft{text-align:center;padding:26px;font-size:10px;color:#98B0BC;border-top:1px solid rgba(126,200,227,.15);letter-spacing:.18em;text-transform:uppercase;font-weight:600;margin-top:36px}.ft .g{color:#7EC8E3}
+   @media print{.tb{display:none}body{background:#0B1A2B}}`;
+  mode=mode||'full';
+  const isEstr=mode==='estrategia', isDados=mode==='dados';
+  const docTitle=isEstr?'Planejamento Estratégico 4D':(isDados?'Relatório de dados 4D':'Diagnóstico 4D');
+  const docSub=isEstr?'Elevate Ecom · Planejamento Estratégico 4D':(isDados?'Elevate Ecom · Relatório de dados':'Elevate Ecom · Relatório + Diagnóstico 4D');
+  const cvEyebrow=isEstr?'Planejamento Estratégico · Plano de Ação':(isDados?'Relatório de Dados · Visão Geral':'Diagnóstico + Plano de Ação');
+  const cvLight=isEstr?'Planejamento':(isDados?'Relatório':'Diagnóstico');
+  const cvBold=isEstr?'Estratégico':(isDados?'de Dados':'Elevate 4D');
+  const ctZonaTxt=(ctzona||'').replace(/^\S+\s*/,'')||'—';
+  const coverHTML=`<section class="cover">
+    <div class="cover-bar">
+      <div class="cover-logo">Elevate Ecom<span class="dot">.</span></div>
+      <div class="cover-meta"><strong>${docTitle}</strong><br>Diagnóstico Elevate 4D · ${hoje}</div>
+    </div>
+    <div class="cover-mid">
+      <span class="cover-eyebrow">${cvEyebrow}</span>
+      <h1 class="cover-h1"><span class="light">${cvLight}</span><span class="bold">${cvBold}</span></h1>
+      <div class="cover-client">${r.cliente||'[Cliente]'}</div>
+      <div class="cover-segment">${r.periodo||''}</div>
+      <div class="cover-pills">
+        <div class="cover-pill"><b>Momento</b>${r.M} ${r.momNome}</div>
+        <div class="cover-pill"><b>CT%</b>${pct(r.ct)}${r.ct!=null?` (${ctZonaTxt})`:''}</div>
+        <div class="cover-pill"><b>Prioridade</b>${(r.prio||'').replace(/ ·.*/,'')||'—'}</div>
+        <div class="cover-pill"><b>GMV</b>${brl(r.GMV)}</div>
+      </div>
+    </div>
+    <div class="cover-bottom">
+      <div class="cover-tagline">Sua marca <span>acima</span> nos marketplaces</div>
+      <div class="cover-contact"><span><strong>Instagram</strong> @ecomelevatebr</span><span><strong>Documento</strong> interno · Squad Fox</span></div>
+    </div>
+  </section>`;
+  const headHTML=`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${docTitle} · ${r.cliente||'Cliente'} · ${r.periodo||''}</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet"><style>${css}</style></head><body>
+  <div class="tb"><button onclick="window.print()">🖨️ Imprimir / Salvar PDF</button></div>
+  ${coverHTML}
+  <div class="ct">
+    <div class="page-header"><div class="ph-logo">Elevate Ecom<span class="dot">.</span></div><div>${r.cliente||'[Cliente]'} · ${r.periodo||''} · ${docSub}</div></div>`;
+  const resumoHTML=`<div class="bnr gr"><div class="bnt">Resumo Executivo</div><div class="bnx">${resumo}</div></div>`;
+  const vgHTML=`<div class="stt">Visão Geral</div><div class="kr">${vgKpis}</div>`;
+  const compHTML=(r.prevComp&&r.prevComp.length)?`<div class="cd"><div class="cdt">Comparativo · ${r.periodo||'atual'} vs ${r.prevLabel}</div>
+      <table><tr><th>Métrica</th><th style="text-align:right">Atual</th><th style="text-align:right">Anterior</th><th style="text-align:right">Δ</th></tr>
+      ${r.prevComp.map(row=>{const lab=row[0],cur=row[1],prev=row[2],fmt=row[3];const fv=x=>x==null?'—':fmt==='brl'?brl(x):fmt==='pct1'?(x*100).toFixed(2).replace('.',',')+'%':fI(x);const d=prev?((cur-prev)/prev*100):null;const dc=d==null?'#6B7280':d>=0?'#22C55E':'#EF4444';return `<tr><td><strong>${lab}</strong></td><td style="text-align:right">${fv(cur)}</td><td style="text-align:right">${fv(prev)}</td><td style="text-align:right;color:${dc};font-weight:700">${d==null?'—':(d>=0?'+':'')+d.toFixed(1).replace('.',',')+'%'}</td></tr>`}).join('')}
+      </table></div>`:'';
+  const diag4dHTML=`<div class="bnr"><div class="bnt">Diagnóstico Elevate 4D</div>
+      <div class="kr" style="margin-bottom:14px">
+        ${kpi('#7EC8E3',r.M,'Momento',r.momNome)}
+        ${kpi(ctColor,pct(r.ct),'CT% (Custo de Tração)',ctzona)}
+        ${kpi('#7EC8E3',ord[0]||'—','Dimensão prioritária',(r.prio||'').replace(/ ·.*/,''))}
+      </div>
+      <div class="cdt" style="margin-top:4px">Decomposição do GMV · ${brl(r.GMV)}</div>
+      <div class="dbar"><i style="background:#7EC8E3;width:${(r.pc[0]*100)||0}%"></i><i style="background:#22C55E;width:${(r.pc[1]*100)||0}%"></i><i style="background:#FACC15;width:${(r.pc[2]*100)||0}%"></i></div>
+      <div class="lg"><span><b style="color:#7EC8E3">D1</b> orgânico ${pct(r.pc[0])}</span><span><b style="color:#22C55E">D3</b> afiliados ${pct(r.pc[1])}</span><span><b style="color:#FACC15">D4</b> live ${pct(r.pc[2])}</span><span>concentração SKU ${pct(r.conc)}</span><span>ROAS ${r.roas!=null?r.roas.toFixed(1)+'x':'—'}</span></div>
+      <table style="margin-top:12px"><tr><th>Dimensão</th><th>Nota</th><th>Baseline (${r.M})</th><th>Gap</th><th>Status</th></tr>
+        ${['D1','D2','D3','D4'].map(d=>`<tr><td>${d} ${DIM_NOME[d]}</td><td>${r.hasData[d]?r.notas[d].toFixed(1):'—'}</td><td>${r.bl[d].toFixed(1)}</td><td>${r.hasData[d]?r.gaps[d].toFixed(1):'—'}</td><td>${statB(d)}</td></tr>`).join('')}
+      </table>
+      <div class="prio">🎯 Dimensão prioritária: ${r.prio}</div>
+      <div class="note" style="margin-top:8px">CT% = (Ads ${brl(r.ads)} + comissões ${brl(r.comm)} + lives ${brl(r.lives)} + amostras ${brl(r.custoAm)}) ÷ GMV ${brl(r.GMV)}.</div>
+    </div>`;
+  const midiaHTML=(r.ads||r.adsGmv)?`<div class="stt">Mídia Paga · Ads</div><div class="kr">
+      ${kpi('#EF4444',brl(r.ads),'Investimento')}
+      ${kpi('#22C55E',brl(r.adsGmv),'Receita Ads')}
+      ${kpi('#FACC15',r.roas!=null?r.roas.toFixed(2)+'x':'—','ROI','receita Ads ÷ investimento')}
+      ${kpi('#7EC8E3',cpa!=null?brl(cpa):'—','CPA','custo por pedido')}
+    </div>`:'';
+  const livesHTML=(r.liveGmv||r.nLives||r.d4)?`<div class="stt">Lives · Performance</div><div class="kr">
+      ${kpi('#EC4899',brl(r.liveGmv||r.d4),'GMV via Lives')}
+      ${kpi('#7EC8E3',fI(r.nLives),'Transmissões')}
+    </div>`:'';
+  const afilHTML=(r.d3||r.creatorGmv||r.nCreators||r.comm)?`<div class="stt">Afiliados · Creators</div><div class="kr">
+      ${kpi('#22C55E',brl(r.d3||r.creatorGmv),'GMV Afiliados')}
+      ${kpi('#FACC15',brl(r.comm),'Comissão')}
+      ${kpi('#7EC8E3',fI(r.nCreators),'Creators')}
+      ${kpi('#A78BFA',fI(r.nSamples),'Amostras')}
+    </div>${(r.topCreators&&r.topCreators.length)?`<div class="cd"><div class="cdt">Top creators · por GMV</div><table><tr><th>#</th><th>Creator</th><th style="text-align:right">GMV</th></tr>${r.topCreators.map((c,i)=>`<tr><td style="color:#7EC8E3;font-weight:700">${i+1}</td><td style="font-weight:600;color:#fff">${c.name}</td><td style="text-align:right;color:#22C55E;font-weight:700">${brl(c.gmv)}</td></tr>`).join('')}</table></div>`:''}`:'';
+  const socialHTML=(r.followers||r.vViews||r.nVideos)?`<div class="stt">Social · D4 (TikTok Studio)</div><div class="kr">
+      ${kpi('#c9a0ff',fI(r.followers),'Seguidores',r.folGain?('+'+fI(r.folGain)+' no período'):'')}
+      ${kpi('#06B6D4',fI(r.vViews),'Video Views')}
+      ${kpi('#EC4899',engR!=null?(engR*100).toFixed(1).replace('.',',')+'%':'—','Engajamento','(likes+coment+shares) ÷ views')}
+      ${kpi('#7EC8E3',fI(r.nVideos),'Vídeos')}
+    </div>`:'';
+  const estrHTML=`<div class="stt">Estratégia e Ações</div>
+    ${acts.map((a,i)=>`<div class="act"><b>${i+1}. ${a.t}:</b> ${a.d}</div>`).join('')}
+    ${planEstHTML}`;
+  const cobHTML=`<div class="stt">Cobertura dos Dados</div>
+    <div class="cd"><div class="bnx">Exports usados: <strong>${r.nPresent}/${r.nTotal}</strong>.${(r.missEss&&r.missEss.length)?` <span style="color:#EF4444">Faltam essenciais: ${r.missEss.join(', ')}.</span>`:''}${(r.missRec&&r.missRec.length)?` Recomendados ausentes: ${r.missRec.join(', ')}.`:''}</div>
+    <div class="note" style="margin-top:8px">Contexto da marca, concorrência e ativos de largada se aprofundam no Modelo de Diagnóstico Estratégico 4D.</div>`;
+  const footHTML=`
+  </div>
+  <div class="ft"><span class="g">Elevate Ecom.</span> · Sua marca acima nos marketplaces · ${r.cliente||''} · ${r.periodo||''} · Documento Interno</div>
+  </body></html>`;
+  const body=isEstr
+    ? [resumoHTML, diag4dHTML, estrHTML]
+    : isDados
+    ? [resumoHTML, vgHTML, compHTML, diag4dHTML, midiaHTML, livesHTML, afilHTML, socialHTML, cobHTML]
+    : [resumoHTML, vgHTML, compHTML, diag4dHTML, midiaHTML, livesHTML, afilHTML, socialHTML, estrHTML, cobHTML];
+  return headHTML + '\n' + body.join('\n\n') + footHTML;
+}
+const reportBtn=document.getElementById('reportBtn');
+reportBtn.addEventListener('click',()=>{
+  const r=window.lastReport;
+  if(!r||!r.cliente){saveStatus.style.color='var(--crit)';saveStatus.textContent='Informe o Cliente antes de gerar o relatório.';return;}
+  if(!r.GMV){saveStatus.style.color='var(--crit)';saveStatus.textContent='Cole ao menos o GMV (Product list / Shop Analytics) antes de gerar.';return;}
+  const w=window.open('','_blank');
+  if(!w){saveStatus.style.color='var(--warn)';saveStatus.textContent='Permita pop-ups para abrir o relatório.';return;}
+  w.document.write(buildReportHTML(r)); w.document.close();
+  saveStatus.style.color='var(--ok)';saveStatus.textContent='✓ Relatório aberto em nova aba (use Imprimir → Salvar como PDF).';
+});
+
+const stratBtn=document.getElementById('stratBtn');
+stratBtn.addEventListener('click',()=>{
+  const r=window.lastReport;
+  if(!r||!r.cliente){saveStatus.style.color='var(--crit)';saveStatus.textContent='Informe o Cliente antes de gerar o Planejamento Estratégico.';return;}
+  if(!r.GMV){saveStatus.style.color='var(--crit)';saveStatus.textContent='Cole ao menos o GMV (Product list / Shop Analytics) antes de gerar.';return;}
+  const w=window.open('','_blank');
+  if(!w){saveStatus.style.color='var(--warn)';saveStatus.textContent='Permita pop-ups para abrir o documento.';return;}
+  w.document.write(buildReportHTML(r,'estrategia')); w.document.close();
+  saveStatus.style.color='var(--ok)';saveStatus.textContent='✓ Planejamento Estratégico aberto em aba separada (use Imprimir → Salvar como PDF).';
+});
+
+// ===== fila: gerar, guardar pra baixar e ir pro próximo cliente =====
+const QKEY='elevate4d_reports';
+function loadQueue(){try{return JSON.parse(localStorage.getItem(QKEY)||'[]');}catch(e){return [];}}
+function saveQueue(q){try{localStorage.setItem(QKEY,JSON.stringify(q));return true;}catch(e){toast('⚠️ Memória cheia · baixe e limpe relatórios antigos da lista.','warn');return false;}}
+function toast(msg,kind){
+  const host=document.getElementById('toast'); if(!host)return;
+  const c={ok:'var(--ok)',warn:'var(--warn)',crit:'var(--crit)'}[kind]||'var(--accent)';
+  const t=document.createElement('div');
+  t.style.cssText='background:#0F2B3A;border:1px solid '+c+';color:var(--ink);padding:10px 14px;border-radius:10px;box-shadow:0 4px 18px rgba(0,0,0,.4);font-size:13px;max-width:320px';
+  t.innerHTML=msg; host.appendChild(t);
+  setTimeout(()=>{t.style.transition='.4s';t.style.opacity='0';setTimeout(()=>t.remove(),400);},5000);
+}
+function fnameFor(cli){return 'Diagnostico-4D-'+(''+(cli||'cliente')).replace(/[^\w\-]+/g,'-')+'-'+new Date().toISOString().slice(0,10)+'.html';}
+function downloadReport(item){ if(!item)return;
+  const blob=new Blob([item.html],{type:'text/html;charset=utf-8'});
+  const url=URL.createObjectURL(blob); const a=document.createElement('a');
+  a.href=url; a.download=item.fname; document.body.appendChild(a); a.click();
+  setTimeout(()=>{URL.revokeObjectURL(url);a.remove();},120);
+}
+let QID=0;
+function nextId(){return 'r'+new Date().getTime()+'_'+(QID++);}
+function updateItem(id,patch){const q=loadQueue();const it=q.find(x=>x.id===id);if(!it)return;Object.assign(it,patch);saveQueue(q);renderQueue();}
+const BANKLBL={saving:'<span style="color:var(--accent)">💾 salvando…</span>',ok:'<span style="color:var(--ok)">✓ salvo no banco</span>',err:'<span style="color:var(--crit)">⚠ banco: pendente</span>',off:'<span class="muted">banco off</span>'};
+// salva no banco em SEGUNDO PLANO (vários em paralelo) · atualiza o status do item por id
+async function saveToBank(id,s){
+  if(!(window.SUPA&&SUPA.url&&SUPA.anonKey&&s&&s.cliente&&s.gmv_total)){updateItem(id,{bank:'off'});return;}
+  updateItem(id,{bank:'saving'});
+  try{const resp=await fetch(SUPA.url+'/rest/v1/'+SUPA.table,{method:'POST',
+    headers:{'Content-Type':'application/json','apikey':SUPA.anonKey,'Authorization':'Bearer '+SUPA.anonKey,'Prefer':'return=minimal'},
+    body:JSON.stringify(s)});
+    updateItem(id,{bank:resp.ok?'ok':'err'});
+  }catch(e){updateItem(id,{bank:'err'});}
+}
+function renderQueue(){
+  const q=loadQueue(); const host=document.getElementById('reportsList');
+  const empty=document.getElementById('reportsEmpty'), acts=document.getElementById('reportsActions');
+  if(!host)return;
+  if(empty)empty.style.display=q.length?'none':'';
+  if(acts)acts.style.display=q.length?'':'none';
+  const retry=document.getElementById('retryAllBtn'); if(retry)retry.style.display=q.some(it=>it.bank==='err')?'inline-block':'none';
+  host.innerHTML=q.map(it=>'<div style="display:flex;justify-content:space-between;align-items:center;gap:10px;border:1px solid var(--line);border-radius:9px;padding:9px 11px;margin:6px 0;font-size:13px;flex-wrap:wrap">'+
+    '<div><b>'+it.cliente+'</b> <span class="muted">· '+it.momento+' · CT% '+it.ct+' · '+it.when+'</span>'+(it.faltam?' <span style="color:var(--warn)">· faltam dados</span>':'')+' <span style="font-size:11px">'+(BANKLBL[it.bank]||'')+'</span></div>'+
+    '<div style="display:flex;gap:6px">'+
+      (it.bank==='err'?'<button data-rt="'+it.id+'" class="savebtn" style="width:auto;padding:6px 10px;font-size:12px;background:transparent;color:var(--accent);border:1px solid var(--accent)">🔁</button>':'')+
+      '<button data-dl="'+it.id+'" class="savebtn" style="width:auto;padding:6px 10px;font-size:12px">⬇️ Baixar</button>'+
+      '<button data-rm="'+it.id+'" class="savebtn" style="width:auto;padding:6px 10px;font-size:12px;background:transparent;color:var(--mut);border:1px solid var(--line)">✕</button>'+
+    '</div></div>').join('');
+  host.querySelectorAll('[data-dl]').forEach(b=>b.addEventListener('click',()=>downloadReport(loadQueue().find(x=>x.id===b.dataset.dl))));
+  host.querySelectorAll('[data-rm]').forEach(b=>b.addEventListener('click',()=>{const q=loadQueue();const i=q.findIndex(x=>x.id===b.dataset.rm);if(i>=0){q.splice(i,1);saveQueue(q);renderQueue();}}));
+  host.querySelectorAll('[data-rt]').forEach(b=>b.addEventListener('click',()=>{const it=loadQueue().find(x=>x.id===b.dataset.rt);if(it)saveToBank(it.id,it.snap);}));
+}
+const clearReportsBtn=document.getElementById('clearReportsBtn');
+if(clearReportsBtn)clearReportsBtn.addEventListener('click',()=>{if(confirm('Limpar todos os relatórios da lista? (baixe antes os que precisar)')){localStorage.removeItem(QKEY);renderQueue();}});
+const dlAllBtn=document.getElementById('dlAllBtn');
+if(dlAllBtn)dlAllBtn.addEventListener('click',()=>{const q=loadQueue();q.forEach((it,i)=>setTimeout(()=>downloadReport(it),i*350));});
+const retryAllBtn=document.getElementById('retryAllBtn');
+if(retryAllBtn)retryAllBtn.addEventListener('click',()=>{loadQueue().filter(it=>it.bank==='err').forEach(it=>saveToBank(it.id,it.snap));});
+
+const batchBtn=document.getElementById('batchBtn');
+batchBtn.addEventListener('click',()=>{
+  const r=window.lastReport;
+  if(!r||!r.cliente){saveStatus.style.color='var(--crit)';saveStatus.textContent='Informe o Cliente antes de gerar.';return;}
+  if(!r.GMV){saveStatus.style.color='var(--crit)';saveStatus.textContent='Cole ao menos o GMV (Product list / Shop Analytics) antes de gerar.';return;}
+  const id=nextId();
+  const snap=window.lastSnapshot?JSON.parse(JSON.stringify(window.lastSnapshot)):null;   // congela ANTES do reset
+  const item={id,cliente:r.cliente,periodo:r.periodo||'',momento:r.M,
+    ct:(r.ct!=null?(r.ct*100).toFixed(1).replace('.',',')+'%':'—'),
+    when:new Date().toLocaleString('pt-BR'),faltam:!!(r.missEss&&r.missEss.length),
+    fname:fnameFor(r.cliente),html:buildReportHTML(r),snap,bank:'saving'};
+  const q=loadQueue(); q.unshift(item); saveQueue(q); renderQueue();
+  const cli=item.cliente;
+  resetBtn.click();                                  // libera JÁ pro próximo cliente
+  saveToBank(id,snap);                               // salva em paralelo, sem travar
+  toast('✓ Relatório de <b>'+cli+'</b> gerado · já pode começar o próximo. <span style="opacity:.85">Salvando no banco em segundo plano.</span>','ok');
+  saveStatus.style.color='var(--ok)';saveStatus.textContent='✓ '+cli+' na lista · pronto pro próximo cliente.';
+});
+
+renderQueue();
+compute();
+</script>
+</body>
+</html>

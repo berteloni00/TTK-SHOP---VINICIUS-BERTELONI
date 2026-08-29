@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>TikTok Ads · Advertiser Growth Camp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+
+:root{
+  --accent:#7EC8E3;
+  --accent-soft:rgba(126,200,227,.10);
+  --accent-line:rgba(126,200,227,.24);
+  --bg-deep:#0B1A2B;
+  --bg-mid:#0F2B3A;
+  --bg-light:#1A4A5A;
+  --card:rgba(15,43,58,.55);
+  --card-2:rgba(11,26,43,.50);
+  --ink:#E8EEF2;
+  --ink-strong:#FFFFFF;
+  --ink-muted:#98B0BC;
+  --ok:#22C55E;
+  --warn:#FACC15;
+  --bad:#EC4899;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+html,body{
+  font-family:"Poppins","Segoe UI",system-ui,-apple-system,sans-serif;
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+
+body{
+  background:
+    radial-gradient(760px 420px at 88% -6%, rgba(126,200,227,.16) 0%, transparent 62%),
+    radial-gradient(620px 380px at 4% 104%, rgba(126,200,227,.09) 0%, transparent 60%),
+    linear-gradient(135deg,var(--bg-deep) 0%, var(--bg-mid) 52%, var(--bg-light) 100%);
+  background-color:var(--bg-deep);
+}
+
+.page{
+  width:210mm; height:297mm;
+  margin-left:auto; margin-right:auto;   /* centraliza na tela; no PDF a margem vira 0 */
+  padding:9mm 11mm 5.5mm;
+  display:flex; flex-direction:column;
+  overflow:hidden;
+}
+
+/* ---------------- hero ---------------- */
+.eyebrow{
+  display:inline-block;
+  font-size:7.4pt; font-weight:600; letter-spacing:.20em; text-transform:uppercase;
+  color:var(--accent);
+  border:1px solid var(--accent-line);
+  border-radius:999px;
+  padding:3.5px 12px;
+  background:var(--accent-soft);
+}
+
+h1{
+  margin-top:8px;
+  font-size:19.5pt; line-height:1.05; letter-spacing:-.032em; font-weight:800;
+  color:var(--ink-strong);
+}
+h1 .lt{ display:block; font-weight:300; color:var(--accent); letter-spacing:-.02em; }
+
+.lede{
+  margin-top:6px;
+  max-width:158mm;
+  font-size:8.1pt; line-height:1.48; color:var(--ink);
+  font-weight:400;
+}
+.lede b{ color:var(--ink-strong); font-weight:600 }
+
+.pills{ display:flex; gap:6px; margin-top:9px; flex-wrap:wrap }
+.pill{
+  border:1px solid var(--accent-line);
+  background:var(--card-2);
+  border-radius:9px;
+  padding:5px 10px 6px;
+  line-height:1.25;
+}
+.pill .k{ display:block; font-size:6.2pt; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-muted); font-weight:600 }
+.pill .v{ display:block; font-size:8.6pt; font-weight:700; color:var(--ink-strong); letter-spacing:-.01em }
+.pill.hot{ border-color:rgba(236,72,153,.42); background:rgba(236,72,153,.09) }
+.pill.hot .v{ color:#F9A8D4 }
+
+.rule{ height:1px; background:linear-gradient(90deg,var(--accent-line),transparent); margin:7px 0 6px }
+
+/* ---------------- spot do banner ---------------- */
+.spot{
+  display:grid; grid-template-columns:60% 1fr; gap:11px; align-items:center;
+  background:var(--card); border:1px solid var(--accent-line); border-radius:13px;
+  padding:7px 10px; margin-bottom:3mm;
+}
+.spot img{ width:100%; display:block; border-radius:6px; border:1px solid rgba(126,200,227,.22) }
+.spot h2{
+  font-size:8.8pt; font-weight:700; letter-spacing:-.015em; color:var(--ink-strong);
+  margin-bottom:3px; display:flex; align-items:baseline; gap:6px;
+}
+.spot h2 .n{
+  font-size:6.4pt; font-weight:700; letter-spacing:.14em; color:var(--accent);
+  border:1px solid var(--accent-line); border-radius:5px; padding:1.5px 5px;
+}
+.spot p{ font-size:7.4pt; line-height:1.45; color:var(--ink) }
+.spot b{ color:var(--ink-strong); font-weight:600 }
+
+/* ---------------- grid ---------------- */
+.cols{ display:grid; grid-template-columns:1fr 1fr; gap:5.5mm; flex:1; min-height:0 }
+.col{ display:flex; flex-direction:column; gap:2.8mm }
+
+.card{
+  background:var(--card);
+  border:1px solid var(--accent-line);
+  border-radius:13px;
+  padding:5px 9px 5px;
+  backdrop-filter:blur(8px);
+}
+.card h2{
+  font-size:9pt; font-weight:700; letter-spacing:-.015em; color:var(--ink-strong);
+  margin-bottom:5px;
+  display:flex; align-items:baseline; gap:6px;
+}
+.card h2 .n{
+  font-size:6.4pt; font-weight:700; letter-spacing:.14em; color:var(--accent);
+  border:1px solid var(--accent-line); border-radius:5px; padding:1.5px 5px;
+}
+.card p{ font-size:7.5pt; line-height:1.48; color:var(--ink) }
+.card p + p{ margin-top:5px }
+.card b{ color:var(--ink-strong); font-weight:600 }
+.mut{ color:var(--ink-muted) }
+
+/* ---------------- tabelas ---------------- */
+table{ width:100%; border-collapse:collapse; margin-top:2px }
+th{
+  font-size:6.3pt; font-weight:600; letter-spacing:.13em; text-transform:uppercase;
+  color:var(--accent); text-align:right; padding:4px 5px;
+  background:linear-gradient(90deg,rgba(126,200,227,.13),rgba(126,200,227,.03));
+  border-bottom:1px solid var(--accent-line);
+}
+th:first-child, td:first-child{ text-align:left }
+td{
+  font-size:7.5pt; padding:2.3px 5px; text-align:right;
+  border-bottom:1px solid rgba(126,200,227,.08);
+  font-variant-numeric:tabular-nums;
+  color:var(--ink);
+}
+tr:last-child td{ border-bottom:none }
+tbody tr:nth-child(even){ background:rgba(126,200,227,.035) }
+tr.hi td{ background:rgba(126,200,227,.13); color:var(--ink-strong); font-weight:600 }
+tr.hi td:first-child{ box-shadow:inset 2px 0 0 var(--accent) }
+td.dim{ color:var(--ink-muted) }
+.grp td{
+  background:transparent; border-bottom:1px solid var(--accent-line);
+  font-size:6.3pt; letter-spacing:.13em; text-transform:uppercase; color:var(--accent);
+  font-weight:600; text-align:left; padding-top:7px;
+}
+
+/* ---------------- listas ---------------- */
+ul{ list-style:none; margin-top:3px }
+li{
+  font-size:7.5pt; line-height:1.45; padding-left:12px; position:relative;
+  margin-bottom:3.6px; color:var(--ink);
+}
+li:last-child{ margin-bottom:0 }
+li::before{
+  content:""; position:absolute; left:0; top:.44em;
+  width:4px; height:4px; border-radius:1px; background:var(--accent);
+}
+li b{ color:var(--ink-strong); font-weight:600 }
+ol.steps{ list-style:none; counter-reset:s }
+ol.steps li{ padding-left:17px; counter-increment:s }
+ol.steps li::before{
+  content:counter(s); top:0; left:0; width:12px; height:12px; border-radius:4px;
+  background:var(--accent-soft); border:1px solid var(--accent-line);
+  color:var(--accent); font-size:6.2pt; font-weight:700;
+  display:flex; align-items:center; justify-content:center;
+}
+li.rk::before{ background:var(--bad) }
+
+/* ---------------- callout ---------------- */
+.callout{
+  margin-top:6px; border-radius:9px; padding:6px 8px;
+  background:rgba(126,200,227,.09);
+  border:1px solid var(--accent-line);
+  border-left:2.5px solid var(--accent);
+}
+.callout .t{ font-size:7.4pt; font-weight:700; color:var(--accent); letter-spacing:-.005em; margin-bottom:2px }
+.callout p{ font-size:7.2pt; line-height:1.45 }
+
+.warnbox{
+  margin-top:6px; border-radius:9px; padding:6px 8px;
+  background:rgba(250,204,21,.08);
+  border:1px solid rgba(250,204,21,.28);
+  border-left:2.5px solid var(--warn);
+}
+.warnbox .t{ font-size:7.4pt; font-weight:700; color:var(--warn); margin-bottom:2px }
+.warnbox p{ font-size:7.2pt; line-height:1.45 }
+
+/* ---------------- footer ---------------- */
+footer{
+  margin-top:3mm; padding-top:5px;
+  border-top:1px solid var(--accent-line);
+  display:flex; justify-content:space-between; align-items:flex-end; gap:12px;
+}
+.brand{ font-size:8.4pt; font-weight:700; color:var(--ink-strong); letter-spacing:-.01em }
+.brand span{ font-weight:300; color:var(--accent) }
+.tag{ font-size:6.6pt; color:var(--ink-muted); letter-spacing:.06em; margin-top:1px }
+.meta{ font-size:6.4pt; color:var(--ink-muted); text-align:right; line-height:1.5; letter-spacing:.05em }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <span class="eyebrow">TikTok Ads · Advertiser Growth Camp</span>
+  <h1><span class="lt">Cada real gasto em GMV Max</span>volta em crédito de mídia</h1>
+  <p class="lede">O TikTok devolve, em crédito de anúncio, o mesmo valor que a loja investir em <b>GMV Max</b> dentro da janela de <b>30 dias que começa na ativação</b>. O crédito só é liberado quando o gasto elegível <b>atinge exatamente um dos cinco degraus</b>. O degrau certo dobra a mídia do mês sem dobrar o caixa.</p>
+
+  <div class="pills">
+    <div class="pill hot"><span class="k">Janela</span><span class="v">~30 dias da ativação</span></div>
+    <div class="pill"><span class="k">Match</span><span class="v">1:1 em crédito</span></div>
+    <div class="pill"><span class="k">Campanha elegível</span><span class="v">Somente GMV Max</span></div>
+    <div class="pill"><span class="k">Inscrição</span><span class="v">Uma vez por loja</span></div>
+    <div class="pill"><span class="k">Oferta de entrada</span><span class="v">R$ 6 viram R$ 600</span></div>
+  </div>
+
+  <div class="rule"></div>
+
+  <section class="spot">
+    <figure><img src="banner-growth-camp.png" alt="Banner do Advertiser Growth Camp no topo do Painel de controle de anuncios do Seller Center"></figure>
+    <div>
+      <h2><span class="n">00</span>Como saber se a marca tem a campanha</h2>
+      <p>Se este banner está no topo do <b>Painel de controle de anúncios</b> do Seller Center, a campanha está liberada para aquela conta. Se ele não está lá, não há programa disponível para a marca.</p>
+    </div>
+  </section>
+
+  <div class="cols">
+
+    <!-- ================= coluna esquerda ================= -->
+    <div class="col">
+
+      <div class="card">
+        <h2><span class="n">01</span>Os cinco degraus</h2>
+        <table>
+          <thead>
+            <tr><th>Investimento</th><th>Crédito</th><th>Mídia total</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>R$ 600</td><td>R$ 600</td><td>R$ 1.200</td></tr>
+            <tr class="hi"><td>R$ 3.000</td><td>R$ 3.000</td><td>R$ 6.000</td></tr>
+            <tr><td>R$ 6.000</td><td>R$ 6.000</td><td>R$ 12.000</td></tr>
+            <tr><td>R$ 24.000</td><td>R$ 24.000</td><td>R$ 48.000</td></tr>
+            <tr><td>R$ 33.000</td><td>R$ 33.000</td><td>R$ 66.000</td></tr>
+          </tbody>
+        </table>
+        <p class="mut" style="margin-top:6px;font-size:6.9pt">Os valores em real são referência: o câmbio é definido pelo TikTok.</p>
+      </div>
+
+      <div class="card">
+        <h2><span class="n">02</span>A armadilha dos degraus</h2>
+        <p>O crédito só é liberado ao <b>atingir</b> o degrau. Todo real gasto entre um degrau e o próximo não gera crédito nenhum.</p>
+        <table>
+          <thead><tr><th>Gasto elegível na janela</th><th>Crédito liberado</th></tr></thead>
+          <tbody>
+            <tr><td>R$ 600 a R$ 2.999</td><td class="dim">preso em R$ 600</td></tr>
+            <tr><td>R$ 3.000 a R$ 5.999</td><td class="dim">preso em R$ 3.000</td></tr>
+            <tr><td>R$ 6.000 a R$ 23.999</td><td class="dim">preso em R$ 6.000</td></tr>
+            <tr><td>R$ 24.000 a R$ 32.999</td><td class="dim">preso em R$ 24.000</td></tr>
+          </tbody>
+        </table>
+        <div class="warnbox">
+          <div class="t">Parar no meio é o pior dos mundos</div>
+          <p>Gastar R$ 1.500 devolve só R$ 600, eficiência de 40%. Gastar R$ 4.500 devolve R$ 3.000, 67%. A verba precisa ser <b>um dos cinco números</b>, nunca "uns R$ 1.500 de teste".</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="n">03</span>Regras que custam caro</h2>
+        <ul>
+          <li class="rk"><b>Bala única.</b> Cada loja e cada conta participa uma só vez, e o degrau escolhido é definitivo.</li>
+          <li class="rk"><b>Só GMV Max e só dinheiro.</b> Subsídio, rebate, cupom ou crédito não contam. O crédito ganho não gera mais crédito.</li>
+          <li class="rk"><b>Selecionar a loja inscrita em cada campanha.</b> Se outra for escolhida, o gasto não entra e o sistema não avisa.</li>
+          <li class="rk"><b>Pagamento automático atrasa o cupom.</b> Ele só sai depois da fatura paga, então o caixa precisa existir na janela.</li>
+          <li class="rk"><b>O relógio começa na ativação.</b> São cerca de 30 dias a partir dela, não um calendário fixo. Ativar sem verba e criativo prontos queima dias elegíveis.</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ================= coluna direita ================= -->
+    <div class="col">
+
+      <div class="card">
+        <h2><span class="n">04</span>O que isso faz com o ROI</h2>
+        <p>No degrau de <b>R$ 3.000</b>, o caixa vira <b>R$ 6.000 de mídia</b>. Quanto maior o ticket, mais o mesmo CPA rende.</p>
+        <table>
+          <thead>
+            <tr><th>Ticket médio</th><th>Pedidos</th><th>GMV</th><th>ROI</th></tr>
+          </thead>
+          <tbody>
+            <tr class="grp"><td colspan="4">Cenário A · CPA de R$ 30 (200 pedidos)</td></tr>
+            <tr><td>R$ 50</td><td>200</td><td>R$ 10.000</td><td>3,3x</td></tr>
+            <tr><td>R$ 100</td><td>200</td><td>R$ 20.000</td><td>6,7x</td></tr>
+            <tr><td>R$ 200</td><td>200</td><td>R$ 40.000</td><td>13,3x</td></tr>
+            <tr class="grp"><td colspan="4">Cenário B · CPA de R$ 60 (100 pedidos)</td></tr>
+            <tr><td>R$ 50</td><td>100</td><td>R$ 5.000</td><td>1,7x</td></tr>
+            <tr><td>R$ 100</td><td>100</td><td>R$ 10.000</td><td>3,3x</td></tr>
+            <tr><td>R$ 200</td><td>100</td><td>R$ 20.000</td><td>6,7x</td></tr>
+          </tbody>
+        </table>
+        <p class="mut" style="margin-top:6px;font-size:6.9pt">ROI = GMV bruto sobre o caixa. Pedidos = mídia sobre o CPA.</p>
+        <div class="callout">
+          <div class="t">A regra de bolso</div>
+          <p>Como o crédito dobra a mídia, o caixa empata enquanto o <b>CPA ficar abaixo de 2x o ticket médio</b>. Em margem o limite é menor: desconte produto, comissão, frete e taxa fixa.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2><span class="n">05</span>Como escolher o degrau</h2>
+        <ul>
+          <li><b>O degrau precisa ficar acima do que a conta já gasta</b> em ads na janela, senão não há crescimento, só captura de benefício.</li>
+          <li><b>Nunca comprometer mais de um mês de faturamento</b> em mídia. O degrau tem que caber no caixa que já existe na janela.</li>
+          <li><b>Travar o número antes de subir a campanha</b> e vigiar o CPA. Se passar do teto, parar em cima do degrau alcançado.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h2><span class="n">06</span>Como entrar</h2>
+        <ol class="steps">
+          <li>Inscrever a <b>loja e a conta de anúncios</b>. A aprovação chega por notificação e e-mail, e <b>dispara o início da janela</b>.</li>
+          <li>Seguir rodando as campanhas <b>GMV Max com a loja inscrita selecionada</b> em cada campanha.</li>
+          <li>O gasto elegível <b>acumula automaticamente</b> rumo ao próximo degrau. Confirmar no painel a data de fim da janela.</li>
+          <li>O cupom é emitido <b>depois da fatura paga</b>, junto com o material de boas práticas.</li>
+        </ol>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div>
+      <div class="brand"><span>Elevate</span> Ecom.</div>
+      <div class="tag">Sua marca acima nos marketplaces.</div>
+    </div>
+    <div class="meta">
+      Material de apoio · Gestão de Contas TikTok Shop<br>
+      Programa oficial TikTok Ads · janela de cerca de 30 dias a partir da ativação
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

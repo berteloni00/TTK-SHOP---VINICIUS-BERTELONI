@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Elevate 4D · Playbook de Implantação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--red:#EF4444;--magenta:#EC4899;}
+*{box-sizing:border-box;}
+html{-webkit-text-size-adjust:100%;}
+body{margin:0;font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;line-height:1.6;font-size:16px;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.wrap{max-width:860px;margin:0 auto;padding:46px 34px 60px;overflow-x:hidden;}
+.content,blockquote,.content li,td,th{overflow-wrap:break-word;word-break:break-word;}
+img{max-width:100%;height:auto;display:block;}
+.cover{border-bottom:1px solid var(--cardborder);padding-bottom:26px;margin-bottom:34px;}
+.eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:12px;}
+h1{font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin:0 0 14px;}
+.meta{color:var(--muted);font-size:13.5px;}
+.meta b{color:var(--text);font-weight:600;}
+.content h2{font-weight:800;font-size:25px;color:#fff;margin:42px 0 14px;padding-top:14px;border-top:1px solid var(--cardborder);letter-spacing:-0.3px;}
+.content h3{font-weight:700;font-size:18px;color:var(--accent);margin:30px 0 10px;}
+.content h4{font-weight:700;font-size:15px;color:#fff;margin:20px 0 8px;}
+.content p{margin:12px 0;}
+.content a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+.content strong{color:#fff;font-weight:700;}
+.content ul,.content ol{padding-left:22px;margin:12px 0;}
+.content li{margin:7px 0;}
+.content hr{border:none;border-top:1px solid var(--cardborder);margin:30px 0;}
+blockquote{background:rgba(126,200,227,0.10);border-left:3px solid var(--accent);border-radius:0 10px 10px 0;margin:18px 0;padding:14px 18px;color:var(--text);}
+blockquote p{margin:6px 0;}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;border:1px solid var(--cardborder);border-radius:12px;}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:13.5px;}
+th,td{padding:10px 13px;text-align:left;border-bottom:1px solid rgba(126,200,227,0.12);vertical-align:top;}
+thead th{background:rgba(126,200,227,0.12);color:#fff;font-weight:700;font-size:12px;letter-spacing:0.3px;white-space:nowrap;}
+tbody tr:last-child td{border-bottom:none;}
+code{background:rgba(126,200,227,0.20);color:#B8E8FA;padding:3px 9px;border-radius:6px;font-size:1.02em;font-weight:700;letter-spacing:0.3px;border:1px solid rgba(126,200,227,0.40);font-family:ui-monospace,Menlo,Consolas,monospace;}
+pre{background:rgba(11,26,43,0.7);border:1px solid var(--cardborder);border-radius:12px;padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;margin:18px 0;}
+pre code{background:none;padding:0;font-size:12.5px;line-height:1.5;color:var(--text);white-space:pre;}
+.footer{margin-top:46px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+
+@media (max-width:640px){
+  body{font-size:15px;background-attachment:scroll;}
+  .wrap{padding:30px 18px 44px;}
+  h1{font-size:28px;}
+  .content h2{font-size:21px;}
+  .content h3{font-size:16.5px;}
+  .eyebrow{font-size:10px;letter-spacing:1.8px;}
+  table{min-width:0;font-size:12.5px;}
+  thead th{white-space:normal;}
+  th,td{padding:8px 9px;}
+}
+@media print{
+  body{background-attachment:scroll;}
+  .tablewrap,pre{overflow:visible;}
+  table{min-width:0;}
+  @page{margin:16mm;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="cover">
+    <div class="eyebrow">Elevate 4D · Playbook de Implantação (Onboarding → Operação)</div>
+    <h1>Elevate 4D · Playbook de Implantação</h1>
+    <div class="meta"><b>Elevate Ecom (Processo Operacional Interno)</b> · Do "cliente fechou" ao "operação no ar" — passo a passo, responsáveis e documentos a enviar em cada fase · Atualizado: 2026-06-17</div>
+  </div>
+  <div class="content">
+<blockquote>
+<p><strong>O que é.</strong> Se o <a href="../Visao%20Geral/ELEVATE-4D-VISAO-GERAL.html">4D</a> diagnostica <em>onde o cliente está</em>, este Playbook executa <em>como colocar a operação no ar</em>. É o passo a passo padrão de onboarding de um cliente novo de TikTok Shop: o que fazer, <strong>quem faz</strong> (Elevate × Cliente), <strong>o que enviar pro cliente</strong> em cada etapa e <strong>quando a fase está pronta</strong>.</p>
+<p>🔄 <strong>Documento vivo:</strong> atualizado sempre que o processo muda. Histórico no fim.</p>
+</blockquote>
+<hr />
+<h2>COMO USAR ESTE PLAYBOOK</h2>
+<ul>
+<li>As fases são <strong>sequenciais no essencial</strong>, mas D2/D3/D4 podem rodar em paralelo depois que o Shop está de pé (Fase 2).</li>
+<li>Cada fase tem: <strong>Objetivo · Passos · Responsável · Documentos a enviar · Pronto quando</strong>.</li>
+<li>Os <strong>documentos para o cliente</strong> (tutoriais, kit de entrada) ficam em <a href="./Documentos%20para%20o%20Cliente/"><code>Documentos para o Cliente/</code></a> — são feitos pra mandar direto, já mobile.</li>
+<li>O <strong>acompanhamento</strong> de cada conta vai no <a href="./CHECKLIST-ONBOARDING-4D.xlsx">Checklist de Onboarding</a>.</li>
+<li>A <strong>precificação</strong> sai da <a href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing">Planilha de Precificação</a>.</li>
+</ul>
+<blockquote>
+<p>🔐 <strong>Regra de ouro de acesso:</strong> a Elevate <strong>nunca pede senha</strong> do cliente. Todo acesso é via <strong>convite de membro</strong> (Seller Center) ou <strong>compartilhamento de ativo no Business Center</strong> (Ads). Senha compartilhada = risco de segurança e de bloqueio da conta pelo TikTok.</p>
+</blockquote>
+<hr />
+<h2>MAPA DAS FASES</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Nome</th>
+<th>Núcleo</th>
+<th>Dimensão 4D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F0</strong></td>
+<td>Fechamento &amp; Alinhamento</td>
+<td>contrato, kit de entrada, kickoff, metas</td>
+<td>—</td>
+</tr>
+<tr>
+<td><strong>F1</strong></td>
+<td>Acessos &amp; Contas</td>
+<td>colaborador no Shop, Business Center, Ads, Studio</td>
+<td>infra</td>
+</tr>
+<tr>
+<td><strong>F2</strong></td>
+<td>Setup do Shop</td>
+<td>loja ativa, fiscal/banco, catálogo, <strong>precificação</strong></td>
+<td><strong>D1</strong></td>
+</tr>
+<tr>
+<td><strong>F3</strong></td>
+<td>Setup de Ads</td>
+<td>GMV Max, ROAS-alvo, verba</td>
+<td><strong>D2</strong></td>
+</tr>
+<tr>
+<td><strong>F4</strong></td>
+<td>Setup de Afiliados</td>
+<td>plano, comissão, amostras, outreach</td>
+<td><strong>D3</strong></td>
+</tr>
+<tr>
+<td><strong>F5</strong></td>
+<td>Setup Social</td>
+<td>conta orgânica, lives, calendário</td>
+<td><strong>D4</strong></td>
+</tr>
+<tr>
+<td><strong>F6</strong></td>
+<td>Go-live &amp; Operação</td>
+<td>R01 (diagnóstico 4D), ritual, governança</td>
+<td>todas</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>FASE 0 — FECHAMENTO &amp; ALINHAMENTO</h2>
+<p><strong>Objetivo:</strong> sair do "fechou" com expectativa alinhada, documentos pedidos e o time pronto pra executar.</p>
+<p><strong>Passos</strong><br />
+1. Contrato/proposta assinados; escopo, prazo e o que está/não está incluído registrados.<br />
+2. Enviar o <strong><a href="./Documentos%20para%20o%20Cliente/KIT-ENTRADA-DOCUMENTOS.html">Kit de Entrada de Documentos</a></strong> ao cliente (lista única do que precisamos).<br />
+3. Abrir a pasta do cliente no padrão Elevate (<code>Dados Atuais/</code> + <code>Analise 4D/</code>) e a linha dele no <a href="./CHECKLIST-ONBOARDING-4D.xlsx">Checklist de Onboarding</a>.<br />
+4. <strong>Kickoff (R00):</strong> apresentar a metodologia 4D em 1 leitura (usar o <a href="../One-Pager/ELEVATE-4D-ONE-PAGER.html">One-Pager</a>), alinhar <strong>metas</strong> (GMV-alvo, prazo, margem mínima) e <strong>papéis</strong> (quem responde do lado do cliente).</p>
+<blockquote>
+<p>🔑 <strong>Gate do planejamento:</strong> o <strong>Planejamento Estratégico + Plano de Ação</strong> (o diagnóstico 4D do cliente — momento + CT%) só sai quando o cliente entrega os <strong>três inputs</strong>: <strong>(1)</strong> <a href="https://docs.google.com/forms/d/e/1FAIpQLScdBzmEt_UMUAXDvaPdW71PReHKVDOLz7spqDTWsTAmklj0RQ/viewform">Formulário do cliente</a> preenchido · <strong>(2)</strong> <a href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing">Planilha de Precificação</a> (cópia dele) preenchida · <strong>(3)</strong> <strong>acessos</strong> liberados (Seller Center · Ads · Studio, Fase 1). Reforce isso no grupo desde o R00 — <strong>sem os três, o plano atrasa ou sai incompleto.</strong></p>
+</blockquote>
+<p><strong>Responsável:</strong> Elevate (condução) · Cliente (assinatura + nomear ponto-focal + começar a entregar os 3 inputs).</p>
+<p><strong>Documentos a enviar:</strong> Kit de Entrada · One-Pager · cronograma de implantação.</p>
+<p><strong>✅ Pronto quando:</strong> contrato ok, ponto-focal nomeado, kit de entrada enviado e R00 realizada.</p>
+<hr />
+<h2>FASE 1 — ACESSOS &amp; CONTAS</h2>
+<p><strong>Objetivo:</strong> a Elevate operar as contas do cliente <strong>sem usar senha dele</strong>, com o papel certo de permissão em cada ativo.</p>
+<h3>1.1 Acesso de colaborador ao TikTok Shop (Seller Center)</h3>
+<ul>
+<li>O cliente nos adiciona como <strong>membro/colaborador</strong> do Seller Center pelo <strong>e-mail da Elevate</strong>, com o papel adequado (operação completa, exceto saque/financeiro se ele preferir reter).</li>
+<li>📄 Mandar o tutorial: <strong><a href="./Documentos%20para%20o%20Cliente/TUTORIAL-ACESSO-COLABORADOR.html">Como me dar acesso de colaborador</a></strong>.</li>
+</ul>
+<h3>1.2 Business Center (a forma certa de cuidar de Ads)</h3>
+<ul>
+<li>A Elevate solicita acesso aos <strong>ativos</strong> do cliente (conta de anúncios, catálogo) via <strong>Business Center</strong> (<code>business.tiktok.com</code>) — sem login/senha do cliente.</li>
+<li>Se o cliente ainda não tem BC, orientamos ele a criar e nos adicionar como <strong>parceiro/membro</strong>.</li>
+</ul>
+<h3>1.3 Criar e conectar a conta de Ads</h3>
+<ul>
+<li>Criar (ou vincular) a <strong>conta de anúncios</strong> do cliente no <strong>TikTok Ads Manager</strong> e <strong>conectá-la ao Shop</strong> (para GMV Max / Shop Ads).</li>
+<li>📄 Mandar o tutorial: <strong><a href="./Documentos%20para%20o%20Cliente/TUTORIAL-CONECTAR-CONTA-ADS.html">Como criar e conectar a conta de Ads</a></strong>.</li>
+</ul>
+<h3>1.4 Acesso à conta social (D4)</h3>
+<ul>
+<li>Acesso ao <strong>TikTok Studio</strong> (<code>tiktok.com/tiktokstudio</code>) da conta oficial da marca — para conteúdo orgânico e lives.</li>
+<li>📄 Mandar o tutorial: <strong><a href="./Documentos%20para%20o%20Cliente/TUTORIAL-ACESSO-TIKTOK-STUDIO.html">Acesso ao TikTok Studio</a></strong>.</li>
+</ul>
+<p><strong>Responsável:</strong> Cliente (concede os acessos) · Elevate (valida que entrou e com o papel certo).</p>
+<p><strong>Documentos a enviar:</strong> os 3 tutoriais acima.</p>
+<p><strong>✅ Pronto quando:</strong> Elevate consegue <strong>abrir Seller Center, Ads Manager e Studio do cliente sem pedir senha</strong>, e os papéis de permissão estão corretos.</p>
+<hr />
+<h2>FASE 2 — SETUP DO SHOP (D1 PRODUTOS)</h2>
+<p><strong>Objetivo:</strong> loja ativa, regularizada e com catálogo <strong>precificado pra aguentar o CT%</strong>. É o <strong>chão</strong> — nada das outras fases sustenta sobre catálogo fraco.</p>
+<p><strong>Passos</strong><br />
+1. <strong>Loja ativa:</strong> confirmar aprovação, dados fiscais (CNPJ/razão), e <strong>conta bancária de settlement</strong> cadastrada e validada. ⚠️ <strong>Loja ainda não existe? Crie sempre pelo <a href="https://seller-br.tiktok.com/account/register?channel=elevate">link da Elevate</a></strong> — a conta entra na <strong>nossa carteira assessorada junto ao TikTok Shop</strong> (ajuda em <strong>liberação de categoria</strong> e/ou <strong>gerente de contas</strong>, principalmente fashion). Criar fora do link perde essa vantagem.<br />
+2. <strong>Catálogo:</strong> cadastrar/revisar SKUs — título, fotos (fundo claro, 1:1), descrição, variações, estoque.<br />
+3. <strong>Precificação:</strong> rodar cada SKU na <strong><a href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing">Planilha de Precificação</a></strong> (modelo de 3 tiers: Campanha · Venda · Live) — o preço tem que cobrir comissão de afiliado + Ads + a <strong>taxa de ~6% por amostra</strong> e ainda deixar <strong>margem de contribuição positiva</strong> (senão D3 dá prejuízo, como no caso PeachUp). 👉 Mandar junto o <strong><a href="./Documentos%20para%20o%20Cliente/COMO-PREENCHER-PRECIFICACAO.html">guia de como preencher</a></strong> (explica cada campo, com exemplo pronto).<br />
+4. <strong>Hero &amp; kits:</strong> definir o produto-tração e montar <strong>kit</strong> pra subir ticket.<br />
+5. <strong>Confiança:</strong> políticas de frete/devolução, e plano pras <strong>primeiras avaliações</strong> (meta ≥ 4,7).</p>
+<p><strong>Responsável:</strong> Cliente (fiscal, banco, fotos, estoque) · Elevate (revisão de listing, precificação, hero/kit).</p>
+<p><strong>Documentos a enviar:</strong> Planilha de Precificação preenchida (devolver ao cliente para aprovação de preço) · checklist de listing.</p>
+<p><strong>✅ Pronto quando:</strong> loja vendável, settlement validado, catálogo publicado e <strong>todo SKU com margem de contribuição positiva</strong> na planilha.</p>
+<hr />
+<h2>FASE 3 — SETUP DE ADS (D2)</h2>
+<p><strong>Objetivo:</strong> ligar o <strong>acelerador</strong> sobre o que já converte — sem comprar GMV acima da margem.</p>
+<p><strong>Passos</strong><br />
+1. Conta de Ads conectada ao Shop (vem da Fase 1).<br />
+2. Estruturar <strong>GMV Max</strong> (Product e, quando houver live, LIVE) e <strong>Spark Ads</strong> sobre os vídeos de afiliado que performam.<br />
+3. Definir <strong>ROAS-alvo</strong> a partir da margem (a planilha dá o ROAS mínimo que paga o produto) e <strong>verba inicial</strong> concentrada nos heroes.<br />
+4. Acompanhar o <strong>CT% de Ads</strong> isolado dentro do CT% total.</p>
+<p><strong>Responsável:</strong> Elevate (estrutura e gestão) · Cliente (aprovação de verba).</p>
+<p><strong>✅ Pronto quando:</strong> ao menos 1 campanha GMV Max ativa nos heroes, com ROAS-alvo definido e verba aprovada.</p>
+<blockquote>
+<p>⚠️ <strong>Ads é a última a ligar.</strong> Não escala Ads sobre catálogo mal precificado (D1) nem sem nada orgânico/afiliado convertendo — só amplifica o problema.</p>
+</blockquote>
+<hr />
+<h2>FASE 4 — SETUP DE AFILIADOS (D3)</h2>
+<p><strong>Objetivo:</strong> acender o <strong>motor distribuído</strong> — a alavanca mais característica e barata do canal.</p>
+<p><strong>Passos</strong><br />
+1. <strong>Plano de afiliados</strong> no Seller Center: definir <strong>comissão</strong> competitiva (e plano aberto + plano direcionado pros heroes).<br />
+2. <strong>Programa de amostras:</strong> orçamento de seeding considerando a <strong>taxa de ~6% por amostra</strong> (a planilha calcula o custo). TikTok recomenda <strong>escalar</strong> amostras — desde que D1 tenha margem pra pagar.<br />
+3. <strong>Outreach sistemático:</strong> lista de creators-alvo, abordagem, e acompanhamento.<br />
+4. <strong>Feedback &amp; Pareto:</strong> orientar os creators, medir conversão por creator, identificar o Pareto e reter quem performa.</p>
+<p><strong>Responsável:</strong> Elevate (plano, outreach, gestão de creators) · Cliente (aprovação de comissão e verba de amostras).</p>
+<p><strong>Documentos a enviar:</strong> proposta de comissão + orçamento de amostras (saída da planilha).</p>
+<p><strong>✅ Pronto quando:</strong> plano de comissão publicado, orçamento de amostras aprovado e outreach iniciado.</p>
+<hr />
+<h2>FASE 5 — SETUP SOCIAL (D4)</h2>
+<p><strong>Objetivo:</strong> marca + recorrência — o que <strong>segura o GMV</strong> quando Ads/Afiliados oscilam.</p>
+<p><strong>Passos</strong><br />
+1. Conta orgânica ativa com <strong>frequência</strong> de postagem definida.<br />
+2. <strong>Conteúdo shoppable</strong> (produto marcado no vídeo).<br />
+3. <strong>Cadência de lives</strong> próprias (calendário).<br />
+4. Plano de <strong>migração de audiência</strong> de outras redes (se a marca já tem base, ex.: Instagram).</p>
+<p><strong>Responsável:</strong> Elevate (estratégia/calendário) · Cliente (gravação/host, ou contratar via Elevate).</p>
+<p><strong>✅ Pronto quando:</strong> calendário de conteúdo + 1ª live agendada e conta postando na frequência combinada.</p>
+<blockquote>
+<p>💡 D4 depende do <strong>TikTok Studio</strong> (Fase 1.4). Sem esse acesso, dá pra avançar nas outras dimensões e fechar D4 quando o acesso sair (foi o caso da Mossy).</p>
+</blockquote>
+<hr />
+<h2>FASE 6 — GO-LIVE &amp; OPERAÇÃO</h2>
+<p><strong>Objetivo:</strong> virar a chave de "implantando" para "operando com método".</p>
+<p><strong>Passos</strong><br />
+1. <strong>R01 — primeira reunião de diagnóstico:</strong> rodar o <a href="../Fluxo%20de%20Classificacao/SOP/FLUXO-CLASSIFICACAO-4D.html">fluxo 4D</a> com os primeiros dados reais → momento, CT%, scorecard, <strong>dimensão prioritária</strong>. Entregar a análise no padrão.<br />
+2. <strong>Ritual de operação:</strong> rotina semanal (o que se olha), reunião quinzenal/mensal de resultado, e <strong>tracking do CT%</strong>.<br />
+3. <strong>Governança:</strong> quem decide o quê, SLA de respostas, e onde ficam os dados.</p>
+<p><strong>Responsável:</strong> Elevate (diagnóstico e condução) · Cliente (decisões de verba e produto).</p>
+<p><strong>Documentos a enviar:</strong> Análise 4D inicial · agenda do ritual.</p>
+<p><strong>✅ Pronto quando:</strong> R01 entregue com dimensão prioritária definida e o ritual de acompanhamento marcado em calendário.</p>
+<hr />
+<h2>RESUMO — "PRONTO QUANDO" DE CADA FASE</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Fase</th>
+<th>Sinal de conclusão</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>F0</strong></td>
+<td>Contrato ok · ponto-focal · kit enviado · R00 feita</td>
+</tr>
+<tr>
+<td><strong>F1</strong></td>
+<td>Shop + Ads + Studio acessíveis <strong>sem senha</strong></td>
+</tr>
+<tr>
+<td><strong>F2</strong></td>
+<td>Loja vendável · settlement ok · catálogo com margem positiva</td>
+</tr>
+<tr>
+<td><strong>F3</strong></td>
+<td>GMV Max ativo nos heroes · ROAS-alvo · verba aprovada</td>
+</tr>
+<tr>
+<td><strong>F4</strong></td>
+<td>Comissão publicada · amostras aprovadas · outreach rodando</td>
+</tr>
+<tr>
+<td><strong>F5</strong></td>
+<td>Calendário + 1ª live · conta postando</td>
+</tr>
+<tr>
+<td><strong>F6</strong></td>
+<td>R01 entregue · ritual em calendário</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>DOCUMENTOS DESTE PACOTE</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Documento</th>
+<th>Para quê</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Playbook</strong> (este)</td>
+<td>O processo de ponta a ponta</td>
+</tr>
+<tr>
+<td><a href="./Documentos%20para%20o%20Cliente/KIT-ENTRADA-DOCUMENTOS.html">Kit de Entrada</a></td>
+<td>Lista única de documentos a pedir do cliente</td>
+</tr>
+<tr>
+<td><a href="./Documentos%20para%20o%20Cliente/TUTORIAL-ACESSO-COLABORADOR.html">Tutorial · Acesso de colaborador</a></td>
+<td>Mandar pro cliente liberar o Shop</td>
+</tr>
+<tr>
+<td><a href="./Documentos%20para%20o%20Cliente/TUTORIAL-CONECTAR-CONTA-ADS.html">Tutorial · Conectar conta de Ads</a></td>
+<td>Mandar pro cliente criar/conectar Ads</td>
+</tr>
+<tr>
+<td><a href="./Documentos%20para%20o%20Cliente/TUTORIAL-ACESSO-TIKTOK-STUDIO.html">Tutorial · Acesso ao TikTok Studio</a></td>
+<td>Mandar pro cliente liberar o social (D4)</td>
+</tr>
+<tr>
+<td><a href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing">Planilha de Precificação</a></td>
+<td>3 tiers (Campanha · Venda · Live, com interruptor própria/afiliado) + abas de previsibilidade: cenário por momento, projeção de vendas, payback e níveis</td>
+</tr>
+<tr>
+<td><a href="./Documentos%20para%20o%20Cliente/COMO-PREENCHER-PRECIFICACAO.html">Como preencher a Precificação</a></td>
+<td>Guia campo a campo (mandar junto com a planilha pro cliente)</td>
+</tr>
+<tr>
+<td><a href="./CHECKLIST-ONBOARDING-4D.xlsx">Checklist de Onboarding</a></td>
+<td>Acompanhar cada cliente novo por fase</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<h2>HISTÓRICO DE VERSÕES</h2>
+<div class="tablewrap"><table>
+<thead>
+<tr>
+<th>Versão</th>
+<th>Data</th>
+<th>Mudança</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.1</td>
+<td>2026-06-17</td>
+<td><strong>Gate do planejamento reforçado:</strong> a Fase 0 agora explicita que o <strong>Planejamento Estratégico + Plano de Ação</strong> só sai com os <strong>3 inputs do cliente</strong> — formulário preenchido + Planilha de Precificação (cópia) preenchida + acessos liberados (Seller Center · Ads · Studio). Mesmo reforço no <a href="./Documentos%20para%20o%20Cliente/KIT-ENTRADA-DOCUMENTOS.html">Kit de Entrada</a>, no <a href="./FLUXO-ONBOARDING.html">Fluxo de Onboarding</a> (passo 9 + mensagem do Account) e na landing do cliente. Fase 2 passou a orientar <strong>criar a loja sempre pelo link da Elevate</strong> (<code>?channel=elevate</code>) → entra na <strong>carteira assessorada</strong> (liberação de categoria / gerente de contas).</td>
+</tr>
+<tr>
+<td>v1.0</td>
+<td>2026-06-15</td>
+<td>Versão inicial do Playbook de Implantação: 7 fases (F0 Fechamento → F6 Operação), com responsável Elevate × Cliente, documentos a enviar e critério de "pronto quando" por fase. Inclui kit de entrada, 3 tutoriais para o cliente, planilha de precificação e checklist de onboarding. Conecta cada fase às dimensões do <a href="../Visao%20Geral/ELEVATE-4D-VISAO-GERAL.html">4D</a>.</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+<p><em>Elevate Ecom. — Sua marca acima nos marketplaces.</em></p>
+  </div>
+  <div class="footer">Elevate Ecom. — Sua marca acima nos marketplaces.</div>
+</div>
+</body>
+</html>

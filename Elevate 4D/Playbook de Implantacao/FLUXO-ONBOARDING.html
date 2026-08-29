@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Fluxo de Onboarding · Do fechamento ao plano de ação</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--navy1:#0B1A2B;--navy2:#0F2B3A;--navy3:#1A4A5A;--accent:#7EC8E3;--text:#E8EEF2;--muted:#98B0BC;--card:rgba(15,43,58,0.55);--cardborder:rgba(126,200,227,0.18);--green:#22C55E;--yellow:#FACC15;--magenta:#EC4899;}
+  *{box-sizing:border-box;margin:0;}
+  html{-webkit-text-size-adjust:100%;}
+  body{font-family:'Poppins',sans-serif;color:var(--text);background:linear-gradient(135deg,var(--navy1),var(--navy2),var(--navy3));background-attachment:fixed;min-height:100vh;padding:44px 22px 70px;line-height:1.5;overflow-x:hidden;}
+  .wrap{max-width:880px;margin:0 auto;}
+  .eyebrow{font-weight:600;font-size:11px;letter-spacing:2.4px;text-transform:uppercase;color:var(--accent);margin-bottom:10px;}
+  h1{font-weight:800;font-size:38px;line-height:1.08;letter-spacing:-0.5px;color:#fff;}
+  .sub{color:var(--muted);font-size:14.5px;margin-top:12px;max-width:680px;}
+  .accentbar{height:3px;width:74px;background:var(--accent);border-radius:3px;margin:22px 0 14px;}
+  .cta{display:inline-flex;align-items:center;gap:9px;background:var(--accent);color:var(--navy1);font-weight:800;font-size:14px;text-decoration:none;border-radius:10px;padding:12px 20px;margin-top:8px;}
+  .cta:hover{filter:brightness(1.07);}
+  .legend{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0 6px;}
+  .badge{font-size:10.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;border-radius:30px;padding:5px 12px;border:1px solid var(--cardborder);}
+  .b-closer{color:var(--accent);background:rgba(126,200,227,0.1);}
+  .b-cliente{color:var(--yellow);background:rgba(250,204,21,0.08);}
+  .b-account{color:var(--magenta);background:rgba(236,72,153,0.08);}
+  .b-time{color:var(--green);background:rgba(34,197,94,0.08);}
+  .tl{position:relative;margin-top:30px;padding-left:54px;}
+  .tl:before{content:'';position:absolute;left:19px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--accent),rgba(126,200,227,0.2));}
+  .step{position:relative;margin-bottom:18px;}
+  .dot{position:absolute;left:-54px;top:0;width:40px;height:40px;border-radius:50%;background:var(--navy2);border:2px solid var(--accent);color:var(--accent);font-weight:800;font-size:16px;display:flex;align-items:center;justify-content:center;z-index:2;}
+  .box{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:17px 20px;}
+  .box .top{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:6px;}
+  .box h3{font-size:17px;font-weight:700;color:#fff;}
+  .box p{font-size:13.5px;color:var(--text);margin-top:4px;}
+  .box p .m{color:var(--muted);}
+  .trigger{display:inline-block;font-size:11px;font-weight:700;color:var(--green);background:rgba(34,197,94,0.1);border:1px solid rgba(34,197,94,0.3);border-radius:7px;padding:3px 10px;margin-top:9px;}
+  .formbox{background:rgba(126,200,227,0.08);border:1px solid var(--accent);border-radius:12px;padding:14px 16px;margin-top:11px;}
+  .formbox a{color:var(--accent);font-weight:700;word-break:break-all;}
+  .msg{background:rgba(11,26,43,0.6);border:1px solid var(--cardborder);border-radius:11px;padding:14px 16px;margin-top:11px;overflow:hidden;}
+  .msg .who{font-size:10.5px;font-weight:800;color:var(--accent);text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px;display:inline-block;}
+  .msg .body{font-size:13px;line-height:1.6;color:var(--text);white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;}
+  .msg .body .ph{color:var(--yellow);font-weight:700;}
+  .copybtn{float:right;background:rgba(126,200,227,0.14);border:1px solid var(--cardborder);color:var(--accent);font-weight:700;font-size:11px;border-radius:7px;padding:4px 12px;cursor:pointer;font-family:inherit;}
+  .copybtn:hover{background:rgba(126,200,227,0.24);}
+  .copybtn.ok{color:var(--green);border-color:rgba(34,197,94,0.4);}
+  .end{background:linear-gradient(135deg,rgba(34,197,94,0.12),rgba(126,200,227,0.08));border-color:rgba(34,197,94,0.4);}
+  .foot{margin-top:40px;padding-top:18px;border-top:1px solid var(--cardborder);color:var(--muted);font-size:12px;font-style:italic;}
+  a.inline{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(126,200,227,0.35);}
+  @media (max-width:600px){body{padding:30px 15px 50px;}h1{font-size:28px;}.tl{padding-left:46px;}.dot{left:-46px;width:34px;height:34px;font-size:14px;}.tl:before{left:16px;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Processo interno · Onboarding de cliente</div>
+  <h1>Do fechamento ao plano de ação</h1>
+  <div class="sub">A linha do tempo do que acontece quando um cliente novo fecha: criação do grupo, entrada do cliente, apresentação, kick-off, a entrega do planejamento estratégico (com a fase 4D e o plano de ação) e o início do <b>programa de 9 reuniões de capacitação</b>.</div>
+  <div class="accentbar"></div>
+  <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLScdBzmEt_UMUAXDvaPdW71PReHKVDOLz7spqDTWsTAmklj0RQ/viewform" target="_blank" rel="noopener">📋 Abrir o formulário do cliente →</a>
+
+  <div class="legend">
+    <span class="badge b-closer">Closer</span>
+    <span class="badge b-cliente">Cliente</span>
+    <span class="badge b-account">Supervisor / Account</span>
+    <span class="badge b-time">Time Elevate</span>
+  </div>
+
+  <div class="tl">
+
+    <div class="step"><div class="dot">1</div><div class="box">
+      <div class="top"><h3>Criação do grupo + handoff</h3><span class="badge b-closer">Closer (Maurício / Pamela)</span></div>
+      <p>O closer cria o grupo do projeto e já posta a <b>transcrição da call de fechamento</b> e um <b>mini briefing</b> sobre a empresa. <span class="m">Contexto para o time operar com tudo em mãos.</span></p>
+    </div></div>
+
+    <div class="step"><div class="dot">2</div><div class="box">
+      <div class="top"><h3>Pagamento + contrato</h3><span class="badge b-cliente">Cliente</span></div>
+      <p>O cliente <b>efetua o pagamento</b> e <b>assina o contrato</b>.</p>
+      <span class="trigger">⚡ Gatilho: a partir daqui o cliente entra na operação</span>
+    </div></div>
+
+    <div class="step"><div class="dot">3</div><div class="box">
+      <div class="top"><h3>Cliente entra no grupo</h3><span class="badge b-closer">Closer</span></div>
+      <p>O <b>cliente e o time dele</b> são adicionados ao grupo do projeto.</p>
+    </div></div>
+
+    <div class="step"><div class="dot">4</div><div class="box">
+      <div class="top"><h3>Aviso interno</h3><span class="badge b-closer">Closer</span></div>
+      <p>O closer avisa no <b>grupo interno de TikTok Shop</b> que entrou um cliente novo. <span class="m">Operação fica ciente e assume.</span></p>
+    </div></div>
+
+    <div class="step"><div class="dot">5</div><div class="box">
+      <div class="top"><h3>Mensagem de apresentação</h3><span class="badge b-account">Supervisor + Account</span></div>
+      <p>Primeiro o <b>Supervisor</b> se apresenta, depois a <b>Account</b> (seu contato no dia a dia). Modelos prontos abaixo — troque o que está em <span style="color:var(--yellow)">amarelo</span>.</p>
+      <div class="formbox" style="background:rgba(250,204,21,.08);border-color:#FACC15">🎥 <b>Dica que aproxima:</b> além do texto, mande também um <b>recado em vídeo</b> no WhatsApp (Supervisor e/ou Account se apresentando). Humaniza o início, cria vínculo e mostra que tem gente de verdade cuidando da conta — faz diferença no estreitamento com o cliente novo.</div>
+      <div class="msg"><button class="copybtn" onclick="copyMsg(this)">Copiar</button><span class="who">Supervisor</span><div class="body">Olá, <span class="ph">[nome do cliente]</span>! Seja muito bem-vindo(a) à Elevate. 🚀
+
+Sou o(a) <span class="ph">[seu nome]</span>, <b>supervisor(a)</b> do seu projeto de TikTok Shop aqui na Elevate. É um prazer ter a <span class="ph">[marca]</span> com a gente.
+
+A partir de agora, nosso time cuida da sua operação no TikTok Shop com método e proximidade. Estou aqui pra garantir qualidade nas entregas e que a gente bata as metas juntos.
+
+Já já a <span class="ph">[Account]</span> vai se apresentar; ela será seu contato no dia a dia. Qualquer coisa, pode contar comigo também por aqui. Vamos pra cima! 💪</div></div>
+      <div class="msg"><button class="copybtn" onclick="copyMsg(this)">Copiar</button><span class="who">Account</span><div class="body">Oi, <span class="ph">[nome do cliente]</span>! Eu sou o(a) <span class="ph">[seu nome]</span>, vou ser sua <b>Account</b> aqui na Elevate, seu contato direto no dia a dia do projeto. 😊
+
+Pra começarmos com tudo, alguns passos:
+
+1️⃣ <b>Agendar a nossa primeira reunião</b> (a gente chama de "kick-off"): é onde nos conhecemos, alinhamos seus objetivos e damos o pontapé na sua estratégia. É só escolher o melhor horário por aqui:
+https://calendar.google.com/calendar/appointments/schedules/AcZssZ2_X90rTMmk1qTiWnGXOu18GWoocxjzypfb1VLMoCMOOMpjSs7A2CYjT19CDvBMA5kXmWZPDOTb
+
+2️⃣ <b>Preencher este formulário sobre a sua operação:</b> leva alguns minutinhos, mas é super importante: é com ele que conhecemos a sua empresa a fundo:
+https://docs.google.com/forms/d/e/1FAIpQLScdBzmEt_UMUAXDvaPdW71PReHKVDOLz7spqDTWsTAmklj0RQ/viewform
+
+3️⃣ <b>Liberar os acessos</b> da sua conta (Seller Center, Ads Manager e TikTok Studio) — te mando o passo a passo de cada um aqui no grupo. 🔑
+
+🆕 <b>Ainda não tem loja?</b> Crie por este link, que já deixa sua conta na nossa carteira assessorada junto ao TikTok Shop (ajuda em liberação de categoria e gerente de contas):
+https://seller-br.tiktok.com/account/register?channel=elevate
+
+No <b>kick-off</b> eu te apresento a nossa <b>Planilha de Precificação</b>; depois é só fazer a sua cópia e preencher. 📊
+
+📌 É com o <b>formulário + os acessos + a planilha</b> que o time lê o seu momento e monta o seu <b>planejamento estratégico</b> e o <b>plano de ação</b>. Quanto antes esses 3 chegam, antes seu plano sai. Qualquer dúvida, é só chamar aqui no grupo. Bora! 🚀</div></div>
+      <div class="formbox" style="background:rgba(61,220,132,.08);border-color:#3ddc84">🆕 <b>Cliente sem loja? Mande este link de cadastro</b> — a conta entra na <b>carteira assessorada</b> da Elevate junto ao TikTok Shop (liberação de categoria / gerente de contas, principalmente fashion). <a href="https://seller-br.tiktok.com/account/register?channel=elevate" target="_blank" rel="noopener">Criar conta pelo link da Elevate →</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">6</div><div class="box">
+      <div class="top"><h3>E-mail do cliente (alias Hostinger)</h3><span class="badge b-account">Account</span></div>
+      <p>Antes de enviar a agenda, mande ao cliente o <b>e-mail (alias na Hostinger)</b> gerado automaticamente para ele. <b>Se ainda não tiver sido gerado</b>, crie o alias e envie os dados de acesso.</p>
+      <div class="formbox">📧 Alias de e-mail no domínio da Elevate (Hostinger). Confira se foi criado automaticamente; se não, crie e envie ao cliente antes do link da agenda.</div>
+    </div></div>
+
+    <div class="step"><div class="dot">7</div><div class="box">
+      <div class="top"><h3>Agenda do kick-off</h3><span class="badge b-account">Account</span></div>
+      <p>Na sequência, envia o <b>link da agenda</b> para o cliente marcar a <b>reunião inicial (kick-off)</b>.</p>
+      <div class="formbox">🗓️ <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2_X90rTMmk1qTiWnGXOu18GWoocxjzypfb1VLMoCMOOMpjSs7A2CYjT19CDvBMA5kXmWZPDOTb" target="_blank" rel="noopener">Abrir a agenda do kick-off →</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">8</div><div class="box">
+      <div class="top"><h3>Formulário do cliente</h3><span class="badge b-cliente">Cliente</span> <span class="badge b-account">Account acompanha</span></div>
+      <p>O cliente preenche o <b>formulário</b>. <b>Ideal: antes do kick-off</b> — ele alimenta o diagnóstico junto com a reunião.</p>
+      <div class="formbox">📋 <a href="https://docs.google.com/forms/d/e/1FAIpQLScdBzmEt_UMUAXDvaPdW71PReHKVDOLz7spqDTWsTAmklj0RQ/viewform" target="_blank" rel="noopener">docs.google.com/forms/…/viewform</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">9</div><div class="box">
+      <div class="top"><h3>Reunião de kick-off — R01 (Onboarding + Diagnóstico)</h3><span class="badge b-time">Time Elevate</span> <span class="badge b-cliente">Cliente</span></div>
+      <p>Reunião inicial com o cliente — é a <b>R01</b> do programa de capacitação (Onboarding + Diagnóstico). <span class="m">Formulário + kick-off são a base do planejamento.</span></p>
+      <p>Na reunião, <b>apresentamos a nossa Planilha de Precificação</b> — mostramos como ela enxerga a margem nos 3 tiers (Campanha · Venda · Live) e a previsibilidade. <span class="m">O cliente faz uma cópia e passa a preencher a dele.</span></p>
+      <div class="formbox">📊 <a href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing" target="_blank" rel="noopener">Abrir a Planilha de Precificação (master) →</a></div>
+      <div class="formbox" style="background:rgba(34,197,94,.08);border-color:#22C55E">📘 Conteúdo da reunião (o que será feito e ensinado) — <a href="./GUIA-REUNIOES-CAPACITACAO-4D.html#r01" target="_blank" rel="noopener">ver R01 →</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">10</div><div class="box">
+      <div class="top"><h3>Planejamento estratégico + plano de ação</h3><span class="badge b-time">Time Elevate</span></div>
+      <p>Com base no <b>formulário + kick-off</b>, o time entrega o <b>planejamento estratégico</b>: identifica <b>em qual fase (momento) o cliente está</b> pelo <a class="inline" href="../Visao%20Geral/ELEVATE-4D-VISAO-GERAL.html">4D</a> e traça o <b>plano de ação</b>.</p>
+      <div class="formbox" style="background:rgba(250,204,21,.08);border-color:#FACC15">
+        <b style="color:#FACC15">⚠️ Sem isto, o planejamento não sai.</b> Reforce com o cliente que, para o time montar o Planejamento Estratégico + Plano de Ação, ele precisa entregar:
+        <div style="margin-top:8px;line-height:1.9">
+          1️⃣ <a href="https://docs.google.com/forms/d/e/1FAIpQLScdBzmEt_UMUAXDvaPdW71PReHKVDOLz7spqDTWsTAmklj0RQ/viewform" target="_blank" rel="noopener">Formulário do cliente</a> preenchido<br>
+          2️⃣ <a href="https://docs.google.com/spreadsheets/d/1SIkD3fLt5vOMokm3cYahmoQEvU5gzFodNatNqylqgjc/edit?usp=sharing" target="_blank" rel="noopener">Planilha de Precificação</a> (cópia dele) preenchida<br>
+          3️⃣ <b>Acessos liberados:</b> <a href="./Documentos%20para%20o%20Cliente/TUTORIAL-ACESSO-COLABORADOR.html" target="_blank" rel="noopener">Seller Center</a> · <a href="./Documentos%20para%20o%20Cliente/TUTORIAL-CONECTAR-CONTA-ADS.html" target="_blank" rel="noopener">Ads</a> · <a href="./Documentos%20para%20o%20Cliente/TUTORIAL-ACESSO-TIKTOK-STUDIO.html" target="_blank" rel="noopener">TikTok Studio</a>
+        </div>
+        <span class="m" style="display:block;margin-top:8px">São esses 3 inputs que alimentam o diagnóstico 4D (momento + CT%). Faltando qualquer um, o plano fica incompleto ou atrasa.</span>
+      </div>
+    </div></div>
+
+    <div style="margin:26px 0 16px;padding-left:54px">
+      <div class="eyebrow" style="margin:0">Programa de capacitação · R02 → R09</div>
+      <div class="sub" style="margin-top:6px;max-width:660px">A <b>R01 é o próprio kick-off (passo 8)</b>. Daqui o programa segue em <b>reuniões isoladas</b>, ~5 semanas, meta 2x/semana (ajusta à agenda) · 45–60 min. O conteúdo de cada reunião (o que será feito e ensinado): <a class="inline" href="./GUIA-REUNIOES-CAPACITACAO-4D.html" target="_blank" rel="noopener">Guia das Reuniões R01–R09 →</a></div>
+    </div>
+
+    <div class="step"><div class="dot">11</div><div class="box">
+      <div class="top"><h3>R02 · Configuração Inicial</h3><span class="badge b-time">Time Elevate</span> <span class="badge b-cliente">Cliente</span></div>
+      <p><span class="m">Semana 1 · Conduz: Supervisor.</span> Conta no Seller Center, vinculação da loja, configurações obrigatórias (nome, logo, políticas, endereço, banco), regras de segurança e tour completo.</p>
+      <div class="formbox">✅ <b>Garantir as conexões antes de avançar:</b> o <b>Ads</b> já conectado no <b>Business Center da Elevate</b>; e o <b>TikTok Shop e o Ads</b> também conectados no <b>ETOK</b>.</div>
+      <div class="formbox" style="background:rgba(34,197,94,.08);border-color:#22C55E">📘 Conteúdo da reunião (o que será feito e ensinado) — <a href="./GUIA-REUNIOES-CAPACITACAO-4D.html#r02" target="_blank" rel="noopener">ver R02 →</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">12</div><div class="box">
+      <div class="top"><h3>R03 · Cadastro de Produtos</h3><span class="badge b-time">Time Elevate</span> <span class="badge b-cliente">Cliente</span></div>
+      <p><span class="m">Semana 2 · Conduz: Supervisor.</span> Fórmula de título, imagens e vídeo, cadastro ao vivo, categoria/variações/SKU/logística, importação em massa e checklist de qualidade.</p>
+      <div class="formbox" style="background:rgba(34,197,94,.08);border-color:#22C55E">📘 Conteúdo da reunião (o que será feito e ensinado) — <a href="./GUIA-REUNIOES-CAPACITACAO-4D.html#r03" target="_blank" rel="noopener">ver R03 →</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">13</div><div class="box">
+      <div class="top"><h3>R04 · Operação Diária</h3><span class="badge b-time">Time Elevate</span> <span class="badge b-cliente">Cliente</span></div>
+      <p><span class="m">Semana 2 · Conduz: Supervisor.</span> Fluxo do pedido (status a status), despacho e etiquetas, cancelamentos/devoluções, transportadoras e frete grátis, atendimento e avaliações (&lt;1h).</p>
+      <div class="formbox" style="background:rgba(34,197,94,.08);border-color:#22C55E">📘 Conteúdo da reunião (o que será feito e ensinado) — <a href="./GUIA-REUNIOES-CAPACITACAO-4D.html#r04" target="_blank" rel="noopener">ver R04 →</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">14</div><div class="box">
+      <div class="top"><h3>R05 · Personalização da Loja + Indicadores</h3><span class="badge b-time">Time Elevate</span> <span class="badge b-cliente">Cliente</span></div>
+      <p><span class="m">Semana 3 · Conduz: Supervisor.</span> Shop Decoration, perfil da loja, dashboard (GMV, conversão, cancelamento), análise de produtos, 7 erros críticos e rotina diária do seller.</p>
+      <div class="formbox" style="background:rgba(34,197,94,.08);border-color:#22C55E">📘 Conteúdo da reunião (o que será feito e ensinado) — <a href="./GUIA-REUNIOES-CAPACITACAO-4D.html#r05" target="_blank" rel="noopener">ver R05 →</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">15</div><div class="box">
+      <div class="top"><h3>R06 · Promoções e Campanhas</h3><span class="badge b-time">Time Elevate</span> <span class="badge b-cliente">Cliente</span></div>
+      <p><span class="m">Semana 3 · Conduz: Supervisor.</span> 6 tipos de promoção, desconto e cupom na prática, campanhas oficiais, Flash Sale / Compre X Leve Y e calendário de promoções Elevate.</p>
+      <div class="formbox" style="background:rgba(34,197,94,.08);border-color:#22C55E">📘 Conteúdo da reunião (o que será feito e ensinado) — <a href="./GUIA-REUNIOES-CAPACITACAO-4D.html#r06" target="_blank" rel="noopener">ver R06 →</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">16</div><div class="box">
+      <div class="top"><h3>R07 · Programa de Afiliados / Criadores</h3><span class="badge b-time">Time Elevate</span> <span class="badge b-cliente">Cliente</span></div>
+      <p><span class="m">Semana 4 · Conduz: Creator Leader.</span> Programa de afiliados, comissões (8–20%), Marketplace de Criadores e Open Collaboration, convidar creators ao vivo e monitorar performance.</p>
+      <div class="formbox" style="background:rgba(34,197,94,.08);border-color:#22C55E">📘 Conteúdo da reunião (o que será feito e ensinado) — <a href="./GUIA-REUNIOES-CAPACITACAO-4D.html#r07" target="_blank" rel="noopener">ver R07 →</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">17</div><div class="box">
+      <div class="top"><h3>R08 · Live Commerce</h3><span class="badge b-time">Time Elevate</span> <span class="badge b-cliente">Cliente</span></div>
+      <p><span class="m">Semana 4 · Conduz: Supervisor.</span> Checklist técnico, console de LIVE, ferramentas (oferta relâmpago, sorteio, cartaz), roteiro de 30 min, LIVE Dashboard e análise pós-live.</p>
+      <div class="formbox" style="background:rgba(34,197,94,.08);border-color:#22C55E">📘 Conteúdo da reunião (o que será feito e ensinado) — <a href="./GUIA-REUNIOES-CAPACITACAO-4D.html#r08" target="_blank" rel="noopener">ver R08 →</a></div>
+    </div></div>
+
+    <div class="step"><div class="dot">18</div><div class="box end">
+      <div class="top"><h3>R09 · Paid Ads (GMV Max) + Fechamento</h3><span class="badge b-time">Time Elevate</span> <span class="badge b-cliente">Cliente</span></div>
+      <p><span class="m">Semana 5 · Conduz: Supervisor.</span> GMV Max (Product vs LIVE), criar campanha ao vivo, ROI Target (1x–15x), budget (R$ 50–500/dia), criativos (20+), GMV Pay e <b>fechamento com plano de ação contínuo</b>.</p>
+      <div class="formbox" style="background:rgba(34,197,94,.08);border-color:#22C55E">📘 Conteúdo da reunião (o que será feito e ensinado) — <a href="./GUIA-REUNIOES-CAPACITACAO-4D.html#r09" target="_blank" rel="noopener">ver R09 →</a></div>
+    </div></div>
+
+  </div>
+
+  <div class="foot" style="clear:both;">Elevate Ecom. · Fluxo interno de onboarding. Do plano de ação parte o <b>programa de 9 reuniões de capacitação</b> (R01→R09); em paralelo, o setup técnico segue o <a class="inline" href="./PLAYBOOK-IMPLANTACAO-4D.html">Playbook de Implantação</a> (acessos → setup → go-live).</div>
+</div>
+<script>
+  function copyMsg(btn){
+    var body = btn.parentElement.querySelector('.body');
+    var txt = body.innerText;
+    navigator.clipboard.writeText(txt).then(function(){
+      var orig = btn.textContent;
+      btn.textContent = '✓ Copiado'; btn.classList.add('ok');
+      setTimeout(function(){ btn.textContent = orig; btn.classList.remove('ok'); }, 1800);
+    });
+  }
+</script>
+</body>
+</html>
