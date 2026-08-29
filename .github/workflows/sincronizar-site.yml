@@ -1,0 +1,114 @@
+name: Verificar atualizacoes do site original
+
+on:
+  schedule:
+    # Toda segunda-feira, 09:17 no horario de Brasilia (12:17 UTC).
+    - cron: '17 12 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: sincronizacao-semanal-site
+  cancel-in-progress: false
+
+jobs:
+  verificar:
+    name: Comparar original com a copia
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Espelhar site original
+        shell: pwsh
+        run: ./.github/scripts/sync-site.ps1
+
+      - name: Verificar alteracoes
+        id: changes
+        shell: bash
+        run: |
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "Nenhuma alteracao encontrada."
+          fi
+
+      - name: Criar ou atualizar Pull Request
+        if: steps.changes.outputs.changed == 'true'
+        id: pr
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch="automation/site-sync"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "refs/heads/${branch}:refs/remotes/origin/${branch}" || true
+          git checkout -B "$branch"
+          git add -A
+          git commit -m "Atualiza copia do site original"
+          git push --force-with-lease origin "HEAD:${branch}"
+
+          pr_url=$(gh pr list --head "$branch" --base main --state open --json url --jq '.[0].url')
+          if [[ -z "$pr_url" ]]; then
+            pr_url=$(gh pr create \
+              --base main \
+              --head "$branch" \
+              --title "Atualizacao semanal disponivel para aprovacao" \
+              --body "O site original mudou. Revise os arquivos alterados neste Pull Request. A copia publica so sera atualizada depois que voce clicar em **Merge pull request**.")
+          fi
+          echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
+          echo "Pull Request: $pr_url"
+
+      - name: Avisar no WhatsApp
+        if: steps.pr.outputs.pr_url != ''
+        shell: pwsh
+        env:
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
+          WHATSAPP_ACCESS_TOKEN: ${{ secrets.WHATSAPP_ACCESS_TOKEN }}
+          WHATSAPP_PHONE_NUMBER_ID: ${{ secrets.WHATSAPP_PHONE_NUMBER_ID }}
+          WHATSAPP_TO: ${{ secrets.WHATSAPP_TO }}
+          WHATSAPP_TEMPLATE_NAME: ${{ secrets.WHATSAPP_TEMPLATE_NAME }}
+          WHATSAPP_API_VERSION: ${{ secrets.WHATSAPP_API_VERSION }}
+        run: |
+          $required = @(
+            $env:WHATSAPP_ACCESS_TOKEN,
+            $env:WHATSAPP_PHONE_NUMBER_ID,
+            $env:WHATSAPP_TO,
+            $env:WHATSAPP_TEMPLATE_NAME,
+            $env:WHATSAPP_API_VERSION
+          )
+          if ($required | Where-Object { [string]::IsNullOrWhiteSpace($_) }) {
+            Write-Warning 'WhatsApp ainda nao configurado. O Pull Request foi criado normalmente.'
+            exit 0
+          }
+
+          $payload = @{
+            messaging_product = 'whatsapp'
+            to = $env:WHATSAPP_TO
+            type = 'template'
+            template = @{
+              name = $env:WHATSAPP_TEMPLATE_NAME
+              language = @{ code = 'pt_BR' }
+              components = @(
+                @{
+                  type = 'body'
+                  parameters = @(
+                    @{ type = 'text'; text = $env:PR_URL }
+                  )
+                }
+              )
+            }
+          } | ConvertTo-Json -Depth 10
+
+          $headers = @{ Authorization = "Bearer $env:WHATSAPP_ACCESS_TOKEN" }
+          $url = "https://graph.facebook.com/$env:WHATSAPP_API_VERSION/$env:WHATSAPP_PHONE_NUMBER_ID/messages"
+          Invoke-RestMethod -Method Post -Uri $url -Headers $headers -ContentType 'application/json' -Body $payload

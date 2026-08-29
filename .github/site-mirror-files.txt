@@ -1,0 +1,201 @@
+_mirror-manifest.csv
+Aulas e Materiais/01-onboarding-fundamentos-tts.html
+Aulas e Materiais/02-catalogo-oferta-precificacao.html
+Aulas e Materiais/03-trafego-boost.html
+Aulas e Materiais/04-creators-afiliados.html
+Aulas e Materiais/05-lives-live-commerce.html
+Aulas e Materiais/06-conteudo-que-vende.html
+Aulas e Materiais/07-ferramentas-promocoes.html
+Aulas e Materiais/08-dados-logistica-fechamento-tts.html
+Aulas e Materiais/acesso-colaborador.html
+Aulas e Materiais/autorizacao-ads-creator.html
+Aulas e Materiais/conta-bancaria.html
+Aulas e Materiais/index.html
+Aulas e Materiais/slides/tts-03.png
+Aulas e Materiais/slides/tts-05.png
+Aulas e Materiais/slides/tts-15.png
+Aulas e Materiais/slides/tts-16.png
+Aulas e Materiais/slides/tts-17.png
+Aulas e Materiais/slides/tts-18.png
+Aulas e Materiais/slides/tts-19.png
+Aulas e Materiais/slides/tts-20.png
+Aulas e Materiais/slides/tts-21.png
+Aulas e Materiais/slides/tts-22.png
+Aulas e Materiais/slides/tts-23.png
+Aulas e Materiais/slides/tts-29.png
+Boas-Vindas/BEM-VINDO-ELEVATE.html
+Campanhas/CAMPANHA-7-7-TIKTOK-SHOP.html
+Campanhas/CAMPANHA-8-8-TIKTOK-SHOP.html
+Carteiras/CARTEIRAS-POR-SUPERVISOR.html
+Comercial/APRESENTACAO-MARKETPLACES.html
+Comercial/APRESENTACAO-MERCADO-LIVRE.html
+Comercial/APRESENTACAO-SHOPEE.html
+Comercial/APRESENTACAO-TIKTOK-SHOP.html
+Comercial/prints/Meli/meli-1.jpg
+Comercial/prints/Meli/meli-2.jpg
+Comercial/prints/Meli/meli-3.jpeg
+Comercial/prints/Meli/meli-4.jpg
+Comercial/prints/Meli/meli-5.jpg
+Comercial/prints/Meli/meli-6.jpeg
+Comercial/prints/Shopee/Argennti.jpeg
+Comercial/prints/Shopee/Destak.jpeg
+Comercial/prints/Shopee/Dilla.jpeg
+Comercial/prints/Shopee/Ela Up.jpeg
+Comercial/prints/Shopee/Hiven.jpeg
+Comercial/prints/Shopee/Livny.jpeg
+Comercial/prints/Shopee/My modas.jpeg
+Comercial/prints/Shopee/Not-me shoes.jpeg
+Comercial/prints/Shopee/Nouf.jpeg
+Comercial/prints/Shopee/Pétala Beauty.jpeg
+Comercial/prints/Shopee/Saint Germain.jpeg
+Comercial/prints/Shopee/WT Personalizados.jpeg
+Comercial/prints/TIKTOK/hiven.jpg
+Comercial/prints/TIKTOK/lirios.jpg
+Comercial/prints/TIKTOK/mossy.jpg
+Comercial/prints/TIKTOK/nouf.jpg
+Comercial/prints/TIKTOK/pangeia-story.jpg
+Comercial/prints/TIKTOK/pangeia.jpg
+Comercial/prints/TIKTOK/saint.png
+Comercial/prints/TIKTOK/ysy.jpg
+Comercial/ROTEIRO-CANVA-APRESENTACAO-TIKTOK.html
+Comercial/videos/depoimento-1.mp4
+Comercial/videos/depoimento-2.mp4
+Comercial/videos/depoimento-3.mp4
+Elevate 4D/Aplicacoes (exemplos)/Mossy Brand/analise-elevate-4d-mossy-brand-2026-06-11.html
+Elevate 4D/Aplicacoes (exemplos)/Peach Up/analise-elevate-4d-peachup-2026-06-11.html
+Elevate 4D/Categorias Restritas/LIBERACAO-CATEGORIAS-RESTRITAS.html
+Elevate 4D/Diagnostico Estrategico/MODELO-DIAGNOSTICO-ESTRATEGICO-4D.html
+Elevate 4D/Fluxo de Classificacao/CALCULADORA-4D.xlsx
+Elevate 4D/Fluxo de Classificacao/entrada-config.js
+Elevate 4D/Fluxo de Classificacao/ENTRADA-DADOS-4D.html
+Elevate 4D/Fluxo de Classificacao/Guia de Coleta/GUIA-COLETA-DADOS-4D.html
+Elevate 4D/Fluxo de Classificacao/MODELO-PLANEJAMENTO-ESTRATEGICO-4D.html
+Elevate 4D/Fluxo de Classificacao/MODELO-RELATORIO-4D.html
+Elevate 4D/Fluxo de Classificacao/PAINEL-PORTFOLIO-4D.xlsx
+Elevate 4D/Fluxo de Classificacao/Prompt/PROMPT-CLASSIFICACAO-4D.html
+Elevate 4D/Fluxo de Classificacao/SOP/FLUXO-CLASSIFICACAO-4D.html
+Elevate 4D/Fluxo de Classificacao/SUPABASE-SETUP-4D.html
+Elevate 4D/Fluxo de Classificacao/vendor/xlsx.full.min.js
+Elevate 4D/Metodologia/ELEVATE-4D-METODOLOGIA-DIAGNOSTICO.html
+Elevate 4D/One-Pager/ELEVATE-4D-ONE-PAGER.html
+Elevate 4D/One-Pager/ELEVATE-4D-ONE-PAGER.pdf
+Elevate 4D/Playbook de Implantacao/CHECKLIST-INTERNO-CONTA-RODANDO.html
+Elevate 4D/Playbook de Implantacao/CHECKLIST-ONBOARDING-4D.xlsx
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/banner-growth-camp.png
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/CHECKLIST-CONTA-RODANDO.html
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/COMO-PREENCHER-PRECIFICACAO.html
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/KIT-ENTRADA-DOCUMENTOS.html
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/ONE-PAGER-GROWTH-CAMP.html
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/ONE-PAGER-GROWTH-CAMP.pdf
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/prints-conectar-ads/passo1-partners.png
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/prints-conectar-ads/passo2-add-partner.png
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/prints-conectar-ads/passo3-id.png
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/prints-conectar-ads/passo4-verificacao.png
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/prints-conectar-ads/passo5-advertiser-admin.png
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/prints-conectar-ads/passo6-pixels.png
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/prints-conectar-ads/passo7-shops.png
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/prints-conectar-ads/passo8-pronto.png
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/TUTORIAL-ACESSO-COLABORADOR.html
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/TUTORIAL-ACESSO-COLABORADOR.pdf
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/TUTORIAL-ACESSO-TIKTOK-STUDIO.html
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/TUTORIAL-CADASTRO-CONTA-BANCARIA.html
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/TUTORIAL-CONECTAR-ADS-AO-BC-ELEVATE.html
+Elevate 4D/Playbook de Implantacao/Documentos para o Cliente/TUTORIAL-CONECTAR-CONTA-ADS.html
+Elevate 4D/Playbook de Implantacao/FLUXO-ONBOARDING.html
+Elevate 4D/Playbook de Implantacao/GUIA-REUNIOES-CAPACITACAO-4D.html
+Elevate 4D/Playbook de Implantacao/PLAYBOOK-IMPLANTACAO-4D.html
+Elevate 4D/README.html
+Elevate 4D/Visao Geral/ELEVATE-4D-VISAO-GERAL.html
+Entregaveis/Analise-Alimentos-Bebidas/index.html
+Entregaveis/Analise-Automotivo-Moto/index.html
+Entregaveis/Analise-Bebe-Maternidade/index.html
+Entregaveis/Analise-Brinquedos-Passatempos/index.html
+Entregaveis/Analise-Colecionaveis/index.html
+Entregaveis/Analise-Computadores-Escritorio/index.html
+Entregaveis/Analise-Eletrodomesticos/index.html
+Entregaveis/Analise-Esportes/index.html
+Entregaveis/Analise-Ferramentas-Hardware/index.html
+Entregaveis/Analise-Joias-Acessorios/index.html
+Entregaveis/Analise-Lirios-Store/img/ref-conjunto-preto.jpg
+Entregaveis/Analise-Lirios-Store/img/ref-hering-verao.jpg
+Entregaveis/Analise-Lirios-Store/img/ref-look-amarelo.jpg
+Entregaveis/Analise-Lirios-Store/img/ref-look-verao-listrado.jpg
+Entregaveis/Analise-Lirios-Store/img/ref-macaquinho-marrom.jpg
+Entregaveis/Analise-Lirios-Store/index.html
+Entregaveis/Analise-Livros-Revistas/index.html
+Entregaveis/Analise-Malas-Bolsas/index.html
+Entregaveis/Analise-Moda-Infantil/index.html
+Entregaveis/Analise-Moda-Muculmana/index.html
+Entregaveis/Analise-Moveis/index.html
+Entregaveis/Analise-Nicho-Beleza/index.html
+Entregaveis/Analise-Pet/index.html
+Entregaveis/Analise-Reformas-Residenciais/index.html
+Entregaveis/Analise-Roupas-Femininas/index.html
+Entregaveis/Analise-Roupas-Masculinas/index.html
+Entregaveis/Analise-Sapatos/index.html
+Entregaveis/Analise-Saude/index.html
+Entregaveis/Analise-Suprimentos-Domesticos/index.html
+Entregaveis/Analise-Telefones-Eletronicos/index.html
+Entregaveis/Analise-Texteis-Moveis/index.html
+Entregaveis/Analise-Utensilios-Cozinha/index.html
+Entregaveis/Creators-Acessorios/index.html
+Entregaveis/Creators-Master/creators.xlsx
+Entregaveis/Creators-Master/index.html
+Entregaveis/Mapa-Oportunidade-Categorias/Mapa_Oportunidade.html
+Entregaveis/Mapa-Oportunidade-Categorias/Mapa_Oportunidade.pdf
+Entregaveis/Metodo-TikTokShop/index.html
+Entregaveis/Roadmap-TikTokShop/index.html
+Entregaveis/Top-Marcas-TikTokShop/index.html
+ETOK/GUIA-CADASTRO-ETOK.html
+Formacao/BOAS-PRATICAS-LIVE-TIKTOK.html
+Formacao/FUNDAMENTOS-MERCADO-LIVRE.html
+Formacao/FUNDAMENTOS-TIKTOK-SHOP.html
+Formacao/GUIA-CRIADOR-AUTORIZAR-ANUNCIOS.html
+Formacao/Live que Vende/Guia-Setup-Equipamentos.html
+Formacao/Live que Vende/Guia-Setup-Equipamentos.pdf
+Formacao/Live que Vende/index.html
+Formacao/Live que Vende/Programa-Formacao-Live-que-Vende.html
+Formacao/Live que Vende/Programa-Formacao-Live-que-Vende.pdf
+Formacao/Live que Vende/Proposta-Formacao-Live-que-Vende.html
+Formacao/Live que Vende/Proposta-Formacao-Live-que-Vende.pdf
+Formacao/live-prints/img-console.png
+Formacao/live-prints/img-criativos.png
+Formacao/live-prints/img-dashboard.png
+Formacao/live-prints/img-flash.png
+Formacao/live-prints/img-gmvmax-criar.png
+Formacao/live-prints/img-gmvmax-criativos.png
+Formacao/live-prints/img-gmvmax-painel.png
+Formacao/live-prints/img-promo.png
+Formacao/prints/full-custos-antigo-ml.png
+Formacao/prints/full-estoque-ml.png
+Formacao/prints/full-inbound-ml.png
+Formacao/prints/full-planejamento-ml.png
+Formacao/prints/reputacao-ml.png
+Formacao/RECOMENDACOES-EXPLORACAO-ADS.html
+index.html
+Landing Onboarding/fotos-equipe/davi.jpg
+Landing Onboarding/fotos-equipe/guilherme.jpg
+Landing Onboarding/fotos-equipe/klyver.jpg
+Landing Onboarding/fotos-equipe/lorena.jpg
+Landing Onboarding/fotos-equipe/lucas-munhoz.jpg
+Landing Onboarding/fotos-equipe/luis-filippe.jpg
+Landing Onboarding/fotos-equipe/talisson.jpg
+Landing Onboarding/fotos-equipe/vinicius.jpg
+Landing Onboarding/img-funil/p03.jpg
+Landing Onboarding/img-funil/p05.jpg
+Landing Onboarding/img-funil/p15.jpg
+Landing Onboarding/img-funil/p16.jpg
+Landing Onboarding/img-funil/p17.jpg
+Landing Onboarding/img-funil/p18.jpg
+Landing Onboarding/img-funil/p19.jpg
+Landing Onboarding/img-funil/p20.jpg
+Landing Onboarding/img-funil/p21.jpg
+Landing Onboarding/img-funil/p22.jpg
+Landing Onboarding/img-funil/p23.jpg
+Landing Onboarding/img-funil/p29.jpg
+Landing Onboarding/index.html
+Mercado Livre 4D/Analise de Conta/MODO-ANALISE-CONTA-ML.html
+Mercado Livre 4D/One-Pager/ONE-PAGER-ML.html
+Mercado Livre 4D/Visao Geral/VISAO-GERAL-ML.html
+Recrutamento/AVALIACAO-PERFIL-CS.html
+Time de Elite/BLACK-PANTHER-JULHO-2026.html
