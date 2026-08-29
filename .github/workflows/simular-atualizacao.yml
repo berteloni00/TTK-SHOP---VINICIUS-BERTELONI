@@ -1,0 +1,85 @@
+name: Simular atualizacao completa
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  simular:
+    name: Criar atualizacao ficticia
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Criar arquivo ficticio e Pull Request
+        id: pr
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          branch="automation/teste-fluxo-completo"
+          test_file="_TESTE-ATUALIZACAO.html"
+          timestamp=$(date -u '+%Y-%m-%d %H:%M:%S UTC')
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "refs/heads/${branch}:refs/remotes/origin/${branch}" || true
+          git checkout -B "$branch"
+
+          printf '%s\n' \
+            '<!DOCTYPE html>' \
+            '<html lang="pt-BR">' \
+            '<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Teste da automacao</title></head>' \
+            '<body style="font-family:Arial,sans-serif;max-width:760px;margin:60px auto;padding:24px;background:#0B1A2B;color:#E8EEF2">' \
+            '<h1>Atualizacao ficticia detectada</h1>' \
+            '<p>Este arquivo temporario valida o fluxo completo: deteccao, Pull Request, Telegram, aprovacao e publicacao.</p>' \
+            "<p>Gerado em: ${timestamp}</p>" \
+            '</body></html>' > "$test_file"
+
+          git add "$test_file"
+          git commit -m "Teste: simula atualizacao do site original"
+          git push --force-with-lease origin "HEAD:${branch}"
+
+          pr_url=$(gh pr list --head "$branch" --base main --state open --json url --jq '.[0].url')
+          if [[ -z "$pr_url" ]]; then
+            pr_url=$(gh pr create \
+              --base main \
+              --head "$branch" \
+              --title "TESTE: atualizacao ficticia para aprovacao" \
+              --body "Este Pull Request e um teste controlado do fluxo semanal. Ele adiciona apenas o arquivo temporario \`_TESTE-ATUALIZACAO.html\`. Revise e clique em **Merge pull request** para validar a aprovacao e a publicacao no GitHub Pages.")
+          fi
+
+          echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
+          echo "Pull Request de teste: $pr_url"
+
+      - name: Avisar no Telegram
+        shell: pwsh
+        env:
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:TELEGRAM_BOT_TOKEN) -or
+              [string]::IsNullOrWhiteSpace($env:TELEGRAM_CHAT_ID)) {
+            throw 'Cadastre TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID nos segredos do repositorio.'
+          }
+
+          $payload = @{
+            chat_id = $env:TELEGRAM_CHAT_ID
+            text = "TESTE: uma atualizacao ficticia foi detectada. Revise e aprove o Pull Request:`n`n$env:PR_URL"
+            disable_web_page_preview = $true
+          } | ConvertTo-Json
+
+          $url = "https://api.telegram.org/bot$env:TELEGRAM_BOT_TOKEN/sendMessage"
+          $response = Invoke-RestMethod -Method Post -Uri $url -ContentType 'application/json' -Body $payload
+          if (-not $response.ok) {
+            throw 'O Telegram nao confirmou o envio da mensagem.'
+          }
