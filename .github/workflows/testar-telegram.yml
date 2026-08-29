@@ -1,0 +1,35 @@
+name: Testar aviso do Telegram
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  enviar:
+    name: Enviar mensagem de teste
+    runs-on: ubuntu-latest
+    steps:
+      - name: Enviar teste
+        shell: pwsh
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          if ([string]::IsNullOrWhiteSpace($env:TELEGRAM_BOT_TOKEN) -or
+              [string]::IsNullOrWhiteSpace($env:TELEGRAM_CHAT_ID)) {
+            throw 'Cadastre TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID nos segredos do repositorio.'
+          }
+
+          $payload = @{
+            chat_id = $env:TELEGRAM_CHAT_ID
+            text = 'Teste concluido: os avisos semanais do Elevate 4D Hub estao conectados ao Telegram.'
+            disable_web_page_preview = $true
+          } | ConvertTo-Json
+
+          $url = "https://api.telegram.org/bot$env:TELEGRAM_BOT_TOKEN/sendMessage"
+          $response = Invoke-RestMethod -Method Post -Uri $url -ContentType 'application/json' -Body $payload
+          if (-not $response.ok) {
+            throw 'O Telegram nao confirmou o envio da mensagem.'
+          }
