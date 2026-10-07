@@ -320,21 +320,32 @@ function defaults(type){if(type==='daily')return {date:dailyDate,account:dailyAc
 function showModal(html){const m=$('#modal');if(m.open)m.close();m.innerHTML=html;m.showModal()}
 function modalHead(title){return `<div class="modal-head"><h2 id="modalTitle">${esc(title)}</h2><button class="icon-btn" data-action="close" aria-label="Fechar">${icon('close')}</button></div>`}
 function formHTML(f,value){const id='field-'+f.key,required=f.required?'required':'',attrs=`id="${id}" name="${f.key}" ${required}`;let input='';if(f.type==='select')input=`<select ${attrs}>${f.options.map(opt=>{const [v,l]=Array.isArray(opt)?opt:[opt,opt];return `<option value="${esc(v)}" ${String(v)===String(value)?'selected':''}>${esc(l)}</option>`}).join('')}</select>`;else if(f.type==='textarea')input=`<textarea ${attrs} maxlength="10000">${esc(value)}</textarea>`;else input=`<input ${attrs} type="${f.type}" value="${esc(value)}" ${f.type==='number'?`min="${f.min??0}" max="1000000000000" step="${f.step||'any'}"`:'maxlength="1000"'}>`;return `<label class="field ${f.wide?'wide':''}" for="${id}">${esc(f.label)}${f.required?' *':''}${input}${f.help?`<small>${esc(f.help)}</small>`:''}</label>`}
+/* TASK_EXECUTOR_START */
+function taskExecutor(clientId,existing,submitted){
+ if(existing?.status==='Concluída')return existing.executor||'';
+ const account=client(clientId)?.account;
+ return ({'Luís Filippe':'Leonardo','João Nicolau':'Lucio','Gabriel Melo':'Lucio'})[account]||(submitted??existing?.executor??'');
+}
+/* TASK_EXECUTOR_END */
 function openForm(type,id='',initial={}){
  if(loadError){toast('Exporte a recuperação em Dados e backup antes de iniciar uma nova base.',true);navigate('settings');return}
  if(!['clients','daily'].includes(type)&&!db.clients.length){showModal(modalHead('Cadastre o primeiro cliente')+`<div class="modal-body"><p>As ações e os demais registros precisam estar vinculados a um cliente.</p></div><div class="modal-footer">${button('Cancelar','close')}${button('Cadastrar cliente','new','primary','data-type="clients"')}</div>`);return}
  const existing=id?db[type].find(r=>r.id===id):null;if(id&&!existing)return;
  openedType=type;openedId=id;draftInitial=initial;const data={...defaults(type),...existing,...initial};
+ if(type==='tasks')data.executor=taskExecutor(data.client,existing);
  if(cloud.member&&['clients','daily'].includes(type))data.account=cloud.meta.get(id)?.owner_id||cloud.user.id;
  showModal(`<form id="recordForm">${modalHead((id?'Editar • ':'Adicionar • ')+config[type][0])}<div class="modal-body"><div class="form-grid">${schema(type).map(f=>formHTML(f,data[f.key]??'')).join('')}</div><p class="help">* Campos obrigatórios</p><p class="field-error" id="formError" role="alert"></p></div><div class="modal-footer">${id?button(icon('trash')+' Excluir','delete','danger',`data-type="${type}" data-id="${esc(id)}"`):''}${button('Cancelar','close')}<button type="submit" class="btn primary">Salvar ${id?'alterações':'registro'}</button></div></form>`);
  $$('#recordForm button:not([type])').forEach(b=>b.type='button');
  $('#recordForm').addEventListener('submit',saveForm);
  if(id&&['clients','daily'].includes(type))$('#field-account').disabled=true;
  if(cloud.member&&!id&&['tasks','promotions'].includes(type))$('#field-owner').value=client(data.client)?.account||cloud.member.full_name;
- const cf=$('#field-client');if(cf)cf.addEventListener('change',()=>{if($('#field-owner')&&['tasks','promotions'].includes(type))$('#field-owner').value=client(cf.value)?.account||''});
+ const cf=$('#field-client');
+ const syncExecutor=()=>{if(type!=='tasks')return;const ef=$('#field-executor');ef.value=taskExecutor(cf.value,existing);ef.readOnly=existing?.status==='Concluída'||['Luís Filippe','João Nicolau','Gabriel Melo'].includes(client(cf.value)?.account);ef.title=existing?.status==='Concluída'?'Executor original preservado.':'Definido conforme o Account responsável pelo cliente.'};
+ if(cf){syncExecutor();cf.addEventListener('change',()=>{if($('#field-owner')&&['tasks','promotions'].includes(type))$('#field-owner').value=client(cf.value)?.account||'';syncExecutor()})}
 }
 async function saveForm(e){e.preventDefault();const type=openedType,fd=new FormData(e.target),record={...(openedId?db[type].find(r=>r.id===openedId):defaults(type)),id:openedId||uid()};for(const f of schema(type)){const value=String((f.key==='account'&&e.target.querySelector('#field-account')?.disabled?e.target.querySelector('#field-account').value:fd.get(f.key))||'').trim();if(f.required&&!value){$('#formError').textContent='Preencha '+f.label.toLowerCase()+'.';return}if(f.type==='url'&&value&&!safeURL(value)){$('#formError').textContent='Informe um link válido iniciado por https:// ou http://.';return}record[f.key]=f.type==='number'?Number(value||0):value}
  if(type==='clients'){const target=String(fd.get('sampleMonthlyTarget')??'').trim();if(target&&(!Number.isSafeInteger(Number(target))||Number(target)<0||Number(target)>1000000000000)){$('#formError').textContent='Informe uma quantidade mensal inteira e não negativa.';return}record.sampleMonthlyTarget=target===''?'':Number(target)}
+ if(type==='tasks'){const existing=openedId?db.tasks.find(r=>r.id===openedId):null;record.executor=taskExecutor(record.client,existing,record.executor)}
  if(record.start&&((record.end&&record.end<record.start)||(record.due&&record.due<record.start))){$('#formError').textContent='O prazo ou encerramento não pode ser anterior ao início.';return}
  if(['clients','daily'].includes(type)){record._assignee=record.account;record.account=cloud.team.find(m=>m.user_id===record._assignee)?.full_name||cloud.member.full_name}
  if(type==='promotions'&&!record.checks)record.checks=Array(8).fill(false);
