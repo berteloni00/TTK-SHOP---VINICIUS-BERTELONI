@@ -324,7 +324,7 @@ function formHTML(f,value){const id='field-'+f.key,required=f.required?'required
 function taskExecutor(clientId,existing,submitted){
  if(existing?.status==='Concluída')return existing.executor||'';
  const account=client(clientId)?.account;
- return ({'Luís Filippe':'Leonardo','João Nicolau':'Lucio','Gabriel Melo':'Lucio'})[account]||(submitted??existing?.executor??'');
+ return ({'Luís Filippe':'João Nicolau','João Nicolau':'Lucio','Gabriel Melo':'Lucio'})[account]||(submitted??existing?.executor??'');
 }
 /* TASK_EXECUTOR_END */
 function openForm(type,id='',initial={}){
