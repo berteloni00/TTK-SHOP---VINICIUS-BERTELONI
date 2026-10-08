@@ -327,7 +327,7 @@ function formHTML(f,value){const id='field-'+f.key,required=f.required?'required
 function taskExecutor(clientId,existing,submitted){
  if(existing?.status==='Concluída')return existing.executor||'';
  const account=client(clientId)?.account;
- return ({'Luís Filippe':'João Nicolau','João Nicolau':'Lucio','Gabriel Melo':'Lucio'})[account]||(submitted??existing?.executor??'');
+ return ({'Luís Filippe':'João Nicolau','João Nicolau':'Lucio','Leonardo':'Lucio','Gabriel Melo':'Lucio'})[account]||(submitted??existing?.executor??'');
 }
 /* TASK_EXECUTOR_END */
 function openForm(type,id='',initial={}){
@@ -343,7 +343,7 @@ function openForm(type,id='',initial={}){
  if(id&&['clients','daily'].includes(type))$('#field-account').disabled=true;
  if(cloud.member&&!id&&['tasks','promotions'].includes(type))$('#field-owner').value=client(data.client)?.account||cloud.member.full_name;
  const cf=$('#field-client');
- const syncExecutor=()=>{if(type!=='tasks')return;const ef=$('#field-executor');ef.value=taskExecutor(cf.value,existing);ef.readOnly=existing?.status==='Concluída'||['Luís Filippe','João Nicolau','Gabriel Melo'].includes(client(cf.value)?.account);ef.title=existing?.status==='Concluída'?'Executor original preservado.':'Definido conforme o Account responsável pelo cliente.'};
+ const syncExecutor=()=>{if(type!=='tasks')return;const ef=$('#field-executor');ef.value=taskExecutor(cf.value,existing);ef.readOnly=existing?.status==='Concluída'||['Luís Filippe','João Nicolau','Leonardo','Gabriel Melo'].includes(client(cf.value)?.account);ef.title=existing?.status==='Concluída'?'Executor original preservado.':'Definido conforme o Account responsável pelo cliente.'};
  if(cf){syncExecutor();cf.addEventListener('change',()=>{if($('#field-owner')&&['tasks','promotions'].includes(type))$('#field-owner').value=client(cf.value)?.account||'';syncExecutor()})}
 }
 async function saveForm(e){e.preventDefault();const type=openedType,fd=new FormData(e.target),record={...(openedId?db[type].find(r=>r.id===openedId):defaults(type)),id:openedId||uid()};for(const f of schema(type)){const value=String((f.key==='account'&&e.target.querySelector('#field-account')?.disabled?e.target.querySelector('#field-account').value:fd.get(f.key))||'').trim();if(f.required&&!value){$('#formError').textContent='Preencha '+f.label.toLowerCase()+'.';return}if(f.type==='url'&&value&&!safeURL(value)){$('#formError').textContent='Informe um link válido iniciado por https:// ou http://.';return}record[f.key]=f.type==='number'?Number(value||0):value}
