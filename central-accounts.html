@@ -229,7 +229,7 @@ function accountFilterNames(extra=[]){return [...new Set([...(cloud.team||[]).fi
 /* ACCOUNT_FILTERS_END */
 function filterBar(){if(view==='settings')return '';return `<div class="filters"><select id="clientFilter" aria-label="Filtrar cliente"><option value="">Todos os clientes</option>${db.clients.map(c=>`<option value="${esc(c.id)}" ${filters.client===c.id?'selected':''}>${esc(c.name)}</option>`).join('')}</select><select id="accountFilter" aria-label="Filtrar Account"><option value="">Todos os Accounts</option>${accountFilterNames().map(a=>`<option ${filters.account===a?'selected':''}>${esc(a)}</option>`).join('')}</select>${['tasks','executions','approvals'].includes(view)?`<select id="priorityFilter" aria-label="Filtrar prioridade"><option value="">Todas as prioridades</option>${priorities.map(p=>`<option ${filters.priority===p?'selected':''}>${p}</option>`).join('')}</select>`:''}${filters.client||filters.account||filters.priority||query||(view==='dashboard'&&overviewService)?'<button class="text-button" data-action="clear-filters">Limpar filtros</button>':''}<span class="filter-summary">${new Date().toLocaleDateString('pt-BR',{weekday:'short',day:'numeric',month:'long',year:'numeric'})}</span></div>`}
 /* AREA_ACCESS_START */
-function areaEnabled(key){return !['tasks','calendar','communications','campaigns','promotions','documents','guide','consulting'].includes(key)}
+function areaEnabled(key){return !['tasks','calendar','communications','campaigns','promotions','documents','guide','consulting','approvals'].includes(key)}
 /* AREA_ACCESS_END */
 function render(){
  if(!areaEnabled(view))view='dashboard';
