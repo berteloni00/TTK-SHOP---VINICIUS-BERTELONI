@@ -121,7 +121,7 @@
   @media (max-width:760px){.roles{grid-template-columns:1fr;}}
 
   /* liderança + squads */
-  .leadgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0;}
+  .leadgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0;}
   .leadgrid .l{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:16px 18px;text-align:center;}
   .leadgrid .l .ln{font-weight:800;color:#fff;font-size:16px;}
   .leadgrid .l .lr{font-size:11.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--accent);margin-top:3px;}
@@ -130,7 +130,8 @@
   .squads{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:18px 0;}
   .squad{background:var(--card);border:1px solid var(--cardborder);border-radius:16px;padding:18px;border-left:4px solid var(--accent);}
   .squad.crow{border-left-color:var(--crow);}
-  .squad.fox{border-left-color:var(--fox);}
+  .squad.falcon{border-left-color:#EC4899;}
+  .squad.white-wolf{border-left-color:#CBD5E1;}
   .squad.jaguar{border-left-color:var(--jaguar);}
   .squad.monkey{border-left-color:var(--monkey);}
   .squad.sphynx{border-left-color:var(--sphynx);}
@@ -145,9 +146,9 @@
   @media (max-width:660px){.squads{grid-template-columns:1fr;}}
 
   /* carreira */
-  .career{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:20px 0;}
+  .career{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:20px 0;}
   .lvl{background:var(--card);border:1px solid var(--cardborder);border-radius:14px;padding:16px 14px;text-align:center;border-top:4px solid var(--accent);}
-  .lvl.n1{border-top-color:#7EC8E3;}.lvl.n2{border-top-color:#22C55E;}.lvl.n3{border-top-color:#EC4899;}.lvl.n4{border-top-color:#FACC15;}
+  .lvl.n1{border-top-color:#7EC8E3;}.lvl.n2{border-top-color:#22C55E;}.lvl.n3{border-top-color:#8B5CF6;}.lvl.n4{border-top-color:#EC4899;}.lvl.n5{border-top-color:#FACC15;}
   .lvl .lk{font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
   .lvl .lt{font-weight:800;color:#fff;font-size:14.5px;margin:6px 0;line-height:1.2;}
   .lvl .lf{font-size:13px;color:var(--text);font-weight:700;}
@@ -261,7 +262,7 @@
   <!-- ESTRUTURA -->
   <section id="estrutura">
     <h2>Como o time se organiza</h2>
-    <p class="lead">A operação roda em <strong>squads</strong>. Cada squad é uma célula completa que cuida de até <strong>50 contas</strong> num marketplace. A fórmula é sempre a mesma:</p>
+    <p class="lead">A operação roda em <strong>squads</strong>. Cada squad é uma célula completa que cuida de até <strong>50 contas</strong> num marketplace. A composição varia conforme a operação. A estrutura de referência para gestão de contas é:</p>
     <div class="formula">
       <div class="pc"><div class="n">1 Supervisor</div><div class="s">dono do resultado</div></div>
       <div class="op">+</div>
@@ -271,8 +272,8 @@
       <div class="eq">=</div>
       <div class="pc total"><div class="n">50 contas</div><div class="s">por squad</div></div>
     </div>
-    <div class="chain"><b>Coordenador</b> <span class="ar">→</span> <b>Supervisor</b> <span class="ar">→</span> <b>Account</b> <span class="ar">→</span> <b>Executor</b> &nbsp;·&nbsp; Account e Executor reportam ao Supervisor. No dia a dia, o <b>Account direciona o Executor</b>: traduz a estratégia em instrução operacional.</div>
-    <div class="callout">🌱 <b>O time cresce com a base:</b> um <b>novo squad surge quando um marketplace bate 50 contas</b>. Mais clientes = mais squads = mais oportunidade de carreira pra quem está dentro. <b>Hoje somos 31 pessoas</b> (19 gestores · 6 supervisores · 2 coordenadores · 4 comercial) cuidando de <b>155 contas</b>.</div>
+    <div class="chain"><b>Head</b> <span class="ar">→</span> <b>Supervisor</b> <span class="ar">→</span> <b>Account</b> <span class="ar">→</span> <b>Executor</b> &nbsp;·&nbsp; Account e Executor reportam ao Supervisor. No dia a dia, o <b>Account direciona o Executor</b>: traduz a estratégia em instrução operacional.</div>
+    <div class="callout">🌱 <b>O time cresce com a base:</b> um <b>novo squad surge quando um marketplace bate 50 contas</b>. Mais clientes = mais squads = mais oportunidade de carreira pra quem está dentro.</div>
   </section>
 
   <!-- PAPÉIS -->
@@ -342,48 +343,51 @@
     <h2>Quem é quem · o organograma</h2>
     <p class="lead">A liderança que sustenta a operação:</p>
     <div class="leadgrid">
-      <div class="l"><div class="ln">Talisson</div><div class="lr">Head</div></div>
-      <div class="l"><div class="ln">Klyver</div><div class="lr">Coordenador</div></div>
+      <div class="l"><div class="ln">Klyver</div><div class="lr">Head</div></div>
       <div class="l"><div class="ln">Higor</div><div class="lr">Viabilização de IA</div></div>
     </div>
     <h3>Os squads por marketplace</h3>
     <div class="squads">
-      <div class="squad fox">
-        <div class="sq"><span class="sqn">Fox</span><span class="sqm">TikTok Shop</span></div>
-        <div class="row"><span class="rk">Accounts</span>Julia · Lorena</div>
-        <div class="row"><span class="rk">Executores</span>Leandro · João</div>
-        <div class="row"><span class="rk">Relacionamento Creators</span>Rhayssa</div>
-      </div>
       <div class="squad shark">
-        <div class="sq"><span class="sqn">Shark</span><span class="sqm">TikTok Shop · Ads &amp; Contas-chave</span></div>
+        <div class="sq"><span class="sqn">Shark</span><span class="sqm">TikTok Shop</span></div>
         <div class="row"><span class="rk">Supervisor</span><b>Davi</b></div>
-        <div class="row"><span class="rk">Time</span>Lucas Munhoz</div>
-        <div class="row"><span class="rk">Foco</span>GMV Max · Awareness · Key accounts</div>
-        <div class="row"><span class="rk">Relacionamento Creators</span>Rhayssa</div>
+        <div class="row"><span class="rk">Accounts</span>Guilherme · Stefhan</div>
+        <div class="row"><span class="rk">Executores</span>Eduardo · Vitor</div>
       </div>
       <div class="squad sphynx">
         <div class="sq"><span class="sqn">Sphynx</span><span class="sqm">TikTok Shop · Amazon</span></div>
         <div class="row"><span class="rk">Supervisor</span><b>Vinícius</b></div>
-        <div class="row"><span class="rk">Accounts</span>Gabriel · Maciel</div>
-        <div class="row"><span class="rk">Executores</span>João e Lucas · Murilo</div>
-        <div class="row"><span class="rk">Relacionamento Creators</span>Rhayssa</div>
+        <div class="row"><span class="rk">Accounts</span>Gabriel Melo · Lucas Munhoz · Luis Filippe</div>
+        <div class="row"><span class="rk">Executores</span>João · Leonardo</div>
       </div>
       <div class="squad crow">
         <div class="sq"><span class="sqn">Crow</span><span class="sqm">Mercado Livre</span></div>
-        <div class="row"><span class="rk">Supervisor</span><b>Erick Lima</b></div>
-        <div class="row"><span class="rk">Accounts</span>Guilherme · Bianca · Alexandre</div>
-        <div class="row"><span class="rk">Executores</span>Joacir · Liziane · Renan · Yasser</div>
+        <div class="row"><span class="rk">Supervisor</span><b>Erick</b></div>
+        <div class="row"><span class="rk">Accounts</span>Thiago · Yasser</div>
+        <div class="row"><span class="rk">Executores</span>Eduardo Aranha · Liziane</div>
+      </div>
+      <div class="squad white-wolf">
+        <div class="sq"><span class="sqn">White Wolf</span><span class="sqm">Mercado Livre</span></div>
+        <div class="row"><span class="rk">Supervisor</span><b>Alexandre</b></div>
+        <div class="row"><span class="rk">Accounts</span>Bianca · Renan</div>
+        <div class="row"><span class="rk">Executores</span>Yasmim · Patricia</div>
       </div>
       <div class="squad jaguar">
         <div class="sq"><span class="sqn">Jaguar</span><span class="sqm">Shopee</span></div>
-        <div class="row"><span class="rk">Supervisor</span><b>Machado</b></div>
-        <div class="row"><span class="rk">Accounts</span>Rafael · Gustavo</div>
-        <div class="row"><span class="rk">Executores</span>Ezequiel · Eduarda</div>
+        <div class="row"><span class="rk">Supervisor</span><b>Lucas Machado</b></div>
+        <div class="row"><span class="rk">Accounts</span>Eduarda · Ezequiel</div>
+        <div class="row"><span class="rk">Executores</span>Adelucio · Gabriel Alef</div>
       </div>
-      <div class="squad forming">
-        <div class="sq"><span class="sqn">Klyve</span><span class="sqm">Em formação</span></div>
-        <div class="row">Um novo squad surge quando um marketplace bate <b>50 contas</b>. O próximo pode ser o seu.</div>
+      <div class="squad falcon">
+        <div class="sq"><span class="sqn">Falcon</span><span class="sqm">TikTok Shop · Creators</span></div>
+        <div class="row"><span class="rk">Supervisora</span><b>Ana Carol</b></div>
+        <div class="row"><span class="rk">Comunicação com creators</span>Karoline</div>
+        <div class="row"><span class="rk">Executor</span>Gabriel Guimarães</div>
       </div>
+    </div>
+    <div class="squad">
+      <div class="sq"><span class="sqn">Lorena</span><span class="sqm">Apoio a todos os times de TikTok Shop</span></div>
+      <div class="row"><span class="rk">Responsável por</span>Setup e calls de treinamento</div>
     </div>
   </section>
 
@@ -392,10 +396,11 @@
     <h2>Plano de carreira</h2>
     <p class="lead">Estrutura fixa + variável por nível, com performance reconhecida. (As comissões comerciais entram em política própria, no fechamento.)</p>
     <div class="career">
-      <div class="lvl n1"><div class="lk">Nível 1</div><div class="lt">Gestor<br>Regular Team</div><div class="lf">R$ 3.000 fixo</div><div class="lv">+ R$ 1.500 variável</div><div class="lmax">Máx R$ 4.500</div></div>
-      <div class="lvl n2"><div class="lk">Nível 2</div><div class="lt">Gestor<br>Black Panther</div><div class="lf">R$ 4.500 fixo</div><div class="lv">+ R$ 1.500 variável</div><div class="lmax">Máx R$ 6.000</div></div>
-      <div class="lvl n3"><div class="lk">Nível 3</div><div class="lt">Supervisor<br>de Operação</div><div class="lf">R$ 5.000 fixo</div><div class="lv">+ R$ 2.000 variável</div><div class="lmax">Máx R$ 7.000</div></div>
-      <div class="lvl n4"><div class="lk">Nível 4</div><div class="lt">Supervisor<br>Black Panther</div><div class="lf">R$ 7.000 fixo</div><div class="lv">+ R$ 2.000 variável</div><div class="lmax">Máx R$ 9.000</div></div>
+      <div class="lvl n1"><div class="lk">Nível 1</div><div class="lt">Gestor<br>Nível 1</div><div class="lf">R$ 2.500</div><div class="lv">Primeiro passo do novo gestor</div><div class="lmax">Entrada na empresa</div></div>
+      <div class="lvl n2"><div class="lk">Nível 2</div><div class="lt">Gestor<br>Nível 2</div><div class="lf">R$ 3.000 fixo</div><div class="lv">+ R$ 1.500 variável</div><div class="lmax">Máx R$ 4.500</div></div>
+      <div class="lvl n3"><div class="lk">Nível 3</div><div class="lt">Gestor<br>Black Panther</div><div class="lf">R$ 4.500 fixo</div><div class="lv">+ R$ 1.500 variável</div><div class="lmax">Máx R$ 6.000</div></div>
+      <div class="lvl n4"><div class="lk">Nível 4</div><div class="lt">Supervisor<br>de Operação</div><div class="lf">R$ 5.000 fixo</div><div class="lv">+ R$ 2.000 variável</div><div class="lmax">Máx R$ 7.000</div></div>
+      <div class="lvl n5"><div class="lk">Nível 5</div><div class="lt">Supervisor<br>Black Panther</div><div class="lf">R$ 7.000 fixo</div><div class="lv">+ R$ 2.000 variável</div><div class="lmax">Máx R$ 9.000</div></div>
     </div>
     <div class="callout">📈 <b>O variável segue o squad:</b> sua parte do variável está ligada ao resultado do time (churn do squad) e à sua execução, então crescer junto compensa individualmente.</div>
   </section>
