@@ -309,6 +309,7 @@ body{background:var(--bg);font:15px/1.55 Inter,'Segoe UI',Arial,sans-serif}body:
 </style>
 
 <style>.daily-assignees{margin:0;min-width:0;border:0;padding:0}.daily-assignees legend{font-weight:600}.daily-assignee-options{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}.daily-assignee-options label{display:flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid var(--border,#293c48);border-radius:12px;cursor:pointer}.daily-assignee-options input{width:18px;height:18px;margin:0;accent-color:#1cd2d7}.daily-assignee-options label:has(input:checked){border-color:#1cd2d7;background:rgba(28,210,215,.08)}</style>
+<style>.daily-manager-tag{display:inline-flex;align-items:center;margin:6px 0 10px;padding:5px 9px;border:1px solid rgba(255,105,120,.45);border-radius:7px;background:rgba(190,35,55,.18);color:#ff9aaa;font-size:11px;font-weight:700;line-height:1.4;letter-spacing:.02em}</style>
 </head>
 
 
@@ -2532,6 +2533,7 @@ function dailyBoardGroups(records,reference,options={}){
 
 
 
+function dailyCreatedByManager(r){return cloud.meta?.get(r.id)?.created_by==='167eef45-e1b7-4735-8eb6-0eac7e6fb7b8'}
 function dailyCard(r,group){
 
 
@@ -2548,7 +2550,7 @@ function dailyCard(r,group){
 
 
 
- return '<article draggable="true" data-daily-id="'+esc(r.id)+'" class="daily-card '+(done?'is-done':'')+'"><div class="daily-card-body"><span class="daily-drag-hint" aria-hidden="true">⠿ Segure e arraste</span>'+(cloud.member?.role==='admin'?'<div class="daily-owner">'+esc(r.account)+'</div>':'')+'<h3>'+esc(r.title)+'</h3>'+(!done?'<span class="daily-priority '+(r.priority==='Alta'?'high':r.priority==='Baixa'?'low':'medium')+'">'+esc(r.priority)+'</span>':'')+'<p class="daily-timing '+(group==='late'?'late':'')+'">'+esc(timing)+'</p>'+(done?'<small class="daily-planned">Data prevista: '+esc(date(r.date))+'</small>':'')+(r.notes?'<details class="daily-notes"><summary>Observações</summary><p>'+esc(r.notes)+'</p></details>':'')+'</div><footer class="daily-card-actions"><button type="button" class="daily-complete" data-action="daily-complete" data-id="'+esc(r.id)+'" aria-label="'+(done?'Reabrir':'Concluir')+' '+esc(r.title)+'">'+icon(done?'check':'circle')+(done?'Reabrir':'Concluir')+'</button><details class="daily-menu"><summary aria-label="Opções de '+esc(r.title)+'">•••</summary><div><button type="button" data-action="edit" data-type="daily" data-id="'+esc(r.id)+'">Ver / editar</button>'+(!done?'<button type="button" data-action="daily-reschedule" data-id="'+esc(r.id)+'">Reagendar</button>':'')+'<button type="button" data-action="daily-move" data-id="'+esc(r.id)+'">Mover demanda</button><button type="button" data-action="daily-movements" data-id="'+esc(r.id)+'">Histórico de movimentos</button></div></details></footer></article>';
+ return '<article draggable="true" data-daily-id="'+esc(r.id)+'" class="daily-card '+(done?'is-done':'')+'"><div class="daily-card-body"><span class="daily-drag-hint" aria-hidden="true">⠿ Segure e arraste</span>'+(cloud.member?.role==='admin'?'<div class="daily-owner">'+esc(r.account)+'</div>':'')+(dailyCreatedByManager(r)?'<span class="daily-manager-tag">Demanda do gestor</span>':'')+'<h3>'+esc(r.title)+'</h3>'+(!done?'<span class="daily-priority '+(r.priority==='Alta'?'high':r.priority==='Baixa'?'low':'medium')+'">'+esc(r.priority)+'</span>':'')+'<p class="daily-timing '+(group==='late'?'late':'')+'">'+esc(timing)+'</p>'+(done?'<small class="daily-planned">Data prevista: '+esc(date(r.date))+'</small>':'')+(r.notes?'<details class="daily-notes"><summary>Observações</summary><p>'+esc(r.notes)+'</p></details>':'')+'</div><footer class="daily-card-actions"><button type="button" class="daily-complete" data-action="daily-complete" data-id="'+esc(r.id)+'" aria-label="'+(done?'Reabrir':'Concluir')+' '+esc(r.title)+'">'+icon(done?'check':'circle')+(done?'Reabrir':'Concluir')+'</button><details class="daily-menu"><summary aria-label="Opções de '+esc(r.title)+'">•••</summary><div><button type="button" data-action="edit" data-type="daily" data-id="'+esc(r.id)+'">Ver / editar</button>'+(!done?'<button type="button" data-action="daily-reschedule" data-id="'+esc(r.id)+'">Reagendar</button>':'')+'<button type="button" data-action="daily-move" data-id="'+esc(r.id)+'">Mover demanda</button><button type="button" data-action="daily-movements" data-id="'+esc(r.id)+'">Histórico de movimentos</button></div></details></footer></article>';
 
 
 
