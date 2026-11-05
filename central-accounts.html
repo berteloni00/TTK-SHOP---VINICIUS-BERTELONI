@@ -578,7 +578,7 @@ function cloudExportLocal(){try{const raw=localStorage.getItem(KEY);if(!raw){toa
 
 
 
-function renderCloudSettings(){const admin=cloud.member?.role==='admin';return `<div class="settings-grid">${panel('Dados online',`<div class="panel-body"><p>Os registros são salvos no Supabase. Você está conectado como ${esc(cloud.member?.full_name)} (${admin?'gestor':'Account'}). A central busca atualizações a cada 15 segundos enquanto está aberta, sem interromper formulários em edição.</p><div class="actions">${button('Atualizar agora','cloud-refresh')}${button('Exportar meus dados visíveis','export')}${button('Importar backup local','import')}</div><p>Importações adicionam registros, sem substituir a base existente. Dados de demonstração não são importados.</p></div>`)}${panel('Versão anterior',`<div class="panel-body"><p>Os registros antigos deste navegador foram preservados. Exporte-os antes de migrar e importe o backup na conta que ficará responsável por eles.</p><button class="btn" data-cloud="local-backup">Exportar backup local</button><p>Ao importar, todos os registros ficam vinculados ao usuário conectado. Para migrar a carteira de um Account, faça a importação com o login desse Account.</p></div>`)}${admin?panel('Acessos da equipe',`<div class="panel-body"><p>Autorize o e-mail do Account. Depois, ele acessa o link da central, escolhe “Primeiro acesso” e confirma o e-mail. Somente usuários autorizados podem ler ou salvar registros.</p><button class="btn primary" data-cloud="authorize">Autorizar Account</button>${cloud.allowed.map(a=>`<div class="access-row"><div><strong>${esc(a.full_name)}</strong><small>${esc(a.email)}</small><small>${a.role==='admin'?'Gestor':cloud.team.some(m=>m.email===a.email)?'Account cadastrado':'Aguardando primeiro acesso'} · ${a.active?'Autorizado':'Bloqueado'}</small></div>${a.role!=='admin'?`<button class="btn small" data-cloud="toggle-access" data-email="${esc(a.email)}">${a.active?'Bloquear':'Reativar'}</button>`:''}</div>`).join('')}</div>`):''}${renderSampleMappings()}</div>`}
+function renderCloudSettings(){const admin=cloud.member?.role==='admin';return `<div class="settings-grid">${panel('Dados online',`<div class="panel-body"><p>Os registros são salvos no Supabase. Você está conectado como ${esc(cloud.member?.full_name)} (${admin?'gestor':'Account'}). A central busca atualizações a cada 15 segundos enquanto está aberta, sem interromper formulários em edição.</p><div class="actions">${button('Atualizar agora','cloud-refresh')}${button('Exportar meus dados visíveis','export')}${button('Importar backup local','import')}</div><p>Importações adicionam registros, sem substituir a base existente. Dados de demonstração não são importados.</p></div>`)}${panel('Versão anterior',`<div class="panel-body"><p>Os registros antigos deste navegador foram preservados. Exporte-os antes de migrar e importe o backup na conta que ficará responsável por eles.</p><button class="btn" data-cloud="local-backup">Exportar backup local</button><p>Ao importar, todos os registros ficam vinculados ao usuário conectado. Para migrar a carteira de um Account, faça a importação com o login desse Account.</p></div>`)}${admin?panel('Acessos da equipe',`<div class="panel-body"><p>Autorize o e-mail do Account. Depois, ele acessa o link da central, escolhe “Primeiro acesso” e confirma o e-mail. Somente usuários autorizados podem ler ou salvar registros.</p><button class="btn primary" data-cloud="authorize">Autorizar Account</button>${cloud.allowed.filter(a=>!retiredHubPerson(a.full_name)).map(a=>`<div class="access-row"><div><strong>${esc(a.full_name)}</strong><small>${esc(a.email)}</small><small>${a.role==='admin'?'Gestor':cloud.team.some(m=>m.email===a.email)?'Account cadastrado':'Aguardando primeiro acesso'} · ${a.active?'Autorizado':'Bloqueado'}</small></div>${a.role!=='admin'?`<button class="btn small" data-cloud="toggle-access" data-email="${esc(a.email)}">${a.active?'Bloquear':'Reativar'}</button>`:''}</div>`).join('')}</div>`):''}${renderSampleMappings()}</div>`}
 
 
 
@@ -930,7 +930,8 @@ function stat(label,value,note,ic='tasks',featured=false){return `<div class="st
 
 
 
-function accountFilterNames(extra=[]){return [...new Set([...(cloud.team||[]).filter(m=>m.active&&m.role==='account').map(m=>m.full_name),...db.clients.map(c=>c.account),...extra].filter(Boolean))].sort((a,b)=>a.localeCompare(b,'pt-BR'))}
+function retiredHubPerson(name){return ['joao','joao nicolau','lucas munhoz'].includes(String(name||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().toLowerCase())}
+function accountFilterNames(extra=[]){return [...new Set([...(cloud.team||[]).filter(m=>m.active&&m.role==='account'&&!retiredHubPerson(m.full_name)).map(m=>m.full_name),...db.clients.map(c=>c.account),...extra].filter(name=>name&&!retiredHubPerson(name)))].sort((a,b)=>a.localeCompare(b,'pt-BR'))}
 
 
 
@@ -1062,11 +1063,11 @@ function overviewModel(source,team,member,resolveExecutor,service){
 
 
 
- const accountNames=new Set(clients.map(c=>c.account).filter(Boolean));
+ const accountNames=new Set(clients.map(c=>c.account).filter(name=>name&&!retiredHubPerson(name)));
 
 
 
- for(const person of team||[])if(person.active&&person.role==='account'&&(member?.role==='admin'||person.full_name===member?.full_name))accountNames.add(person.full_name);
+ for(const person of team||[])if(person.active&&person.role==='account'&&!retiredHubPerson(person.full_name)&&(member?.role==='admin'||person.full_name===member?.full_name))accountNames.add(person.full_name);
 
 
 
@@ -1560,7 +1561,7 @@ const schemas={
 
 
 
-};const selected=schemas[type];if(type==='clients')selected.splice(2,0,field('sampleProducts','Produtos foco para amostras','textarea',{wide:true,help:'Informe um ou mais produtos, um por linha.'}),field('sampleMonthlyTarget','Meta de disparos de amostras por mês','number',{min:0,step:1,help:'Quantidade total mensal para os produtos acima. Deixe vazio se ainda não definida.'}));if(cloud.member&&['clients','daily'].includes(type)){const people=cloud.team.filter(p=>p.active||p.user_id===cloud.meta.get(openedId)?.owner_id);return selected.map(f=>f.key==='account'?field('account','Account responsável','select',{required:true,options:people.map(p=>[p.user_id,p.full_name+' · '+p.email])}):f)}return selected}
+};const selected=schemas[type];if(type==='clients')selected.splice(2,0,field('sampleProducts','Produtos foco para amostras','textarea',{wide:true,help:'Informe um ou mais produtos, um por linha.'}),field('sampleMonthlyTarget','Meta de disparos de amostras por mês','number',{min:0,step:1,help:'Quantidade total mensal para os produtos acima. Deixe vazio se ainda não definida.'}));if(cloud.member&&['clients','daily'].includes(type)){const people=cloud.team.filter(p=>!retiredHubPerson(p.full_name)&&(p.active||p.user_id===cloud.meta.get(openedId)?.owner_id));return selected.map(f=>f.key==='account'?field('account','Account responsável','select',{required:true,options:people.map(p=>[p.user_id,p.full_name+' · '+p.email])}):f)}return selected}
 
 
 
@@ -1596,7 +1597,7 @@ function taskExecutor(clientId,existing,submitted){
 
 
 
- return ({'Luís Filippe':'João Nicolau','João Nicolau':'Lucio','Leonardo':'Lucio','Gabriel Melo':'Lucio'})[account]||(submitted??existing?.executor??'');
+ return ({'Luís Filippe':'Bruno','Leonardo':'Lucio','Gabriel Melo':'Lucio'})[account]||(submitted??existing?.executor??'');
 
 
 
@@ -1608,8 +1609,8 @@ function taskExecutor(clientId,existing,submitted){
 
 
 
-function dailyAssigneeChoices(selected){return '<fieldset class="field wide daily-assignees"><legend>Accounts responsáveis *</legend><p class="help">Selecione um ou mais Accounts. Cada um receberá sua própria demanda.</p><div class="daily-assignee-options">'+cloud.team.filter(m=>m.active&&m.role==='account').map(m=>'<label><input type="checkbox" name="account" value="'+esc(m.user_id)+'" '+(m.user_id===selected?'checked':'')+'><span>'+esc(m.full_name)+'</span></label>').join('')+'</div></fieldset>'}
-function dailyAssignedCopies(record,ids){const unique=[...new Set(ids)];const members=unique.map(id=>cloud.team.find(m=>m.user_id===id&&m.active&&m.role==='account'));if(!unique.length||members.some(m=>!m))throw Error('Selecione pelo menos um Account ativo.');return members.map((m,i)=>({...record,id:i?uid():record.id,account:m.full_name,_assignee:m.user_id}))}
+function dailyAssigneeChoices(selected){return '<fieldset class="field wide daily-assignees"><legend>Accounts responsáveis *</legend><p class="help">Selecione um ou mais Accounts. Cada um receberá sua própria demanda.</p><div class="daily-assignee-options">'+cloud.team.filter(m=>m.active&&m.role==='account'&&!retiredHubPerson(m.full_name)).map(m=>'<label><input type="checkbox" name="account" value="'+esc(m.user_id)+'" '+(m.user_id===selected?'checked':'')+'><span>'+esc(m.full_name)+'</span></label>').join('')+'</div></fieldset>'}
+function dailyAssignedCopies(record,ids){const unique=[...new Set(ids)];const members=unique.map(id=>cloud.team.find(m=>m.user_id===id&&m.active&&m.role==='account'&&!retiredHubPerson(m.full_name)));if(!unique.length||members.some(m=>!m))throw Error('Selecione pelo menos um Account ativo.');return members.map((m,i)=>({...record,id:i?uid():record.id,account:m.full_name,_assignee:m.user_id}))}
 function openForm(type,id='',initial={}){
 
 
@@ -1642,7 +1643,7 @@ function openForm(type,id='',initial={}){
 
 
 
-showModal(`<form id="recordForm">${modalHead((id?'Editar • ':'Adicionar • ')+config[type][0])}<div class="modal-body"><div class="form-grid">${schema(type).map(f=>type==='daily'&&!id&&cloud.member?.role==='admin'&&f.key==='account'?dailyAssigneeChoices(cloud.team.find(m=>m.active&&m.role==='account'&&m.full_name===dailyAccount)?.user_id):formHTML(f,data[f.key]??'')).join('')}</div><p class="help">* Campos obrigatórios</p><p class="field-error" id="formError" role="alert"></p></div><div class="modal-footer">${id?trashDeleteButton(type,id):''}${button('Cancelar','close')}<button type="submit" class="btn primary">Salvar ${id?'alterações':'registro'}</button></div></form>`);
+showModal(`<form id="recordForm">${modalHead((id?'Editar • ':'Adicionar • ')+config[type][0])}<div class="modal-body"><div class="form-grid">${schema(type).map(f=>type==='daily'&&!id&&cloud.member?.role==='admin'&&f.key==='account'?dailyAssigneeChoices(cloud.team.find(m=>m.active&&m.role==='account'&&!retiredHubPerson(m.full_name)&&m.full_name===dailyAccount)?.user_id):formHTML(f,data[f.key]??'')).join('')}</div><p class="help">* Campos obrigatórios</p><p class="field-error" id="formError" role="alert"></p></div><div class="modal-footer">${id?trashDeleteButton(type,id):''}${button('Cancelar','close')}<button type="submit" class="btn primary">Salvar ${id?'alterações':'registro'}</button></div></form>`);
 
 
 
@@ -1670,7 +1671,7 @@ showModal(`<form id="recordForm">${modalHead((id?'Editar • ':'Adicionar • ')
 
 
 
- const syncExecutor=()=>{if(type!=='tasks')return;const ef=$('#field-executor');ef.value=taskExecutor(cf.value,existing);ef.readOnly=existing?.status==='Concluída'||['Luís Filippe','João Nicolau','Leonardo','Gabriel Melo'].includes(client(cf.value)?.account);ef.title=existing?.status==='Concluída'?'Executor original preservado.':'Definido conforme o Account responsável pelo cliente.'};
+ const syncExecutor=()=>{if(type!=='tasks')return;const ef=$('#field-executor');ef.value=taskExecutor(cf.value,existing);ef.readOnly=existing?.status==='Concluída'||['Luís Filippe','Leonardo','Gabriel Melo'].includes(client(cf.value)?.account);ef.title=existing?.status==='Concluída'?'Executor original preservado.':'Definido conforme o Account responsável pelo cliente.'};
 
 
 
