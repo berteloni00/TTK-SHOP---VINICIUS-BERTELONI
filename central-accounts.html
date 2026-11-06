@@ -1793,7 +1793,8 @@ showModal(`<form id="recordForm">${modalHead((id?'Editar • ':'Adicionar • ')
 
 
 
- if(id&&['clients','daily'].includes(type))$('#field-account').disabled=true;
+ if((id&&['clients','daily'].includes(type))||(type==='clients'&&cloud.member?.role==='account'))$('#field-account').disabled=true;
+ if(type==='clients'&&!id&&cloud.member?.role==='account')$('#recordForm .form-grid').insertAdjacentHTML('beforebegin','<p class="help">Este cliente será adicionado à sua carteira, no seu squad. O Account responsável é definido automaticamente pelo seu acesso.</p>');
 
 
 
@@ -1834,6 +1835,7 @@ async function saveForm(e){e.preventDefault();const type=openedType,fd=new FormD
 
 
 
+ if(type==='clients'&&cloud.member?.role==='account')record.account=cloud.user.id;
  if(['clients','daily'].includes(type)){record._assignee=record.account;record.account=cloud.team.find(m=>m.user_id===record._assignee)?.full_name||cloud.member.full_name}
 
 
