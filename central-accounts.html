@@ -358,6 +358,8 @@ html[data-theme="light"] .portfolio-open .btn{background:#f7f9fb;border-color:#c
 html[data-theme="light"] .portfolio-open .btn:hover{background:#e3f2f3;border-color:#9bbfc4}
 html[data-theme="light"] .overview-initials{background:#d0e3e5;color:#006b74}
 }
+</style><style>
+.squad-control{display:flex;align-items:center;gap:8px;min-width:0}.squad-control>span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}.squad-control select{max-width:210px;padding:8px 28px 8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font:inherit;font-size:13px}.squad-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:20px}.squad-card{padding:24px}.squad-card h2{margin:12px 0}.squad-card p{color:var(--muted)}.squad-people{margin:18px 0}.squad-control select option{background:var(--paper);color:var(--ink)}@media(max-width:850px){.topbar .breadcrumb{display:none}.squad-control>span{display:none}.squad-control select{max-width:155px}.topbar{gap:8px}}
 </style></head>
 
 
@@ -506,7 +508,7 @@ function sampleMetricRecord(clientId,referenceMonth){return sampleCloud.monthlyI
 
 
 
-async function loadSampleSnapshot(api=cloud.api){try{if(!api)throw Error('Conexão indisponível.');const {data,error}=await api.rpc('ac_sample_snapshot');if(error)throw error;sampleApplySnapshot(data||{});return true}catch(error){sampleCloud.error=cloudError(error);return false}}
+async function loadSampleSnapshot(api=cloud.api){const epoch=cloud.epoch,id=squadState.id;try{if(!api)throw Error('Conexão indisponível.');const {data,error}=await api.rpc('ac_sample_snapshot');if(error)throw error;if(epoch!==cloud.epoch||id!==squadState.id)return false;sampleApplySnapshot(data||{});return true}catch(error){if(epoch===cloud.epoch&&id===squadState.id)sampleCloud.error=cloudError(error);return false}}
 
 
 
@@ -586,7 +588,7 @@ async function cloudForgot(){const email=document.querySelector('#cloudEmail')?.
 
 
 
-function cloudClear(){libraryReset();clientNoteDrafts.clear();overviewService='';trashReset();cloud.epoch++;incidentRows=[];incidentUser='';incidentState='idle';incidentPending=null;clearInterval(cloud.timer);cloud.user=null;cloud.member=null;cloud.team=[];cloud.allowed=[];cloud.meta.clear();cloud.baseline=null;cloud.pending=null;sampleReset();db=blank();filters={client:'',account:'',priority:''};dailyAccount='';query='';document.querySelector('#search').value='';if(document.querySelector('#modal').open)document.querySelector('#modal').close();cloudSetBusy(false);cloudAuth()}
+function cloudClear(){squadReset();libraryReset();clientNoteDrafts.clear();overviewService='';trashReset();cloud.epoch++;incidentRows=[];incidentUser='';incidentState='idle';incidentPending=null;clearInterval(cloud.timer);cloud.user=null;cloud.member=null;cloud.team=[];cloud.allowed=[];cloud.meta.clear();cloud.baseline=null;cloud.pending=null;sampleReset();db=blank();filters={client:'',account:'',priority:''};dailyAccount='';query='';document.querySelector('#search').value='';if(document.querySelector('#modal').open)document.querySelector('#modal').close();cloudSetBusy(false);cloudAuth()}
 
 
 
@@ -598,11 +600,11 @@ function cloudApply(snapshot){if(!snapshot?.member||!Array.isArray(snapshot.reco
 
 
 
-async function cloudEnter(session){if(!session){cloudClear();return}if(cloud.loading)return;cloud.loading=true;cloud.user=session.user;const epoch=++cloud.epoch;try{const {error}=await cloud.api.rpc('ac_bootstrap');if(error)throw error;const {data,error:readError}=await cloud.api.rpc('ac_snapshot');if(readError)throw readError;if(epoch!==cloud.epoch)return;cloudApply(data);await loadSampleSnapshot();document.body.classList.add('cloud-ready');view=cloud.member.role==='admin'?'dashboard':'daily';render();cloudDecorate();clearInterval(cloud.timer);cloud.timer=setInterval(()=>cloudPull(false),15000)}catch(e){if(epoch===cloud.epoch)cloudAuth(cloudError(e),true)}finally{cloud.loading=false}}
+async function cloudEnter(session){if(!session){cloudClear();return}if(cloud.loading)return;cloud.loading=true;cloud.user=session.user;const epoch=++cloud.epoch;try{const {error}=await cloud.api.rpc('ac_bootstrap');if(error)throw error;await squadEnter();const {data,error:readError}=await cloud.api.rpc('ac_snapshot');if(readError)throw readError;if(epoch!==cloud.epoch)return;cloudApply(data);await loadSampleSnapshot();if(epoch!==cloud.epoch)return;document.body.classList.add('cloud-ready');view=cloud.member.role==='admin'?'dashboard':'daily';render();cloudDecorate();clearInterval(cloud.timer);cloud.timer=setInterval(()=>cloudPull(false),15000)}catch(e){if(epoch===cloud.epoch)cloudAuth(cloudError(e),true)}finally{cloud.loading=false}}
 
 
 
-async function cloudPull(manual=false){if(libraryState.busy||!cloud.member||cloud.busy||cloud.loading||cloud.pending||document.querySelector('.daily-card.is-dragging')||document.querySelector('#modal').open)return;if(!manual&&(document.hidden||['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)))return;cloud.loading=true;cloudSetBusy(true);const epoch=cloud.epoch;try{const {data,error}=await cloud.api.rpc('ac_snapshot');if(error)throw error;if(epoch!==cloud.epoch)return;cloudApply(data);await loadSampleSnapshot();if(view==='documents')await libraryLoad();render();cloudDecorate();if(manual)toast('Dados atualizados.')}catch(e){document.querySelector('#storageStatus').textContent='Atualização indisponível';if(manual)toast(cloudError(e),true)}finally{cloud.loading=false;cloudSetBusy(false)}}
+async function cloudPull(manual=false){if(libraryState.busy||!cloud.member||cloud.busy||cloud.loading||cloud.pending||document.querySelector('.daily-card.is-dragging')||document.querySelector('#modal').open)return;if(!manual&&(document.hidden||['INPUT','TEXTAREA','SELECT'].includes(document.activeElement?.tagName)))return;cloud.loading=true;cloudSetBusy(true);const epoch=cloud.epoch;try{await squadCatalog();if(!squadState.catalog.squads.some(s=>s.id===squadState.id)){await squadSwitch(squadState.catalog.squads[0].id,true);return}const {data,error}=await cloud.api.rpc('ac_snapshot');if(error)throw error;if(epoch!==cloud.epoch)return;cloudApply(data);await loadSampleSnapshot();if(view==='documents')await libraryLoad();render();cloudDecorate();if(manual)toast('Dados atualizados.')}catch(e){if(e?.code==='42501'){cloudClear();cloudMessage('Seu acesso mudou. Entre novamente para carregar o squad autorizado.',true);return}document.querySelector('#storageStatus').textContent='Atualização indisponível';if(manual)toast(cloudError(e),true)}finally{cloud.loading=false;cloudSetBusy(false)}}
 
 
 
@@ -618,7 +620,7 @@ async function cloudCommitPending(message='Salvamento confirmado.'){if(!cloud.pe
 
 
 
-function cloudDecorate(){if(!cloud.member)return;const manager=cloud.member.role==='admin',note=document.querySelector('.local-note');note.innerHTML=`<strong>${esc(cloud.member.full_name)}</strong>${manager?'Gestor · visão da equipe':'Account · minha carteira'}<div class="storage-status" id="storageStatus">${cloud.pending?'Salvamento sem confirmação':'Conectado ao Supabase'}</div><div class="cloud-tools"><button class="btn" data-cloud="refresh">Atualizar</button>${cloud.pending?'<button class="btn" data-cloud="retry">Confirmar salvamento</button>':''}<button class="btn" data-cloud="logout">Sair</button></div>`;document.querySelector('.topbar>.avatar').textContent=initials(cloud.member.full_name);document.querySelectorAll('.footer-note span:last-child').forEach(e=>e.textContent='Base online · atualização a cada 15 segundos');if(view==='daily'){const help=document.querySelector('#content>p.help');if(help)help.textContent='Altere a data para planejar ou consultar o histórico. Os registros são salvos online e ficam disponíveis para o gestor.'}if(cloud.pending&&!document.querySelector('.cloud-banner'))document.querySelector('#content').insertAdjacentHTML('afterbegin','<div class="cloud-banner">Há um salvamento sem confirmação. Evite fechar a página até verificar o resultado. <button class="btn small" data-cloud="retry">Confirmar salvamento</button></div>')}
+function cloudDecorate(){if(!cloud.member)return;squadDecorate();const manager=cloud.member.role==='admin',note=document.querySelector('.local-note');note.innerHTML=`<strong>${esc(cloud.member.full_name)}</strong>${manager?'Gestor · visão da equipe':'Account · minha carteira'}<div class="storage-status" id="storageStatus">${cloud.pending?'Salvamento sem confirmação':'Conectado ao Supabase'}</div><div class="cloud-tools"><button class="btn" data-cloud="refresh">Atualizar</button>${cloud.pending?'<button class="btn" data-cloud="retry">Confirmar salvamento</button>':''}<button class="btn" data-cloud="logout">Sair</button></div>`;document.querySelector('.topbar>.avatar').textContent=initials(cloud.member.full_name);document.querySelectorAll('.footer-note span:last-child').forEach(e=>e.textContent='Base online · atualização a cada 15 segundos');if(view==='daily'){const help=document.querySelector('#content>p.help');if(help)help.textContent='Altere a data para planejar ou consultar o histórico. Os registros são salvos online e ficam disponíveis para o gestor.'}if(cloud.pending&&!document.querySelector('.cloud-banner'))document.querySelector('#content').insertAdjacentHTML('afterbegin','<div class="cloud-banner">Há um salvamento sem confirmação. Evite fechar a página até verificar o resultado. <button class="btn small" data-cloud="retry">Confirmar salvamento</button></div>')}
 
 
 
@@ -634,7 +636,7 @@ function cloudAuthorize(){showModal(`<form id="authorizeForm">${modalHead('Autor
 
 
 
-async function cloudSetAccess(email,name,active){if(cloud.busy)return false;cloudSetBusy(true);try{const {data,error}=await cloud.api.rpc('ac_authorize_account',{p_email:email,p_name:name,p_active:active});if(error)throw error;cloudApply(data);render();toast(active?'Acesso autorizado.':'Acesso bloqueado.');return true}catch(e){toast(cloudError(e),true);return false}finally{cloudSetBusy(false)}}
+async function cloudSetAccess(email,name,active){if(cloud.busy)return false;cloudSetBusy(true);try{const {data,error}=await cloud.api.rpc('ac_authorize_account',{p_email:email,p_name:name,p_active:active});if(error)throw error;cloudApply(data);await squadCatalog();render();toast(active?'Acesso autorizado.':'Acesso bloqueado.');return true}catch(e){toast(cloudError(e),true);return false}finally{cloudSetBusy(false)}}
 
 
 
@@ -650,7 +652,7 @@ window.addEventListener('beforeunload',e=>{if(cloud.busy||cloud.pending||trashSt
 
 
 
-async function cloudInit(){cloudAuth();if(!globalThis.supabase?.createClient){cloudMessage('Não foi possível carregar a conexão. Confira a internet e recarregue a página.',true);return}try{cloud.api=globalThis.supabase.createClient(CLOUD_URL,CLOUD_KEY,{auth:{storage:sessionStorage,storageKey:'elevate-accounts-auth',persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}})}catch(e){cloudMessage('O navegador bloqueou o armazenamento da sessão. Abra a central em um navegador com armazenamento habilitado.',true);return}let recovery=false;cloud.api.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY'){recovery=true;cloud.user=session?.user;cloud.mode='recovery';setTimeout(()=>cloudAuth(),0)}else if(event==='SIGNED_OUT'){setTimeout(()=>cloudClear(),0)}});try{const {data,error}=await cloud.api.auth.getSession();if(error)throw error;if(data.session&&!recovery)await cloudEnter(data.session)}catch(e){cloudMessage(cloudError(e),true)}}
+async function cloudInit(){cloudAuth();if(!globalThis.supabase?.createClient){cloudMessage('Não foi possível carregar a conexão. Confira a internet e recarregue a página.',true);return}try{cloud.api=globalThis.supabase.createClient(CLOUD_URL,CLOUD_KEY,{auth:{storage:sessionStorage,storageKey:'elevate-accounts-auth',persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}})}catch(e){cloudMessage('O navegador bloqueou o armazenamento da sessão. Abra a central em um navegador com armazenamento habilitado.',true);return}squadApiInstall();let recovery=false;cloud.api.auth.onAuthStateChange((event,session)=>{if(event==='PASSWORD_RECOVERY'){recovery=true;cloud.user=session?.user;cloud.mode='recovery';setTimeout(()=>cloudAuth(),0)}else if(event==='SIGNED_OUT'){setTimeout(()=>cloudClear(),0)}});try{const {data,error}=await cloud.api.auth.getSession();if(error)throw error;if(data.session&&!recovery)await cloudEnter(data.session)}catch(e){cloudMessage(cloudError(e),true)}}
 
 
 
@@ -995,7 +997,7 @@ function filterBar(){if(view==='settings')return '';return `<div class="filters"
 
 
 
-function areaEnabled(key){return !['tasks','calendar','communications','campaigns','promotions','guide','consulting','approvals'].includes(key)}
+function areaEnabled(key){if(key==='squads')return !!squadState.catalog.manager;return !['tasks','calendar','communications','campaigns','promotions','guide','consulting','approvals'].includes(key)}
 
 
 
@@ -1035,6 +1037,7 @@ function render(){
 
 
 
+ if(view==='squads'){$('#content').innerHTML=renderSquads();cloudDecorate();return}
  if(view==='documents'){$('#content').innerHTML=renderLibrary();cloudDecorate();if(libraryState.status==='idle')libraryLoad();return}
 
 
@@ -1188,7 +1191,7 @@ function renderDashboard(){
 
 
 
- <section class="overview-team"><h2>Equipe e funções</h2><div class="overview-team-grid"><div class="overview-team-column overview-supervisor"><h3>Supervisão</h3>${people([{name:'Vinicius'}],'Supervisor')}</div><div class="overview-team-column"><h3>Relacionamento com o cliente</h3>${people(m.accounts,'Account')}</div><div class="overview-team-column"><h3>Execução das contas</h3>${people(m.executors,'Executor')}</div></div></section></div>`;
+ <section class="overview-team"><h2>Equipe e funções</h2><div class="overview-team-grid"><div class="overview-team-column overview-supervisor"><h3>Supervisão</h3>${people([{name:selectedSquad()?.supervisor_name||'Não definido'}],'Supervisor')}</div><div class="overview-team-column"><h3>Relacionamento com o cliente</h3>${people(m.accounts,'Account')}</div><div class="overview-team-column"><h3>Execução das contas</h3>${people(m.executors,'Executor')}</div></div></section></div>`;
 
 
 
@@ -1728,7 +1731,7 @@ function taskExecutor(clientId,existing,submitted){
 
 
 
- return ({'Luís Filippe':'Bruno','Leonardo':'Lucio','Gabriel Melo':'Lucio'})[account]||(submitted??existing?.executor??'');
+ return cloud.team.find(m=>m.full_name===account)?.executor_name||(submitted??existing?.executor??'');
 
 
 
@@ -1802,7 +1805,7 @@ showModal(`<form id="recordForm">${modalHead((id?'Editar • ':'Adicionar • ')
 
 
 
- const syncExecutor=()=>{if(type!=='tasks')return;const ef=$('#field-executor');ef.value=taskExecutor(cf.value,existing);ef.readOnly=existing?.status==='Concluída'||['Luís Filippe','Leonardo','Gabriel Melo'].includes(client(cf.value)?.account);ef.title=existing?.status==='Concluída'?'Executor original preservado.':'Definido conforme o Account responsável pelo cliente.'};
+ const syncExecutor=()=>{if(type!=='tasks')return;const ef=$('#field-executor');ef.value=taskExecutor(cf.value,existing);ef.readOnly=existing?.status==='Concluída'||!!cloud.team.find(m=>m.full_name===client(cf.value)?.account)?.executor_name;ef.title=existing?.status==='Concluída'?'Executor original preservado.':'Definido conforme o Account responsável pelo cliente.'};
 
 
 
@@ -1958,7 +1961,7 @@ async function libraryLoad(){
 
 
 
- try{let items=[];for(let start=0;;start+=500){const {data,error}=await cloud.api.from('ac_library_items').select('*').order('created_at',{ascending:false}).range(start,start+499);if(error)throw error;if(epoch!==cloud.epoch||generation!==libraryState.generation)return false;items.push(...(data||[]));if((data||[]).length<500)break}
+ try{let items=[];for(let start=0;;start+=500){const {data,error}=await cloud.api.from('ac_library_items').select('*').eq('squad_id',squadState.id).order('created_at',{ascending:false}).range(start,start+499);if(error)throw error;if(epoch!==cloud.epoch||generation!==libraryState.generation)return false;items.push(...(data||[]));if((data||[]).length<500)break}
 
 
 
@@ -2194,7 +2197,7 @@ function renderLibrary(){
 
 
 
- return `<section class="library"><header class="heading"><div><div class="eyebrow">ELEVATE / CONHECIMENTO</div><h1>Documentos</h1><p class="subtitle">Uma biblioteca para toda a equipe. Materiais, referências e orientações em um só lugar.</p></div><div class="actions"><button class="btn" data-library="refresh" ${s.busy?'disabled':''}>Atualizar</button>${manager?`<button class="btn primary" data-library="new" ${s.busy||s.pending||s.status!=='ready'?'disabled':''}>+ Novo material</button>`:''}</div></header><p class="help">${manager?'Você gerencia os materiais; a equipe tem acesso de consulta.':'Biblioteca compartilhada · materiais publicados por Vinicius.'}</p><div class="library-tools"><label class="field" for="librarySearch">Buscar material<input id="librarySearch" type="search" placeholder="Título ou descrição" value="${esc(s.search)}"></label><label class="field" for="libraryFilter">Tipo<select id="libraryFilter"><option value="">Todos os materiais</option>${Object.entries(labels).map(([v,l])=>`<option value="${v}" ${s.filter===v?'selected':''}>${l}</option>`).join('')}</select></label></div>${s.error?`<p class="notice" role="alert">${esc(s.error)}</p>`:''}${s.pending?'<div class="notice">Há uma alteração sem confirmação. Não feche esta página.<button class="btn" data-library="retry">Confirmar salvamento</button></div>':''}${manager&&s.cleanup.length?`<div class="notice">Limpeza pendente de ${s.cleanup.length} arquivo(s) sem vínculo.<button class="btn small" data-library="cleanup">Tentar limpeza</button></div>`:''}${['idle','loading'].includes(s.status)?'<p role="status">Carregando biblioteca…</p>':s.status==='error'?'<button class="btn" data-library="refresh">Tentar novamente</button>':`<div class="library-list">${rows.length?rows.map(r=>`<article class="library-card"><span class="library-kind">${esc(labels[r.kind]||'Material')}</span><h2>${esc(r.title)}</h2>${r.description?`<p class="library-description">${esc(r.description)}</p>`:''}<p class="help">${r.kind==='file'?esc(r.file_name)+' · '+(Number(r.file_size)/1000000).toLocaleString('pt-BR',{maximumFractionDigits:2})+' MB · ':''}Atualizado em ${esc(new Date(r.updated_at).toLocaleDateString('pt-BR',{timeZone:'America/Sao_Paulo'}))}</p><div class="library-card-actions"><button class="btn small" data-library="open" data-id="${esc(r.id)}">${r.kind==='note'?'Ler anotação':r.kind==='file'?'Baixar arquivo':'Abrir link'} ↗</button>${manager?`<button class="text-button" data-library="edit" data-id="${esc(r.id)}">Editar</button><button class="text-button danger-text" data-library="delete" data-id="${esc(r.id)}">Excluir</button>`:''}</div></article>`).join(''):'<div class="panel library-empty"><h2>Nenhum material encontrado</h2><p class="help">Ajuste a busca ou aguarde a publicação de materiais pelo gestor.</p></div>'}</div>`}<p class="help library-footnote">Confidencial · Uso interno Elevate. Downloads usam links temporários, válidos por 60 segundos; não os compartilhe fora da equipe.</p></section>`;
+ return `<section class="library"><header class="heading"><div><div class="eyebrow">ELEVATE / CONHECIMENTO</div><h1>Documentos</h1><p class="subtitle">Uma biblioteca para a equipe deste squad. Materiais, referências e orientações em um só lugar.</p></div><div class="actions"><button class="btn" data-library="refresh" ${s.busy?'disabled':''}>Atualizar</button>${manager?`<button class="btn primary" data-library="new" ${s.busy||s.pending||s.status!=='ready'?'disabled':''}>+ Novo material</button>`:''}</div></header><p class="help">${manager?'Você gerencia os materiais; a equipe tem acesso de consulta.':'Biblioteca compartilhada · materiais publicados por Vinicius.'}</p><div class="library-tools"><label class="field" for="librarySearch">Buscar material<input id="librarySearch" type="search" placeholder="Título ou descrição" value="${esc(s.search)}"></label><label class="field" for="libraryFilter">Tipo<select id="libraryFilter"><option value="">Todos os materiais</option>${Object.entries(labels).map(([v,l])=>`<option value="${v}" ${s.filter===v?'selected':''}>${l}</option>`).join('')}</select></label></div>${s.error?`<p class="notice" role="alert">${esc(s.error)}</p>`:''}${s.pending?'<div class="notice">Há uma alteração sem confirmação. Não feche esta página.<button class="btn" data-library="retry">Confirmar salvamento</button></div>':''}${manager&&s.cleanup.length?`<div class="notice">Limpeza pendente de ${s.cleanup.length} arquivo(s) sem vínculo.<button class="btn small" data-library="cleanup">Tentar limpeza</button></div>`:''}${['idle','loading'].includes(s.status)?'<p role="status">Carregando biblioteca…</p>':s.status==='error'?'<button class="btn" data-library="refresh">Tentar novamente</button>':`<div class="library-list">${rows.length?rows.map(r=>`<article class="library-card"><span class="library-kind">${esc(labels[r.kind]||'Material')}</span><h2>${esc(r.title)}</h2>${r.description?`<p class="library-description">${esc(r.description)}</p>`:''}<p class="help">${r.kind==='file'?esc(r.file_name)+' · '+(Number(r.file_size)/1000000).toLocaleString('pt-BR',{maximumFractionDigits:2})+' MB · ':''}Atualizado em ${esc(new Date(r.updated_at).toLocaleDateString('pt-BR',{timeZone:'America/Sao_Paulo'}))}</p><div class="library-card-actions"><button class="btn small" data-library="open" data-id="${esc(r.id)}">${r.kind==='note'?'Ler anotação':r.kind==='file'?'Baixar arquivo':'Abrir link'} ↗</button>${manager?`<button class="text-button" data-library="edit" data-id="${esc(r.id)}">Editar</button><button class="text-button danger-text" data-library="delete" data-id="${esc(r.id)}">Excluir</button>`:''}</div></article>`).join(''):'<div class="panel library-empty"><h2>Nenhum material encontrado</h2><p class="help">Ajuste a busca ou aguarde a publicação de materiais pelo gestor.</p></div>'}</div>`}<p class="help library-footnote">Confidencial · Uso interno Elevate. Downloads usam links temporários, válidos por 60 segundos; não os compartilhe fora da equipe.</p></section>`;
 
 
 
@@ -3272,7 +3275,7 @@ async function loadIncidents(){
 
 
 
- try{const {data,error}=await cloud.api.from('ac_incidents').select('*').order('created_at',{ascending:false});if(error)throw error;if(cloud.epoch!==epoch||incidentGeneration!==generation)return;incidentRows=data;incidentState='ready'}
+ try{const {data,error}=await cloud.api.from('ac_incidents').select('*').eq('squad_id',squadState.id).order('created_at',{ascending:false});if(error)throw error;if(cloud.epoch!==epoch||incidentGeneration!==generation)return;incidentRows=data;incidentState='ready'}
 
 
 
@@ -3995,6 +3998,23 @@ function validateLegacyExtension(value,depth=0){
 // Os registros locais antigos são preservados exclusivamente para exportação.
 
 
+
+const squadState={id:'',catalog:{squads:[],members:[],allowed:[],manager:false},busy:false};
+const SQUAD_METHODS=new Set(['ac_snapshot','ac_commit','ac_authorize_account','ac_sample_snapshot','ac_sample_manage_mapping','ac_daily_history','ac_incidents_save','ac_trash_snapshot','ac_trash_set','ac_library_orphans','ac_library_save','ac_library_delete','ac_library_reserve','ac_library_retire']);
+function squadApiInstall(){const raw=cloud.api.rpc.bind(cloud.api);cloud.api.rpc=(name,args,options)=>{if(!SQUAD_METHODS.has(name))return raw(name,args,options);const id=squadState.id;if(!id)return Promise.resolve({data:null,error:{message:'Selecione um squad para continuar.'}});return raw('ac_squad_rpc',{p_squad:id,p_method:name,p_args:args||{}},options)}}
+async function squadCatalog(){const {data,error}=await cloud.api.rpc('ac_squad_catalog');if(error)throw error;if(!Array.isArray(data?.squads)||!data.squads.length)throw Error('Nenhum squad disponível para seu acesso.');squadState.catalog=data;return data}
+async function squadEnter(){await squadCatalog();let saved='';try{saved=localStorage.getItem('accounts-squad-'+cloud.user.id)||''}catch{}squadState.id=squadState.catalog.squads.some(s=>s.id===saved)?saved:squadState.catalog.squads[0].id}
+function selectedSquad(){return squadState.catalog.squads.find(s=>s.id===squadState.id)}
+function squadReset(){squadState.id='';squadState.catalog={squads:[],members:[],allowed:[],manager:false};squadState.busy=false}
+function squadBlocked(){return cloud.busy||cloud.loading||cloud.pending||libraryState.busy||libraryState.pending||trashState.busy||trashState.pending||incidentBusy||incidentPending||sampleCloud.busy||document.querySelector('#modal').open}
+function squadDecorate(){let el=document.querySelector('#squadControl');if(!el){el=document.createElement('label');el.id='squadControl';el.className='squad-control';document.querySelector('.topbar .search').before(el)}el.innerHTML=`<span>Squad</span><select id="squadSelect" aria-label="Squad em visualização" ${squadState.busy?'disabled':''}>${squadState.catalog.squads.map(s=>`<option value="${esc(s.id)}" ${s.id===squadState.id?'selected':''}>${esc(s.name)}</option>`).join('')}</select>`;el.querySelector('select').onchange=e=>squadSwitch(e.target.value)}
+async function squadSwitch(id,force=false){if(!force&&squadBlocked()){toast('Conclua o formulário ou salvamento antes de trocar de squad.',true);squadDecorate();return false}if(!squadState.catalog.squads.some(s=>s.id===id))return false;squadState.busy=true;cloud.loading=true;cloudSetBusy(true);const epoch=++cloud.epoch;squadState.id=id;libraryReset();trashReset();sampleReset();invalidateIncidents();clientNoteDrafts.clear();overviewService='';db=blank();cloud.meta.clear();cloud.baseline=clone(db);cloud.team=[];cloud.allowed=[];filters={client:'',account:'',priority:''};dailyAccount='';query='';document.querySelector('#search').value='';document.querySelector('#content').innerHTML='<p class="help" role="status">Carregando squad…</p>';squadDecorate();try{const {data,error}=await cloud.api.rpc('ac_snapshot');if(error)throw error;if(epoch!==cloud.epoch||id!==squadState.id)return false;cloudApply(data);await loadSampleSnapshot();if(epoch!==cloud.epoch||id!==squadState.id)return false;try{localStorage.setItem('accounts-squad-'+cloud.user.id,id)}catch{}render();return true}catch(e){if(epoch!==cloud.epoch||id!==squadState.id)return false;document.querySelector('#content').innerHTML=`<div class="panel panel-body"><h2>Não foi possível carregar este squad</h2><p>${esc(cloudError(e))}</p><button class="btn" data-squad="retry">Tentar novamente</button></div>`;return false}finally{if(epoch===cloud.epoch&&id===squadState.id){squadState.busy=false;cloud.loading=false;cloudSetBusy(false);squadDecorate()}}}
+function renderSquads(){const c=squadState.catalog;return `<div class="heading"><div><div class="eyebrow">GESTÃO / EQUIPES</div><h1>Squads</h1><p class="subtitle">Todas as funções do Hub, com informações separadas para cada equipe.</p></div><button class="btn primary" data-squad="new">+ Adicionar squad</button></div><div class="squad-grid">${c.squads.map(s=>{const people=c.allowed.filter(a=>a.squad_id===s.id&&a.active&&a.role==='account'&&!retiredHubPerson(a.full_name));return `<section class="panel squad-card"><div class="eyebrow">${s.id===squadState.id?'EM VISUALIZAÇÃO':'SQUAD'}</div><h2>${esc(s.name)}</h2><p>Supervisor: ${esc(s.supervisor_name)}</p><p>${people.length} Account${people.length===1?'':'s'} · Todas as funções disponíveis</p><div class="squad-people">${people.map(a=>`<div class="access-row"><div><strong>${esc(a.full_name)}</strong><small>Account · Executor: ${esc(a.executor_name||'Não definido')}</small></div><button class="btn small" data-squad="assign" data-email="${esc(a.email)}">Editar vínculo</button></div>`).join('')||'<p class="help">Nenhum Account vinculado. Abra este squad e autorize a equipe em Dados e backup.</p>'}</div><div class="actions"><button class="btn primary" data-squad="open" data-id="${esc(s.id)}">Abrir squad</button><button class="btn" data-squad="edit" data-id="${esc(s.id)}">Editar</button></div></section>`}).join('')}</div><p class="help">Cada colaborador pertence a um único squad. Você acompanha todos pelo seletor no topo. Ao transferir um Account, sua carteira e o histórico vinculado acompanham a transferência; a biblioteca permanece no squad de origem.</p>`}
+function squadForm(id){const s=squadState.catalog.squads.find(s=>s.id===id)||{id:uid(),name:'',supervisor_name:'Vinicius'};showModal(`<form id="squadForm">${modalHead(id?'Editar squad':'Adicionar squad')}<div class="modal-body"><label class="field">Nome do squad<input name="name" required maxlength="80" value="${esc(s.name)}"></label><label class="field">Supervisor<input name="supervisor" required maxlength="120" value="${esc(s.supervisor_name)}"></label><p class="help">Um novo squad começa vazio, com todas as abas da plataforma.</p><p role="alert" id="squadError"></p></div><div class="modal-footer"><button type="button" class="btn" data-action="close">Cancelar</button><button class="btn primary">Salvar squad</button></div></form>`);document.querySelector('#squadForm .modal-head button').type='button';document.querySelector('#squadForm').onsubmit=async e=>{e.preventDefault();if(squadState.busy)return;const fd=new FormData(e.target);squadState.busy=true;const b=e.submitter;b.disabled=true;try{const {data,error}=await cloud.api.rpc('ac_squad_save',{p_id:s.id,p_name:String(fd.get('name')),p_supervisor:String(fd.get('supervisor'))});if(error)throw error;squadState.catalog=data;document.querySelector('#modal').close();render();toast('Squad salvo. Todas as funções estão disponíveis.')}catch(err){document.querySelector('#squadError').textContent=cloudError(err)}finally{squadState.busy=false;squadDecorate();if(b.isConnected)b.disabled=false}}}
+function squadAssignForm(email){const a=squadState.catalog.allowed.find(x=>x.email===email);if(!a)return;showModal(`<form id="squadAssignForm">${modalHead('Vínculo de '+a.full_name)}<div class="modal-body"><label class="field">Squad<select name="squad">${squadState.catalog.squads.map(s=>`<option value="${esc(s.id)}" ${s.id===a.squad_id?'selected':''}>${esc(s.name)}</option>`).join('')}</select></label><label class="field">Executor responsável<input name="executor" maxlength="120" value="${esc(a.executor_name||'')}"></label><label class="field"><span><input type="checkbox" name="transfer"> Ao mudar de squad, transferir a carteira e o histórico deste Account.</span></label><p class="help">O Account terá acesso somente ao squad escolhido. Materiais da biblioteca permanecem no squad de origem.</p><p role="alert" id="squadError"></p></div><div class="modal-footer"><button type="button" class="btn" data-action="close">Cancelar</button><button class="btn primary">Salvar vínculo</button></div></form>`);document.querySelector('#squadAssignForm .modal-head button').type='button';document.querySelector('#squadAssignForm').onsubmit=async e=>{e.preventDefault();if(squadState.busy)return;const fd=new FormData(e.target);squadState.busy=true;e.submitter.disabled=true;try{const {data,error}=await cloud.api.rpc('ac_squad_assign',{p_email:a.email,p_squad:String(fd.get('squad')),p_executor:String(fd.get('executor')),p_transfer:fd.has('transfer')});if(error)throw error;squadState.catalog=data;document.querySelector('#modal').close();squadState.busy=false;await squadSwitch(squadState.id,true);toast('Vínculo atualizado.')}catch(err){document.querySelector('#squadError').textContent=cloudError(err)}finally{squadState.busy=false;if(e.submitter.isConnected)e.submitter.disabled=false}}}
+document.addEventListener('click',async e=>{const b=e.target.closest('[data-squad]');if(!b||squadState.busy)return;const action=b.dataset.squad;if(action==='retry'){await squadSwitch(squadState.id,true);return}if(!squadState.catalog.manager)return;if(action==='new'||action==='edit')squadForm(b.dataset.id);else if(action==='assign')squadAssignForm(b.dataset.email);else if(action==='open'){if(await squadSwitch(b.dataset.id)){view='dashboard';render()}}});
+config.squads=['Squads','Gerencie suas equipes e os vínculos de cada colaborador.'];
+navGroups.find(g=>g[0]==='Gestão')[1].push(['squads','clients']);
 
 cloudInit();
 
