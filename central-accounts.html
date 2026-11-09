@@ -373,7 +373,7 @@ html[data-theme="light"] .overview-initials{background:#d0e3e5;color:#006b74}
 }
 </style><style>
 .squad-control{display:flex;align-items:center;gap:8px;min-width:0}.squad-control>span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}.squad-control select{max-width:210px;padding:8px 28px 8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font:inherit;font-size:13px}.squad-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:20px}.squad-card{padding:24px}.squad-card h2{margin:12px 0}.squad-card p{color:var(--muted)}.squad-people{margin:18px 0}.squad-control select option{background:var(--paper);color:var(--ink)}@media(max-width:850px){.topbar .breadcrumb{display:none}.squad-control>span{display:none}.squad-control select{max-width:155px}.topbar{gap:8px}}
-</style><style>.ci-completed-list{margin:18px 0 24px;border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden}.ci-completed-list>summary{display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;flex-wrap:wrap}.ci-completed-list>summary>span:first-child{color:var(--green);font-size:22px}.ci-completed-list>summary small{margin-left:auto;color:var(--muted)}.ci-completed-body{padding:0 20px 16px;border-top:1px solid var(--line)}.ci-completed-body ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:0 24px}.ci-completed-body li{padding:16px 0;border-bottom:1px solid var(--line)}.ci-completed-body li>strong{font-size:15px;overflow-wrap:anywhere}.ci-completed-body li>div{display:grid;gap:6px;margin-top:7px;font-size:12px;color:var(--muted)}.ci-completed-body .text-button{font-size:12px;margin-left:8px}.ci-completed-body>.help{margin:14px 0 0}</style><meta name="accounts-hub-build" content="2026-11-07-daily-vinicius-v1">
+</style><style>.ci-completed-list{margin:18px 0 24px;border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden}.ci-completed-list>summary{display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;flex-wrap:wrap}.ci-completed-list>summary>span:first-child{color:var(--green);font-size:22px}.ci-completed-list>summary small{margin-left:auto;color:var(--muted)}.ci-completed-body{padding:0 20px 16px;border-top:1px solid var(--line)}.ci-completed-body ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:0 24px}.ci-completed-body li{padding:16px 0;border-bottom:1px solid var(--line)}.ci-completed-body li>strong{font-size:15px;overflow-wrap:anywhere}.ci-completed-body li>div{display:grid;gap:6px;margin-top:7px;font-size:12px;color:var(--muted)}.ci-completed-body .text-button{font-size:12px;margin-left:8px}.ci-completed-body>.help{margin:14px 0 0}</style><meta name="accounts-hub-build" content="2026-11-09-own-client-permissions-v1">
 </head>
 
 
@@ -634,7 +634,7 @@ async function cloudCommitPending(message='Salvamento confirmado.'){if(!cloud.pe
 
 
 
-function cloudDecorate(){if(!cloud.member)return;squadDecorate();const manager=cloud.member.role==='admin',note=document.querySelector('.local-note');note.innerHTML=`<strong>${esc(cloud.member.full_name)}</strong>${manager?'Gestor · visão da equipe':'Account · minha carteira'}<div class="storage-status" id="storageStatus">${cloud.pending?'Salvamento sem confirmação':'Conectado ao Supabase'}</div><div class="cloud-tools"><button class="btn" data-cloud="refresh">Atualizar</button>${cloud.pending?'<button class="btn" data-cloud="retry">Confirmar salvamento</button>':''}<button class="btn" data-cloud="logout">Sair</button></div>`;document.querySelector('.topbar>.avatar').textContent=initials(cloud.member.full_name);document.querySelectorAll('.footer-note span:last-child').forEach(e=>e.textContent='Base online · atualização a cada 15 segundos');if(view==='daily'){const help=document.querySelector('#content>p.help');if(help)help.textContent='Altere a data para planejar ou consultar o histórico. Os registros são salvos online e ficam disponíveis para o gestor.'}if(cloud.pending&&!document.querySelector('.cloud-banner'))document.querySelector('#content').insertAdjacentHTML('afterbegin','<div class="cloud-banner">Há um salvamento sem confirmação. Evite fechar a página até verificar o resultado. <button class="btn small" data-cloud="retry">Confirmar salvamento</button></div>')}
+function cloudDecorate(){if(!cloud.member)return;squadDecorate();clientManagementActions();const manager=cloud.member.role==='admin',note=document.querySelector('.local-note');note.innerHTML=`<strong>${esc(cloud.member.full_name)}</strong>${manager?'Gestor · visão da equipe':'Account · minha carteira'}<div class="storage-status" id="storageStatus">${cloud.pending?'Salvamento sem confirmação':'Conectado ao Supabase'}</div><div class="cloud-tools"><button class="btn" data-cloud="refresh">Atualizar</button>${cloud.pending?'<button class="btn" data-cloud="retry">Confirmar salvamento</button>':''}<button class="btn" data-cloud="logout">Sair</button></div>`;document.querySelector('.topbar>.avatar').textContent=initials(cloud.member.full_name);document.querySelectorAll('.footer-note span:last-child').forEach(e=>e.textContent='Base online · atualização a cada 15 segundos');if(view==='daily'){const help=document.querySelector('#content>p.help');if(help)help.textContent='Altere a data para planejar ou consultar o histórico. Os registros são salvos online e ficam disponíveis para o gestor.'}if(cloud.pending&&!document.querySelector('.cloud-banner'))document.querySelector('#content').insertAdjacentHTML('afterbegin','<div class="cloud-banner">Há um salvamento sem confirmação. Evite fechar a página até verificar o resultado. <button class="btn small" data-cloud="retry">Confirmar salvamento</button></div>')}
 
 
 
@@ -3780,7 +3780,18 @@ function trashManager(){return cloud.member?.role==='admin'&&cloud.member?.email
 
 
 
-function trashDeleteButton(type,id){if(type==='clients'&&!trashManager())return '';return button(icon('trash')+(type==='clients'?' Mover para a lixeira':' Excluir'),'delete','danger',`data-type="${type}" data-id="${esc(id)}"`)}
+function clientCanArchive(id){return trashManager()||!!(cloud.member?.active&&cloud.member.role==='account'&&cloud.user?.id&&cloud.meta.get(id)?.owner_id===cloud.user.id)}
+function clientManagementActions(){
+ if(!cloud.member?.active||!['account','admin'].includes(cloud.member.role)||!['dashboard','clients','daily','checkin','meetings','executions','metrics','health','consulting','incidents'].includes(view)||document.querySelector('#clientManagementActions'))return;
+ const head=document.querySelector('#content .heading');if(!head)return;
+ const hasNew=!!document.querySelector('#content [data-action="new"][data-type="clients"]');
+ head.insertAdjacentHTML('afterend','<div id="clientManagementActions" class="actions" style="margin-bottom:16px">'+(hasNew?'':button('Adicionar cliente','new','','data-type="clients"'))+'<button class="btn" data-client-manage>Gerenciar clientes</button></div>');
+ if(trashState.pending&&!trashManager())head.insertAdjacentHTML('afterend','<div class="notice">Exclusão aguardando confirmação. <button class="btn small" data-trash="retry">Confirmar salvamento</button></div>');
+}
+function clientManagementPicker(){const rows=db.clients.filter(c=>clientCanArchive(c.id)).slice().sort((a,b)=>a.name.localeCompare(b.name,'pt-BR'));showModal(modalHead('Gerenciar clientes')+'<div class="modal-body"><p class="help">Adicionar ou mover clientes da sua carteira para a lixeira. Os históricos são preservados.</p><div class="actions">'+button('Adicionar cliente','new','primary','data-type="clients"')+'</div>'+rows.map(c=>'<div class="actions" style="justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)"><strong>'+esc(c.name)+'</strong><div>'+button('Abrir cadastro','detail','','data-type="clients" data-id="'+esc(c.id)+'"')+trashDeleteButton('clients',c.id)+'</div></div>').join('')+'</div><div class="modal-footer">'+button('Fechar','close')+'</div>')}
+
+
+function trashDeleteButton(type,id){if(type==='clients'&&!clientCanArchive(id))return '';return button(icon('trash')+(type==='clients'?' Mover para a lixeira':' Excluir'),'delete','danger',`data-type="${type}" data-id="${esc(id)}"`)}
 
 
 
@@ -3892,7 +3903,7 @@ async function setClientArchived(clientId,version,archived){
 
 
 
- if(!trashManager()||trashState.busy||cloud.busy||cloud.loading||cloud.pending)return false;
+ if(!(archived?clientCanArchive(clientId):trashManager())||trashState.busy||cloud.busy||cloud.loading||cloud.pending)return false;
 
 
 
@@ -3912,7 +3923,7 @@ async function retryTrash(){
 
 
 
- if(!trashManager()||!trashState.pending||trashState.busy)return false;
+ if(!trashState.pending||!(trashState.pending.p_archived?clientCanArchive(trashState.pending.p_client):trashManager())||trashState.busy)return false;
 
 
 
@@ -3956,11 +3967,11 @@ async function requestTrashArchive(id){
 
 
 
- if(!trashManager()){toast('Somente o gestor pode mover clientes para a lixeira.',true);return}
+ if(!clientCanArchive(id)){toast('Você só pode mover clientes da sua própria carteira para a lixeira.',true);return}
 
 
 
- if(trashState.pending){view='trash';render();return}
+ if(trashState.pending){if(trashManager())view='trash';else toast('Confirme o salvamento pendente antes de continuar.',true);render();return}
 
 
 
@@ -3981,6 +3992,7 @@ async function requestTrashArchive(id){
 
 
 /* CLIENT_TRASH_END */
+document.addEventListener('click',e=>{if(e.target.closest('[data-client-manage]'))clientManagementPicker()});
 
 
 
