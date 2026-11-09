@@ -3782,7 +3782,7 @@ function trashManager(){return cloud.member?.role==='admin'&&cloud.member?.email
 
 function clientCanArchive(id){return trashManager()||!!(cloud.member?.active&&cloud.member.role==='account'&&cloud.user?.id&&cloud.meta.get(id)?.owner_id===cloud.user.id)}
 function clientManagementActions(){
- if(!cloud.member?.active||!['account','admin'].includes(cloud.member.role)||!['dashboard','clients','daily','checkin','meetings','executions','metrics','health','consulting','incidents'].includes(view)||document.querySelector('#clientManagementActions'))return;
+ if(!cloud.member?.active||!['account','admin'].includes(cloud.member.role)||!['dashboard','clients','daily','checkin','meetings','executions','metrics','health','consulting','executorErrors','accountErrors'].includes(view)||document.querySelector('#clientManagementActions'))return;
  const head=document.querySelector('#content .heading');if(!head)return;
  const hasNew=!!document.querySelector('#content [data-action="new"][data-type="clients"]');
  head.insertAdjacentHTML('afterend','<div id="clientManagementActions" class="actions" style="margin-bottom:16px">'+(hasNew?'':button('Adicionar cliente','new','','data-type="clients"'))+'<button class="btn" data-client-manage>Gerenciar clientes</button></div>');
