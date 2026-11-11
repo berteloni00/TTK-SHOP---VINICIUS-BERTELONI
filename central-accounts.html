@@ -373,7 +373,7 @@ html[data-theme="light"] .overview-initials{background:#d0e3e5;color:#006b74}
 }
 </style><style>
 .squad-control{display:flex;align-items:center;gap:8px;min-width:0}.squad-control>span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}.squad-control select{max-width:210px;padding:8px 28px 8px 10px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);font:inherit;font-size:13px}.squad-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:20px}.squad-card{padding:24px}.squad-card h2{margin:12px 0}.squad-card p{color:var(--muted)}.squad-people{margin:18px 0}.squad-control select option{background:var(--paper);color:var(--ink)}@media(max-width:850px){.topbar .breadcrumb{display:none}.squad-control>span{display:none}.squad-control select{max-width:155px}.topbar{gap:8px}}
-</style><style>.ci-completed-list{margin:18px 0 24px;border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden}.ci-completed-list>summary{display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;flex-wrap:wrap}.ci-completed-list>summary>span:first-child{color:var(--green);font-size:22px}.ci-completed-list>summary small{margin-left:auto;color:var(--muted)}.ci-completed-body{padding:0 20px 16px;border-top:1px solid var(--line)}.ci-completed-body ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:0 24px}.ci-completed-body li{padding:16px 0;border-bottom:1px solid var(--line)}.ci-completed-body li>strong{font-size:15px;overflow-wrap:anywhere}.ci-completed-body li>div{display:grid;gap:6px;margin-top:7px;font-size:12px;color:var(--muted)}.ci-completed-body .text-button{font-size:12px;margin-left:8px}.ci-completed-body>.help{margin:14px 0 0}</style><meta name="accounts-hub-build" content="2026-11-09-own-client-permissions-v1">
+</style><style>.ci-completed-list{margin:18px 0 24px;border:1px solid var(--line);border-radius:14px;background:var(--paper);overflow:hidden}.ci-completed-list>summary{display:flex;align-items:center;gap:12px;padding:18px 20px;cursor:pointer;flex-wrap:wrap}.ci-completed-list>summary>span:first-child{color:var(--green);font-size:22px}.ci-completed-list>summary small{margin-left:auto;color:var(--muted)}.ci-completed-body{padding:0 20px 16px;border-top:1px solid var(--line)}.ci-completed-body ul{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:0 24px}.ci-completed-body li{padding:16px 0;border-bottom:1px solid var(--line)}.ci-completed-body li>strong{font-size:15px;overflow-wrap:anywhere}.ci-completed-body li>div{display:grid;gap:6px;margin-top:7px;font-size:12px;color:var(--muted)}.ci-completed-body .text-button{font-size:12px;margin-left:8px}.ci-completed-body>.help{margin:14px 0 0}</style><meta name="accounts-hub-build" content="2026-11-11-supervisor-sharks-v1">
 </head>
 
 
@@ -610,11 +610,12 @@ async function cloudLogout(){if(libraryState.busy||libraryState.pending||trashSt
 
 
 
+function operationalManager(member=cloud.member){return !!member&&['admin','supervisor'].includes(member.role)}
 function cloudApply(snapshot){if(!snapshot?.member||!Array.isArray(snapshot.records)||!Array.isArray(snapshot.team))throw Error('Resposta incompleta do banco.');const next=blank(),meta=new Map();for(const row of snapshot.records){if(!CLOUD_TYPES.includes(row.kind))continue;next[row.kind].push({...row.payload,id:row.id});meta.set(row.id,row)}validateData(next);cloud.member=snapshot.member;cloud.team=snapshot.team;cloud.allowed=snapshot.allowed||[];cloud.meta=meta;db=next;cloud.baseline=clone(next);invalidateIncidents()}
 
 
 
-async function cloudEnter(session){if(!session){cloudClear();return}if(cloud.loading)return;cloud.loading=true;cloud.user=session.user;const epoch=++cloud.epoch;try{const {error}=await cloud.api.rpc('ac_bootstrap');if(error)throw error;await squadEnter();const {data,error:readError}=await cloud.api.rpc('ac_snapshot');if(readError)throw readError;if(epoch!==cloud.epoch)return;cloudApply(data);await loadSampleSnapshot();if(epoch!==cloud.epoch)return;document.body.classList.add('cloud-ready');view=cloud.member.role==='admin'?'dashboard':'daily';render();cloudDecorate();clearInterval(cloud.timer);cloud.timer=setInterval(()=>cloudPull(false),15000)}catch(e){if(epoch===cloud.epoch)cloudAuth(cloudError(e),true)}finally{cloud.loading=false}}
+async function cloudEnter(session){if(!session){cloudClear();return}if(cloud.loading)return;cloud.loading=true;cloud.user=session.user;const epoch=++cloud.epoch;try{const {error}=await cloud.api.rpc('ac_bootstrap');if(error)throw error;await squadEnter();const {data,error:readError}=await cloud.api.rpc('ac_snapshot');if(readError)throw readError;if(epoch!==cloud.epoch)return;cloudApply(data);await loadSampleSnapshot();if(epoch!==cloud.epoch)return;document.body.classList.add('cloud-ready');view=operationalManager()?'dashboard':'daily';render();cloudDecorate();clearInterval(cloud.timer);cloud.timer=setInterval(()=>cloudPull(false),15000)}catch(e){if(epoch===cloud.epoch)cloudAuth(cloudError(e),true)}finally{cloud.loading=false}}
 
 
 
@@ -634,7 +635,7 @@ async function cloudCommitPending(message='Salvamento confirmado.'){if(!cloud.pe
 
 
 
-function cloudDecorate(){if(!cloud.member)return;squadDecorate();clientManagementActions();const manager=cloud.member.role==='admin',note=document.querySelector('.local-note');note.innerHTML=`<strong>${esc(cloud.member.full_name)}</strong>${manager?'Gestor · visão da equipe':'Account · minha carteira'}<div class="storage-status" id="storageStatus">${cloud.pending?'Salvamento sem confirmação':'Conectado ao Supabase'}</div><div class="cloud-tools"><button class="btn" data-cloud="refresh">Atualizar</button>${cloud.pending?'<button class="btn" data-cloud="retry">Confirmar salvamento</button>':''}<button class="btn" data-cloud="logout">Sair</button></div>`;document.querySelector('.topbar>.avatar').textContent=initials(cloud.member.full_name);document.querySelectorAll('.footer-note span:last-child').forEach(e=>e.textContent='Base online · atualização a cada 15 segundos');if(view==='daily'){const help=document.querySelector('#content>p.help');if(help)help.textContent='Altere a data para planejar ou consultar o histórico. Os registros são salvos online e ficam disponíveis para o gestor.'}if(cloud.pending&&!document.querySelector('.cloud-banner'))document.querySelector('#content').insertAdjacentHTML('afterbegin','<div class="cloud-banner">Há um salvamento sem confirmação. Evite fechar a página até verificar o resultado. <button class="btn small" data-cloud="retry">Confirmar salvamento</button></div>')}
+function cloudDecorate(){if(!cloud.member)return;squadDecorate();clientManagementActions();const manager=cloud.member.role==='admin',note=document.querySelector('.local-note');note.innerHTML=`<strong>${esc(cloud.member.full_name)}</strong>${manager?'Gestor · visão da equipe':cloud.member.role==='supervisor'?'Supervisor · operação do squad':'Account · minha carteira'}<div class="storage-status" id="storageStatus">${cloud.pending?'Salvamento sem confirmação':'Conectado ao Supabase'}</div><div class="cloud-tools"><button class="btn" data-cloud="refresh">Atualizar</button>${cloud.pending?'<button class="btn" data-cloud="retry">Confirmar salvamento</button>':''}<button class="btn" data-cloud="logout">Sair</button></div>`;document.querySelector('.topbar>.avatar').textContent=initials(cloud.member.full_name);document.querySelectorAll('.footer-note span:last-child').forEach(e=>e.textContent='Base online · atualização a cada 15 segundos');if(view==='daily'){const help=document.querySelector('#content>p.help');if(help)help.textContent='Altere a data para planejar ou consultar o histórico. Os registros são salvos online e ficam disponíveis para o gestor.'}if(cloud.pending&&!document.querySelector('.cloud-banner'))document.querySelector('#content').insertAdjacentHTML('afterbegin','<div class="cloud-banner">Há um salvamento sem confirmação. Evite fechar a página até verificar o resultado. <button class="btn small" data-cloud="retry">Confirmar salvamento</button></div>')}
 
 
 
@@ -1011,7 +1012,7 @@ function filterBar(){if(view==='settings')return '';return `<div class="filters"
 
 
 
-function areaEnabled(key){if(key==='squads')return !!squadState.catalog.manager;return !['tasks','calendar','communications','campaigns','promotions','guide','consulting','approvals'].includes(key)}
+function areaEnabled(key){if(cloud.member?.role==='supervisor'&&!['dashboard','clients','daily','checkin','meetings','executions','metrics','health','documents'].includes(key))return false;if(key==='squads')return !!squadState.catalog.manager;return !['tasks','calendar','communications','campaigns','promotions','guide','consulting','approvals'].includes(key)}
 
 
 
@@ -1134,7 +1135,7 @@ function overviewModel(source,team,member,resolveExecutor,service){
 
 
 
- for(const person of team||[])if(person.active&&person.role==='account'&&!retiredHubPerson(person.full_name)&&(member?.role==='admin'||person.full_name===member?.full_name))accountNames.add(person.full_name);
+ for(const person of team||[])if(person.active&&person.role==='account'&&!retiredHubPerson(person.full_name)&&(operationalManager(member)||person.full_name===member?.full_name))accountNames.add(person.full_name);
 
 
 
@@ -1195,7 +1196,7 @@ function renderDashboardComposition(){
 
 
 
- <div class="overview-toolbar"><p>Carteira ativa · ${cloud.member?.role==='admin'?'Visão da equipe':'Clientes disponíveis no seu acesso'}</p><label for="overviewService">Serviço <select id="overviewService"><option value="">Todos os serviços</option>${['Assessoria','Consultoria','Não definido'].map(s=>`<option ${overviewService===s?'selected':''}>${s}</option>`).join('')}</select></label></div>
+ <div class="overview-toolbar"><p>Carteira ativa · ${operationalManager()?'Visão da equipe':'Clientes disponíveis no seu acesso'}</p><label for="overviewService">Serviço <select id="overviewService"><option value="">Todos os serviços</option>${['Assessoria','Consultoria','Não definido'].map(s=>`<option ${overviewService===s?'selected':''}>${s}</option>`).join('')}</select></label></div>
 
 
 
@@ -1569,7 +1570,7 @@ function checkinRead(entry){return `<p class="meta">${date(entry.date)} · Accou
 function checkinHistory(clientId){const c=client(clientId);if(!c)return;const rows=db.communications.filter(r=>r.recordType==='daily-checkin'&&r.client===clientId).slice().sort((a,b)=>(b.date+b.completedAt).localeCompare(a.date+a.completedAt));showModal(modalHead('Histórico — '+c.name)+`<div class="modal-body">${rows.map(r=>`<details class="ci-history"><summary>${date(r.date)} · ${esc(retiredHubPerson(r.checkinAccount)?'Colaborador removido':r.checkinAccount)}</summary>${checkinRead(r)}</details>`).join('')||'<p>Nenhum check-in registrado.</p>'}</div><div class="modal-footer">${button('Fechar','close')}</div>`)}
 function openCheckin(clientId){
  if(!dailyWritable()||!cloud.member)return;const c=client(clientId);if(!c)return;
- const ownerId=cloud.meta.get(c.id)?.owner_id;if(!ownerId||(cloud.member.role!=='admin'&&ownerId!==cloud.user.id)){toast('Este cliente não está disponível para seu acesso.',true);return}
+ const ownerId=cloud.meta.get(c.id)?.owner_id;if(!ownerId||(!operationalManager()&&ownerId!==cloud.user.id)){toast('Este cliente não está disponível para seu acesso.',true);return}
  const day=checkinToday(),existing=db.communications.find(r=>r.recordType==='daily-checkin'&&r.client===c.id&&r.date===day&&r.checkinAccountId===ownerId),latest=checkinModel([c],db.communications,day)[0]?.latest;
  showModal(`<form id="checkinForm">${modalHead('Check-in — '+c.name)}<div class="modal-body"><p class="help">${date(day)} · ${esc(c.account)}. Avalie as quatro áreas; pendências exigem ação, responsável e prazo. O setup detalhado permanece no Mapa de evolução; aqui registre alterações e bloqueios.</p>${setupBadges(c)}${CHECKIN_AREAS.map(([key,label])=>`<section class="ci-form-area"><h3>${esc(label)}</h3><label class="field" for="ci-${key}">Resultado da análise<select id="ci-${key}" name="${key}Status" required><option value="">Selecionar</option>${CHECKIN_STATUSES.map(s=>`<option value="${esc(s)}" ${existing?.[key+'Status']===s?'selected':''}>${esc(s)}</option>`).join('')}</select></label><label class="field" for="ci-${key}-note">Observação / pendência<textarea id="ci-${key}-note" name="${key}Note" maxlength="2000" rows="2">${esc(existing?.[key+'Note']??(latest?.[key+'Status']==='Precisa de ação'?latest[key+'Note']:''))}</textarea></label><label class="field" for="ci-${key}-next">Próximo passo<textarea id="ci-${key}-next" name="${key}Next" maxlength="2000" rows="2">${esc(existing?.[key+'Next']??(latest?.[key+'Status']==='Precisa de ação'?latest[key+'Next']:''))}</textarea></label>${opsTaskFields(key,existing,latest,c)}</section>`).join('')}<p class="field-error" id="checkinError" role="alert"></p></div><div class="modal-footer">${button('Cancelar','close')}<button type="submit" class="btn primary" id="checkinSubmit" disabled>${existing?'Salvar revisão':'Concluir check-in'}</button></div></form>`);
  const form=$('#checkinForm');form.querySelectorAll('button:not([type])').forEach(b=>b.type='button');
@@ -1769,7 +1770,7 @@ function taskExecutor(clientId,existing,submitted){
 
 
 
-function dailyAssignableMembers(){const people=[...(cloud.team||[]),...(cloud.member?[{...cloud.member,user_id:cloud.member.user_id||cloud.user?.id}]:[])];return [...new Map(people.filter(m=>m.user_id&&m.active&&!retiredHubPerson(m.full_name)&&(m.role==='account'||(m.role==='admin'&&String(m.email||'').toLowerCase()==='viniciusberteloni@gmail.com'))).map(m=>[m.user_id,m])).values()].sort((a,b)=>a.full_name.localeCompare(b.full_name,'pt-BR'))}
+function dailyAssignableMembers(){const people=[...(cloud.team||[]),...(cloud.member?[{...cloud.member,user_id:cloud.member.user_id||cloud.user?.id}]:[])];return [...new Map(people.filter(m=>m.user_id&&m.active&&!retiredHubPerson(m.full_name)&&(['account','supervisor'].includes(m.role)||(m.role==='admin'&&String(m.email||'').toLowerCase()==='viniciusberteloni@gmail.com'))).map(m=>[m.user_id,m])).values()].sort((a,b)=>a.full_name.localeCompare(b.full_name,'pt-BR'))}
 function dailyAssigneeChoices(selected){return '<fieldset class="field wide daily-assignees"><legend>Responsáveis *</legend><p class="help">Selecione um ou mais responsáveis. Cada um receberá sua própria demanda.</p><div class="daily-assignee-options">'+dailyAssignableMembers().map(m=>'<label><input type="checkbox" name="account" value="'+esc(m.user_id)+'" '+(m.user_id===selected?'checked':'')+'><span>'+esc(m.full_name)+'</span></label>').join('')+'</div></fieldset>'}
 function dailyAssignedCopies(record,ids){const unique=[...new Set(ids)];const members=unique.map(id=>dailyAssignableMembers().find(m=>m.user_id===id));if(!unique.length||members.some(m=>!m))throw Error('Selecione pelo menos um responsável ativo.');return members.map((m,i)=>({...record,id:i?uid():record.id,account:m.full_name,_assignee:m.user_id}))}
 function openForm(type,id='',initial={}){
@@ -1804,7 +1805,7 @@ function openForm(type,id='',initial={}){
 
 
 
-showModal(`<form id="recordForm">${modalHead((id?'Editar • ':'Adicionar • ')+config[type][0])}<div class="modal-body"><div class="form-grid">${schema(type).map(f=>type==='daily'&&!id&&cloud.member?.role==='admin'&&f.key==='account'?dailyAssigneeChoices(dailyAssignableMembers().find(m=>m.full_name===dailyAccount)?.user_id):formHTML(f,data[f.key]??'')).join('')}</div><p class="help">* Campos obrigatórios</p><p class="field-error" id="formError" role="alert"></p></div><div class="modal-footer">${id?trashDeleteButton(type,id):''}${button('Cancelar','close')}<button type="submit" class="btn primary">Salvar ${id?'alterações':'registro'}</button></div></form>`);
+showModal(`<form id="recordForm">${modalHead((id?'Editar • ':'Adicionar • ')+config[type][0])}<div class="modal-body"><div class="form-grid">${schema(type).map(f=>type==='daily'&&!id&&operationalManager()&&f.key==='account'?dailyAssigneeChoices(dailyAssignableMembers().find(m=>m.full_name===dailyAccount)?.user_id):formHTML(f,data[f.key]??'')).join('')}</div><p class="help">* Campos obrigatórios</p><p class="field-error" id="formError" role="alert"></p></div><div class="modal-footer">${id?trashDeleteButton(type,id):''}${button('Cancelar','close')}<button type="submit" class="btn primary">Salvar ${id?'alterações':'registro'}</button></div></form>`);
 
 
 
@@ -1888,7 +1889,7 @@ async function saveForm(e){e.preventDefault();const type=openedType,fd=new FormD
 
 
 
- if(type==='daily'&&!openedId&&cloud.member?.role==='admin'){
+ if(type==='daily'&&!openedId&&operationalManager()){
   let copies;try{copies=dailyAssignedCopies(record,fd.getAll('account').map(String))}catch(error){$('#formError').textContent=error.message;return}
   copies.forEach(r=>dailyStamp(r));db.daily.push(...copies);
   const saved=await persist(copies.length===1?'Demanda criada.':copies.length+' demandas criadas, uma para cada responsável.');
@@ -2725,7 +2726,7 @@ function dailyCard(r,group){
 
 
 
- return '<article draggable="true" data-daily-id="'+esc(r.id)+'" class="daily-card '+(done?'is-done':'')+'"><div class="daily-card-body"><span class="daily-drag-hint" aria-hidden="true">⠿ Segure e arraste</span>'+(cloud.member?.role==='admin'?'<div class="daily-owner">'+esc(retiredHubPerson(r.account)?'Colaborador removido':r.account)+'</div>':'')+(dailyCreatedByManager(r)?'<span class="daily-manager-tag">Demanda do gestor</span>':'')+'<h3>'+esc(r.title)+'</h3>'+(!done?'<span class="daily-priority '+(r.priority==='Alta'?'high':r.priority==='Baixa'?'low':'medium')+'">'+esc(r.priority)+'</span>':'')+'<p class="daily-timing '+(group==='late'?'late':'')+'">'+esc(timing)+'</p>'+(done?'<small class="daily-planned">Data prevista: '+esc(date(r.date))+'</small>':'')+(r.notes?'<details class="daily-notes"><summary>Observações</summary><p>'+esc(r.notes)+'</p></details>':'')+'</div><footer class="daily-card-actions"><button type="button" class="daily-complete" data-action="daily-complete" data-id="'+esc(r.id)+'" aria-label="'+(done?'Reabrir':'Concluir')+' '+esc(r.title)+'">'+icon(done?'check':'circle')+(done?'Reabrir':'Concluir')+'</button><button type="button" class="daily-complete danger-text" data-action="delete" data-type="daily" data-id="'+esc(r.id)+'" aria-label="Remover '+esc(r.title)+'">'+icon('trash')+'Remover</button><details class="daily-menu"><summary aria-label="Opções de '+esc(r.title)+'">•••</summary><div><button type="button" data-action="edit" data-type="daily" data-id="'+esc(r.id)+'">Ver / editar</button>'+(!done?'<button type="button" data-action="daily-reschedule" data-id="'+esc(r.id)+'">Reagendar</button>':'')+'<button type="button" data-action="daily-move" data-id="'+esc(r.id)+'">Mover demanda</button><button type="button" data-action="daily-movements" data-id="'+esc(r.id)+'">Histórico de movimentos</button></div></details></footer></article>';
+ return '<article draggable="true" data-daily-id="'+esc(r.id)+'" class="daily-card '+(done?'is-done':'')+'"><div class="daily-card-body"><span class="daily-drag-hint" aria-hidden="true">⠿ Segure e arraste</span>'+(operationalManager()?'<div class="daily-owner">'+esc(retiredHubPerson(r.account)?'Colaborador removido':r.account)+'</div>':'')+(dailyCreatedByManager(r)?'<span class="daily-manager-tag">Demanda do gestor</span>':'')+'<h3>'+esc(r.title)+'</h3>'+(!done?'<span class="daily-priority '+(r.priority==='Alta'?'high':r.priority==='Baixa'?'low':'medium')+'">'+esc(r.priority)+'</span>':'')+'<p class="daily-timing '+(group==='late'?'late':'')+'">'+esc(timing)+'</p>'+(done?'<small class="daily-planned">Data prevista: '+esc(date(r.date))+'</small>':'')+(r.notes?'<details class="daily-notes"><summary>Observações</summary><p>'+esc(r.notes)+'</p></details>':'')+'</div><footer class="daily-card-actions"><button type="button" class="daily-complete" data-action="daily-complete" data-id="'+esc(r.id)+'" aria-label="'+(done?'Reabrir':'Concluir')+' '+esc(r.title)+'">'+icon(done?'check':'circle')+(done?'Reabrir':'Concluir')+'</button><button type="button" class="daily-complete danger-text" data-action="delete" data-type="daily" data-id="'+esc(r.id)+'" aria-label="Remover '+esc(r.title)+'">'+icon('trash')+'Remover</button><details class="daily-menu"><summary aria-label="Opções de '+esc(r.title)+'">•••</summary><div><button type="button" data-action="edit" data-type="daily" data-id="'+esc(r.id)+'">Ver / editar</button>'+(!done?'<button type="button" data-action="daily-reschedule" data-id="'+esc(r.id)+'">Reagendar</button>':'')+'<button type="button" data-action="daily-move" data-id="'+esc(r.id)+'">Mover demanda</button><button type="button" data-action="daily-movements" data-id="'+esc(r.id)+'">Histórico de movimentos</button></div></details></footer></article>';
 
 
 
@@ -3780,9 +3781,9 @@ function trashManager(){return cloud.member?.role==='admin'&&cloud.member?.email
 
 
 
-function clientCanArchive(id){return trashManager()||!!(cloud.member?.active&&cloud.member.role==='account'&&cloud.user?.id&&cloud.meta.get(id)?.owner_id===cloud.user.id)}
+function clientCanArchive(id){return trashManager()||!!(cloud.member?.active&&cloud.member.role==='supervisor'&&cloud.meta.get(id)?.kind==='clients'&&cloud.meta.get(id)?.squad_id===squadState.id)||!!(cloud.member?.active&&cloud.member.role==='account'&&cloud.user?.id&&cloud.meta.get(id)?.owner_id===cloud.user.id)}
 function clientManagementActions(){
- if(!cloud.member?.active||!['account','admin'].includes(cloud.member.role)||!['dashboard','clients','daily','checkin','meetings','executions','metrics','health','consulting','executorErrors','accountErrors'].includes(view)||document.querySelector('#clientManagementActions'))return;
+ if(!cloud.member?.active||!['account','admin','supervisor'].includes(cloud.member.role)||!['dashboard','clients','daily','checkin','meetings','executions','metrics','health','consulting','executorErrors','accountErrors'].includes(view)||document.querySelector('#clientManagementActions'))return;
  const head=document.querySelector('#content .heading');if(!head)return;
  const hasNew=!!document.querySelector('#content [data-action="new"][data-type="clients"]');
  head.insertAdjacentHTML('afterend','<div id="clientManagementActions" class="actions" style="margin-bottom:16px">'+(hasNew?'':button('Adicionar cliente','new','','data-type="clients"'))+'<button class="btn" data-client-manage>Gerenciar clientes</button></div>');
