@@ -8,18 +8,15 @@ export async function canonicalHash(value){
   const digest=await crypto.subtle.digest('SHA-256',encoder.encode(JSON.stringify(canonical(value))));
   return Array.from(new Uint8Array(digest),x=>x.toString(16).padStart(2,'0')).join('');
 }
-async function equalSecret(actual,expected){
-  if(typeof actual!=='string'||typeof expected!=='string'||!expected)return false;
-  const a=new Uint8Array(await crypto.subtle.digest('SHA-256',encoder.encode(actual)));
-  const b=new Uint8Array(await crypto.subtle.digest('SHA-256',encoder.encode(expected)));
-  let diff=0;for(let i=0;i<a.length;i++)diff|=a[i]^b[i];return diff===0;
-}
-export async function verifyEvent(bytes,signature,secret){
+async function verifySignature(bytes,signature,secret){
   if(!secret)throw new Error('NOT_CONFIGURED');
   if(!/^sha256=[0-9a-f]{64}$/.test(signature||''))throw new Error('INVALID_SIGNATURE');
   const key=await crypto.subtle.importKey('raw',encoder.encode(secret),{name:'HMAC',hash:'SHA-256'},false,['verify']);
   const digest=Uint8Array.from(signature.slice(7).match(/../g),x=>parseInt(x,16));
   if(!await crypto.subtle.verify('HMAC',key,digest,bytes))throw new Error('INVALID_SIGNATURE');
+}
+export async function verifyEvent(bytes,signature,secret){
+  await verifySignature(bytes,signature,secret);
   let body;try{body=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));}catch{throw new Error('INVALID_EVENT');}
   const timestamp=body?.timestamp, revision=Object.hasOwn(body||{},'reprocessed_at')?body.reprocessed_at:0;
   if(!body||Array.isArray(body)||typeof body.event!=='string'||!/^[a-z][a-z0-9_.-]{0,127}$/.test(body.event)||typeof body.meeting_id!=='string'||!idPattern.test(body.meeting_id)||!Number.isSafeInteger(timestamp)||timestamp<=0||timestamp>253402300799999||!Number.isSafeInteger(revision)||revision<0||revision>timestamp)throw new Error('INVALID_EVENT');
@@ -43,7 +40,11 @@ export function createHandler({rpc,runOneJob,waitUntil,webhookDeadlineMs=22000})
       const bytes=await boundedBody(req);
       const secrets=await rpc('ac_calls_service_secrets',{});
       if(path.endsWith('/worker')){
-        if(!await equalSecret(req.headers.get('Authorization'),secrets?.worker_secret?'Bearer '+secrets.worker_secret:null))return json({error:'UNAUTHORIZED'},401);
+        // pg_net queues are readable by DB roles on managed Supabase. Only an
+        // expiring signed proof enters that queue, never the reusable secret.
+        await verifySignature(bytes,req.headers.get('X-Radar-Worker-Signature'),secrets?.worker_secret);
+        let tick;try{tick=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));}catch{return json({error:'UNAUTHORIZED'},401);}
+        if(tick?.scope!=='radar.calls.recovery'||!Number.isSafeInteger(tick.timestamp)||Math.abs(Date.now()-tick.timestamp)>90000)return json({error:'UNAUTHORIZED'},401);
         const result=await runOneJob();return json({ok:true,processed:Boolean(result?.processed)});
       }
       const event=await verifyEvent(bytes,req.headers.get('X-Hub-Signature'),secrets?.webhook_secret);
