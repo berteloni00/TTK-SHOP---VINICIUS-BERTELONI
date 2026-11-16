@@ -29,7 +29,7 @@ CASE_TYPES = {"sem_resposta_observada", "resposta_parcial", "resposta_vaga",
               "contradicao", "duvida_factual", "tom_desalinhado"}
 LOCAL_PATH = re.compile(r"(?:[A-Za-z]:[\\/]|file://|/(?:Users|home|mnt)/)")
 ITEM_FIELDS = set("""
-item_id client_id group_ids group_id group_title kind kind_original summary status
+item_id client_id group_ids group_id group_title kind kind_original summary status client_account_display
 owner_display owner_person_ids owner_basis owner_team owner_scope waiting_on
 due_at due_text due_precision due_basis first_seen_at last_evidence_at last_reviewed_at
 evidence_ids acknowledgement_evidence_ids response_evidence_ids completion_evidence_ids
@@ -303,6 +303,14 @@ def build_exports(state, config, execution, *, settings_version, report_date=Non
     settings = build_settings(config)
     selected = set(settings["monitoring_group_ids"])
     catalog = {row["group_id"]: row for row in settings["groups"]}
+    # Carteira confirmada é distinta do executor observado em cada conversa.
+    account_map = config.get("client_accounts", {})
+    require(isinstance(account_map, dict), "client_accounts deve ser um mapa por cliente")
+    known_clients = {row.get("client_id") for row in config.get("clients", [])}
+    for cid, account in account_map.items():
+        require(cid in known_clients and isinstance(account, str)
+                and 0 < len(account.strip()) <= 200 and not LOCAL_PATH.search(account),
+                "Carteira: cliente desconhecido ou account invalido")
     attempt = execution.get("last_attempt", {})
     raw_status = attempt.get("status")
     require(raw_status in {"completed", "partial", "blocked", "interrupted"},
@@ -351,7 +359,10 @@ def build_exports(state, config, execution, *, settings_version, report_date=Non
                 require(source.get("client_id") == catalog[gid]["client_id"], f"{gid}: cliente divergente")
                 require(source.get("exact_title", source.get("group_title")) == catalog[gid]["group_title"],
                         f"{gid}: titulo divergente")
-            out["groups"].append(export_group(source, catalog[gid], cutoff, accessed))
+            group = export_group(source, catalog[gid], cutoff, accessed)
+            if account_map.get(group.get("client_id")):
+                group["client_account_display"] = account_map[group["client_id"]].strip()
+            out["groups"].append(group)
         source_items = index(state.get("items", []), "item_id", "items")
         for row in source_items.values():
             gids = set(item_groups(row))
@@ -359,6 +370,14 @@ def build_exports(state, config, execution, *, settings_version, report_date=Non
                 continue
             require(gids <= selected, f"{row['item_id']}: item mistura grupos dentro e fora da selecao")
             item = project(row, ITEM_FIELDS)
+            account = item.get("client_account_display")
+            mapped = account_map.get(item.get("client_id"))
+            require(account is None or (isinstance(account, str) and 0 < len(account.strip()) <= 200),
+                    f"{item['item_id']}: account invalido")
+            require(not (account and mapped) or account.strip() == mapped.strip(),
+                    f"{item['item_id']}: account diverge da carteira confirmada")
+            if account or mapped:
+                item["client_account_display"] = (account or mapped).strip()
             item["group_ids"] = item_groups(row)
             if len(item["group_ids"]) == 1:
                 sole_group = item["group_ids"][0]
