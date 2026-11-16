@@ -1,6 +1,15 @@
 import {canonicalHash} from './handler.mjs';
 const TRANSCRIPT_QUERY=`query RadarTranscript($id:String!){transcript(id:$id){id title date dateString duration transcript_url organizer_email is_live speakers{id name} sentences{index speaker_id speaker_name text start_time end_time}}}`;
-const allowedErrors=/^(FIREFLIES_(HTTP_\d{3}|GRAPHQL_ERROR|ACCOUNT_MISMATCH|TRANSCRIPT_MISMATCH)|AI_(HTTP_\d{3}|INVALID_OUTPUT|INCOMPLETE_OUTPUT)|TRANSCRIPT_(NOT_READY|TOO_LONG_REQUIRES_REVIEW)|INVALID_ANALYSIS|RESPONSE_TOO_LARGE|REMOTE_TIMEOUT)$/;
+const allowedErrors=/^(FIREFLIES_(HTTP_\d{3}|GRAPHQL_ERROR|ACCOUNT_MISMATCH|TRANSCRIPT_MISMATCH)|AI_(HTTP_(\d{3}|429_(INSUFFICIENT_QUOTA|RATE_LIMIT|CREDIT_BALANCE_EXHAUSTED|ORGANIZATION_SPEND_LIMIT_EXCEEDED|PROJECT_SPEND_LIMIT_EXCEEDED|ORGANIZATION_USAGE_LIMIT_EXCEEDED|SLOW_DOWN))|INVALID_OUTPUT|INCOMPLETE_OUTPUT)|TRANSCRIPT_(NOT_READY|TOO_LONG_REQUIRES_REVIEW)|INVALID_ANALYSIS|RESPONSE_TOO_LARGE|REMOTE_TIMEOUT)$/;
+const ai429Codes=new Map([
+  ['insufficient_quota','AI_HTTP_429_INSUFFICIENT_QUOTA'],
+  ['rate_limit_exceeded','AI_HTTP_429_RATE_LIMIT'],
+  ['credit_balance_exhausted','AI_HTTP_429_CREDIT_BALANCE_EXHAUSTED'],
+  ['organization_spend_limit_exceeded','AI_HTTP_429_ORGANIZATION_SPEND_LIMIT_EXCEEDED'],
+  ['project_spend_limit_exceeded','AI_HTTP_429_PROJECT_SPEND_LIMIT_EXCEEDED'],
+  ['organization_usage_limit_exceeded','AI_HTTP_429_ORGANIZATION_USAGE_LIMIT_EXCEEDED'],
+  ['slow_down','AI_HTTP_429_SLOW_DOWN']
+]);
 async function readJson(response,maxBytes){
   if(Number(response.headers.get('content-length')||0)>maxBytes)throw new Error('RESPONSE_TOO_LARGE');
   const reader=response.body?.getReader();const chunks=[];let size=0;
@@ -8,6 +17,24 @@ async function readJson(response,maxBytes){
   while(true){const r=await reader.read();if(r.done)break;size+=r.value.length;if(size>maxBytes){await reader.cancel();throw new Error('RESPONSE_TOO_LARGE');}chunks.push(r.value);}
   const bytes=new Uint8Array(size);let p=0;for(const chunk of chunks){bytes.set(chunk,p);p+=chunk.length;}
   return JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
+}
+async function aiHttpErrorCode(response){
+  const fallback='AI_HTTP_'+response.status;
+  if(response.status!==429)return fallback;
+  try{
+    // Inspect only a bounded error envelope. Never expose error.message or body.
+    const body=await readJson(response,8*1024);
+    const error=body?.error;
+    if(!error||typeof error!=='object'||Array.isArray(error))return fallback;
+    const exact=typeof error.code==='string'?ai429Codes.get(error.code):null;
+    if(exact)return exact;
+    if(error.type==='insufficient_quota')return 'AI_HTTP_429_INSUFFICIENT_QUOTA';
+    if(error.type==='rate_limit_error'||error.type==='rate_limit_exceeded')return 'AI_HTTP_429_RATE_LIMIT';
+  }catch{
+    // Preserve the observed HTTP status for invalid, HTML, oversized or aborted bodies.
+    try{await response.body?.cancel();}catch{}
+  }
+  return fallback;
 }
 export function createRpc({url,serviceKey,fetchImpl=fetch}){
   if(!/^https:\/\/[a-z0-9]+\.supabase\.co$/.test(url)||!serviceKey)throw new Error('BACKEND_NOT_CONFIGURED');
@@ -54,7 +81,7 @@ export function createWorker({rpc,fetchImpl=fetch,prepareTranscript,buildAnalysi
       // Fail explicitly rather than silently truncating a long meeting.
       if(requestBody.length>1200000)throw new Error('TRANSCRIPT_TOO_LONG_REQUIRES_REVIEW');
       const response=await fetchImpl('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{Authorization:'Bearer '+secrets.openai_api_key,'Content-Type':'application/json'},body:requestBody,signal:AbortSignal.any([budget,AbortSignal.timeout(90000)]),redirect:'error'});
-      if(!response.ok)throw new Error('AI_HTTP_'+response.status);
+      if(!response.ok)throw new Error(await aiHttpErrorCode(response));
       const body=await readJson(response,2*1024*1024);
       const choice=body.choices?.[0];
       if(choice?.finish_reason!=='stop')throw new Error('AI_INCOMPLETE_OUTPUT');
