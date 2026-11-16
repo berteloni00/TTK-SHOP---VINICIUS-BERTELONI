@@ -42,6 +42,8 @@ meeting_at meeting_status occurrences overdue_assessment plan_parameters planned
 planning_window proposal proposed_meeting_at proposed_meeting_basis proposed_meeting_status
 recurrence_as_promised reported_deadline requested_meeting_basis requested_meeting_date
 response_evidence_ids sample_availability_expected_date scheduled_meeting_at subchecks subitems
+requested_at requested_precision requested_text requester_display request_evidence_ids
+delivery_commitments current_commitment_id
 """.split())
 CASE_FIELDS = set("""
 case_id client_id group_id group_title related_item_ids case_type case_subtype subtype
@@ -72,6 +74,9 @@ amount_brl approval_status campaigns period selected_context other_same_title_co
 authors_observed latest_message_at latest_message_summary latest_preview_date preview_author
 history_not_analyzed future_resume_requirement same_title_conversations_observed read_receipt_limit
 start_time end_time timezone action values before after
+commitment_id promised_due_at promised_due_precision promised_due_text promised_at
+promised_at_precision promised_by_display promised_by_person_id promised_by_role
+revision_kind supersedes_commitment_id
 """.split())
 # Eventos incrementais podem guardar os campos operacionais anteriores/novos.
 # A mesma allowlist exclui diagnosticos e caminhos tambem nesses objetos.
@@ -170,8 +175,58 @@ def validate_refs(value, evidence, items, people, allowed_groups):
         if key in {"owner_person_ids", "other_response_author_person_ids"}:
             require(isinstance(item, list) and all(pid in people for pid in item),
                     f"{key}: pessoa inexistente")
-        if key in {"response_author_person_id", "person_id"} and item is not None:
+        if key in {"response_author_person_id", "promised_by_person_id", "person_id"} and item is not None:
             require(item in people, f"Pessoa inexistente: {item}")
+
+def validate_explicit_timing(item, cutoff):
+    """Valida datas qualificadas pela analise; nunca converte campos legados."""
+    def precise(value, precision, label):
+        if value is None:
+            require(precision is None, f"{label}: precisao sem data")
+            return
+        parsed = parse_time(value, label)
+        expected = "datetime" if isinstance(parsed, datetime) else "date"
+        require(precision == expected, f"{label}: precisao divergente ou ausente")
+
+    identifier = item["item_id"]
+    precise(item.get("requested_at"), item.get("requested_precision"), f"{identifier} requested_at")
+    before_cutoff(item.get("requested_at"), cutoff, f"{identifier} requested_at")
+    request_refs = item.get("request_evidence_ids", [])
+    require(isinstance(request_refs, list), f"{identifier}: request_evidence_ids invalido")
+    if any(item.get(key) is not None for key in ("requested_at", "requested_text", "requester_display")):
+        require(bool(request_refs), f"{identifier}: solicitacao do cliente sem evidencia especifica")
+
+    commitments = item.get("delivery_commitments", [])
+    by_id = index(commitments, "commitment_id", f"{identifier}.delivery_commitments")
+    superseded = set()
+    for commitment in commitments:
+        cid = commitment["commitment_id"]
+        require(commitment.get("revision_kind") in {"original", "revised"},
+                f"{cid}: revision_kind invalido")
+        require(isinstance(commitment.get("evidence_ids"), list) and commitment["evidence_ids"],
+                f"{cid}: promessa sem evidencia especifica")
+        require(commitment.get("promised_by_role") in {None, "account", "equipe", "direcao", "desconhecido"},
+                f"{cid}: funcao do autor invalida")
+        precise(commitment.get("promised_due_at"), commitment.get("promised_due_precision"),
+                f"{cid} promised_due_at")
+        precise(commitment.get("promised_at"), commitment.get("promised_at_precision"),
+                f"{cid} promised_at")
+        before_cutoff(commitment.get("promised_at"), cutoff, f"{cid} promised_at")
+        previous = commitment.get("supersedes_commitment_id")
+        if previous is not None:
+            require(commitment["revision_kind"] == "revised" and previous in by_id and previous != cid,
+                    f"{cid}: vinculo de revisao invalido")
+            superseded.add(previous)
+    for cid in by_id:
+        seen, cursor = set(), cid
+        while cursor is not None:
+            require(cursor not in seen, f"{identifier}: ciclo no historico de promessas")
+            seen.add(cursor)
+            cursor = by_id[cursor].get("supersedes_commitment_id")
+    current = item.get("current_commitment_id")
+    if current is not None:
+        require(current in by_id and current not in superseded,
+                f"{identifier}: compromisso vigente ausente ou substituido")
 
 def build_settings(config):
     require(config.get("profile_label") == "SPHYNX", "Perfil diferente de SPHYNX")
@@ -332,6 +387,7 @@ def build_exports(state, config, execution, *, settings_version, report_date=Non
                 parse_time(due, f"{item['item_id']} due_at")
                 expected = "datetime" if "T" in due else "date"
                 require(item.get("due_precision") in (None, expected), "Precisao do prazo divergente")
+            validate_explicit_timing(item, cutoff)
             out["items"].append(item)
         for row in index(state.get("evidence", []), "evidence_id", "evidence").values():
             if row.get("group_id") in selected:
@@ -362,7 +418,7 @@ def build_exports(state, config, execution, *, settings_version, report_date=Non
             if key in {"owner_person_ids", "other_response_author_person_ids"}:
                 require(isinstance(value, list), "Lista de pessoas invalida")
                 needed_people.update(value)
-            elif key in {"response_author_person_id", "person_id"} and value is not None:
+            elif key in {"response_author_person_id", "promised_by_person_id", "person_id"} and value is not None:
                 needed_people.add(value)
         for pid in sorted(needed_people):
             require(pid in source_people, f"Pessoa inexistente: {pid}")
